@@ -1,0 +1,44 @@
+[
+  {
+    "analysisSummary": "Mechanism is real and code-accurate, but it is the exact issue documented as the acknowledged exception to audit finding H-01 (splits-v2.md H-01 Review paragraph): pull split + warehouse incentives + unpaused withdrawals. Program eligibility requires findings distinct from issues covered in previous audits, so this cannot be filed. No new causal element beyond H-01 was identified.",
+    "bugId": "HUNT-1",
+    "counterEvidence": "audits/splits-v2.md H-01 Review: 'The only exception is if a pull split allows withdrawals directly from the Warehouse... This situation is Acknowledged by the Splits team.' SECURITY.md Eligibility: 'The vulnerability must be distinct from the issues covered in the previous audits.'",
+    "response": "DISPROVE"
+  },
+  {
+    "analysisSummary": "Reentrancy is possible at the reward transfer, but extraction is accounting-bounded: the reentrant distribute() re-reads CURRENT balances (PushSplit.sol:50) and can only distribute what remains; the outer call then still pays the full computed reward, so any reentrant overdraft makes the outer safeTransferETH revert and unwinds the whole transaction. Net attacker gain is bounded by rounding dust plus the 1-wei leftovers. The team documents this exact unwind behavior in integration-patterns.md (Security Considerations). No drain demonstrated.",
+    "bugId": "HUNT-2",
+    "counterEvidence": "packages/splits-v2/src/splitters/push/PushSplit.sol:39-66 balances are snapshotted fresh on every distribute() call and _distribute pays the full computed _amount; packages/splits-v2/docs/integration-patterns.md: 'a recipient that re-enters distribute() during its payout can leave the loop working from a stale balance snapshot, so the fallback deposit reverts and the distribution unwinds. Funds stay in the wallet, undistributed.'",
+    "response": "DISPROVE"
+  },
+  {
+    "analysisSummary": "Same accounting bound as HUNT-2: a reentrant distribute() can only pay out of the remaining pool, and the outer loop's remaining transfers plus reward then exceed the balance and revert the whole transaction. Profitable only when the attacker's share plus reward fits inside rounding dust plus leftover wei, i.e. negligible. Additionally, hook/fee-on-transfer token behavior is outside the documented supported set (integration-patterns.md Token compatibility). No drain demonstrated.",
+    "bugId": "HUNT-3",
+    "counterEvidence": "packages/splits-v2/src/splitters/push/PushSplit.sol:39-66 fresh balance snapshot per distribute() and full-amount payout; packages/splits-v2/docs/integration-patterns.md Token compatibility: fee-on-transfer, rebasing, non-transferable tokens are not supported.",
+    "response": "DISPROVE"
+  },
+  {
+    "analysisSummary": "Mechanism is code-accurate, but signer-set configuration requires owner/self authorization: initializeSigners runs only via factory createAccount (caller-chosen config), addSigner requires _authorize (onlySelf, reachable only through a validated userOp or owner execute). An attacker cannot introduce duplicate signers. The owner is root by design and can already execute/upgrade directly, so a duplicate-signer configuration is an owner-configuration footgun, not an attacker-reachable privilege escalation. Fails triage Q4.",
+    "bugId": "HUNT-4",
+    "counterEvidence": "packages/smart-vaults/src/utils/MultiSignerAuth.sol:109-113 addSigner is onlyAuthorized; packages/smart-vaults/src/vault/SmartVault.sol:342 _authorize is onlySelf; audits/smartVaults-first.pdf 3.2.3 documents owner recovery supremacy as intended design.",
+    "response": "DISPROVE"
+  },
+  {
+    "analysisSummary": "Mechanism is code-accurate, but modules are fully trusted by design: an enabled module can already drain 100% of vault funds directly via executeFromModule arbitrary calls, so upgrade power adds no new fund-loss capability. The deployed modules (AutoEarnModule, AutoEarnEnrollerModule) contain only fixed call construction and cannot issue an upgrade call. No attacker-reachable gain beyond the trusted-module model. Fails triage Q4/Q6.",
+    "bugId": "HUNT-5",
+    "counterEvidence": "packages/smart-vaults/src/utils/ModuleManager.sol:1-12 'Account owners should be careful when adding a module' and executeFromModule runs arbitrary Call batches; packages/smart-vault-modules/src/AutoEarnModule.sol:71-83 and AutoEarnEnrollerModule.sol:82-109 construct only fixed approve/deposit/enableModule calls.",
+    "response": "DISPROVE"
+  },
+  {
+    "analysisSummary": "Mechanism is code-accurate, but it is explicitly documented behavior: integration-patterns.md Token compatibility describes this exact insolvency for fee-on-transfer tokens and states such tokens are not supported. Fails triage Q5 (documented behavior). No in-scope token class is affected.",
+    "bugId": "HUNT-6",
+    "counterEvidence": "packages/splits-v2/docs/integration-patterns.md: 'Fee-on-transfer: the warehouse credits recipients the pre-fee amount while receiving less, so the accounting goes insolvent and the last recipients to withdraw cannot claim.' and 'Fee-on-transfer, rebasing, and non-transferable tokens are not supported'.",
+    "response": "DISPROVE"
+  },
+  {
+    "analysisSummary": "The sweep is the module's documented purpose ('Automatically deposits idle ERC-20 tokens into an ERC-4626 earn vault'), enabled only by the account owner via enableModule (onlySelf). Shares are minted to the account itself (receiver = address(account_)), so no funds leave the account's ownership, and the owner can redeem at any time via execute(). No theft, no freeze: redemption is owner-controlled. Fails triage Q2/Q6.",
+    "bugId": "HUNT-7",
+    "counterEvidence": "packages/smart-vault-modules/src/AutoEarnModule.sol:8-14 natspec purpose + onlyModule enforcement note; AutoEarnModule.sol:78 deposit receiver is address(account_); packages/smart-vaults/src/vault/SmartVault.sol:276-295 execute() lets owner/entrypoint redeem shares.",
+    "response": "DISPROVE"
+  }
+]

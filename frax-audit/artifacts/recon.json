@@ -1,0 +1,17 @@
+{
+  "critical": ["src/contracts/FraxlendPairCore.sol", "src/contracts/FraxlendPair.sol", "src/contracts/libraries/VaultAccount.sol"],
+  "high": ["src/contracts/VariableInterestRate.sol", "src/contracts/oracles/dual-oracles/DualOracleChainlinkUniV3.sol", "src/contracts/FraxlendPairDeployer.sol", "src/contracts/FraxlendPairAccessControl.sol"],
+  "medium": ["src/contracts/FraxlendPairRegistry.sol", "src/contracts/LinearInterestRate.sol", "src/contracts/Timelock2Step.sol", "src/contracts/FraxlendWhitelist.sol"],
+  "contextOnly": ["src/contracts/interfaces/*"],
+  "notes": [
+    "FraxlendPairCore.sol:1277 lines — VaultAccount (amount,shares) dual accounting for assets and borrows; _addInterest before every external fn; _isSolvent LTV check; dual-oracle low/high exchange rates with maxOracleDeviation; deposit/mint/redeem/withdraw + borrow/repay/liquidate/addCollateral/removeCollateral paths.",
+    "FraxlendPair.sol:648 lines — ERC20 fToken + ERC4626 views (convertToAssets/Shares, maxDeposit/Mint/Withdraw/Redeem), admin setters (setOracle/setMaxLTV/setRateContract/setLiquidationFees/changeFee) with one-way revocation, withdrawFees, setSwapper, granular pauses (borrow/deposit/repay/withdraw/liquidate/interest).",
+    "VaultAccount.sol: toShares/toAmount with roundUp flag — share-math rounding is the inflation/precision boundary.",
+    "VariableInterestRate.sol: kinked curve + half-life drift, v2 rate interface; deployed reference-pair rate contract is VariableInterestRateSettable v3.0.0 (AccessControl + SETTER_ROLE), NOT in repo — sourcify sources only.",
+    "Oracle: single dual-oracle per pair via exchangeRateInfo; deployed reference oracle SfrxEthUsdTripleOracle v3.0.0 (Chainlink ETH/USD + FRAX/USD, Redstone, Curve EMA, UniV3 TWAP 900s), NOT in any public repo — sourcify sources only. Repo has DualOracleChainlinkUniV3.sol only.",
+    "Deployer: CREATE2 via SSTORE2-split creation code, registers pairs in registry; HEAD == deployed (MATCH). Registry deployed is OLDER Ownable version with salt tracking, not HEAD Ownable2Step.",
+    "Trust boundaries: any user can deposit/borrow/repay/liquidate (permissionless pairs); owner=timelock 0xB174.. + circuit breaker can pause/set params; oracle/rate contracts are admin-set per pair with one-way setter revocation; swappers are owner-approved for leveraged/liquidation swaps.",
+    "Reference pair 0xaB3cb84c310186B2Fa4B4503624A5D90b5DcB22D (v3.1.0): 4.59M frxUSD supplied, 3.42M borrowed, 4,329 sfrxETH collateral, maxLTV 75%, unpaused, unlimited borrow/deposit limits. Fork PoCs must set evm_version=cancun (frxUSD PUSH0).",
+    "Jan 2023 ToB report unretrieved — dedup gap for pre-v3 code paths. 22-entry exclusion list covers Aug 2022 + Nov 2022 ToB + Oct 2023 oracle + Zellic router findings."
+  ]
+}

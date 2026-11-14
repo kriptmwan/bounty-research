@@ -1,0 +1,14 @@
+{
+  "run": "fraxlend-audit-2026-11-14",
+  "mode": "single-pass",
+  "targets": [{"repo": "FraxFinance/fraxlend", "commit": "2bed49d4dcc6702d92dede825c3424893517d841"}],
+  "filesScanned": 16,
+  "counts": {"confirmed": 0, "dismissed": 0, "manualReview": 0, "unreviewed": 0, "nonQualifying": 52},
+  "confirmed": [],
+  "dismissed": [],
+  "manualReview": [],
+  "unreviewed": [],
+  "nonQualifyingFiles": ["artifacts/nonqualifying-A.md", "artifacts/nonqualifying-B.md", "artifacts/nonqualifying-C.md", "artifacts/nonqualifying-D.md"],
+  "failedCoverage": ["Jan 2023 ToB report unretrieved (dedup gap for pre-v3 paths)", "v3.2.0 pair sources not diffed", "whitelist membership not enumerated", "SETTER_ROLE historical holders not enumerated (archive eth_getLogs 403)"],
+  "verificationFailures": []
+}

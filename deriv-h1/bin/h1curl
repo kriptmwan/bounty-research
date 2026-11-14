@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+# h1curl — curl wrapper for Deriv/HackerOne research.
+#
+# Deriv's program rules REQUIRE header `X-HackerOne-Research: <username>` on
+# EVERY request to a Deriv asset. This wrapper injects it unconditionally so
+# it cannot be forgotten, and strips any caller-supplied copy of the header
+# (so a stale or wrong value can never override the canonical one).
+#
+# Usage: h1curl [curl options] <url>   — identical to curl, plus the header.
+# Logging: each invocation appends "UTC timestamp + first http(s) URL" to
+# ~/workspace/deriv-h1/logs/h1curl-requests.log (set H1CURL_NOLOG=1 to skip).
+# The log records URLs only, never headers, bodies, or credentials.
+set -uo pipefail
+
+HEADER_NAME="X-HackerOne-Research"
+HEADER_VALUE="mosul"
+
+filtered=()
+while [ "$#" -gt 0 ]; do
+  a="$1"; shift
+  case "$a" in
+    -H|--header)
+      v="${1:-}"
+      shopt -s nocasematch
+      if [[ "$v" == x-hackerone-research:* ]]; then
+        shift # drop caller's copy of the research header
+      else
+        filtered+=("$a" "$v"); shift
+      fi
+      shopt -u nocasematch
+      ;;
+    -H*|--header=*)
+      shopt -s nocasematch
+      if [[ "$a" == -hx-hackerone-research:* || "$a" == --header=x-hackerone-research:* ]]; then
+        : # drop caller's copy of the research header
+      else
+        filtered+=("$a")
+      fi
+      shopt -u nocasematch
+      ;;
+    *) filtered+=("$a");;
+  esac
+done
+
+if [ -z "${H1CURL_NOLOG:-}" ]; then
+  logdir="$HOME/workspace/deriv-h1/logs"
+  if mkdir -p "$logdir" 2>/dev/null; then
+    url=""
+    for x in "${filtered[@]}"; do
+      case "$x" in http://*|https://*) url="$x"; break;; esac
+    done
+    printf '%s\t%s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$url" >> "$logdir/h1curl-requests.log" 2>/dev/null || true
+  fi
+fi
+
+exec curl -H "$HEADER_NAME: $HEADER_VALUE" "${filtered[@]}"

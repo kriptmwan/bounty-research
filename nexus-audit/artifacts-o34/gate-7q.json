@@ -1,0 +1,5 @@
+{
+  "gateResults": [],
+  "note": "No finding reached the 7-Question Gate: both Hunter domains returned zero candidates, so there was nothing to gate. The gate was NOT bypassed \u2014 it had no input. The only prior candidate on this surface, Option 1 H-B1, failed Q1 and Q4 in Option 1's gate-7q.json and was not re-claimed in this run.",
+  "run": "nexus-options34-2026-11-14"
+}

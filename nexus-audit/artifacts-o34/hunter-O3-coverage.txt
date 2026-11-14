@@ -1,0 +1,350 @@
+# Hunter O3 Coverage — Option 3: Factories + Bootstrap + Proxy
+# Biconomy Nexus (bcnmy/nexus), pinned main HEAD 9007ba1352e606575e32456512e25c41a9bf449c
+# Date: 2026-11-14. Mode: single-pass Hunter, read-only, static reasoning only.
+# No forge builds/tests run (per task execution rule). No live testing, no contact,
+# no filing, zero api.github.com calls. No repo file modified.
+#
+# VERDICT: 0 candidates. hunter-findings-O3.json is [].
+# Kills: 28 dedup kills (D1-D28) + 28 disproved-on-merits leads (M1-M28) = 56.
+# Do not manufacture findings: every suspicious pattern chased resolved to an
+# already-known issue, a fixed mechanism, fail-closed behavior, or deployer-only
+# input with no attacker principal.
+
+## Source integrity
+- `git rev-parse HEAD` = 9007ba1352e606575e32456512e25c41a9bf449c at dispatch AND
+  re-checked before concluding. `git status --porcelain` empty both times.
+- Required reading completed in order: adversarial_code_audit SKILL.md (full,
+  incl. §4 + §10), SCOPE.md (§5/§6/§7), REPORT-delta.md, REPORT-core.md,
+  EXCLUSION_LIST.md (all 176 entries: EX-001–EX-136 + EX-G01–G07 + EX-I01–I33),
+  NEW-ISSUES-2026-11-14.md (#325–#338), NEW-ISSUES-2026-11-14-PM.md (zero new
+  issues, sweep complete 2026-11-14 ~10:19 WIB), STX-DIFF.md (with the cast caveat:
+  assembly/selector-equivalence claims rest on manual review only).
+
+## Files read IN FULL (assigned scope, risk order) — 897 lines total
+1. contracts/utils/NexusBootstrap.sol — 447 lines. All init flows, registry
+   ordering, zero-skip patterns, sentinel-list modifier, EIP-712 override, stubs.
+2. contracts/lib/Initializable.sol — 39 lines. Transient-flag set/consume logic.
+3. contracts/utils/NexusProxy.sol — 22 lines. Constructor flag-set + upgradeToAndCall.
+4. contracts/factory/NexusAccountFactory.sol — 61 lines. createAccount/computeAccountAddress.
+5. contracts/factory/BiconomyMetaFactory.sol — 89 lines. Whitelist + deployWithFactory.
+6. contracts/factory/K1ValidatorFactory.sol — 135 lines. Salt + initData construction.
+7. contracts/lib/BootstrapLib.sol — 56 lines. Config helpers (all four functions).
+8. contracts/lib/ProxyLib.sol — 48 lines (evidence file per brief; read in full).
+   deployProxy + predictProxyAddress.
+
+## Evidence-only reads (other repo files; NOT report scope)
+- contracts/Nexus.sol: validateUserOp PREP branch (127-133), initializeAccount +
+  _initializeAccount (306-356), isInitialized (446-448), _handlePREP (521-549),
+  _checkInitializedValidators (551-569), constructor (79-83), checkERC7739Support.
+- contracts/base/ModuleManager.sol: constructor (85-91), withHook (73-82),
+  _initSentinelLists (145-150), _installModule (190-212), _installValidator /
+  _installExecutor / _installHook (215-290), _installFallbackHandler (318-352),
+  _installPreValidationHook + _setPreValidationHook (365-401), _multiTypeInstall
+  head (403-415), _getPreValidationHook (491-495), _areSentinelListsInitialized
+  (573-578), _amIERC7702 (624-634), _handleValidator (637-645), receive/fallback.
+- contracts/base/RegistryAdapter.sol — full (53 lines): _configureRegistry,
+  _checkRegistry, withRegistry.
+- contracts/common/Stakeable.sol — full (55 lines): onlyOwner stake functions.
+- contracts/modules/validators/K1Validator.sol: onInstall (75-87),
+  transferOwnership, isInitialized (127-129) — zero-owner check + data[:20] decode.
+- contracts/lib/local/LibPREP.sol — full (46 lines): rPREP/isValid/isPREP binding.
+- Pinned dependency: poc/node_modules/sentinellist/src/SentinelList.sol (the
+  remapped `sentinellist/` package per remappings.txt): init/push/pop/contains/
+  alreadyInitialized (lines 20-135). NOTE: REPORT-core records a 1.0.1 pin for
+  the separate `@rhinestone/sentinellist` specifier in yarn.lock; the remapping
+  used by the repo points at `node_modules/sentinellist/`, which is what was read.
+- Test (context only, intended behavior): test/foundry/unit/concrete/
+  StaleInitFlagPoC.t.sol — asserts second init in same tx reverts (fix) and
+  separate-tx re-init reverts. No bugs reported in tests.
+- Greps (repo-wide, contracts/ excl. mocks): requireInitializable/setInitializable
+  call sites, _initializeAccount call sites, tstore/tload, `new NexusProxy`,
+  create2/LibClone, BootstrapLib users, deployProxy/predictProxyAddress callers.
+
+## Files skipped (with reasons)
+- NONE of the 7 assigned files skipped. All read in full.
+- contracts/mocks/* and test/* (except the one PoC test above, context-only):
+  context-only per skill; never report bugs in them.
+- Remaining contracts/* (ExecutionHelper, NonceLib, parsers, interfaces, K1Validator
+  beyond onInstall, RegistryFactory — which does not exist at HEAD; factory dir
+  holds only the 3 assigned factories): not in Option 3 scope; read only as
+  evidence where listed above. Option 1/2 already covered Nexus/ModuleManager
+  core; this pass did not re-audit them, only traced init-path guards through them.
+
+## Transient-flag completeness re-check (GHSA-q47q-h6x2-f5qg) — ALL init paths
+Paths reaching _initializeAccount (Nexus.sol:336-356). Exactly 2 call sites
+(grep-verified): Nexus.sol:132 (PREP) and Nexus.sol:333 (initializeAccount).
+setInitializable has exactly 1 call site: NexusProxy.sol:13 (constructor).
+requireInitializable has exactly 1 call site: Nexus.sol:330 (classic branch).
+
+| # | Path | Guard | Verdict |
+|---|------|-------|---------|
+| 1 | Classic proxy: NexusProxy ctor -> initializeAccount, msg.sender != self, !_amIERC7702 | requireInitializable() consumes flag (Initializable.sol:27-38); 2nd call same tx reverts NotInitializable | GATED. Fix verified present; selector 0xaed59595 + INIT_SLOT derivation verified byte-exact via read-only ethers keccak computation (no chain interaction). StaleInitFlagPoC test asserts this behavior. |
+| 2 | EIP-7702 relay: initializeAccount, msg.sender != self, _amIERC7702() | Owner ECDSA sig over keccak256(initData) + !isInitialized() + erc7702InitHashes replay map (Nexus.sol:310-329). No transient flag BY DESIGN (no proxy ctor sets one for EOAs). | GATED by equivalent guards. Residual raw-hash/chain-binding weakness = EX-076 (D8), already claimed. No new bypass. |
+| 3 | Self-call: initializeAccount, msg.sender == address(this) | NO guards (Nexus.sol:308 wraps all guards in `if (msg.sender != address(this))`) | EX-136 (D7): DISPROVED, zero incremental privilege. NOT re-reported. |
+| 4 | PREP: validateUserOp PREP branch -> _initializeAccount directly | onlyEntryPoint + require(!isInitialized()) (Nexus.sol:129) + _handlePREP proof: length >= 0xf9 + LibPREP.rPREP != 0 binding target address + keccak256(initData) + delegation (LibPREP.sol:22-36). No flag, no _amIERC7702 check in _handlePREP — gating is the proof + !initialized. Proxy accounts are initialized at construction (post-check Nexus.sol:353-355), so the branch is unreachable for proxies; mining a proof for an arbitrary target is a 2^160 search per Option 1 Domain A verification (REPORT-delta.md; relied on, see unresolved refs). | GATED by equivalent guards. No bypass found. |
+
+Additional flag-integrity checks (all pass):
+- tstore/tload exist ONLY in Initializable.sol repo-wide (grep): no transient-slot
+  collision with any other transient usage. (withHook at HEAD uses no transient
+  storage; Pashov L-10's transient-flag mechanism is absent — D28.)
+- Transient storage is per-address per-tx: no cross-proxy cross-talk; each proxy
+  deployment sets its own flag; no pre-setting vector (calls to an address under
+  construction execute no code — M4/M5).
+- Direct initializeAccount on the implementation address: flag never set for the
+  implementation's transient storage -> reverts (M2).
+- _amIERC7702 precise: extcodesize==23 + 3-byte 0xef0100 prefix
+  (ModuleManager.sol:624-634; EX-051 fixed — D27).
+
+## DEDUP KILLS (28) — exclusion ID + one-line reason
+D1. EX-070 (#320) — BiconomyMetaFactory.deployWithFactory checks only `success`,
+    then mloads createdAccount from raw returndata with no length/zero/code
+    validation (BiconomyMetaFactory.sol:76-85). EXACT match, incl. empty-returndata
+    and EOA-factory variants. SCOPE-UNCERTAIN (meta factory removed in dev + stx 1.3.3).
+D2. EX-122 (#325) — _initNexus validators loop has no address(0) skip
+    (NexusBootstrap.sol:303-306); zero entry reverts whole init in proxy ctor.
+    EXACT match.
+D3. EX-122 family — _initNexusScoped validators loop likewise lacks the skip
+    (NexusBootstrap.sol:400-403). Same missing guard, same function family.
+D4. EX-122 family [CLOSEST CALL #1 — see note below] — _initNexusWithSingleValidator
+    scalar `validator` has no zero check (NexusBootstrap.sol:226-234); zero ->
+    same _installValidator revert, same CREATE2 consequence. Same root cause
+    ("bootstrap does not validate zero validator before _installValidator");
+    only the call-site shape (scalar vs loop) differs. Killed as duplicate per
+    the exclusion list's root-cause rule (§H.7: same check missing = duplicate).
+D5. EX-126 (#329) — _initNexus/_initNexusScoped accept empty validators[] with no
+    post-loop assertion -> isInitialized()==true, zero validators. EXACT match.
+D6. EX-116 (GHSA-q47q-h6x2-f5qg) — stale transient flag / same-tx double init.
+    Fix verified present (consume-on-check); completeness re-check above found
+    no bypass. Mechanism itself excluded.
+D7. EX-136 (H-B1, disproved) — initializeAccount self-call branch skips init
+    guards. NOT_A_BUG (zero incremental privilege); Option 2 re-enumeration
+    found no new principal. Never re-report.
+D8. EX-076 (#308) — 7702 relay signature over raw initDataHash, no chain/domain
+    binding (Nexus.sol:310-329). EXACT match.
+D9. EX-002/EX-034 — bootstrap installs before registry configure. FIXED at HEAD:
+    _configureRegistry is the first statement in all four internal init flows
+    (NexusBootstrap.sol:139, 228, 299, 397).
+D10. EX-001/EX-021 — msg.value not forwarded. No remaining instance in assigned
+    files: deployWithFactory forwards msg.value (BiconomyMetaFactory.sol:77);
+    ProxyLib forwards to proxy ctor / existing account (ProxyLib.sol:27, 32).
+D11. EX-041 — factory salt/address non-determinism. No remaining instance:
+    NexusAccountFactory salt is caller bytes32; K1 salt is keccak256 of packed
+    fixed-size fields; address binds full initData via initCodeHash
+    (ProxyLib.sol:43-46).
+D12. EX-010 — AccountCreated indexed-bytes initData loss. Known interface-event
+    issue; factory emits it (NexusAccountFactory.sol:48). Interface out of scope.
+D13. EX-047 — NexusProxy cannot receive ether. FIXED: receive() present
+    (NexusProxy.sol:21).
+D14. EX-I33/EX-091 — ModuleInstalled not emitted for default-validator init.
+    initNexusWithDefaultValidator emits nothing (NexusBootstrap.sol:63-68). EXACT.
+D15. EX-049/EX-I20 — default-validator init not mandated / no validator-installed
+    check in initializeAccount. Known family; 7702 post-check exemption is the
+    documented carve-out (Nexus.sol:353-355).
+D16. EX-067 (Pashov L-12) — withHook bypass via bootstrap. Bootstrap entries
+    carry no withHook; _install* withHook is a no-op until a hook is installed.
+    Known.
+D17. EX-071/EX-086/EX-127/EX-130 family [CLOSEST CALL #2] — silent skip of
+    unknown type ids. Variant: _setPreValidationHook has no else branch
+    (ModuleManager.sol:394-400) and _getPreValidationHook ternaries ANY non-8
+    type to the ERC4337 slot (ModuleManager.sol:491-495), so a bootstrap
+    preValidationHooks[] entry with an arbitrary hookType can run onInstall +
+    emit ModuleInstalled while recording nothing. Same silent-skip mechanism
+    class as _multiTypeInstall; AND hookType is deployer/owner-signed input only
+    (no third-party trigger). Double-killed: dedup family + no attacker principal.
+D18. EX-125 (#328) — raw 0x32 panics at parsing boundaries, incl.
+    _installFallbackHandler params[0:4]/params[4] slicing (ModuleManager.sol:325-327)
+    reached via bootstrap fallbacks loops. Known family.
+D19. EX-005 — factories/ZKsync LibClone CREATE2. Mechanism ABSENT at HEAD: no
+    LibClone/CREATE2-clone code in assigned files (factories use `new NexusProxy{salt}`).
+D20. EX-I26 — missing factoryOwner zero check in K1ValidatorFactory. FIXED:
+    constructor checks factoryOwner != 0 (K1ValidatorFactory.sol:55-58).
+D21. EX-I01 — K1Validator onInstall zero-owner. FIXED: OwnerCannotBeZeroAddress
+    (K1Validator.sol:79-82). Also kills the K1-factory zero-eoaOwner variant (M8).
+D22. EX-009/EX-030 + EX-I18 — unsorted/duplicate attesters, unattainable
+    threshold. K1 factory passes caller attesters/threshold to _configureRegistry;
+    misconfiguration fails closed at install-time registry check (deployment
+    reverts). Known family + deployer config. SCOPE-UNCERTAIN (registry removed).
+D23. EX-066/EX-090 (Pashov L-11) — bootstrap cannot install pre-validation
+    hooks. FIXED: preValidationHooks params on all init flows.
+D24. EX-050 — no {default validator + other modules} init path. FIXED:
+    initNexusWithDefaultValidatorAndOtherModules* exist.
+D25. EX-I08 — unrecoverable accounts (no validators). Acknowledged design tension;
+    overlaps EX-126 (D5). Known.
+D26. EX-057 (Pashov L-02) — _handlePREP length check 0x61. FIXED at HEAD: 0xf9
+    check (Nexus.sol:524-529).
+D27. EX-051 (Zenith L-3) — _amIERC7702 2-byte comparison. FIXED: 3-byte compare
+    + size 23 (ModuleManager.sol:624-634).
+D28. EX-065 (Pashov L-10) — withHook transient flag spanning tx. Mechanism ABSENT:
+    withHook at HEAD uses no transient storage (ModuleManager.sol:73-82); the only
+    tstore/tload in contracts/ is Initializable.sol.
+
+## SELF-DISPROVED LEADS (28) — counter-evidence file:line
+M1. PREP path bypasses transient flag -> re-init: DISPROVED. PREP branch requires
+    !isInitialized() (Nexus.sol:129) + onlyEntryPoint + valid PREP proof binding
+    target+digest+delegation (LibPREP.sol:22-36); proxies initialized at
+    construction (Nexus.sol:353-355). Equivalent guards; no bypass.
+M2. Direct initializeAccount on implementation bypasses flag: DISPROVED.
+    Transient storage is per-address; setInitializable runs only in the proxy
+    constructor (NexusProxy.sol:13, sole call site) -> implementation calls revert.
+M3. Transient-slot collision: DISPROVED. tstore/tload only in Initializable.sol
+    (lines 18, 31, 36); INIT_SLOT derivation + NotInitializable selector
+    0xaed59595 verified byte-exact via read-only ethers computation.
+M4. Flag pre-setting / cross-proxy cross-talk: DISPROVED. Per-address per-tx
+    transient storage; setInitializable only in constructor; no pre-setting vector.
+M5. Reentrant initializeAccount during construction via malicious onInstall:
+    DISPROVED. Calls to an address under construction execute no code (EVM
+    semantics); flag untouched; constructor init still consumes it. Module is
+    deployer/owner-chosen anyway (EX-I10 trust model).
+M6. Factory front-running / address squatting: DISPROVED (no harm). Address binds
+    (factory, salt, initCodeHash(initData)) (ProxyLib.sol:43-46); front-runner
+    cannot alter initData without changing the address; same-(salt,initData)
+    re-deployment returns the identically-initialized account + forwards value
+    (ProxyLib.sol:20-35). Verified for both factories.
+M7. K1 salt collision via abi.encodePacked dynamic attesters: DISPROVED.
+    Layout = fixed 20+32 prefix + 20n + 1 byte, injective per length; initCodeHash
+    independently binds the full RegistryConfig. No collision.
+M8. K1 zero-eoaOwner bricks account: DISPROVED. K1Validator.onInstall reverts
+    OwnerCannotBeZeroAddress (K1Validator.sol:79-82) -> deployment reverts,
+    address stays undeployed. Fail-closed. (Also D21.)
+M9. K1 constructor missing REGISTRY zero check: DISPROVED (not an error). Zero
+    registry is the supported opt-out: _configureRegistry skips trustAttesters
+    when registry==0 (RegistryAdapter.sol:32-37), matching *NoRegistry variants.
+M10. Duplicate validator entries corrupt sentinel list: DISPROVED.
+    SentinelListLib.push reverts LinkedList_EntryAlreadyInList (pinned
+    SentinelList.sol:67-74) -> whole init reverts. Fail-closed, deployer error only.
+M11. Default validator smuggled via validators[]: DISPROVED. _installValidator
+    reverts DefaultValidatorAlreadyInstalled (ModuleManager.sol:226-228).
+    Enforced by revert, not doc-only.
+M12. Default-only init leaves lists uninitialized, bricking later installs:
+    DISPROVED. _installModule auto-inits lists when uninitialized
+    (ModuleManager.sol:192-194). Later installs work.
+M13. Bootstrap/implementation _DEFAULT_VALIDATOR mismatch: DISPROVED as a finding.
+    Both constructors require isModuleType(VALIDATOR) (ModuleManager.sol:85-91),
+    so zero/invalid defaults revert at deployment; mismatch is deployer config,
+    and the initData author chooses the bootstrap arbitrarily anyway (no attacker
+    principal); non-7702 post-check fails closed for the default-only path
+    (Nexus.sol:353-355).
+M14. Direct permissionless calls to bootstrap init functions: DISPROVED (no gain).
+    Installs run in the bootstrap's own storage; modules key state by the
+    bootstrap address; the bootstrap is not an account (no validateUserOp /
+    execution entry) and holds no funds role; no cross-account effect. External
+    visibility is required for delegatecall (Rhinestone-style design).
+M15. Zero/EOA bootstrap in _initializeAccount silently "initializes": DISPROVED.
+    Delegatecall to no-code address is a no-op; non-7702 post-check reverts
+    (Nexus.sol:353-355) -> deployment reverts. The 7702 variant requires the
+    owner's signature over the initData (self-inflicted, recoverable: only that
+    hash is burned). No attacker principal.
+M16. Malformed initData / bootstrapCall parsing malleability: DISPROVED. Input is
+    deployer-supplied (proxy, address-bound), owner-signed (relay), or
+    proof-bound (PREP); garbage parses to no-op or revert; non-7702 post-check
+    fails closed. No third-party malleability.
+M17. Empty-data NexusProxy deployment permanently uninitialized [CLOSEST CALL #3]:
+    DISPROVED as a finding. Deployer-chosen; the sole deployment site always
+    passes initializeAccount data (ProxyLib.sol:27); no third-party victim exists
+    (funds sent afterwards are user error, as with any address). Footgun below
+    finding threshold; no attacker principal. Recorded, not claimed.
+M18. MetaFactory factoryData calling arbitrary factory functions (e.g. Stakeable
+    withdrawStake): DISPROVED. Stakeable functions are onlyOwner
+    (Stakeable.sol:40-54); msg.sender would be the MetaFactory, not the factory
+    owner -> reverts under normal config; whitelisting is owner-trusted. The
+    returndata aspect is D1/EX-070. SCOPE-UNCERTAIN.
+M19. BootstrapLib missing validation: DISPROVED (no finding). Pure config helpers
+    with zero production callers at HEAD (tests only; K1ValidatorFactory imports
+    it unused — style, out of scope per skill); validation lives at install time
+    (D2/D5). createMultipleConfigs length check present (BootstrapLib.sol:49).
+M20. Unbounded bootstrap loops = gas DoS: DISPROVED. Arrays are deployer-supplied,
+    deployer pays gas, over-limit init reverts deployment. No attacker, no victim.
+M21. initNexusWithDefaultValidator configures no registry: DISPROVED (by design).
+    Natspec states no registry is needed for the default validator
+    (NexusBootstrap.sol:57-60); setRegistry available later via self-call.
+M22. withHook firing mid-init after hook installed (later loops): DISPROVED as new
+    mechanism. Hook is deployer-chosen; a reverting hook fails closed (deployment
+    reverts); hook-check semantics during init are EX-067's known family (D16).
+M23. predictProxyAddress vs actual deployment mismatch: DISPROVED. Identical
+    encoding expressions (ProxyLib.sol:27 vs :43-46), same address(this)=factory
+    in deploy and view paths; factory deployment smoke-tested green in poc/
+    (REPORT-delta.md build verification).
+M24. K1 createAccount/computeAccountAddress drift: DISPROVED. Salt + initData
+    expressions verified textually identical (K1ValidatorFactory.sol:74-88 vs
+    :117-131). No drift at HEAD.
+M25. EOA (no-code) module entries silently install: DISPROVED. High-level
+    isModuleType call to a no-code address reverts (empty-returndata decode /
+    MismatchModuleTypeId) -> init reverts. Fail-closed; same family as D2.
+M26. Relay-init ECDSA malleability / signature replay: DISPROVED as new mechanism.
+    OZ ECDSA.recover enforces low-s; replay map keyed by initDataHash blocks reuse
+    regardless of signature (Nexus.sol:322-329). Residual chain-binding gap is
+    EX-076 (D8). (Low-s enforcement cited from OZ 5.x semantics; replay-map
+    argument stands independently — see unresolved refs.)
+M27. NexusProxy ctor with implementation=0/EOA: DISPROVED. OZ ERC1967Utils
+    upgradeToAndCall requires a code-bearing implementation; factories pin
+    non-zero implementations (NexusAccountFactory.sol:35-38;
+    K1ValidatorFactory.sol:55-58). Fail-closed. (OZ behavior cited from OZ 5.x
+    semantics — see unresolved refs.)
+M28. Bootstrap re-init wiping sentinel lists: DISPROVED as new mechanism.
+    SentinelListLib.init reverts LinkedList_AlreadyInitialized (pinned
+    SentinelList.sol:30-33) -> re-init through modifier flows reverts; the
+    residual self-call re-init shape is EX-136 (D7).
+
+## Closest calls (for Referee/gate awareness — all killed, reasoning above)
+1. D4 — single-validator zero check (EX-122 family, scalar variant). Killed on
+   root-cause identity. If the gate judges sibling-function instances distinct,
+   this is the one to revisit; impact is identical to #325 (init revert).
+2. D17 — bootstrap preValidationHooks arbitrary hookType silent no-op
+   (_setPreValidationHook no-else + _getPreValidationHook ternary). Killed on
+   EX-071 mechanism family + deployer-only input. If the gate judges the
+   function distinct from _multiTypeInstall AND deployer-footgun reports
+   in-scope, revisit as Low; no attacker principal exists in-repo.
+3. M17 — empty-data NexusProxy permanently uninitialized. Killed on no attacker
+   principal + factories prevent it. Footgun only.
+
+## Lineage tags (STX-DIFF.md; zero candidates, so per-finding lineage is N/A)
+- NexusBootstrap.sol: SUBSTANCE-CHANGED in 1.3.3 (registry config removed from
+  all init flows; install loops identical — STX-DIFF §3). A bootstrap install-loop
+  finding would survive to 1.3.3; a registry-ordering finding would not.
+- Initializable.sol: COSMETIC (comment reword; consume-flag logic identical,
+  parallel fix — STX-DIFF §9). Flag mechanisms are live in both lineages.
+- NexusAccountFactory.sol: logic identical in 1.3.3 (interface inlined only —
+  STX-DIFF appendix). ProxyLib.sol: COSMETIC.
+- BiconomyMetaFactory.sol / K1ValidatorFactory.sol: NO COUNTERPART in stx-contracts
+  1.3.3 (absent); also REMOVED on nexus `dev` (PR #295). See scope-uncertainty tags.
+- NexusProxy.sol: cosmetic diff only (STX-DIFF appendix).
+
+## Scope-uncertainty tags (carry per brief; no candidates to tag individually)
+- ALL factory/registry-adjacent kills (D1, D9, D18-adjacent registry parts, D20,
+  D22, M9, M18) are SCOPE-UNCERTAIN: the `dev` branch REMOVES the meta factory,
+  K1 factory, and registry support, and stx-contracts 1.3.3 removed the registry
+  entirely. Any future finding in this surface must be tagged "possibly already
+  addressed in Biconomy's working line" for the Referee/gate. No candidate was
+  reported, so no finding carries this caveat into review.
+- The bounty text's "must not be fixed in develop" maps to stx-contracts `develop`
+  (which exists; nexus has no `develop` branch) per REPORT-core.md Phase 0 item 4.
+
+## Unresolved cross-references
+- LibPREP mining-structure soundness (2^160 argument for proof/target binding):
+  relied on Option 1 Domain A verification (REPORT-delta.md) + own full read of
+  LibPREP.sol confirming the target+digest+delegation binding structure. The
+  mining argument itself was not independently re-proved. No candidate depends
+  on it beyond the PREP-path completeness statement (M1).
+- OZ ERC1967Utils upgradeToAndCall code-check (M27) and OZ ECDSA.recover low-s
+  enforcement (M26): cited from OZ 5.x documented semantics; pinned OZ source was
+  not re-read in this pass. Both kills stand on independent in-repo evidence
+  (factory non-zero pins; initDataHash replay map).
+- SentinelListLib version: read from the remapped `sentinellist/` package in
+  poc/node_modules (see evidence reads). Behavior used (init/push revert
+  semantics) matches the natspec + Option 2 coordinator's pinned-source re-read.
+- EX-080 (#303, unknown private report): residual risk — no public dedup can rule
+  out collision with its unknown contents. Applies to any future filing, none here.
+- cast NOT installed on this VM (STX-DIFF caveat): no selector/assembly-equivalence
+  tooling used beyond the read-only ethers keccak computation for the
+  NotInitializable selector and INIT_SLOT derivation (both verified byte-exact).
+
+## NEEDS-POC
+- None. Zero candidates; no verdict depends on execution. No Foundry test sketches
+  required. No code trace is presented as an executed repro.
+
+## Execution notes
+- No forge builds or tests run (task execution rule; VM resource-tight; POCs are
+  built later, serialized, only for survivors — none survived).
+- One read-only computation: node + ethers v6 keccak for selector/slot
+  verification (no chain interaction, no repo modification).
+- No GitHub API calls. No contact with Biconomy. No filing. Repo untouched.

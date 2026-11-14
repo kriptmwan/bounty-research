@@ -1,0 +1,1055 @@
+{
+  "head": "e221935f54df03f9f73f2645ff688370a87033d8",
+  "headChecked": "2026-11-13 (WIB); git rev-parse HEAD matched the pin before and after all work; git status --porcelain empty; all 10 src/ sha256 match the run-ledger baseline.",
+  "build": {
+    "forgeVersion": "1.5.1-v1.5.1 (commit b0a9dd9ceda36f63e2326ce530c10e6916f4b8a2)",
+    "solcVersion": "0.8.28+commit.7893614a",
+    "defaultProfile": {
+      "command": "forge build --force",
+      "settings": {
+        "evmVersion": "cancun",
+        "viaIR": true,
+        "optimizerEnabled": true,
+        "optimizerRuns": 1000000,
+        "bytecodeHash": "none",
+        "cborMetadata": false
+      },
+      "filesCompiled": 110,
+      "compileSeconds": 51.3,
+      "exitCode": 0
+    },
+    "runs200Build": {
+      "command": "forge build --force --optimizer-runs 200",
+      "settings": {
+        "evmVersion": "cancun",
+        "viaIR": true,
+        "optimizerEnabled": true,
+        "optimizerRuns": 200,
+        "bytecodeHash": "none",
+        "cborMetadata": false
+      },
+      "filesCompiled": 110,
+      "compileSeconds": 53.47,
+      "exitCode": 0
+    },
+    "londonBuild": {
+      "command": "FOUNDRY_PROFILE=london forge build --force --skip Test.sol --skip RelayRouter.sol --skip ReentrancyGuardMsgSender.sol --skip RouterAndApprovalProxyDeployer.s.sol",
+      "settings": {
+        "evmVersion": "london",
+        "viaIR": true,
+        "optimizerEnabled": true,
+        "optimizerRuns": 1000000,
+        "bytecodeHash": "none",
+        "cborMetadata": false
+      },
+      "filesCompiled": 78,
+      "compileSeconds": 10.06,
+      "exitCode": 0
+    },
+    "warningsSummary": "1 solc warning (3628: RelayReceiver payable fallback without receive) in all builds; forge-lint warnings/notes only (unsafe-typecast x3, unwrapped-modifier-logic x2, unaliased-plain-import, erc20-unchecked-transfer in a test, unused-import in a test). No errors. Full logs: work/build-default.log, work/build-runs200.log, work/build-london.log.",
+    "submodules": "Initialized shallowly at pinned commits (git submodule update --init --recursive --depth 1 --jobs 6); all 33 top-level+nested submodules verified at recorded commits. First default-profile attempt failed on uninitialized nested submodules (solmate missing); fixed by the recursive init, no source changes.",
+    "artifactsDir": "evidence/compiled-bytecode/",
+    "outDirRemovedAfterCapture": true
+  },
+  "chains": [
+    {
+      "chainId": 1,
+      "chainName": "ethereum",
+      "rpc": "https://ethereum.publicnode.com",
+      "rpcsTriedFailed": [
+        "https://eth.llamarpc.com (Cloudflare error 525)",
+        "https://rpc.ankr.com/eth (requires API key, -32000 Unauthorized)"
+      ],
+      "blockNumber": 26405208,
+      "blockNumberLast": 26405209,
+      "blockNumberHex": "0x192e958",
+      "blockNumberLastHex": "0x192e959",
+      "contracts": [
+        {
+          "address": "0x0729e2a4716d9f7dd17858d5d504426d228697f7",
+          "name": "RelayRouter (3.2)",
+          "codePresent": true,
+          "codeLength": 7185,
+          "codeKeccak": "0x2c4c1b3111251359e5b023c8dee4e02cbbbb7136f1497f8b1088fe04f07df516",
+          "compiledKeccak": "0x2c4c1b3111251359e5b023c8dee4e02cbbbb7136f1497f8b1088fe04f07df516",
+          "compiledArtifact": "RelayRouter.hex",
+          "verdict": "MATCH",
+          "notes": "Byte-for-byte identical to the pinned-HEAD default-profile build (no immutables; empty constructor).",
+          "sourcify": {
+            "status": "match",
+            "creationMatch": "match",
+            "runtimeMatch": "match",
+            "verifiedAt": "2026-10-16T07:24:44Z",
+            "matchId": "56209985",
+            "settings": "solc 0.8.28, runs 1000000, viaIR, cancun, bytecodeHash none"
+          }
+        },
+        {
+          "address": "0x5567954cd026cebfe486062cb75848e0f1c12e58",
+          "name": "RelayApprovalProxy (3.1)",
+          "codePresent": true,
+          "codeLength": 13884,
+          "codeKeccak": "0x8f239c4d96517d00e3209694e3b527a12660a9cded6d41b226bb80388a83798f",
+          "compiledKeccak": "0x5933e1d04987c009c4c16ce55a4aaedab99c849061d165c8512c32df2c15e93e",
+          "compiledArtifact": "RelayApprovalProxy.hex",
+          "verdict": "MISMATCH",
+          "notes": "Length differs: compiled 13923 bytes vs deployed 13884 bytes (+39). Deployed code is the HEAD~1 build: Sourcify's stored RelayApprovalProxy.sol is byte-identical (sha256 9602a37e10530e28) to HEAD~1 f83bb913, and differs from HEAD. HEAD commit e221935f (DEC-2400 residue sweep) is NOT deployed at this address. Immutables were not patched: the length difference settles the comparison first. Common prefix with HEAD build: 30 bytes (via-IR output is globally sensitive to small source edits; prefix length is not a similarity measure here).",
+          "sourcify": {
+            "status": "match",
+            "creationMatch": "match",
+            "runtimeMatch": "match",
+            "verifiedAt": "2026-10-16T07:24:52Z",
+            "matchId": "56209995",
+            "settings": "solc 0.8.28, runs 1000000, viaIR, cancun, bytecodeHash none",
+            "note": "Sourcify match is against HEAD~1 source, NOT the pinned HEAD \u2014 a Sourcify match alone does not prove pinned-HEAD equivalence."
+          }
+        },
+        {
+          "address": "0xb92fe925dc43a0ecde6c8b1a2709c170ec4fff4f",
+          "name": "RelayRouter older generation",
+          "codePresent": true,
+          "codeLength": 4720,
+          "codeKeccak": "0xde894e5c12e9513d50613c8fff375ecbf19b5d9a53bec0662e2b9667e3ec8f15",
+          "compiledKeccak": "0x0ebbe83ab743b6228eea7d7725098269a87cb3fad95697bbfa76169791ee206b",
+          "compiledArtifact": "RelayRouter-runs200.hex",
+          "verdict": "MISMATCH",
+          "notes": "Compared against the pinned source compiled at 200 runs (the documented older-gen settings): 5525 bytes compiled vs 4720 deployed. Deployed code is an older source generation (contract RelayRouterV3, src/v3/RelayRouterV3.sol, 360 lines, no VERSION constant) per Sourcify sources; verified 2026-04-28, long before the 3.2 rename (commit bb7aa14). Code is present on chain 1 even though addresses.json no longer lists this address for ethereum (superseded deployment; the file records the current deployment per chain).",
+          "sourcify": {
+            "status": "match",
+            "creationMatch": "match",
+            "runtimeMatch": "match",
+            "verifiedAt": "2026-04-28T22:49:27Z",
+            "matchId": "28394278",
+            "settings": "solc 0.8.28, runs 200, viaIR, cancun, bytecodeHash none"
+          }
+        },
+        {
+          "address": "0xccc88a9d1b4ed6b0eaba998850414b24f1c315be",
+          "name": "RelayApprovalProxy older generation",
+          "codePresent": true,
+          "codeLength": 7746,
+          "codeKeccak": "0xa3b36a6aa3c2fb588b92336d88b0735b40dea0282c110d2034edf688ca661b5b",
+          "compiledKeccak": "0x84d765875f3e68ed9f77abc60baa190e3eb94d4f712b28247edd647d3498b310",
+          "compiledArtifact": "RelayApprovalProxy-runs200.hex",
+          "verdict": "MISMATCH",
+          "notes": "Compared against the pinned source compiled at 200 runs: 10962 bytes compiled vs 7746 deployed. Deployed code is an older source generation (contract RelayApprovalProxyV3, src/v3/RelayApprovalProxyV3.sol, 431 lines, Ownable only, no EIP-712) per Sourcify sources. Code present on chain 1 as a superseded deployment (see router note). Immutables not patched: length difference settles the comparison.",
+          "sourcify": {
+            "status": "match",
+            "creationMatch": "match",
+            "runtimeMatch": "match",
+            "verifiedAt": "2026-08-26T07:02:09Z",
+            "matchId": "46824297",
+            "settings": "solc 0.8.28, runs 200, viaIR, cancun, bytecodeHash none"
+          }
+        },
+        {
+          "address": "0x6328ea02d28131e58b28e55c6258258a30d90e05",
+          "name": "RelayRouter_NonTstore (3.2)",
+          "codePresent": false,
+          "codeLength": 0,
+          "codeKeccak": "0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470",
+          "compiledKeccak": "0x835c05bef5af9aaacde03ec0c8fddf3a780816780c336b0a4b48c38c58fa896a",
+          "compiledArtifact": "RelayRouter_NonTstore-london.hex",
+          "verdict": "NO_CODE",
+          "notes": "eth_getCode returned 0x on chain 1: the NonTstore router is not deployed on Ethereum mainnet (expected; addresses.json lists it only on london-EVM chains). compiledKeccak shown is the london-profile build, which MATCHES on Cronos (chain 25).",
+          "sourcify": {
+            "status": "no match (HTTP 404)",
+            "creationMatch": null,
+            "runtimeMatch": null,
+            "note": "Consistent with NO_CODE; a Sourcify miss alone was not treated as a mismatch."
+          }
+        }
+      ]
+    },
+    {
+      "chainId": 25,
+      "chainName": "cronos",
+      "rpc": "https://evm.cronos.org",
+      "rpcsTriedFailed": [],
+      "blockNumber": 105585979,
+      "blockNumberLast": 105585984,
+      "blockNumberHex": "0x64b1d3b",
+      "blockNumberLastHex": "0x64b1d40",
+      "contracts": [
+        {
+          "address": "0x6328ea02d28131e58b28e55c6258258a30d90e05",
+          "name": "RelayRouter_NonTstore (3.2)",
+          "codePresent": true,
+          "codeLength": 7399,
+          "codeKeccak": "0x835c05bef5af9aaacde03ec0c8fddf3a780816780c336b0a4b48c38c58fa896a",
+          "compiledKeccak": "0x835c05bef5af9aaacde03ec0c8fddf3a780816780c336b0a4b48c38c58fa896a",
+          "compiledArtifact": "RelayRouter_NonTstore-london.hex",
+          "verdict": "MATCH",
+          "notes": "Byte-for-byte identical to the pinned-HEAD london-profile build (no immutables). The default-profile (cancun) build does NOT match (7281 bytes) \u2014 evmVersion is part of the bytecode, so the london build is the correct comparator. Sourcify stored sources for this address are byte-identical to the pinned HEAD sources (router, Multicall3, NonTstore guard).",
+          "sourcify": {
+            "status": "match",
+            "creationMatch": null,
+            "runtimeMatch": "match",
+            "verifiedAt": "2026-10-16T07:25:22Z",
+            "matchId": "56210004",
+            "settings": "solc 0.8.28, runs 1000000, viaIR, london, bytecodeHash none"
+          }
+        },
+        {
+          "address": "0xe4dfbd5e6784db1058124e2c87554c0591f0fb7b",
+          "name": "RelayApprovalProxy (3.1, london build)",
+          "codePresent": true,
+          "codeLength": 14041,
+          "codeKeccak": "0x32ebe67e7bfe186b90b13f6e598f9fa0b41f36afe16aedbd4f74e1081f6c95df",
+          "compiledKeccak": "0xcc22471a33ee3d1dce93827a5924f5f2f3f8b8cd4cc619e1ba2f71dc1fc5efcd",
+          "compiledArtifact": "RelayApprovalProxy-london.hex",
+          "verdict": "MISMATCH",
+          "notes": "Length differs: compiled 14079 bytes vs deployed 14041 bytes (+38). Same cause as the chain-1 proxy: Sourcify's stored RelayApprovalProxy.sol for this address is byte-identical (sha256 9602a37e10530e28) to HEAD~1 f83bb913, not HEAD. The HEAD DEC-2400 fix is NOT deployed here either. Immutables not patched: length difference settles the comparison.",
+          "sourcify": {
+            "status": "match",
+            "creationMatch": null,
+            "runtimeMatch": "match",
+            "verifiedAt": "2026-10-16T07:25:26Z",
+            "matchId": "56210008",
+            "settings": "solc 0.8.28, runs 1000000, viaIR, london, bytecodeHash none",
+            "note": "Sourcify match is against HEAD~1 source, NOT the pinned HEAD."
+          }
+        }
+      ]
+    }
+  ],
+  "versionMapping": [
+    {
+      "address": "0x0729e2a4716d9f7dd17858d5d504426d228697f7",
+      "contract": "RelayRouter",
+      "generation": "3.2",
+      "evmVersion": "cancun",
+      "optimizerRuns": 1000000,
+      "chainCount": 48,
+      "chains": [
+        {
+          "name": "ethereum",
+          "chainId": 1
+        },
+        {
+          "name": "optimism",
+          "chainId": 10
+        },
+        {
+          "name": "bnb",
+          "chainId": 56
+        },
+        {
+          "name": "gnosis",
+          "chainId": 100
+        },
+        {
+          "name": "unichain",
+          "chainId": 130
+        },
+        {
+          "name": "polygon",
+          "chainId": 137
+        },
+        {
+          "name": "monad",
+          "chainId": 143
+        },
+        {
+          "name": "sonic",
+          "chainId": 146
+        },
+        {
+          "name": "manta",
+          "chainId": 169
+        },
+        {
+          "name": "xlayer",
+          "chainId": 196
+        },
+        {
+          "name": "boba",
+          "chainId": 288
+        },
+        {
+          "name": "zksync",
+          "chainId": 324
+        },
+        {
+          "name": "shape",
+          "chainId": 360
+        },
+        {
+          "name": "worldchain",
+          "chainId": 480
+        },
+        {
+          "name": "flow",
+          "chainId": 747
+        },
+        {
+          "name": "stable",
+          "chainId": 988
+        },
+        {
+          "name": "hyperevm",
+          "chainId": 999
+        },
+        {
+          "name": "lisk",
+          "chainId": 1135
+        },
+        {
+          "name": "soneium",
+          "chainId": 1868
+        },
+        {
+          "name": "ronin",
+          "chainId": 2020
+        },
+        {
+          "name": "abstract",
+          "chainId": 2741
+        },
+        {
+          "name": "morph",
+          "chainId": 2818
+        },
+        {
+          "name": "tempo",
+          "chainId": 4217
+        },
+        {
+          "name": "megaeth",
+          "chainId": 4326
+        },
+        {
+          "name": "robinhood",
+          "chainId": 4663
+        },
+        {
+          "name": "somnia",
+          "chainId": 5031
+        },
+        {
+          "name": "arc",
+          "chainId": 5042
+        },
+        {
+          "name": "superseed",
+          "chainId": 5330
+        },
+        {
+          "name": "base",
+          "chainId": 8453
+        },
+        {
+          "name": "plasma",
+          "chainId": 9745
+        },
+        {
+          "name": "apechain",
+          "chainId": 33139
+        },
+        {
+          "name": "mode",
+          "chainId": 34443
+        },
+        {
+          "name": "mythos",
+          "chainId": 42018
+        },
+        {
+          "name": "arbitrum",
+          "chainId": 42161
+        },
+        {
+          "name": "celo",
+          "chainId": 42220
+        },
+        {
+          "name": "avalanche",
+          "chainId": 43114
+        },
+        {
+          "name": "zircuit",
+          "chainId": 48900
+        },
+        {
+          "name": "ink",
+          "chainId": 57073
+        },
+        {
+          "name": "bob",
+          "chainId": 60808
+        },
+        {
+          "name": "berachain",
+          "chainId": 80094
+        },
+        {
+          "name": "blast",
+          "chainId": 81457
+        },
+        {
+          "name": "doma",
+          "chainId": 97477
+        },
+        {
+          "name": "plume",
+          "chainId": 98866
+        },
+        {
+          "name": "scroll",
+          "chainId": 534352
+        },
+        {
+          "name": "gensyn",
+          "chainId": 685689
+        },
+        {
+          "name": "katana",
+          "chainId": 747474
+        },
+        {
+          "name": "ethereal",
+          "chainId": 5064014
+        },
+        {
+          "name": "zora",
+          "chainId": 7777777
+        }
+      ]
+    },
+    {
+      "address": "0x5567954cd026cebfe486062cb75848e0f1c12e58",
+      "contract": "RelayApprovalProxy",
+      "generation": "3.1 (redeployed for the 3.2 router; no code change vs its 3.1 source)",
+      "evmVersion": "cancun",
+      "optimizerRuns": 1000000,
+      "chainCount": 48,
+      "chains": [
+        {
+          "name": "ethereum",
+          "chainId": 1
+        },
+        {
+          "name": "optimism",
+          "chainId": 10
+        },
+        {
+          "name": "bnb",
+          "chainId": 56
+        },
+        {
+          "name": "gnosis",
+          "chainId": 100
+        },
+        {
+          "name": "unichain",
+          "chainId": 130
+        },
+        {
+          "name": "polygon",
+          "chainId": 137
+        },
+        {
+          "name": "monad",
+          "chainId": 143
+        },
+        {
+          "name": "sonic",
+          "chainId": 146
+        },
+        {
+          "name": "manta",
+          "chainId": 169
+        },
+        {
+          "name": "xlayer",
+          "chainId": 196
+        },
+        {
+          "name": "boba",
+          "chainId": 288
+        },
+        {
+          "name": "zksync",
+          "chainId": 324
+        },
+        {
+          "name": "shape",
+          "chainId": 360
+        },
+        {
+          "name": "worldchain",
+          "chainId": 480
+        },
+        {
+          "name": "flow",
+          "chainId": 747
+        },
+        {
+          "name": "stable",
+          "chainId": 988
+        },
+        {
+          "name": "hyperevm",
+          "chainId": 999
+        },
+        {
+          "name": "lisk",
+          "chainId": 1135
+        },
+        {
+          "name": "soneium",
+          "chainId": 1868
+        },
+        {
+          "name": "ronin",
+          "chainId": 2020
+        },
+        {
+          "name": "abstract",
+          "chainId": 2741
+        },
+        {
+          "name": "morph",
+          "chainId": 2818
+        },
+        {
+          "name": "tempo",
+          "chainId": 4217
+        },
+        {
+          "name": "megaeth",
+          "chainId": 4326
+        },
+        {
+          "name": "robinhood",
+          "chainId": 4663
+        },
+        {
+          "name": "somnia",
+          "chainId": 5031
+        },
+        {
+          "name": "arc",
+          "chainId": 5042
+        },
+        {
+          "name": "superseed",
+          "chainId": 5330
+        },
+        {
+          "name": "base",
+          "chainId": 8453
+        },
+        {
+          "name": "plasma",
+          "chainId": 9745
+        },
+        {
+          "name": "apechain",
+          "chainId": 33139
+        },
+        {
+          "name": "mode",
+          "chainId": 34443
+        },
+        {
+          "name": "mythos",
+          "chainId": 42018
+        },
+        {
+          "name": "arbitrum",
+          "chainId": 42161
+        },
+        {
+          "name": "celo",
+          "chainId": 42220
+        },
+        {
+          "name": "avalanche",
+          "chainId": 43114
+        },
+        {
+          "name": "zircuit",
+          "chainId": 48900
+        },
+        {
+          "name": "ink",
+          "chainId": 57073
+        },
+        {
+          "name": "bob",
+          "chainId": 60808
+        },
+        {
+          "name": "berachain",
+          "chainId": 80094
+        },
+        {
+          "name": "blast",
+          "chainId": 81457
+        },
+        {
+          "name": "doma",
+          "chainId": 97477
+        },
+        {
+          "name": "plume",
+          "chainId": 98866
+        },
+        {
+          "name": "scroll",
+          "chainId": 534352
+        },
+        {
+          "name": "gensyn",
+          "chainId": 685689
+        },
+        {
+          "name": "katana",
+          "chainId": 747474
+        },
+        {
+          "name": "ethereal",
+          "chainId": 5064014
+        },
+        {
+          "name": "zora",
+          "chainId": 7777777
+        }
+      ]
+    },
+    {
+      "address": "0xb92fe925dc43a0ecde6c8b1a2709c170ec4fff4f",
+      "contract": "RelayRouter",
+      "generation": "3.0/3.1 older generation (V3 layout; exact minor version not recorded in repo)",
+      "evmVersion": "cancun",
+      "optimizerRuns": 200,
+      "chainCount": 22,
+      "chains": [
+        {
+          "name": "mint",
+          "chainId": 185
+        },
+        {
+          "name": "appchain",
+          "chainId": 466
+        },
+        {
+          "name": "redstone",
+          "chainId": 690
+        },
+        {
+          "name": "eden",
+          "chainId": 714
+        },
+        {
+          "name": "perennial",
+          "chainId": 1424
+        },
+        {
+          "name": "gravity",
+          "chainId": 1625
+        },
+        {
+          "name": "swellchain",
+          "chainId": 1923
+        },
+        {
+          "name": "sanko",
+          "chainId": 1996
+        },
+        {
+          "name": "cyber",
+          "chainId": 7560
+        },
+        {
+          "name": "powerloom",
+          "chainId": 7869
+        },
+        {
+          "name": "arena_z",
+          "chainId": 7897
+        },
+        {
+          "name": "funki",
+          "chainId": 33979
+        },
+        {
+          "name": "hemi",
+          "chainId": 43111
+        },
+        {
+          "name": "superposition",
+          "chainId": 55244
+        },
+        {
+          "name": "syndicate",
+          "chainId": 510003
+        },
+        {
+          "name": "xai",
+          "chainId": 660279
+        },
+        {
+          "name": "forma",
+          "chainId": 984122
+        },
+        {
+          "name": "corn",
+          "chainId": 21000000
+        },
+        {
+          "name": "lordchain",
+          "chainId": 84530008
+        },
+        {
+          "name": "metacade",
+          "chainId": 845300014
+        },
+        {
+          "name": "ancient8",
+          "chainId": 888888888
+        },
+        {
+          "name": "rari",
+          "chainId": 1380012617
+        }
+      ]
+    },
+    {
+      "address": "0xccc88a9d1b4ed6b0eaba998850414b24f1c315be",
+      "contract": "RelayApprovalProxy",
+      "generation": "older generation (V3 layout, no EIP-712)",
+      "evmVersion": "cancun",
+      "optimizerRuns": 200,
+      "chainCount": 22,
+      "chains": [
+        {
+          "name": "mint",
+          "chainId": 185
+        },
+        {
+          "name": "appchain",
+          "chainId": 466
+        },
+        {
+          "name": "redstone",
+          "chainId": 690
+        },
+        {
+          "name": "eden",
+          "chainId": 714
+        },
+        {
+          "name": "perennial",
+          "chainId": 1424
+        },
+        {
+          "name": "gravity",
+          "chainId": 1625
+        },
+        {
+          "name": "swellchain",
+          "chainId": 1923
+        },
+        {
+          "name": "sanko",
+          "chainId": 1996
+        },
+        {
+          "name": "cyber",
+          "chainId": 7560
+        },
+        {
+          "name": "powerloom",
+          "chainId": 7869
+        },
+        {
+          "name": "arena_z",
+          "chainId": 7897
+        },
+        {
+          "name": "funki",
+          "chainId": 33979
+        },
+        {
+          "name": "hemi",
+          "chainId": 43111
+        },
+        {
+          "name": "superposition",
+          "chainId": 55244
+        },
+        {
+          "name": "syndicate",
+          "chainId": 510003
+        },
+        {
+          "name": "xai",
+          "chainId": 660279
+        },
+        {
+          "name": "forma",
+          "chainId": 984122
+        },
+        {
+          "name": "corn",
+          "chainId": 21000000
+        },
+        {
+          "name": "lordchain",
+          "chainId": 84530008
+        },
+        {
+          "name": "metacade",
+          "chainId": 845300014
+        },
+        {
+          "name": "ancient8",
+          "chainId": 888888888
+        },
+        {
+          "name": "rari",
+          "chainId": 1380012617
+        }
+      ]
+    },
+    {
+      "address": "0xe6b730e58088884704cdf11cbe95c224d4d34154",
+      "contract": "RelayRouter",
+      "generation": "3.0/3.1 older generation, distinct build from 0xb92f... (exact minor version not recorded)",
+      "evmVersion": "cancun",
+      "optimizerRuns": 200,
+      "chainCount": 7,
+      "chains": [
+        {
+          "name": "sei",
+          "chainId": 1329
+        },
+        {
+          "name": "story",
+          "chainId": 1514
+        },
+        {
+          "name": "b3",
+          "chainId": 8333
+        },
+        {
+          "name": "arbitrum_nova",
+          "chainId": 42170
+        },
+        {
+          "name": "gunz",
+          "chainId": 43419
+        },
+        {
+          "name": "anime",
+          "chainId": 69000
+        },
+        {
+          "name": "degen",
+          "chainId": 666666666
+        }
+      ]
+    },
+    {
+      "address": "0x5a0fa369d634f49c76b08dc6c299800c1a2af977",
+      "contract": "RelayApprovalProxy",
+      "generation": "older generation",
+      "evmVersion": "cancun",
+      "optimizerRuns": 200,
+      "chainCount": 7,
+      "chains": [
+        {
+          "name": "sei",
+          "chainId": 1329
+        },
+        {
+          "name": "story",
+          "chainId": 1514
+        },
+        {
+          "name": "b3",
+          "chainId": 8333
+        },
+        {
+          "name": "arbitrum_nova",
+          "chainId": 42170
+        },
+        {
+          "name": "gunz",
+          "chainId": 43419
+        },
+        {
+          "name": "anime",
+          "chainId": 69000
+        },
+        {
+          "name": "degen",
+          "chainId": 666666666
+        }
+      ]
+    },
+    {
+      "address": "0x6328ea02d28131e58b28e55c6258258a30d90e05",
+      "contract": "RelayRouter_NonTstore",
+      "generation": "3.2",
+      "evmVersion": "london",
+      "optimizerRuns": 1000000,
+      "chainCount": 5,
+      "chains": [
+        {
+          "name": "cronos",
+          "chainId": 25
+        },
+        {
+          "name": "metis",
+          "chainId": 1088
+        },
+        {
+          "name": "mantle",
+          "chainId": 5000
+        },
+        {
+          "name": "linea",
+          "chainId": 59144
+        },
+        {
+          "name": "taiko",
+          "chainId": 167000
+        }
+      ]
+    },
+    {
+      "address": "0xe4dfbd5e6784db1058124e2c87554c0591f0fb7b",
+      "contract": "RelayApprovalProxy",
+      "generation": "3.1 (london build)",
+      "evmVersion": "london",
+      "optimizerRuns": 1000000,
+      "chainCount": 5,
+      "chains": [
+        {
+          "name": "cronos",
+          "chainId": 25
+        },
+        {
+          "name": "metis",
+          "chainId": 1088
+        },
+        {
+          "name": "mantle",
+          "chainId": 5000
+        },
+        {
+          "name": "linea",
+          "chainId": 59144
+        },
+        {
+          "name": "taiko",
+          "chainId": 167000
+        }
+      ]
+    },
+    {
+      "address": "0x9ef6d3c2f60d7b9008d74cab1fc0f899c957c819",
+      "contract": "RelayRouter_NonTstore",
+      "generation": "older generation (200 runs)",
+      "evmVersion": "london",
+      "optimizerRuns": 200,
+      "chainCount": 1,
+      "chains": [
+        {
+          "name": "polygon_zkevm",
+          "chainId": 1101
+        }
+      ]
+    },
+    {
+      "address": "0x8754bc615047de01228a7527b712806a71a8dc9a",
+      "contract": "RelayApprovalProxy",
+      "generation": "older generation (200 runs)",
+      "evmVersion": "london",
+      "optimizerRuns": 200,
+      "chainCount": 1,
+      "chains": [
+        {
+          "name": "polygon_zkevm",
+          "chainId": 1101
+        }
+      ]
+    },
+    {
+      "address": "0xe16870b028704e38dbc254a84d3f72c8ba345ca9",
+      "contract": "RelayRouter_NonTstore",
+      "generation": "older generation (200 runs)",
+      "evmVersion": "london",
+      "optimizerRuns": 200,
+      "chainCount": 1,
+      "chains": [
+        {
+          "name": "zero",
+          "chainId": 543210
+        }
+      ]
+    },
+    {
+      "address": "0xf6e54bbf91e564fcf0df3ed9f2dd82913e9232c3",
+      "contract": "RelayApprovalProxy",
+      "generation": "older generation (200 runs; non-standard permit2 0x6b4420f66de496d18a6c36367cf7f1440fd9289f; entry lacks create2Factory)",
+      "evmVersion": "london",
+      "optimizerRuns": 200,
+      "chainCount": 1,
+      "chains": [
+        {
+          "name": "zero",
+          "chainId": 543210
+        }
+      ]
+    }
+  ],
+  "unverifiable": [
+    {
+      "item": "RelayReceiver deployed bytecode",
+      "reason": "No receiver address is recorded in deployments/v3/addresses.json (no relayReceiver key on any of the 84 entries) and no receiver address was supplied in the task. The contract was compiled (all three builds) but no on-chain comparison was possible. Its SOLVER immutable would also need patching/masking for any future comparison."
+    },
+    {
+      "item": "Router 0xe6b730e58088884704cdf11cbe95c224d4d34154 / proxy 0x5a0fa369d634f49c76b08dc6c299800c1a2af977 (7 chains)",
+      "reason": "Not checked: outside the task's one-primary-chain scope and not deployed on chain 1 / Cronos. The file records no optimizerRuns field (=> 200 runs) but a different address from the 0xb92f.../0xccc8... group, so it is a distinct older build; whether it is v3.0 vs v3.1 is not recorded in the repo."
+    },
+    {
+      "item": "NonTstore/proxy singletons on polygon_zkevm (1101) and zero (543210)",
+      "reason": "Not checked: no RPC reads performed on those chains. Both lack optimizerRuns (=> 200 runs, london). The zero proxy uses a non-standard permit2 (0x6b4420f66de496d18a6c36367cf7f1440fd9289f) and its entry lacks create2Factory."
+    },
+    {
+      "item": "Code presence / bytecode on the other 82 chains in addresses.json",
+      "reason": "Only chain 1 and chain 25 were read. Same-address CREATE2 deployments are expected to carry the same code (except proxy immutables, which embed chainId), but presence was not verified per chain."
+    },
+    {
+      "item": "Proxy immutable-patched comparison",
+      "reason": "Not performed: both deployed proxies differ in length from the pinned-HEAD builds, so no immutable patching could produce a match. Future comparisons of a proxy build against a deployed proxy MUST patch/mask all 7 immutable groups (ROUTER, PERMIT2 + 5 Solady EIP-712 cache values incl. chainId and own address) and state the expected values; raw keccak comparison of proxy bytecode across chains is meaningless."
+    },
+    {
+      "item": "Sourcify checks on chain 185 (mint) and chain 690 (redstone)",
+      "reason": "Sourcify returned HTTP 400 unsupported_chain for both. Chain 1625 (gravity) returned HTTP 404 (no match) for the older-gen addresses. A Sourcify miss was never treated as a mismatch by itself."
+    },
+    {
+      "item": "Chains API (api.relay.link/chains)",
+      "reason": "Not fetched, per task instruction (SCOPE.md already captured it; mapping questions were answerable from repo files)."
+    }
+  ],
+  "auditImplications": [
+    "RelayRouter.sol at HEAD == live Router 3.2 on all 48 cancun chains (byte-exact on chain 1). Findings in this file apply to the live 3.2 deployment as written.",
+    "RelayRouter_NonTstore.sol at HEAD == live NonTstore 3.2 on all 5 london chains (byte-exact on Cronos). Findings in this file apply to the live deployment as written.",
+    "RelayApprovalProxy.sol at HEAD is NEWER than the deployed proxies on chain 1 and Cronos (both are HEAD~1 builds). Findings in proxy code paths UNCHANGED by HEAD commit e221935f apply to the live proxies; findings that depend on the DEC-2400 delta (the _cleanupErc20s call added to transferAndMulticall and the empty-signature Permit2 path) do NOT describe live behavior at the verified addresses. Any proxy finding must state which side of the HEAD~1/HEAD boundary it sits on.",
+    "The 22 older-gen chains (0xb92f.../0xccc8...) and 7 second-group chains (0xe6b7.../0x5a0f...) run V3-generation code that predates the unversioned rename (bb7aa14) and the 3.2 event change. HEAD findings must be re-checked against the V3 sources before claiming impact on those chains.",
+    "Sourcify 'match' status alone does not prove pinned-HEAD equivalence: both deployed proxies show full Sourcify matches against HEAD~1 source. Always compare stored sources (or recompile) before asserting a finding affects a live deployment."
+  ],
+  "deploymentNotes": {
+    "file": "deployments/v3/addresses.json (84 entries, 84 unique chainIds, all compilerVersion 0.8.28)",
+    "canonicalProxyOwner": "0x463cB782c8dd0a1887b77336DfF74D60F006F56E (CREATE2 input; from deployments/v3/instructions.md)",
+    "create2Factory": "0x4e59b44847b379578588920ca78fbf26c0b4956c (83 entries; the zero entry has no create2Factory field)",
+    "permit2": "0x000000000022d473030f116ddee9f6b43ac78ba3 (83 entries; zero uses 0x6b4420f66de496d18a6c36367cf7f1440fd9289f)",
+    "pairings": "Each chain carries exactly one router + one proxy; 6 distinct (router, proxy) pairs: 48 + 22 + 7 + 5 + 1 + 1 = 84.",
+    "noReceiverAddresses": true
+  }
+}

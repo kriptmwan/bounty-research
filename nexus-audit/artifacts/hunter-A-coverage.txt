@@ -1,0 +1,82 @@
+Hunter A (Domain A: LibPREP + PREP init surface) — coverage note
+Pinned HEAD 9007ba1352e606575e32456512e25c41a9bf449c, verified before starting and
+re-verified before writing; git status clean both times. Findings: NONE (hunter-findings-A.json = []).
+
+FILES READ (assigned surface)
+- contracts/lib/local/LibPREP.sol (46 lines, read in full, every line): rPREP, isValid, isPREP.
+- contracts/Nexus.sol (578 lines, read in full; findings scope only): validateUserOp PREP
+  branch (L125-133), _handlePREP (L521-551), PREPInitialized emission (L550), initializeAccount
+  7702 branch + _initializeAccount (L305-357, evidence only for replay/init traces).
+- contracts/lib/NonceLib.sol (60 lines, read in full): isPrepMode() (L44-49); delta verified
+  comment/pragma-only via git diff 9af2d1d..HEAD (pragma 0.8.27 -> ^0.8.27 + typo fixes).
+- contracts/types/Constants.sol (59 lines): MODE_PREP = 0x02 (L56) as evidence; distinct
+  from MODE_VALIDATION 0x00 / MODE_MODULE_ENABLE 0x01; no mode-byte overlap with validator field.
+
+EVIDENCE-ONLY READS (no findings claimed here)
+- contracts/base/ModuleManager.sol L624-634 (_amIERC7702): extcodesize==23 AND first 3 bytes
+  == 0xef0100. Precise for EIP-7702 designators; EIP-3541 bars 0xef-prefixed deployed code,
+  so no false positive is reachable; false negative impossible while Nexus code executes via
+  delegation. EX-051 (2-byte compare) verified fixed.
+- contracts/interfaces/INexusEventsAndErrors.sol: PREPInitialized declared (L27), InvalidPREP (L61).
+- contracts/lib/Initializable.sol L12/L33: NotInitializable selector 0xaed59595 shared with
+  _handlePREP; selector verified == bytes4(keccak256("NotInitializable()")) via local keccak.
+- test/foundry/unit/concrete/eip7702/TestPREP.t.sol (context only): _mine() shows the PREP
+  address is the ecrecover OUTPUT (mined, keyless); _doEIP7702 uses vm.etch (test-only).
+- Solady v0.1.9 source (cloned to /tmp, tag verified): EfficientHashLib.hash(a,b) =
+  keccak256(64-byte concat) — rPREP/test encodings agree; ECDSA.tryRecover = raw ecrecover
+  precompile, returns 0 on failure, no malleability check needed since s is computed, not
+  supplied; LibEIP7702.delegation checks 0xef01 prefix only; LibBit.and/or normalize bools.
+- Upstream lib-prep: yarn.lock pin 7334641 (ithacaxyz/account#vectorized/prep) fetched via
+  git; src/LibPREP.sol is BYTE-IDENTICAL to the local copy (diff exit 0). Zero drift.
+  (Branch vectorized/prep itself is deleted upstream; the pinned commit object survives.)
+
+FILES SKIPPED + WHY
+- All other Nexus.sol functions, ModuleManager.sol remainder, K1Validator, bootstrap,
+  factories, interfaces beyond the two cited lines: outside Domain A assignment (owned by
+  other Hunters or context-only per triage.json). Read only as evidence where noted above.
+- isPREP production callers: none exist (grep: only TestPREP.t.sol calls it). Its TOCTOU /
+  delegation-liveness behavior is therefore unreachable in production; checked, no finding.
+
+VERIFICATION PERFORMED (all from code / pinned sources; no execution — no forge/solc on VM)
+- RLP designation hash in isValid assembly verified byte-exact vs EIP-7702:
+  05 d7 80 94 <delegation:20> 80 = 0x05 || rlp([0, delegation, 0]); write-ordering and
+  scratch-memory bounds (< 0x40) checked; dirty-high-bits robustness checked.
+- rPREP masking: (hash<<96)>>96 keeps low 160 bits; salt (high 96) / delegation (low 160)
+  partition is exact, no aliasing; r==0 / s>=n fail closed via tryRecover -> 0 != target.
+- _handlePREP unpacking: 0xf9 check, offset arithmetic, overlap/empty/OOB slices analyzed.
+  Binding preserved: keccak256 is computed over the exact parsed initData slice that
+  _initializeAccount executes, so mis-parses cannot smuggle unvalidated initData; huge
+  lengths only OOG the attacker's own userOp within its validation gas limit.
+- PREP + relay-init replay: distinct auth material (mined equation vs ECDSA sig by
+  address(this) over initDataHash); both paths gated by !isInitialized(); no shared replay.
+- Live-delegation consistency: _handlePREP never compares saltAndDelegation's delegation
+  against live delegation, but the mining structure enforces it — a second solution for
+  the same target with a different delegation is a 2^160 search, and keyed EOAs admit no
+  PREP proof at all. Cross-chain init (chain_id 0) is by design; same initData on every
+  chain yields identical account state, no theft/grief vector.
+
+KILLED CANDIDATES (dedup vs EXCLUSION_LIST.md, by root cause)
+- _handlePREP length constant: EX-057. NOTE: the exclusion entry's status note is stale —
+  the check is 0xf9 (249), not 0x61, since commit 4ab44e27 (Pashov fixes window), which
+  meets the >=229 requirement. Defect fixed at HEAD; not re-litigated.
+- PREP cross-chain / non-chain-bound proof: EX-076 family + by-design (chain_id 0).
+- PREP-mode validation without initialization / skipped 7702 post-init check / no-op
+  bootstrap: EX-049 (Zenith L-1) + EX-I20 — 7702 exemption is deliberate and known.
+- PREP + default validator addressability: EX-053 / EX-072.
+- Zero-address / tryRecover-returns-0 comparison: EX-045 / EX-077 cluster — isValid
+  explicitly requires target != address(0).
+- _amIERC7702 prefix width: EX-051 — 3-byte compare verified at HEAD.
+- PREPInitialized event declaration: EX-119 — declared + normal emit here; defect absent.
+- Stale-flag / re-init via PREP bypassing transient guard: EX-116 family — PREP proof for
+  a CREATE2 counterfactual address requires a 2^160 (targeted) / 2^80 (birthday) search;
+  infeasible, no bypass mechanism.
+- Unbounded-offset / zero-padding mis-parse in _handlePREP: distinct mechanism from EX-057
+  considered on its merits — no reachable harm (binding argument above); omitted per
+  skill scope (missing validation with no reachable harm is not a finding).
+
+UNRESOLVED CROSS-REFERENCES
+- None blocking. _initializeAccount bootstrap-address handling (assembly-loaded address
+  passed to delegatecall) was read as evidence; it belongs to the relay-init Hunter's
+  surface and shows no PREP-specific defect (proof binds the exact initData bytes).
+- Residual: EX-080 (#303, unknown private report) cannot be deduped against by any
+  public means; noted, not actionable here.

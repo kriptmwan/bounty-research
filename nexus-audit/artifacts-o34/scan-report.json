@@ -1,0 +1,34 @@
+{
+  "buckets": {
+    "confirmed": [],
+    "dismissed": [],
+    "manualReview": [],
+    "unreviewed": []
+  },
+  "counts": {
+    "confirmed": 0,
+    "dedupKills": 45,
+    "dismissed": 0,
+    "hunterCandidates": 0,
+    "manualReview": 0,
+    "meritsKills": 46,
+    "unreviewed": 0
+  },
+  "failedCoverage": [],
+  "filesScanned": 10,
+  "mode": "single-pass",
+  "notes": [
+    "Zero-candidate outcome: Skeptic and Referee artifacts are empty arrays per the skill contracts for empty input. The 91 kills (45 dedup + 46 merits/disproved) are recorded in the per-domain coverage files, not as Referee verdicts.",
+    "No finding reached the triage_validation 7-Question Gate; gate-7q.json records that explicitly. H-B1's gate failure (Q1/Q4) from Option 1 was not re-run because the candidate was not re-claimed.",
+    "Step 0 tracker re-sweep (2026-11-14 03:19 UTC) found zero new issues above #338; exclusion list unchanged at 176 entries.",
+    "This report describes this run only: single pass, no executed POCs required, no complete-coverage loop ordered. All four SCOPE.md audit options are now complete, all with 0 findings."
+  ],
+  "pendingCoverage": [],
+  "requiredVerificationFailures": [],
+  "run": "nexus-options34-2026-11-14",
+  "target": {
+    "pinnedHead": "9007ba1352e606575e32456512e25c41a9bf449c",
+    "repo": "bcnmy/nexus",
+    "scope": "Option 3: factories + bootstrap + proxy (full read) + Option 4: K1Validator + ERC-7739 paths (gap-check only)"
+  }
+}

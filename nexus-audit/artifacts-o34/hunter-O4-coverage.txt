@@ -1,0 +1,451 @@
+Hunter O4 — Biconomy Nexus, Option 4: K1Validator + ERC-7739 gap-check ONLY
+Repo: bcnmy/nexus, pinned main HEAD 9007ba1352e606575e32456512e25c41a9bf449c
+Date: 2026-11-14. Mode: single-pass Hunter, read-only, static reasoning only.
+No forge builds/tests run in this phase per task execution rule. No live
+testing, no contact with Biconomy, no filing, no GitHub API calls, repo untouched.
+Source integrity: HEAD verified matching + tree clean at start AND before
+concluding (git rev-parse HEAD + git status --porcelain empty, both checks).
+
+VERDICT: 0 candidates. hunter-findings-O4.json is [].
+17 dedup kills + 18 self-disproved leads. Nothing manufactured.
+
+Required pre-reads completed (in order):
+1. adversarial_code_audit SKILL.md §4 + §10 (Hunter contract, severity rubric,
+   confidence calibration).
+2. SCOPE.md §5/§6/§7 Option 4.
+3. REPORT-core.md (Option 2, 0 findings) — Coverage + closest-call kills.
+4. REPORT-delta.md (Option 1, 0 findings; H-B1 disproved = EX-136).
+5. EXCLUSION_LIST.md — all 176 entries (EX-001–EX-136 + EX-G01–G07 + EX-I01–I33).
+6. NEW-ISSUES-2026-11-14.md (#325–#338) + NEW-ISSUES-2026-11-14-PM.md
+   (Step 0 re-sweep: zero new issues, complete).
+7. STX-DIFF.md — lineage diff incl. §7 (RegistryAdapter no counterpart) and §8
+   (K1Validator -> K1MeeValidator substance-changed), with the documented
+   caveat that cast is NOT installed so assembly/selector-equivalence claims
+   rest on manual review only.
+
+================================================================================
+1. FILES / REGIONS READ IN FULL (assigned scope)
+================================================================================
+- contracts/modules/validators/K1Validator.sol — 280 lines, FULL READ.
+  Every function: onInstall (77-90), onUninstall (92-96), transferOwnership
+  (100-104), addSafeSender (107-110), removeSafeSender (112-115),
+  isSafeSender (117-119), isInitialized (127-129), validateUserOp (147-149),
+  isValidSignatureWithSender (168-174), validateSignatureWithData (180-184),
+  getOwner (191-194), name (202-204), version (208-210),
+  isModuleType (215-217), _recoverSigner (228-230),
+  _erc1271IsValidSignatureNowCalldata (236-238),
+  _erc1271CallerIsSafe (248-253), _validateSignatureForOwner (258-264),
+  _fillSafeSenders (267-272), _isInitialized (277-279). Plus header/imports/
+  constants/storage/errors (1-66). This file was evidence-only in Options 1-2;
+  this full read is the genuinely new surface of this pass.
+- contracts/base/RegistryAdapter.sol — 53 lines, FULL READ (gap review only;
+  see §3 for what is new vs relied on from Option 2).
+- contracts/Nexus.sol — GAP REGIONS ONLY (see §2 for the explicit split).
+  Gap-checked in full: isValidSignature (374-390), checkERC7739Support
+  (486-499), _get7739Version (500-506), setRegistry (363-366),
+  _domainNameAndVersion (573-576). 45 lines of gap regions, plus targeted
+  re-reads of validateUserOp (114-137) and isInitialized (446-448) as caller
+  evidence for K1 paths (not re-adjudicated; see §3).
+
+Terminology note (verified by grep): there is NO function named
+`isValidSignatureWithData` anywhere under contracts/. Nexus dispatch is
+`isValidSignature` only; K1Validator exposes `validateSignatureWithData`
+(ISessionValidator interface). The task brief's "isValidSignature /
+isValidSignatureWithData dispatch" was read as these two functions.
+
+================================================================================
+2. NEXUS.SOL — GAP-CHECKED vs RELIED ON FROM OPTION 2 (explicit split)
+================================================================================
+GAP-CHECKED in this pass (signature-validation edge cases Option 2 did not
+adjudicate):
+- L363-366 setRegistry: registry-adjacent signature-validation interaction
+  check (none exists beyond the EX-018/EX-059 use-time gap; see kill K-D11).
+- L374-390 isValidSignature: detection-branch predicate, empty/short-signature
+  fallthrough, 20-byte prefix slicing, pre-validation-hook ordering vs the
+  detection branch, try/catch coverage, empty-inner-signature + magic-hash
+  return-code behaviour (lead D2), 64-byte-signature behaviour via this path
+  (lead D1).
+- L486-499 checkERC7739Support: sentinel-list iteration, getNext() progress,
+  default-validator tail check, zero-result -> 0xffffffff mapping, unbounded
+  iteration exposure (lead D9), hook bypass on detection (lead D11).
+- L500-506 _get7739Version: unguarded validator call (kill K-D4), bytes2
+  prefix + max-version comparison, bogus-version acceptance (lead D10).
+- L573-576 _domainNameAndVersion: EIP-712 domain inputs to the nested-7739
+  flow, verified against Solady EIP712 eip712Domain() + the ERC-7739 base's
+  _hashTypedDataForAccount rebuild (lead D12).
+
+RELIED ON from Option 2 (read in full there; NOT re-adjudicated here; read
+only as caller/consumer evidence where a K1/7739 path touches them):
+- L114-137 validateUserOp (mode dispatch, _enableMode/_handlePREP calls,
+  _handleValidator, _withPreValidationHookERC4337, validator dispatch).
+- L140-246 execute / executeFromExecutor / executeUserOp / executeComposable /
+  _executeAction (execution dispatch; withHook/withRegistry wiring).
+- L248-265 installModule / uninstallModule (incl. _checkInitializedValidators
+  call site; Option 2 closest calls #1/#4 cover this region).
+- L267-303 emergencyUninstallHook (timelock state machine; Option 2 + EX-123/
+  EX-129 cover it; only _checkEmergencyUninstallSignature read here as a K1
+  1271 consumer).
+- L306-361 initializeAccount / _initializeAccount (7702 relay branch, transient
+  flag; Option 1 + EX-136/EX-076/EX-116 cover it).
+- L392-445 getImplementation / supportsModule / supportsExecutionMode /
+  isModuleInstalled / isInitialized (read as evidence only).
+- L449-485 accountId / upgradeToAndCall / _authorizeUpgrade (Option 2 closest
+  call #6 covers the UUPS surface).
+- L508-571 _handlePREP / _checkInitializedValidators (Option 1 + Option 2
+  closest call #1 cover them).
+
+================================================================================
+3. REGISTRYADAPTER.SOL — GAP REVIEW STATEMENT
+================================================================================
+Read in full (53 lines) but gap-scoped: Option 2 read it in full including
+the setRegistry/withHook closest call (killed; see K-D12). This pass re-checked
+ONLY registry-adjacent signature-validation interactions:
+- Verified by grep that withRegistry/_checkRegistry appear ONLY on install
+  paths (ModuleManager L223/257/283/321/376) and executeFromExecutor
+  (Nexus L170), and NEVER on validateUserOp, isValidSignature,
+  checkERC7739Support, _checkEnableModeSignature, or
+  _checkEmergencyUninstallSignature. That absence is the already-claimed
+  use-time registry gap (K-D11); no new mechanism.
+- _configureRegistry trustAttesters call and getRegistry: no 7739 interaction;
+  mechanism removed entirely in 1.3.3 (STX-DIFF §7) and scope-uncertain per
+  SCOPE §5a. Not chased further.
+FINDING: nothing beyond Option 2's coverage. No RegistryAdapter candidate.
+
+================================================================================
+4. EVIDENCE-ONLY READS (other files; did not expand report scope)
+================================================================================
+- contracts/base/ModuleManager.sol — targeted regions only: constructor +
+  _DEFAULT_VALIDATOR (54-104), _enableMode (150-177), _installValidator
+  (215-230), _checkEmergencyUninstallSignature (453-462),
+  _withPreValidationHook x2 (471-513), _checkEnableModeSignature (515-530),
+  _getEmergencyUninstallDataHash (532-540), _amIERC7702 (624-635),
+  _handleValidator (637-644). Full file was read in Option 2; these regions
+  were re-read as K1/7739 consumers. Rest relied on from Option 2.
+- contracts/types/Constants.sol — full (59 lines): ERC1271_MAGICVALUE,
+  SUPPORTS_ERC7739/V1, module-type ids, validation codes.
+- contracts/interfaces/modules/IValidator.sol — full (39 lines).
+- contracts/lib/EnumerableSet4337.sol — full (371 lines): safe-sender set
+  semantics behind K1 _erc1271CallerIsSafe (leads D4/D17).
+- contracts/lib/AssociatedArrayLib.sol — L1-160 spot-check (typed wrappers +
+  _set start) for the set's storage layer; full file was read in Option 2
+  (Hunter C) and is relied on for the remainder.
+- Pinned dependency sources in ~/workspace/nexus-audit/poc/node_modules
+  (pins verified against repo yarn.lock: solady v0.1.9 commit 1eb89b9a,
+  erc7739-validator-base tag v1.0.0 commit d1e38493):
+  * erc7739-validator-base/src/ERC7739Validator.sol — FULL (detection check,
+    s-value malleability check, _erc1271UnwrapSignature (ERC-6492),
+    safe-caller / nested-EIP-712 / RPC workflows, _hashTypedDataForAccount).
+  * erc7739-validator-base/src/SampleK1ValidatorWithERC7739.sol — FULL
+    (reference implementation; K1 deviations catalogued: getOwner fallback,
+    sender==msg.sender safe-caller addition, 6492 unwrap addition, no
+    contract-owner check, stricter _fillSafeSenders %20 check).
+  * solady/src/utils/ECDSA.sol L140-299 (tryRecover/tryRecoverCalldata incl.
+    64-byte EIP-2098 branch, toEthSignedMessageHash) — tryRecover returns
+    address(0) on failure, never reverts; 64/65-byte only.
+  * solady/src/utils/EIP712.sol — FULL (constructor caching, eip712Domain(),
+    _domainSeparator/_hashTypedData invalidation on chainId/address change).
+- contracts/mocks/MockValidator_7739v2.sol — full (context: v2 detection
+  return 0x77390002; max-version behaviour).
+- contracts/utils/NexusBootstrap.sol — grep-level only (default-validator
+  onInstall call sites L72/161; delegatecall context = account as msg.sender).
+- Tests, CONTEXT ONLY (intended behaviour; never reported bugs in them):
+  * test/foundry/unit/concrete/modules/TestK1Validator.t.sol L230-370
+    (high-s revert expected on 1271 path; safe-sender add/remove/fill;
+    65-byte signatures throughout; no 64-byte coverage).
+  * test/foundry/unit/concrete/erc1271/TestERC1271Account_IsValidSignature.t.sol
+    (6492 wrap/unwrap tests; detection test expecting max version 0x77390002;
+    magic hash 0x7739...7739).
+
+================================================================================
+5. FILES / REGIONS SKIPPED (with reasons)
+================================================================================
+- All other contracts/ files (factories, NexusBootstrap internals,
+  ExecutionHelper, Storage, remaining libs, mocks except as above): outside
+  the Option 4 gap scope; covered by Options 1-3 or out of scope. Read only
+  as evidence where listed in §4.
+- test/ and contracts/mocks/ as finding targets: context-only per skill §4;
+  no bugs reported in them.
+- stx-contracts checkout: not re-diffed; STX-DIFF.md relied on (with its
+  documented cast caveat). Lineage tags below cite STX-DIFF sections.
+- GitHub tracker / issues: not re-swept (zero-API rule); the 2026-11-14
+  ~10:19 WIB re-sweep (NEW-ISSUES-2026-11-14-PM.md) is the freshest dedup
+  snapshot. Issues filed after 03:19 UTC 2026-11-14 are NOT covered — a
+  fresh re-sweep is required before any filing (standing caveat).
+- No forge builds/tests: forbidden in this phase by the task execution rule
+  (VM resource-tight; POCs serialized later, only for survivors). All verdicts
+  are static-reasoning verdicts; no candidate depended on execution, so no
+  NEEDS-POC items exist (see §8).
+
+================================================================================
+6. DEDUP KILLS (17) — every suspicious pattern checked against the 176-entry
+    exclusion list FIRST. Root-cause dedup, even where trigger differs.
+================================================================================
+K-D1. K1Validator.validateSignatureWithData zero-owner 0==0 (K1Validator.sol
+  L180-184: owner from caller data, no zero check; _recoverSigner -> 0 on
+  malformed sig). EX-077 (#307) + EX-087 (#323) + EX-131 (#334) + EX-135
+  (#338, stx lineage). Identical root cause; includes empty-signature variant.
+K-D2. K1Validator.validateUserOp zero-owner bypass (K1Validator.sol L147-149).
+  EX-045 (Zenith H-1, RESOLVED): getOwner() fallback (L191-194) present at
+  HEAD — owner==0 resolves to the account address, never zero, so malformed
+  signatures recover 0 != account. Known AND fixed; do not re-report.
+K-D3. Nexus.isValidSignature reverts for empty/short non-detection signatures
+  (Nexus.sol L374-390: signature[0:20]/signature[20:] slicing before try/catch;
+  includes unknown-validator-prefix ValidatorNotInstalled variant).
+  EX-078 (#306) + EX-088 (#324) + EX-128 (#331) + EX-132 (#335).
+K-D4. checkERC7739Support has no try/catch — one reverting (or OOGing)
+  validator breaks detection account-wide (Nexus.sol L500-506 _get7739Version
+  unguarded call; L486-499 loop). EX-069 (#321). OOG variant is the same
+  unguarded-call root cause.
+K-D5. Default validator unaddressable by its own address in isValidSignature
+  (Nexus.sol L384 via ModuleManager._handleValidator, only address(0)
+  resolves to default). EX-072 (#316); narrower variants EX-046/EX-053.
+K-D6. checkERC7739Support only checks the last validator (loop never advances).
+  EX-042 (Cantina 7739 add-on M, FIXED): getNext() present at Nexus.sol L496.
+  Known AND fixed.
+K-D7. ERC-7739 detection excludes the default validator. EX-048 (Zenith M-3,
+  RESOLVED): default-validator tail check present at Nexus.sol L496. Known
+  AND fixed.
+K-D8. checkERC7739Support checks the default validator even if unused /
+  uninitialized accounts report 7739 support (Nexus.sol L496 unconditional
+  default check; K1 detection response precedes owner logic). EX-058
+  (Pashov L-03, Acknowledged).
+K-D9. K1Validator.transferOwnership missing _isInitialized check
+  (K1Validator.sol L100-104: sets owner without init check; stale call can
+  block later onInstall). EX-013 (CodeHawks L-05).
+K-D10. Contract owner / owner without a private key bricks the validator
+  (K1Validator.sol L77-90 onInstall + L100-104 transferOwnership: zero-check
+  only, no code check; recovery is EOA-only). EX-I09 (Cantina info 5.5.9,
+  Acknowledged). Lineage: team-changed T2 — successor K1MeeValidator adds the
+  EOA-only guard (STX-DIFF §8). Also note the upstream sample DOES check
+  !_isContract; K1's omission is the claimed/acknowledged gap, not novel.
+K-D11. No registry check on signature-validation / 7739 paths: validateUserOp,
+  isValidSignature, checkERC7739Support never consult the registry, so
+  de-attested validators validate and confer 7739 support (verified by grep:
+  withRegistry only on installs + executeFromExecutor). EX-018 (Cantina 5.1.4,
+  validator part Acknowledged) + EX-059 (Pashov L-04, Acknowledged). Covers
+  the RegistryAdapter gap-review surface in full. Lineage: mechanism removed
+  entirely in 1.3.3 (STX-DIFF §7, T1) — moot in deployed code.
+K-D12. setRegistry lacking inner withHook / registry reconfiguration putting
+  modules in an insecure state (Nexus.sol L363-366 + RegistryAdapter.sol
+  L34-41). EX-023 (Cantina 5.2.5, Acknowledged) + Option 2 closest call #3
+  (threat-model kill: self-call only, reachable solely via owner-validated
+  hooked execute). Not re-litigated.
+K-D13. isValidSignatureWithSender applies the s-value check on ERC-7739
+  detection calls (detection must precede the s-check). EX-044 (Cantina 7739
+  add-on L, FIXED): in the pinned ERC-7739 base, the detection check runs
+  before the s-check. Known AND fixed. Related EX-I31 (return-vs-revert
+  deviation, fixed) also checked.
+K-D14. K1Validator.onInstall short-data raw panic: data[:20] at L80 with
+  1..19-byte data panics 0x32 instead of a typed error. EX-125 (#328)
+  panic-boundary FAMILY: same root cause (unguarded slicing/parsing -> raw
+  0x32 panic instead of documented typed error, install path). Install reverts
+  either way; no state change, no bypass, no incremental harm. Dedup-family
+  kill; not filed as a distinct boundary.
+K-D15. K1Validator.validateUserOp inefficient/double signature validation
+  (gas). EX-G02 + EX-G04 (Cantina gas items, fixed). Gas is out of bounty
+  scope for security findings in any case.
+K-D16. Session-key oracle confusion via the generic ERC-1271 oracle: enable
+  mode / emergency uninstall accept isValidSignatureWithSender (incl. K1's
+  safe-caller path) from ANY installed validator, bypassing session policy
+  that lives only in validateUserOp. EX-073 (#310) + EX-074 (#312) — same
+  root cause, both paths claimed; any third path sharing the mechanism is
+  excluded per EX-074. The K1 safe-caller path is the oracle these issues
+  exploit, not a new mechanism.
+K-D17. H-B1: initializeAccount self-call branch skips init guards (re-init via
+  self-call). EX-136 (Option 1 candidate, Referee NOT_A_BUG, zero incremental
+  privilege). Encountered as evidence only; never re-reported.
+
+Kill counts: dedup 17 (K-D1–K-D17). Of these, fix-verified-present at HEAD:
+K-D2, K-D6, K-D7, K-D13 (known + fixed — re-claiming any of them would be both
+a duplicate and factually wrong at HEAD).
+
+================================================================================
+7. SELF-DISPROVED LEADS (18) — chased, then killed on checked counter-evidence
+    (file:line). None is a duplicate; each fails on its own merits.
+================================================================================
+D1. 64-byte EIP-2098 signatures with yParity=1 REVERT on the 1271 path but
+  validate on the 4337 path. TRACE (correct as a code fact): the inherited
+  ERC-7739 base reads s := calldataload(signature.offset + 0x20) and reverts
+  InvalidSignature() if s > n/2; for a 64-byte sig that word is `vs`, whose
+  top bit set (yParity=1) makes vs >= 2^255 > n/2, so it always reverts;
+  meanwhile Solady tryRecoverCalldata (ECDSA.sol L202-233) has an explicit
+  64-byte branch deriving v from the vs top bit, so K1Validator.validateUserOp
+  (L147-149) accepts the same signature. KILLED as a reportable finding:
+  (a) the defective check lives in THIRD-PARTY erc7739-validator-base, not in
+  any assigned file — bounty scope excludes third-party components (SCOPE §1,
+  EXCLUSION_LIST §H.6; cf. EX-079); the K1 call site (L168-174) is the
+  documented usage pattern, identical in the upstream sample validator;
+  (b) no documented promise that the 1271 path accepts 64-byte encodings —
+  all tests/tooling use 65-byte; (c) fail-closed (rejects, never accepts
+  invalid); (d) trivial lossless workaround (re-encode as 65-byte r,s,v).
+  Counter-evidence: poc ERC7739Validator.sol s-check block; SampleK1Validator
+  identical shape; TestK1Validator.t.sol uses abi.encodePacked(r,s,v) only.
+  No POC needed: the trace is statically complete; the verdict turns on scope
+  and impact, not execution.
+D2. Empty inner signature + magic hash returns 0x77390001 through the NORMAL
+  isValidSignature path (20-byte validator prefix + empty remainder; detection
+  branch at Nexus.sol L376-380 skipped since length != 0; K1 detection check
+  fires on the empty remainder). KILLED: 0x77390001 (SUPPORTS_ERC7739_V1,
+  Constants.sol L59) is distinct from ERC1271_MAGICVALUE 0x1626ba7e
+  (Constants.sol L14); every in-repo consumer compares == ERC1271_MAGICVALUE
+  (ModuleManager.sol L462 emergency, L525-527 enable mode); the detection
+  return code is spec'd behaviour, and the same value is returned by the
+  legitimate detection path — no consumer confusion, no bypass.
+D3. K1 _erc1271CallerIsSafe adds `sender == msg.sender` (K1Validator.sol
+  L248-253), a deviation from the upstream sample, skipping the nested
+  EIP-712 workflow. KILLED: no new principal. Enable/emergency paths pass
+  sender == account AND the digest is already account-bound via _hashTypedData
+  (ModuleManager.sol L520, L539, domain verifyingContract = account); the
+  isValidSignature self-call case requires owner-validated execution; direct
+  calls to K1 key the owner lookup by msg.sender (K1Validator.sol L236-237
+  getOwner(msg.sender)), so an attacker can only validate for their own key.
+  Counter-evidence: ModuleManager.sol L520/L539; K1Validator.sol L236-237.
+D4. Safe-sender set false positives / stale entries (EnumerableSet4337).
+  KILLED: _contains returns positions[value][account] != 0
+  (EnumerableSet4337.sol L335-337) — empty set returns false, no false
+  positive; _removeAll (L48-56) captures length once and removes from the
+  last index backwards, correctly clearing swap-and-pop state; _add/_remove
+  (L280-333) maintain the position invariant. No spurious safe-caller.
+D5. Permissionless direct calls to onInstall / transferOwnership /
+  addSafeSender / removeSafeSender (K1Validator.sol L77/L100/L107/L112, all
+  keyed by msg.sender) let an attacker set a victim account's owner or safe
+  senders. KILLED: the key is msg.sender, so a direct caller affects only
+  their own key; affecting an account's key requires the account itself to
+  call (owner-validated execute) or, for 7702 accounts, the EOA itself (the
+  owner key — no incremental privilege, H-B1 reasoning, EX-136).
+  Counter-evidence: K1Validator.sol L80/L102/L108/L113 (msg.sender keys).
+D6. Dual recovery (raw hash OR eth-signed-message hash, K1Validator.sol
+  L258-264) enables personal_sign replay into userOp validation. KILLED:
+  by-design dual acceptance, preserved verbatim in the successor's
+  EcdsaHelperLib (STX-DIFF §8, "plain-ECDSA core preserved"); the trigger
+  requires the owner to sign the exact attacker-chosen 32-byte hash, against
+  which a direct signature of the userOp is an equivalent attack — no
+  distinct violated invariant, no incremental attacker gain.
+D7. validateUserOp accepts high-s (malleated) signatures: no low-s enforcement
+  on the 4337 path (low-s is enforced only on the 1271 path, by the base).
+  KILLED: malleation requires knowledge of a valid signature, validates the
+  SAME userOp (same execution), and the EntryPoint nonce prevents replay; no
+  attacker gain, no violated invariant. The 1271 high-s revert is tested
+  intended behaviour (TestK1Validator
+  test_IsValidSignatureWithSender_Inverted_S_Value_Fails expects revert).
+D8. ERC-6492 unwrap edge cases: short/empty/crafted signatures confusing
+  _erc1271UnwrapSignature (base assembly) into false-valid. KILLED: assembly
+  calldataload beyond calldata returns zero; a crafted huge length still
+  fails tryRecoverCalldata's 64/65-byte switch (ECDSA.sol L202-233) -> 0 !=
+  owner -> false; fail-closed to 0xffffffff via Nexus.sol L386-390 try/catch.
+D9. checkERC7739Support unbounded validator iteration = gas DoS (Nexus.sol
+  L486-499, one external call per installed validator, no cap). KILLED on
+  merits (distinct from EX-075's uninstall-bricking loop): the list is
+  owner-controlled — no attacker principal can grow it; the path is a
+  view/probe, and normal validation is unaffected. Self-DoS only, no
+  reachable business impact. Counter-evidence: _installValidator is
+  owner-gated (ModuleManager.sol L215-230, onlyEntryPointOrSelf path).
+D10. A validator returning a bogus 0x7739-prefixed version (e.g. 0x7739FFFF)
+  is accepted by _get7739Version's bytes2-only check (Nexus.sol L502).
+  KILLED: validators are owner-installed and trusted; the effect is confined
+  to the account's own detection result; no cross-account impact, no bypass
+  (detection codes never equal the ERC-1271 success magic).
+D11. The 1271 pre-validation hook is bypassed on the detection path
+  (Nexus.sol L376-380 detection runs before L386 _withPreValidationHook;
+  checkERC7739Support never consults the hook). KILLED: detection returns
+  only public support-version info; the hook has no detection role; and
+  checkERC7739Support is public view, directly callable by anyone — no
+  incremental leak or bypass from the ordering.
+D12. EIP-712 domain mismatch breaks nested ERC-7739 validation: Nexus domain
+  ("Nexus","1.2.1") vs the base's rebuilt separator. KILLED (verified
+  consistent): Solady eip712Domain() returns live chainId, verifyingContract
+  = address(this) (proxy in delegatecall context), name/version from
+  Nexus.sol L573-576, salt 0, no extensions; the base's
+  _hashTypedDataForAccount rebuilds with the SAME domain typehash
+  (0x8b73c3c6...) and no salt; Solady's cached separator is invalidated
+  whenever address() or chainId differs from construction (EIP712.sol
+  _cachedDomainSeparatorInvalidated), so proxies rebuild correctly.
+  Counter-evidence: EIP712.sol eip712Domain/_buildDomainSeparator blocks;
+  Nexus.sol L573-576; ERC7739Validator _hashTypedDataForAccount.
+D13. getOwner() fallback lets UNINITIALIZED proxy accounts validate
+  (K1Validator.sol L191-194: owner==0 -> account address). KILLED: for proxy
+  accounts the fallback is the proxy address, which holds no key; malformed
+  signatures recover 0 != proxy. For 7702 accounts the fallback is the EOA
+  itself — intended (Zenith L-1 exemption, EX-049). No bypass in either case.
+D14. Short-signature s-check reads garbage (base calldataload at offset 0x20
+  beyond a <32-byte signature). KILLED: EVM zero-pads out-of-bounds calldata
+  reads (s=0, passes the check); the nested flow then falls back to the
+  PersonalSign workflow (c==0 branch) and tryRecover returns 0 -> false.
+  Fail-closed. (The Nexus-level short-signature PANIC is separately deduped,
+  K-D3 — different mechanism: Solidity slicing, not the base's assembly.)
+D15. A reverting/misconfigured registry bricks 7739 validation via
+  _checkRegistry. KILLED (verified absent): grep proves _checkRegistry /
+  withRegistry never execute on any validation or 7739 path (only installs +
+  executeFromExecutor). No interaction exists to exploit. The ABSENCE itself
+  is the claimed gap (K-D11).
+D16. K1 metadata defects (name/version/isModuleType). KILLED: isModuleType
+  returns true only for MODULE_TYPE_VALIDATOR (K1Validator.sol L215-217);
+  name "K1Validator" / version "1.2.0" sane; no defect found.
+D17. onUninstall fails to clear owner / safe senders (K1Validator.sol L92-96).
+  KILLED: `delete smartAccountOwners[msg.sender]` + `_safeSenders.removeAll`
+  both present; removeAll correctness verified in D4. Reinstall starts clean
+  (ModuleAlreadyInitialized guard, L79, keys off the deleted mapping).
+D18. _fillSafeSenders slicing out-of-bounds (K1Validator.sol L267-272).
+  KILLED: require(data.length % 20 == 0, InvalidSafeSendersLength) at L268
+  bounds every data[20*i:20*(i+1)] slice; loop count = length/20 exactly.
+  Stricter than the upstream sample (which silently drops a trailing partial
+  chunk). No defect.
+
+Kill counts: dedup 17, self-disproved 18. Total kills 35. Candidates 0.
+
+================================================================================
+8. LINEAGE TAGS PER CANDIDATE + NEEDS-POC
+================================================================================
+Per-candidate lineage: N/A — zero candidates.
+Lineage notes for killed leads (from STX-DIFF.md, manual-review grade per the
+documented cast caveat):
+- K-D10 (contract owners): TEAM-CHANGED T2 — successor adds EOA-only guard.
+- K-D1/K-D2/K-D13/K-D16 + D1/D6/D7 (K1 validation core): SUBSTANCE-CHANGED
+  dispatch (T3) with plain-ECDSA dual-recover core PRESERVED — kills rest on
+  dedup/merits, not lineage.
+- K-D4/K-D6/K-D7/K-D8 + D9/D10/D11 (7739 detection): logic UNCHANGED in 1.3.3,
+  visibility only (public -> internal, T4) — kills rest on dedup/merits.
+- K-D3/K-D5 (isValidSignature slicing / default routing): UNCHANGED in 1.3.3
+  per STX-DIFF §1/§2 — kills rest on dedup.
+- K-D11/K-D12 (registry): NO COUNTERPART — mechanism removed (T1, STX §7).
+NEEDS-POC: none. No candidate's verdict depends on execution. No Foundry test
+sketches are included because there is nothing to prove; the two statically
+complete traces (D1, D8) were killed on scope/impact, not on missing execution.
+No unexecuted trace is presented as an executed repro anywhere in this pass.
+
+================================================================================
+9. UNRESOLVED CROSS-REFERENCES
+================================================================================
+1. #303 / EX-080 (private report, contents unknown): unretireable residual
+   risk — no public dedup can rule out collision with it. Applies to this
+   pass as to all others; zero candidates means zero exposure, but the caveat
+   stands for any future claim on this surface.
+2. Issue comments + issues filed after the 2026-11-14 03:19 UTC re-sweep:
+   not covered (see §5). Fresh re-sweep required before any filing.
+3. External session/policy modules (other Biconomy repos): untraced, as in
+   Options 1-2. The oracle-confusion root cause (EX-073/EX-074) already claims
+   the session-key escape family; no new in-repo principal was found that
+   would reopen it. validateSignatureWithData's external consumers (session
+   validators) were treated per EX-077's own impact note (no in-scope
+   production caller passes a zero owner).
+4. STX-DIFF assembly/selector-equivalence claims: manual-review grade only
+   (cast not installed). No kill in this pass depends on an equivalence claim;
+   lineage tags above cite structural verdicts only (removal, guard addition,
+   visibility change), which REPORT-core.md records as spot-verified.
+
+================================================================================
+10. COVERAGE STATEMENT
+================================================================================
+New in this pass: K1Validator.sol read in full for the first time as a
+reporting target (280 lines; evidence-only in Options 1-2), Nexus.sol 7739
+gap regions (45 lines), RegistryAdapter.sol gap re-check (53 lines), plus
+the pinned ERC-7739 base, Solady ECDSA/EIP712 evidence, the safe-sender set
+library, and the upstream sample comparison. Relied on from Option 2: the
+rest of Nexus.sol (533 lines) and ModuleManager.sol, read in full there and
+re-read here only as K1/7739 consumers. Single pass; gap-check only; not a
+from-scratch audit of the 7739 surface and not a clean bill of health.
+Every suspicious pattern died by dedup (17) or checked counter-evidence (18).
+Zero candidates is the honest result for this heavily-audited, heavily-filed
+surface — not a coverage failure: the genuinely new surface (K1Validator)
+was read line by line, and its sharpest leads (zero-owner, 64-byte, safe
+senders, domain consistency) were each traced to a checked kill.

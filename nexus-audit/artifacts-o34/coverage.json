@@ -1,0 +1,63 @@
+{
+  "domains": {
+    "O3-factories-bootstrap-proxy": {
+      "candidates": 0,
+      "dedupKills": 28,
+      "evidenceReads": [
+        "contracts/lib/ProxyLib.sol",
+        "contracts/Nexus.sol (init paths)",
+        "contracts/lib/local/LibPREP.sol (binding structure)",
+        "contracts/modules/validators/K1Validator.sol (zero-owner check)",
+        "sentinellist pinned source (via poc/node_modules)",
+        "test StaleInitFlagPoC (context)"
+      ],
+      "filesReadFull": [
+        "contracts/utils/NexusBootstrap.sol",
+        "contracts/lib/Initializable.sol",
+        "contracts/utils/NexusProxy.sol",
+        "contracts/factory/NexusAccountFactory.sol",
+        "contracts/factory/BiconomyMetaFactory.sol",
+        "contracts/factory/K1ValidatorFactory.sol",
+        "contracts/lib/BootstrapLib.sol"
+      ],
+      "filesSkipped": [],
+      "linesRead": 849,
+      "meritsKills": 28
+    },
+    "O4-k1validator-7739-gapcheck": {
+      "candidates": 0,
+      "dedupKills": 17,
+      "evidenceReads": [
+        "pinned ERC-7739 base + upstream sample comparison",
+        "Solady ECDSA/EIP712",
+        "contracts/lib/EnumerableSet4337.sol",
+        "tests (context only)"
+      ],
+      "filesReadFull": [
+        "contracts/modules/validators/K1Validator.sol"
+      ],
+      "filesSkipped": [],
+      "gapRegions": [
+        "contracts/Nexus.sol isValidSignature L374-390",
+        "contracts/Nexus.sol checkERC7739Support L486-499",
+        "contracts/Nexus.sol _get7739Version L500-506",
+        "contracts/Nexus.sol setRegistry L363-366",
+        "contracts/Nexus.sol _domainNameAndVersion L573-576",
+        "contracts/base/RegistryAdapter.sol (53 lines, gap re-check)"
+      ],
+      "linesReadNew": 280,
+      "meritsKills": 18,
+      "reliedOnFromOption2": [
+        "remainder of contracts/Nexus.sol (533 lines)",
+        "contracts/base/ModuleManager.sol"
+      ]
+    }
+  },
+  "run": "nexus-options34-2026-11-14",
+  "totals": {
+    "candidates": 0,
+    "dedupKills": 45,
+    "kills": 91,
+    "meritsKills": 46
+  }
+}

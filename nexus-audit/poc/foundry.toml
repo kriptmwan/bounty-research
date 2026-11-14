@@ -1,0 +1,32 @@
+# Scratch Foundry harness for the Nexus audit (bcnmy/nexus main HEAD 9007ba1).
+# Mirrors the repo's foundry.toml [profile.default] settings. The repo itself is
+# read-only; its contracts/ are pulled in via the contracts/ remapping below.
+
+[profile.default]
+  auto_detect_solc = false
+  block_timestamp = 1_680_220_800 # March 31, 2023 at 00:00 GMT (same as repo)
+  bytecode_hash = "none"
+  evm_version = "prague"
+  fuzz = { runs = 1_000 }
+  via-ir = false
+  optimizer = true
+  optimizer_runs = 777
+  out = "out"
+  solc = "0.8.27"
+  src = "src"
+  test = "test"
+  cache_path = "cache_forge"
+  libs = ["node_modules", "lib"]
+
+[fmt]
+  bracket_spacing = true
+  int_types = "long"
+  line_length = 160
+  multiline_func_header = "all"
+  number_underscore = "thousands"
+  quote_style = "double"
+  tab_width = 4
+  wrap_comments = true
+
+[lint]
+  lint_on_build = false

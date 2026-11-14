@@ -1,0 +1,31 @@
+{
+  "runId": "frax-fxb-2026-11-14",
+  "mode": "single-pass",
+  "target": {
+    "repo": "FraxFinance/frax-bonds",
+    "path": "/home/hatch/workspace/frax-audit/repos/frax-bonds",
+    "commit": "4ef235e68c8277ad3dbc676762fffe663c9896fc",
+    "chain": "Ethereum mainnet (chain 1) only",
+    "liveCodeNote": "Live mainnet deployments run v1-generation code, NOT repo HEAD. Hunters hunted Sourcify exact_match v1 sources (~/workspace/frax-audit/work/v1-live/). HEAD v2 code has no live mainnet deployment."
+  },
+  "filesScanned": 15,
+  "filesSkipped": 0,
+  "counts": {"critical": 0, "high": 0, "medium": 0, "low": 0, "nonQualifying": 88},
+  "confirmed": [],
+  "dismissed": [],
+  "manualReview": [],
+  "unreviewed": [],
+  "domains": {
+    "A": {"findings": 0, "nonQualifying": 23, "skeptic": "skeptic-A.json", "referee": "referee-A.json"},
+    "B": {"findings": 0, "nonQualifying": 25, "skeptic": "skeptic-B.json", "referee": "referee-B.json"},
+    "C": {"findings": 0, "nonQualifying": 25, "skeptic": "skeptic-C.json", "referee": "referee-C.json"},
+    "D": {"findings": 0, "nonQualifying": 15, "skeptic": "skeptic-D.json", "referee": "referee-D.json"}
+  },
+  "skepticRefereeNote": "All four domains returned zero Hunter findings, so Skeptic and Referee artifacts are preserved empty ([]) per the pipeline contract. No finding existed to challenge or adjudicate; no 7-Question Gate was run; no PoC was built beyond the Phase 0D fork smoke test.",
+  "failedCoverage": [],
+  "pendingCoverage": [
+    "Fraxtal deployments (out of scope for this audit; separate task): FXB_LFRAX impl, LFRAX impl, Fraxtal factory v1.1.0 — Sourcify-unverified",
+    "Direct-deployed contracts bypassing factories (eth_getLogs unavailable from free RPCs; owed block-explorer checks in ONCHAIN-GROUNDWORK-FXB.md and CORRESPONDENCE-FXB.md)"
+  ],
+  "verificationFailures": []
+}

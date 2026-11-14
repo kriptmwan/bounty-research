@@ -1,0 +1,14 @@
+{
+  "strategy": "single-pass, domain hunters in triage risk order; impact-gated (only theft-of-funds / permanent-freezing on live deployments count as findings)",
+  "target": "FraxFinance/fraxlend @ 2bed49d4dcc6702d92dede825c3424893517d841",
+  "fileBudget": 39,
+  "scanOrder": ["FraxlendPairCore.sol", "FraxlendPair.sol", "libraries/VaultAccount.sol", "VariableInterestRate.sol", "DualOracleChainlinkUniV3.sol", "FraxlendPairDeployer.sol", "FraxlendPairAccessControl.sol", "FraxlendPairRegistry.sol", "LinearInterestRate.sol", "Timelock2Step.sol", "FraxlendWhitelist.sol"],
+  "riskMap": {
+    "critical": ["src/contracts/FraxlendPairCore.sol", "src/contracts/FraxlendPair.sol", "src/contracts/libraries/VaultAccount.sol"],
+    "high": ["src/contracts/VariableInterestRate.sol", "src/contracts/oracles/dual-oracles/DualOracleChainlinkUniV3.sol", "src/contracts/FraxlendPairDeployer.sol", "src/contracts/FraxlendPairAccessControl.sol", "sourcify rate VariableInterestRateSettable", "sourcify oracle SfrxEthUsdTripleOracle"],
+    "medium": ["src/contracts/FraxlendPairRegistry.sol", "src/contracts/LinearInterestRate.sol", "src/contracts/Timelock2Step.sol", "src/contracts/FraxlendWhitelist.sol", "src/contracts/FraxlendPairConstants.sol", "src/contracts/libraries/SafeERC20.sol"],
+    "contextOnly": ["src/contracts/interfaces/*", "test/*", "script/*", "src/liquidatorBot/*"]
+  },
+  "domains": ["A: pair core accounting/interest/solvency", "B: pair ERC4626/admin/pauses", "C: rate engine + oracles (incl. deployed-only contracts)", "D: deployer/registry/whitelist/timelock"],
+  "needsLoop": false
+}

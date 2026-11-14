@@ -1,0 +1,50 @@
+{
+  "checks": [
+    {
+      "command": "git -C repos/nexus rev-parse HEAD && git -C repos/nexus status --porcelain",
+      "detail": "HEAD 9007ba1352e606575e32456512e25c41a9bf449c, tree clean",
+      "name": "HEAD + clean tree at dispatch",
+      "outcome": "pass"
+    },
+    {
+      "command": "git -C repos/nexus rev-parse HEAD && git -C repos/nexus status --porcelain",
+      "detail": "HEAD unchanged, tree clean; repo never modified during the run",
+      "name": "HEAD + clean tree before concluding",
+      "outcome": "pass"
+    },
+    {
+      "command": "jq empty hunter-findings-O3.json hunter-findings-O4.json",
+      "detail": "Both parse; both are empty arrays",
+      "name": "Hunter artifact JSON validation",
+      "outcome": "pass"
+    },
+    {
+      "command": "node + ethers v6 keccak (read-only, no chain interaction)",
+      "detail": "Selector 0xaed59595 MATCH; INIT_SLOT 0x90b772c2...829300 MATCH",
+      "name": "NotInitializable selector + INIT_SLOT derivation (coordinator re-computation)",
+      "outcome": "pass"
+    },
+    {
+      "command": "read Nexus.sol:110-135, 300-360; grep tstore/tload/setInitializable repo-wide",
+      "detail": "4 paths to _initializeAccount confirmed gated as the O3 completeness table states; single flag-set site (NexusProxy:13); no other transient-storage use repo-wide",
+      "name": "Init-path gating re-reads (coordinator)",
+      "outcome": "pass"
+    },
+    {
+      "command": "read K1Validator.sol:147-167, 191-201, 228-266",
+      "detail": "getOwner zero-fallback confirmed; validateSignatureWithData caller-supplied-owner shape confirmed as the already-claimed #307 cluster",
+      "name": "K1Validator owner-fallback re-read (coordinator)",
+      "outcome": "pass"
+    },
+    {
+      "command": "not run this pass",
+      "detail": "No POCs required with zero survivors. Harness at ~/workspace/nexus-audit/poc/ was last re-verified green in the Option 2 run (2026-11-14 10:00 WIB): forge 1.5.1, solc 0.8.27, Prague, 2/2 smoke tests pass. Not re-run here to avoid straining the shared VM while a concurrent audit runs.",
+      "name": "Foundry build/test of pinned HEAD",
+      "outcome": "not-run"
+    }
+  ],
+  "evidenceLinks": [],
+  "repoRoot": "~/workspace/nexus-audit/repos/nexus",
+  "run": "nexus-options34-2026-11-14",
+  "summary": "All executed checks pass. No finding required execution; no code trace is presented as an executed repro."
+}

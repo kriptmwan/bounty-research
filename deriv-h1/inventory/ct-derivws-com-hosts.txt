@@ -1,0 +1,3 @@
+derivws.com
+api.derivws.com
+staging-api.derivws.com

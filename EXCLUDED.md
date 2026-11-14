@@ -1,0 +1,202 @@
+# Excluded material — manifest
+
+Everything below was deliberately left out of this public archive. Reasons are generic on purpose: no finding details, addresses, or emails appear in this file.
+
+Directory entries cover every file beneath them.
+
+## Excluded directories and groups
+
+- `*/repos/ (every *-audit directory)` — vendored/build output (full clones of target protocol repos)
+- `plether-audit/repo/` — vendored/build output (full clone of the target repo)
+- `dexe-audit/target/` — vendored/build output (full clone of the target repo)
+- `xe-desk-audit/desk/ xe-desk-audit/desk-new/ xe-desk-audit/dao/ xe-desk-audit/xe/ xe-desk-audit/sdk/` — vendored/build output (full clones of the target repos)
+- `frax-audit/repos/ frax-audit/work/ frax-audit/sourcify/ frax-audit/sourcify-hopv2-oft/ frax-audit/sourcify-fxb/` — vendored/build output (target clones, work data, and Sourcify source dumps)
+- `*/node_modules/ */.git/ */out/ */dist/ */build/ */coverage/ */cache/ */.forge/ */venv*/ */__pycache__/ */lib/ *.pyc` — vendored/build output (dependencies, build output, caches, embedded VCS state)
+- `curve-audit/findings/ dexe-audit/findings/ plether-audit/findings/ vercel-audit/findings/ relay-audit/findings/ safe-audit/findings/` — live undisclosed finding (finding write-ups)
+- `curve-audit/submissions/ dexe-audit/submissions/ 1inch-audit/submissions/ vercel-audit/submissions/ relay-audit/submissions/` — live undisclosed finding (draft reports and evidence packs)
+- `hyperliquid-audit/poc-ct2/ dexe-audit/poc/ 1inch-audit/poc/ vercel-audit/poc-bb2/ vercel-audit/poc-bb3/ relay-audit/poc/` — live undisclosed finding (proof-of-concept harnesses for withheld findings)
+- `frax-audit/poc-hop-d1/ frax-audit/poc-smoke/ frax-audit/poc-smoke-hop/ frax-audit/poc-smoke-fxb/ frax-audit/filing/ frax-audit/artifacts-hopv2-oft/` — live undisclosed finding (proof harnesses, filing material, and audit artifacts for a withheld finding)
+- `xe-desk-audit/drafts-resweep/` — private report (drafts for privately filed reports)
+- `relay-audit/evidence/ safe-audit/evidence/` — live undisclosed finding (finding mechanism evidence)
+- `dexe-audit/evidence/audits/ 1inch-audit/evidence/audits/ hackenproof-aa-audit/evidence/audits/ vercel-audit/evidence/osv-*/` — vendored/build output (third-party audit reports and vulnerability-database data)
+- `plether-audit/artifacts/` — vendored/build output (compiler build output)
+- `bugcrowd/runbooks/ bugcrowd/brief-survey-2026-11-13.md bugcrowd/etoro-known-issues-dedup-2026-11-14.md` — program-confidential (program brief reproductions and known-issue lists)
+- `deriv-h1/logs/` — credentials/PII (request logs)
+- `nexus-audit/evidence-stx/` — vendored/build output (derived source diffs)
+- `splits-audit/harness-2nd-pass/` — vendored/build output (duplicate test-harness scaffolding (same tests kept under poc-2nd-pass/))
+- `sweep-2026-11-14-evening.md` — withheld section (contains a withheld section; excluded entirely)
+
+## Excluded individual files
+
+Paths are relative to the source workspace root.
+
+- `1inch-audit/PRECHECK.md` — live undisclosed finding
+- `1inch-audit/REPORT.md` — live undisclosed finding
+- `1inch-audit/hunter-findings.json` — live undisclosed finding
+- `1inch-audit/recon.json` — live undisclosed finding
+- `1inch-audit/referee.json` — live undisclosed finding
+- `1inch-audit/skeptic.json` — live undisclosed finding
+- `1inch-audit/verification-report.json` — live undisclosed finding
+- `bounty-sweep-2026-11-14.md` — live undisclosed finding
+- `bugcrowd/shortlist-status-2026-11-13.md` — credentials/PII
+- `curve-audit/REPORT-llamalend-v2.md` — live undisclosed finding
+- `curve-audit/evidence/adm-4-invariant-probe.out` — live undisclosed finding
+- `curve-audit/evidence/adm-4-invariant-probe.py` — live undisclosed finding
+- `curve-audit/evidence/adm-4-verdict-note.md` — live undisclosed finding
+- `curve-audit/evidence/poc-adm-2.out` — live undisclosed finding
+- `curve-audit/evidence/poc-adm-2.py` — live undisclosed finding
+- `curve-audit/evidence/poc-adm-3.out` — live undisclosed finding
+- `curve-audit/evidence/poc-adm-3.py` — live undisclosed finding
+- `curve-audit/evidence/poc-mp-3-mechanism.out` — live undisclosed finding
+- `curve-audit/evidence/poc-mp-3-mechanism.py` — live undisclosed finding
+- `curve-audit/notes/adminview-coverage.md` — live undisclosed finding
+- `curve-audit/notes/adminview-hunter-findings.json` — live undisclosed finding
+- `curve-audit/notes/mpolicies-coverage.md` — live undisclosed finding
+- `curve-audit/notes/mpolicies-hunter-findings.json` — live undisclosed finding
+- `curve-audit/notes/oracles-coverage.md` — live undisclosed finding
+- `curve-audit/notes/oracles-hunter-findings.json` — live undisclosed finding
+- `curve-audit/notes/referee.json` — live undisclosed finding
+- `curve-audit/notes/scan-report.json` — live undisclosed finding
+- `curve-audit/notes/skeptic-adminview.json` — live undisclosed finding
+- `curve-audit/notes/skeptic-mpolicies.json` — live undisclosed finding
+- `curve-audit/notes/skeptic-oracles.json` — live undisclosed finding
+- `curve-audit/notes/verification-report.json` — live undisclosed finding
+- `deriv-h1/RECON-PLAN.md` — credentials/PII
+- `deriv-h1/manual-test-guide.md` — credentials/PII
+- `deriv-h1/phase3-surface-map-2026-11-14.md` — credentials/PII
+- `deriv-h1/ws-verify/package-lock.json` — vendored/build output
+- `dexe-audit/REPORT.md` — live undisclosed finding
+- `dexe-audit/evidence/poc-output.txt` — live undisclosed finding
+- `dexe-audit/hunter-findings.json` — live undisclosed finding
+- `dexe-audit/referee.json` — live undisclosed finding
+- `dexe-audit/scan-report.json` — live undisclosed finding
+- `dexe-audit/skeptic.json` — live undisclosed finding
+- `dexe-audit/triage.json` — live undisclosed finding
+- `dexe-audit/verification-report.json` — live undisclosed finding
+- `frax-audit/REPORT-hopv2-oft.md` — live undisclosed finding
+- `frax-audit/RVH-FOLLOWUP.md` — live undisclosed finding
+- `hyperliquid-audit/CONTINUATION.md` — live undisclosed finding
+- `hyperliquid-audit/LEDGER.md` — live undisclosed finding
+- `hyperliquid-audit/REPORT.md` — live undisclosed finding
+- `hyperliquid-audit/evidence/bridge2-deployed-sourcify.sol` — vendored/build output
+- `hyperliquid-audit/evidence/sourcify-bridge2-metadata.json` — vendored/build output
+- `hyperliquid-audit/notes/contracts-coverage.md` — live undisclosed finding
+- `hyperliquid-audit/notes/contracts-hunter-findings.json` — live undisclosed finding
+- `hyperliquid-audit/notes/infra-hunter-findings.json` — live undisclosed finding
+- `hyperliquid-audit/notes/python-sdk-coverage.md` — live undisclosed finding
+- `hyperliquid-audit/notes/python-sdk-hunter-findings.json` — live undisclosed finding
+- `hyperliquid-audit/notes/referee.json` — live undisclosed finding
+- `hyperliquid-audit/notes/rust-sdk-hunter-findings.json` — live undisclosed finding
+- `hyperliquid-audit/notes/scan-report.json` — live undisclosed finding
+- `hyperliquid-audit/notes/skeptic-contracts-infra.json` — live undisclosed finding
+- `hyperliquid-audit/notes/skeptic-sdks.json` — live undisclosed finding
+- `hyperliquid-audit/notes/verification-report.json` — live undisclosed finding
+- `hyperliquid-audit/scratch/py_hunter_checks.py` — live undisclosed finding
+- `hyperliquid-audit/scratch/skeptic_py4_check.py` — live undisclosed finding
+- `idor-prep/IDOR-PREP.md` — credentials/PII
+- `nexus-audit/poc/cache_forge/solidity-files-cache.json` — vendored/build output
+- `nexus-audit/poc/package-lock.json` — vendored/build output
+- `plether-audit/REPORT.md` — live undisclosed finding
+- `plether-audit/exclusions/plether-ai-audit-report-2026-10-26.txt` — vendored/build output
+- `plether-audit/exclusions/plether-collaborative-audit-report-2026-05-12.txt` — vendored/build output
+- `plether-audit/exclusions/plether-pre-audit-report.txt` — vendored/build output
+- `plether-audit/exclusions/report-cli-cantina-plether-0126.txt` — vendored/build output
+- `plether-audit/exclusions/scan-plether-fi-plether-core-d4541b49.md` — vendored/build output
+- `plether-audit/ledger.md` — live undisclosed finding
+- `relay-audit/REPORT-periphery.md` — live undisclosed finding
+- `relay-audit/artifacts/coverage.json` — live undisclosed finding
+- `relay-audit/artifacts/hunter-findings-H1.json` — live undisclosed finding
+- `relay-audit/artifacts/hunter-findings-H3.json` — live undisclosed finding
+- `relay-audit/artifacts/hunter-findings.json` — live undisclosed finding
+- `relay-audit/artifacts/referee.json` — live undisclosed finding
+- `relay-audit/artifacts/scan-report.json` — live undisclosed finding
+- `relay-audit/artifacts/skeptic.json` — live undisclosed finding
+- `relay-audit/artifacts/validated-findings.json` — live undisclosed finding
+- `relay-audit/artifacts/verification-report.json` — live undisclosed finding
+- `relay-audit/notes/hunter-merge-note.md` — live undisclosed finding
+- `relay-audit/work/build-default.log` — vendored/build output
+- `relay-audit/work/build-london.log` — vendored/build output
+- `relay-audit/work/build-runs200.log` — vendored/build output
+- `safe-audit/DEPLOYED-BYTECODE-VERIFICATION.md` — live undisclosed finding
+- `safe-audit/LEDGER.md` — live undisclosed finding
+- `safe-audit/REPORT.md` — live undisclosed finding
+- `safe-audit/SUBMISSION-DRAFT.md` — credentials/PII
+- `safe-audit/exclusions/ackee-social-recovery.txt` — vendored/build output
+- `safe-audit/exclusions/certora-safenet-staking.txt` — vendored/build output
+- `safe-audit/hunter-findings-recovery.json` — live undisclosed finding
+- `safe-audit/hunter-findings.json` — live undisclosed finding
+- `safe-audit/referee.json` — live undisclosed finding
+- `safe-audit/scan-report.json` — live undisclosed finding
+- `safe-audit/skeptic.json` — live undisclosed finding
+- `safe-audit/verification-report.json` — live undisclosed finding
+- `vercel-audit/FILING-ROUTE-AND-DEDUP.md` — live undisclosed finding
+- `vercel-audit/REPORT.md` — live undisclosed finding
+- `vercel-audit/artifacts/dedup-boundary.md` — live undisclosed finding
+- `vercel-audit/artifacts/hunter-coverage-B.json` — live undisclosed finding
+- `vercel-audit/artifacts/hunter-findings-A.json` — live undisclosed finding
+- `vercel-audit/artifacts/hunter-findings-B.json` — live undisclosed finding
+- `vercel-audit/artifacts/referee.json` — live undisclosed finding
+- `vercel-audit/artifacts/scan-report.json` — live undisclosed finding
+- `vercel-audit/artifacts/skeptic-A.json` — live undisclosed finding
+- `vercel-audit/artifacts/skeptic-B.json` — live undisclosed finding
+- `vercel-audit/artifacts/verification-report.json` — live undisclosed finding
+- `vercel-audit/clone-log.txt` — vendored/build output
+- `vercel-audit/evidence/ba1-schema-parse-output.txt` — live undisclosed finding
+- `vercel-audit/evidence/ba1-schema-parse.mjs` — live undisclosed finding
+- `vercel-audit/evidence/bb4-string-coercion-output.txt` — live undisclosed finding
+- `vercel-audit/evidence/bb4-string-coercion.mjs` — live undisclosed finding
+- `vercel-audit/evidence/bb5-rawdecrypt-noble-output.txt` — live undisclosed finding
+- `vercel-audit/evidence/bb5-rawdecrypt-noble.mjs` — live undisclosed finding
+- `vercel-audit/evidence/dependency-verification-notes.md` — live undisclosed finding
+- `vercel-audit/evidence/skeptic-B-bb1-write-sites-grep.txt` — live undisclosed finding
+- `vercel-audit/evidence/skeptic-B-bb3-constraints-transactions-grep.txt` — live undisclosed finding
+- `vercel-audit/inventory.txt` — vendored/build output
+- `vercel-audit/inventory2.txt` — vendored/build output
+- `xe-desk-audit/REPORT-resweep-2026-11-14.md` — private report
+- `xe-desk-audit/build-filing-texts.py` — credentials/PII
+- `xe-desk-audit/evidence/h1-repro/h1-control-run.log` — live undisclosed finding
+- `xe-desk-audit/evidence/h1-repro/h1-repro.mjs` — live undisclosed finding
+- `xe-desk-audit/evidence/h1-repro/h1-stall-run.log` — live undisclosed finding
+- `xe-desk-audit/evidence/h1-repro/h2-repro.mjs` — live undisclosed finding
+- `xe-desk-audit/evidence/h1-repro/h2-repro.out` — live undisclosed finding
+- `xe-desk-audit/evidence/h1-repro/package-lock.json` — vendored/build output
+- `xe-desk-audit/evidence/h1-repro/package.json` — live undisclosed finding
+- `xe-desk-audit/evidence/h1-repro/tsconfig.json` — live undisclosed finding
+- `xe-desk-audit/filing-text-h1-2026-11-13.md` — private report
+- `xe-desk-audit/filing-text-h2-2026-11-13.md` — private report
+- `xe-desk-audit/filing-text-s1-2026-11-12.md` — credentials/PII
+- `xe-desk-audit/filing-texts-2026-11-12.md` — credentials/PII
+- `xe-desk-audit/filing-texts-filled-2026-11-12.md` — credentials/PII
+- `xe-desk-audit/h1-dedup-2026-11-12.md` — live undisclosed finding
+- `xe-desk-audit/h1-h2-repro-2026-11-13.md` — live undisclosed finding
+- `xe-desk-audit/h1-repro-2026-11-13.md` — live undisclosed finding
+- `xe-desk-audit/report-continued-2026-11-12.md` — live undisclosed finding
+- `xe-desk-audit/resweep-2026-11-14/artifacts-dao/coverage.txt` — private report
+- `xe-desk-audit/resweep-2026-11-14/artifacts-dao/hunter-findings.json` — private report
+- `xe-desk-audit/resweep-2026-11-14/artifacts-dao/skeptic.json` — private report
+- `xe-desk-audit/resweep-2026-11-14/artifacts-desk/coverage.txt` — private report
+- `xe-desk-audit/resweep-2026-11-14/artifacts-desk/hunter-findings.json` — private report
+- `xe-desk-audit/resweep-2026-11-14/artifacts-desk/skeptic.json` — private report
+- `xe-desk-audit/resweep-2026-11-14/artifacts-node/coverage.txt` — private report
+- `xe-desk-audit/resweep-2026-11-14/artifacts-node/hunter-findings.json` — private report
+- `xe-desk-audit/resweep-2026-11-14/artifacts-node/referee.json` — private report
+- `xe-desk-audit/resweep-2026-11-14/artifacts-node/skeptic.json` — private report
+- `xe-desk-audit/resweep-2026-11-14/artifacts-sdk/coverage.txt` — private report
+- `xe-desk-audit/resweep-2026-11-14/artifacts-sdk/hunter-findings.json` — private report
+- `xe-desk-audit/resweep-2026-11-14/artifacts-sdk/referee.json` — private report
+- `xe-desk-audit/resweep-2026-11-14/artifacts-sdk/skeptic.json` — private report
+- `xe-desk-audit/resweep-2026-11-14/evidence/l16-budget-realistic.mjs` — private report
+- `xe-desk-audit/resweep-2026-11-14/evidence/l3-child.cjs` — private report
+- `xe-desk-audit/resweep-2026-11-14/evidence/l3-sftp.cjs` — private report
+- `xe-desk-audit/resweep-2026-11-14/run-ledger.md` — private report
+- `xe-desk-audit/sdk-report-2026-11-12.md` — live undisclosed finding
+- `yeswehack/SCOPE-tencent.md` — credentials/PII
+- `yeswehack/programs-survey-2026-11-14.md` — credentials/PII
+
+## Counts
+
+- credentials/PII: 12 individual files
+- live undisclosed finding: 110 individual files
+- private report: 21 individual files
+- vendored/build output: 19 individual files
+- directory/group entries: 19

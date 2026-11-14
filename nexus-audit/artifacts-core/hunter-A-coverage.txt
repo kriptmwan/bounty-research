@@ -1,0 +1,116 @@
+HUNTER DOMAIN A COVERAGE — Biconomy Nexus Option 2 (validation + execution entry points)
+Repo: bcnmy/nexus clone at ~/workspace/nexus-audit/repos/nexus
+Pinned HEAD verified: 9007ba1352e606575e32456512e25c41a9bf449c, tree clean at dispatch AND at conclusion.
+Mode: read-only. No builds, no forge runs, no repo edits, no contact, no filing. (Only pure computation: `cast keccak` for two typehash constants.)
+Result: ZERO candidates. hunter-findings-A.json = [].
+
+MANDATORY DEDUP-FIRST READING (all read in full BEFORE claiming anything):
+- ~/workspace/nexus-audit/SCOPE.md §5 (esp. §5b tracker issues #300-#321) — read.
+- ~/workspace/nexus-audit/exclusions/EXCLUSION_LIST.md — read IN FULL, all 1066 lines / 161 entries (EX-001..EX-121 + EX-G01..G07 + EX-I01..I33), incl. §F stx-contracts lineage diff and §H residual risks.
+- ~/workspace/nexus-audit/REPORT-delta.md (Option 1) — read. H-B1 self-call re-init DISPROVED; zero-incremental-privilege argument adopted as the standing bar.
+- ~/workspace/nexus-audit/exclusions/NEW-ISSUES-2026-11-14.md — read IN FULL (dedup update, 14 new open issues #325-#338). Treated as exclusions under the same root-cause rule.
+- ~/workspace/nexus-audit/STX-DIFF.md — ABSENT at read time (verified: no such file). Proceeded without it; used EXCLUSION_LIST §F (8-file stx-contracts 1.3.x diff summary) as the lineage reference instead. No candidate arose, so no duplicate-suspect flagging in team-changed code was needed.
+- adversarial_code_audit skill §4 (Hunter method) — read (SKILL.md §§1-4).
+
+FILES READ (assigned, in risk order — full reads):
+1. contracts/Nexus.sol — lines 1-578 (FULL). validateUserOp, execute, executeFromExecutor, executeUserOp, executeComposable, installModule, uninstallModule, emergencyUninstallHook, initializeAccount, _initializeAccount, setRegistry, isValidSignature, getImplementation, supportsModule, supportsExecutionMode, isModuleInstalled, isInitialized, accountId, upgradeToAndCall, checkERC7739Support, _get7739Version, _authorizeUpgrade, _handlePREP, _checkInitializedValidators, _domainNameAndVersion, constructor.
+2. contracts/base/BaseAccount.sol — lines 1-130 (FULL). onlyEntryPointOrSelf, onlyEntryPoint, payPrefund, addDeposit, withdrawDepositTo, nonce, getDeposit, entryPoint.
+3. contracts/interfaces/base/IStorage.sol — FULL (evidence only; findings here belong to Domain C — none claimed).
+   contracts/base/Storage.sol — FULL (evidence only; ERC-7201 slot + _getAccountStorage).
+
+FILES READ AS EVIDENCE (cross-file / caller-callee, no findings claimed in them):
+- contracts/base/ModuleManager.sol — FULL (732 lines): _handleValidator, _enableMode, _checkEnableModeSignature, _getEnableModeDataHash, _checkEmergencyUninstallSignature, _getEmergencyUninstallDataHash, _withPreValidationHook (both overloads), _isModuleInstalled/_isValidatorInstalled/_isExecutorInstalled/_isHookInstalled, _areSentinelListsInitialized, _amIERC7702, _installModule/_installValidator/_uninstallValidator, _multiTypeInstall, _fallback, withHook, constructor, receive/fallback.
+- contracts/base/ExecutionHelper.sol — FULL (284 lines): all _handle*Execution* dispatch, _execute/_tryExecute/_executeDelegatecall variants.
+- contracts/modules/validators/K1Validator.sol — FULL (280 lines): validateUserOp, isValidSignatureWithSender, validateSignatureWithData, getOwner (zero→self fallback), _validateSignatureForOwner, onInstall/onUninstall, transferOwnership, _erc1271CallerIsSafe.
+- contracts/lib/local/LocalCallDataParserLib.sol — FULL: parseEnableModeData, parseMultiTypeInitData.
+- contracts/lib/NonceLib.sol — FULL: nonce layout + mode decoders.
+- contracts/types/Constants.sol — FULL: typehashes, magic values, mode bytes, module type ids.
+- contracts/types/DataTypes.sol — FULL: Execution, EmergencyUninstall structs.
+- contracts/lib/Initializable.sol — FULL: transient-flag set/consume (GHSA fix).
+- contracts/utils/NexusProxy.sol — FULL (via find/cat): constructor sets transient flag, ERC1967 upgradeToAndCall.
+- contracts/base/RegistryAdapter.sol — FULL: withRegistry, _checkRegistry (registry==0 skips), _configureRegistry.
+- contracts/interfaces/modules/IPreValidationHook.sol — FULL: 1271 hook is view, 4337 hook is non-view.
+- contracts/lib/ModeLib.sol — PARTIAL (lines 1-120: layout doc, CallType/ExecType constants, decode/decodeBasic/encode helpers). Encode-simple helpers below line 120 not read; irrelevant to entry-point dispatch.
+- Pinned dependency sources in ~/workspace/nexus-audit/poc/node_modules (npm fetch matching yarn.lock, per Option 1 REPORT-delta; repo has no node_modules of its own):
+  - solady v0.1.9: UUPSUpgradeable.sol (full, 120 lines), CallContextChecker.sol (onlyProxy/_onImplementation targeted), ECDSA.sol (recover/tryRecoverCalldata targeted), EIP712.sol (_hashTypedData/_domainSeparator targeted).
+  - sentinellist v1.0.1: SentinelList.sol (init/alreadyInitialized/getNext/push/pop/contains targeted). NOTE: this resolves Option 1 gap #5 (SentinelList source) for this surface.
+  - account-abstraction v0.7.0: EntryPoint.sol _executeUserOp (lines 76-130), IAccount.sol (validateUserOp only).
+  - erc7739-validator-base v0.1.1: ERC7739Validator.sol (detection branch + SUPPORTS_ERC7739_V1 targeted).
+
+FILES SKIPPED + WHY:
+- contracts/lib/local/LibPREP.sol — NOT re-read. Option 1 Domain A scope; verified there byte-identical to upstream lib-prep pin 7334641 with byte-exact RLP designation hash. _handlePREP's use of it (r==0 → InvalidPREP) was checked from Nexus.sol side only. No new claim depends on LibPREP internals.
+- contracts/modules/* (other than K1Validator), contracts/factory/*, NexusBootstrap.sol, remaining libs, interfaces, tests, mocks — out of assigned scope; not read except as listed above. No finding required them.
+- No assigned file was skipped. No MEDIUM file was left unread.
+
+PHASE 5 VERIFICATIONS (checked against pinned sources, not assumed):
+- MODULE_ENABLE_MODE_TYPE_HASH 0xf6c866c1... and EMERGENCY_UNINSTALL_TYPE_HASH 0xd3ddfc12... both EQUAL keccak256 of their documented preimages (cast keccak). EX-008/EX-068 typehash defects are fixed at HEAD; field order in _getEnableModeDataHash/_getEmergencyUninstallDataHash matches the preimages; dynamic bytes fields correctly encoded as keccak256 hashes.
+- Solady v0.1.9 UUPSUpgradeable exposes ONLY upgradeToAndCall (no separate upgradeTo); _authorizeUpgrade runs BEFORE the upgrade; new implementation must pass proxiableUUID check; onlyProxy blocks direct implementation calls. Nexus override adds withHook + zero/extcodesize checks + address()-slot write (rolled back if Solady checks fail).
+- Solady ECDSA.recover REVERTS (InvalidSignature) on malformed signatures → 7702 relay branch is fail-closed on bad sigs.
+- Solady EIP712 uses cached domain separator with invalidation on chainId/address change → enable-mode and emergency-uninstall digests are chain- and account-bound.
+- SentinelListLib: init sets entries[SENTINEL]=SENTINEL; alreadyInitialized = entries[SENTINEL]!=0; contains excludes SENTINEL and requires entries[entry]!=0; getNext reverts only on ZERO_ADDRESS entry (both Nexus loops guard next!=0 before calling it); pop requires prev linkage. _checkInitializedValidators and checkERC7739Support loop logic verified correct against these semantics.
+- EntryPoint v0.7 _executeUserOp routes to Nexus.executeUserOp ONLY when userOp.callData.length > 3 and starts with the executeUserOp selector; otherwise it calls the account with callData directly. Nexus.executeUserOp's callData[4:] slice is therefore unreachable-with-<4-bytes.
+- ERC-7739 base detection formula is byte-identical to Nexus.isValidSignature's: empty signature + hash == ~0/0xffff*0x7739 → 0x77390001.
+- BaseAccount.withdrawDepositTo assembly verified correct: selector lands at 0x10 via the 16-byte literal's placement, to/amount layout correct, fmp high bytes restored to zero (correct: fmp < 2^96 always). EX-040 fix confirmed present and sound.
+
+DEDUP KILLS (every candidate considered → exclusion ID + one-line reason):
+K1. isValidSignature reverts (0x32 panic) on 0-19 byte signatures → EX-078 (#306) + #331 + #335. Same pre-try/catch slicing mechanism.
+K2. isValidSignature reverts ValidatorNotInstalled for unknown 20-byte validator prefix → #331/#335 (explicitly name this variant; same mechanism family as EX-078).
+K3. checkERC7739Support: one reverting validator breaks detection (no try/catch in _get7739Version) → EX-069 (#321).
+K4. checkERC7739Support default-validator handling (checked unconditionally / list-only loop) → EX-048 (Zenith M-3) + EX-058 (Pashov L-03) + EX-042 (loop, fixed).
+K5. Default validator unaddressable by its own address in validateUserOp/isValidSignature/enable mode/emergency uninstall → EX-072 (#316); narrower variants EX-046/EX-053.
+K6. Session-key escape via enable-mode install or emergency uninstall (oracle confusion: generic ERC-1271 oracle vs policy in validateUserOp) → EX-073 (#310) + EX-074 (#312). No third path claimed; threat model bars assuming a limited-scope principal exists.
+K7. Enable-mode signature replay (no nonce/userOpHash binding) → EX-004/EX-016 (fixed: userOpHash bound, verified in _getEnableModeDataHash).
+K8. Enable-mode module-type confusion / typehash defects → EX-003/EX-017/EX-039 + EX-008/EX-068 (fixed; typehash values verified correct this pass).
+K9. Hook bypass via enable mode (hook sees wrong selector/sender) → EX-054 (Pashov M-01).
+K10. initializeAccount self-call branch skips all guards / re-init (H-B1) → REPORT-delta: DISPROVED, NOT_A_BUG. No NEW principal found: enumerated EntryPoint-validated userOp, trusted executor, fallback handler (guarded branch, msg.sender=handler), hook/pre-validation hook callbacks (guarded branch), 7702 EOA direct tx (requires EOA key), composable execution (EntryPoint-gated) — all owner-key, trusted-executor, or guarded. Zero incremental privilege stands (same principals already reach unrestricted delegatecall via execute()).
+K11. 7702 relay signature over raw initDataHash, no chain/domain binding → EX-076 (#308).
+K12. 7702 branch initData[0:65] slice before length check → #328 (explicitly named boundary).
+K13. parseEnableModeData / enableModeSignature[0:20] unguarded parsing panics → #328 (explicitly named boundary).
+K14. parseMultiTypeInitData no bounds checks (calldataload past end → empty arrays) → #333 gap (1) (novel half); _multiTypeInstall no-final-else → EX-071 (#319) + #330 + #333 gap (2); unconditional ModuleInstalled emit → #333.
+K15. ExecLib.decodeSingle unguarded slicing panics → #328 (explicitly named boundary).
+K16. _installFallbackHandler params[0:4]/params[4] unguarded slicing → #328 (explicitly named boundary).
+K17. Emergency uninstall: nonce burned at initiation, 3-day reset dead-ends original signature; reset branch checked before uninstall branch → #326.
+K18. Emergency uninstall timelock keyed by hook only, clock-sharing across distinct requests → #332.
+K19. Stale emergencyUninstallTimelock after removal via another path → EX-063 (Pashov L-08).
+K20. _checkInitializedValidators unbounded loop gas DoS → EX-075 (#309); reverting isInitialized() bricks uninstall → EX-081 (#300).
+K21. Account initializable with zero validators while uninstall enforces last-validator guard → #329 (bootstrap-level claim; Nexus-level 7702 skip of isInitialized check in _initializeAccount is the deliberate EX-I20 design, K1 falls back to account-as-signer per EX-049).
+K22. Transient init flag / second initializeAccount in deploying tx → EX-116 (GHSA-q47q-h6x2-f5qg; consume-on-check verified present in Initializable.requireInitializable).
+K23. K1Validator zero-owner + tryRecover-returns-0 validates malformed sigs → EX-045 (validateUserOp path, fixed via getOwner fallback) + EX-077 (#307, validateSignatureWithData) + #334 + #338.
+K24. executeUserOp inner callData[4:] panic → UNREACHABLE (EntryPoint len>3 gate, verified) + same panic family as #328; revert-only harm in any case.
+K25. Fallback unrestricted / postCheck skip / NFT-callback short-circuit / sensitive-selector routing → EX-006/EX-024, EX-015, EX-028, EX-036. (ModuleManager code; evidence-only for this domain.)
+K26. execute() msg.value not forwarded to targets → EX-001/EX-021. Value remains in account balance (recoverable by owner); no loss.
+K27. Calls to EOAs reported as success in _execute/_tryExecute → EX-037 (acknowledged by design).
+K28. validateUserOp returns VALIDATION_FAILED instead of reverting for uninstalled validator → EX-012.
+K29. BaseAccount.entryPoint() not virtual → EX-011.
+K30. No registry check on validator at use time in validateUserOp → EX-018 (Cantina 5.1.4 validator part) + EX-059 (Pashov L-04); registry removed entirely in 1.3.x/dev direction.
+K31. initializeAccount never verifies a validator was installed (non-7702) → EX-I20 (fix present: isInitialized() post-check; 7702 path deliberately exempt).
+K32. Default validator usable without isInitialized() check → EX-049 (Zenith L-1, resolved with 7702 exemption).
+K33. _handlePREP length check too short (0x61) → EX-057 (Pashov L-02; FIXED at HEAD: 0xf9, verified in Nexus.sol _handlePREP).
+K34. _amIERC7702 2-byte prefix compare → EX-051 (Zenith L-3; FIXED: 3-byte 0xef0100 + extcodesize 23, verified).
+K35. Stale natspec: validateUserOp nonce layout, uninstallModule onInstall reference → #327 (docs-only).
+K36. _checkEmergencyUninstallSignature signature[0:20] pre-slice panic → EX-078 note (explicitly "acceptable-to-revert there").
+K37. ComposableExecution constraint validation bypass → EX-079 (third-party @biconomy/composability package; out of bounty scope).
+K38. K1Validator.transferOwnership missing _isInitialized check → EX-013 (other file; noted only).
+K39. Double withHook invocation → EX-032 (fixed for installs); executeUserOp→execute nesting runs hook checks twice (more checks, no bypass; legacy path only, direct execute() unaffected).
+K40. Missing withHook on setRegistry → THREAT-MODEL kill (not a dedup entry): self-call only, reachable solely via owner-validated userOp or trusted executor; no concrete harm under the in-repo threat model; registry code is being removed in the working line (EXCLUSION_LIST §F/§G). Missing hardening alone is not a finding.
+
+SELF-DISPROVED LEADS (checked counter-evidence, not dedup):
+D1. Inherited Solady upgradeTo() bypasses withHook → DISPROVED: Solady v0.1.9 UUPSUpgradeable exposes no upgradeTo; only upgradeToAndCall, which Nexus overrides with withHook. Verified in pinned source.
+D2. Uninstalling the default validator bypasses _checkInitializedValidators via uninitialized list (entries[SENTINEL]==0 → post-loop check misses) → DISPROVED: _isValidatorInstalled = list contains(); default validator is never in the list, so uninstallModule reverts ModuleNotInstalled before reaching the guard; any reachable guard execution implies list membership hence an initialized list. Verified against SentinelListLib semantics.
+D3. Emergency-uninstall nonce griefing via failed signatures (nonce marked used before sig check) → DISPROVED: a failed require reverts the whole transaction, rolling back the nonce write; nonces are durably burned only on successful calls (which is #326's distinct, already-known mechanism).
+D4. Unknown nonce mode bytes (0x03+) bypass validation → DISPROVED: fall through to plain validation with the nonce's validator; signature still required. No bypass.
+D5. _initializeAccount assembly parse with malicious offsets corrupts init → DISPROVED as a finding: OOB calldataload zero-pads; delegatecall failure reverts (success required); non-7702 path additionally requires isInitialized(); 7702 worst case is a no-op init (retry possible, no privilege gained); bootstrap address/data are initializer-authorized in all paths (owner self-call, relay-signed, or PREP-proven).
+D6. ModeLib decodeBasic unclean CallType values misdispatch execute() → DROPPED: ModeLib is not an assigned file; dispatch behavior is production-proven and audited; no empirical check permitted (no forge runs). Not pursued.
+D7. Nexus constructor missing defaultValidator zero-check → DROPPED: ModuleManager constructor code (other domain); a zero address reverts on the isModuleType call's empty-return decode in any case. No claim.
+
+UNRESOLVED CROSS-REFERENCES: none material. All cross-file assumptions checked both sides (see evidence reads + Phase 5 verifications). Two reliance notes: (1) LibPREP internals relied on Option 1 Domain A verification (byte-identical upstream, exact RLP hash) — no claim depends on re-verifying it; (2) _handlePREP packed-layout parsing relied on Option 1 Domain A + EX-057 fix verification (0xf9 length check read at Nexus.sol).
+
+ANYTHING NOT VERIFIED:
+- STX-DIFF.md did not exist; lineage duplicate-signal check used EXCLUSION_LIST §F instead (adequate: no candidates to flag).
+- No executed POCs (forbidden by task: coordinator owns toolchain). All lib-behavior claims rest on pinned-source reads listed above, plus one pure keccak computation.
+- Closed-issue comments, PR discussions, and issues filed after the 2026-11-14 02:48 UTC delta sweep were not re-checked (coordinator's pre-filing re-sweep item; same caveat as EXCLUSION_LIST §H).
+- #303 (unknown private report, EX-080) remains an unretireable residual duplicate risk for any future claim.
+
+THREAT-MODEL NOTES APPLIED:
+- Only in-repo validator is K1Validator (owner ECDSA). Executors owner-installed and fully trusted. Session/policy modules in other repos: no limited-scope principal assumed. Any candidate requiring the owner key or a trusted executor was killed as zero incremental privilege (H-B1 standard).
+- Findings in ModuleManager/ExecutionHelper/K1Validator/libs were NOT claimed even when adjacent; they are other domains' files. Cross-refs to them appear only as evidence or dedup kills above.

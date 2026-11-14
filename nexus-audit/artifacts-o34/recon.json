@@ -1,0 +1,31 @@
+{
+  "contextOnly": [
+    "contracts/mocks/*",
+    "test/*"
+  ],
+  "critical": [
+    "contracts/utils/NexusBootstrap.sol",
+    "contracts/lib/Initializable.sol",
+    "contracts/modules/validators/K1Validator.sol"
+  ],
+  "high": [
+    "contracts/utils/NexusProxy.sol",
+    "contracts/factory/NexusAccountFactory.sol",
+    "contracts/factory/BiconomyMetaFactory.sol",
+    "contracts/factory/K1ValidatorFactory.sol"
+  ],
+  "medium": [
+    "contracts/lib/BootstrapLib.sol",
+    "contracts/base/RegistryAdapter.sol"
+  ],
+  "notes": [
+    "contracts/utils/NexusProxy.sol:13 constructor sets the transient init flag then delegatecalls init via ERC1967 upgradeToAndCall; single flag-set site repo-wide.",
+    "contracts/lib/Initializable.sol:27-38 requireInitializable() loads, reverts NotInitializable if unset, and clears the transient slot: single-use per deploying transaction (GHSA-q47q-h6x2-f5qg fix, present at HEAD).",
+    "contracts/Nexus.sol:306-334 initializeAccount gates non-self calls by the 7702 relay branch (owner sig + !isInitialized + replay map) or requireInitializable(); the self-call branch is ungated (H-B1, disproved in Option 1, EX-136).",
+    "contracts/Nexus.sol:124-132 PREP branch in validateUserOp: onlyEntryPoint + require(!isInitialized()) + _handlePREP proof, then _initializeAccount directly.",
+    "contracts/modules/validators/K1Validator.sol:191-194 getOwner falls back to the smart account address when the stored owner is zero; validateSignatureWithData takes the owner from caller-supplied data (the #307 zero-owner shape, already claimed).",
+    "contracts/base/RegistryAdapter.sol: opt-in ERC-7484 attestation, no counterpart in stx-contracts 1.3.3; no registry check exists on any validation/7739 path (O4 grep-verified).",
+    "Trust boundary: factory/deploy-time inputs are deployer-supplied (no attacker principal in-repo for deployer footguns); init-time trust assumptions are the O3 focus; signature-validation edge cases are the O4 focus."
+  ],
+  "run": "nexus-options34-2026-11-14"
+}

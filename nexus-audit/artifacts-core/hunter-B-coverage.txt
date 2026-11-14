@@ -1,0 +1,150 @@
+HUNTER B — Domain B: module lifecycle (install/uninstall, hooks, emergency uninstall)
+Biconomy Nexus Option 2 audit. Hunter: read-only. Date: 2026-11-14 (WIB).
+Repo: ~/workspace/nexus-audit/repos/nexus, pinned main HEAD 9007ba1352e606575e32456512e25c41a9bf449c.
+HEAD verified matching and tree clean at start, mid-run, and before concluding (git rev-parse HEAD + git status --porcelain, 0 dirty files, all three checks).
+RESULT: ZERO candidates. hunter-findings-B.json is [].
+
+=== MANDATORY DEDUP-FIRST READING (all completed before claiming anything) ===
+- ~/workspace/nexus-audit/SCOPE.md IN FULL (144 lines), incl. §5/§5b tracker issues and §5a dev-branch note.
+- ~/workspace/nexus-audit/exclusions/EXCLUSION_LIST.md IN FULL (1066 lines, 161 entries EX-001..EX-121 + EX-G01..G07 + EX-I01..I33, incl. §F stx-contracts lineage diff summary and §G dev-branch proxy note).
+- ~/workspace/nexus-audit/REPORT-delta.md IN FULL (Option 1; H-B1 self-call re-init DISPROVED — never re-reported).
+- ~/workspace/nexus-audit/exclusions/NEW-ISSUES-2026-11-14.md IN FULL (dedup update, 14 new open issues #325-#338, all treated as exclusions).
+- adversarial_code_audit skill SKILL.md §4 (Hunter method + output contract).
+- STX-DIFF.md: ABSENT at time of reading (ls: no such file) — proceeded per brief. Proxy used: EXCLUSION_LIST.md §F (8-file stx-contracts 1.3.x diff summary, HEAD 61001d0). Per §F, registry was fully removed in 1.3.x and the enable-mode / emergency-uninstall / _multiTypeInstall / _checkInitializedValidators mechanisms are substantively unchanged in 1.3.x — this corroborates the dedup kills below but was NOT treated as a substitute for the missing file. No candidate was found in team-changed code, so no duplicate-suspect flag was needed on that ground; the registry scope-uncertainty flag below stands on §F/§G regardless.
+
+=== FILES READ (assigned, in risk order) ===
+1. contracts/base/ModuleManager.sol — LINES 1-732, COMPLETE (all functions):
+   constructor (85-90), receive/fallback (92-98), getDefaultValidator (100-104), pagination getters (105-138),
+   _initSentinelLists (140-145), _enableMode (147-172), _installModule (173-199), _installValidator (200-219),
+   _uninstallValidator (220-232), _installExecutor (233-256), _uninstallExecutor (257-264), _installHook (265-283),
+   _uninstallHook (284-296), _setHook (297-300), _installFallbackHandler (301-347), _uninstallFallbackHandler (348-354),
+   _installPreValidationHook (355-376), _uninstallPreValidationHook (377-381), _setPreValidationHook (382-390),
+   _multiTypeInstall (391-437), _checkEmergencyUninstallSignature (438-465), _withPreValidationHook ERC4337 (466-486),
+   _getPreValidationHook (487-493), _withPreValidationHook ERC1271 (494-504), _checkEnableModeSignature (505-523),
+   _getEmergencyUninstallDataHash (524-532), _isModuleInstalled (533-556), _areSentinelListsInitialized (557-563),
+   _isFallbackHandlerInstalled x2 (564-581), _isValidatorInstalled/_isExecutorInstalled/_isHookInstalled/_getHook (582-605),
+   _amIERC7702 (606-618), _handleValidator (619-627), _getEnableModeDataHash (628-634), _fallback (635-688), _paginate (689-707).
+   (Line numbers from the 732-line file as read; the final closing braces run to 732.)
+2. contracts/base/RegistryAdapter.sol — COMPLETE (53 lines): withRegistry modifier, getRegistry, _configureRegistry, _checkRegistry.
+3. contracts/utils/NexusBootstrap.sol — COMPLETE (447 lines) as EVIDENCE ONLY for install-path callers (bootstrap findings out of scope per brief; bootstrap-adjacent candidates killed below are recorded as cross-refs, not claims).
+   contracts/Nexus.sol install entry points — EVIDENCE ONLY, lines read: 1-89 (imports, constructor, validateUserOp natspec),
+   90-310 (validateUserOp, execute, executeFromExecutor, executeUserOp, executeComposable, installModule, uninstallModule,
+   emergencyUninstallHook, initializeAccount, _initializeAccount), 300-450 (setRegistry, isValidSignature, getImplementation,
+   supportsModule, supportsExecutionMode, isModuleInstalled, isInitialized), 446-506 (accountId, upgradeToAndCall,
+   checkERC7739Support, _get7739Version), 505-578 (_authorizeUpgrade, _handlePREP, _checkInitializedValidators,
+   _domainNameAndVersion). Net: Nexus.sol read in full except lines ~506-520 already covered above (overlap); no install-path
+   entry point was left unread.
+
+=== EVIDENCE-ONLY SUPPORTING READS ===
+- contracts/lib/local/LocalCallDataParserLib.sol — COMPLETE (parseEnableModeData, parseMultiTypeInitData assembly parsers).
+- contracts/base/Storage.sol — COMPLETE (ERC-7201 namespaced slot). contracts/interfaces/base/IStorage.sol — COMPLETE (AccountStorage layout).
+- contracts/types/DataTypes.sol — COMPLETE (EmergencyUninstall struct). contracts/types/Constants.sol — module-type constants + typehashes (grep).
+- contracts/base/BaseAccount.sol lines 28-57 — onlyEntryPointOrSelf / onlyEntryPoint modifiers (verified: msg.sender == _ENTRYPOINT || == address(this)).
+- contracts/interfaces/modules/IModule.sol — COMPLETE (onInstall/onUninstall/isModuleType/isInitialized).
+- contracts/modules/validators/K1Validator.sol — targeted: onInstall (77-82), onUninstall (92-93), isInitialized/_isInitialized (127-128, 277-278),
+  isModuleType (214-216, true ONLY for MODULE_TYPE_VALIDATOR), getOwner (191-194), validateUserOp/isValidSignatureWithSender/validateSignatureWithData (145-189).
+- sentinellist pinned source: ~/workspace/nexus-audit/poc/node_modules/sentinellist/src/SentinelList.sol lines 25-135
+  (init/alreadyInitialized/getNext/push/safePush/pop/popAll/contains). Pin verified in repo yarn.lock: @rhinestone/sentinellist 1.0.1,
+  commit e722c5cc68c570d535bc3c9f85b3ce90cdc38807 (SCOPE.md's "v1.0.0" label is stale; semantics below are from the pinned 1.0.1 source).
+  Grep-verified: popAll/safePush unused anywhere under contracts/.
+
+=== FILES SKIPPED + WHY ===
+- contracts/mocks/*, test/* — context-only per skill; no finding required execution (read-only task, no forge runs per brief).
+- contracts/factory/*, contracts/base/ExecutionHelper.sol, composability code — other domains' files; read only as far as grep-confirmed no install/uninstall internal callers live there (see caller audit below).
+- Nexus.sol checkERC7739Support/_get7739Version internals beyond the read above, ERC-7739/K1 signature-validation depth — Domain A/validation surface, not Domain B; observed only to confirm no install-path interaction.
+- Dependency sources other than SentinelListLib — not needed; no candidate depended on another lib's behavior.
+
+=== METHOD ===
+Skill §4 Phases 1-6. Phase 2 cross-file checks performed:
+(a) Install/uninstall symmetry table for all 5 module types + MULTI (state write vs reverse, onInstall vs onUninstall, hook/registry coverage) — symmetric; see verification kills V-11.
+(b) Hook enforcement on EVERY path: Nexus external entry-point inventory (execute/executeUserOp/executeComposable withHook; installModule via inner withHook on each _install*; uninstallModule withHook; upgradeToAndCall withHook; _fallback manual hook; emergencyUninstallHook intentionally unhooked; setRegistry unhooked-inner — killed, see K-18; initializeAccount init-time, no hook exists yet).
+(c) Registry checks on EVERY install path: all five _install* carry withRegistry; _multiTypeInstall delegates to them; bootstrap _init* flows call _configureRegistry BEFORE installs and route through _install* (default-validator direct onInstall excepted by design — immutable address, deployer-chosen).
+(d) Caller audit (grep over contracts/): the ONLY callers of _install*/_uninstall* internals are Nexus.installModule/uninstallModule/emergencyUninstallHook, ModuleManager._installModule/_multiTypeInstall/_enableMode, and NexusBootstrap _init* flows. No unguarded path exists.
+(e) Caller/callee assumption mismatches: _uninstall* internals assume installed-ness; verified both external callers enforce _isModuleInstalled first (Nexus.sol:249, :277); _uninstallValidator/_uninstallExecutor additionally fail-closed via SentinelList pop revert on wrong prev.
+Phase 3 checklist sweep: attacker input -> sink -> observable harm required throughout; missing hardening alone never claimed; unbounded-loop DoS not re-claimed (EX-075/EX-081). Phase 5: SentinelListLib + K1Validator behavior verified against pinned sources (see above).
+
+=== DEDUP KILLS (candidate -> exclusion ID + one-line reason) ===
+K-01. _multiTypeInstall silently skips unknown module types -> EX-071 (#319) + EX-086 (#322) + #330 + #333-gap2. Same root cause (no final else revert); verified still present at HEAD, still excluded.
+K-02. parseMultiTypeInitData assembly parser has no bounds/length checks (truncated initData decodes to empty arrays) -> #333-gap1 (novel half). Same root cause; excluded.
+K-03. _installFallbackHandler unguarded slicing bytes4(params[0:4]) / bytes1(params[4]) panics on short params -> #328. Same root cause (unguarded boundary slicing -> raw panic); excluded.
+K-04. parseEnableModeData / _enableMode slicing panics on malformed enable-mode data (incl. enableModeSignature[0:20] <20 bytes) -> #328. Same root cause family; excluded. (Also: panic only fails the owner's own userOp validation — no incremental harm.)
+K-05. Session/limited-scope key escapes scope via enable-mode module install -> EX-073 (#310). Same oracle-confusion root cause; excluded. ALSO threat-model kill: no session principal exists in-repo (K1 owner-only).
+K-06. Session key removes policy hook via emergency uninstall -> EX-074 (#312). Same root cause as K-05; excluded + threat-model kill as K-05.
+K-07. Emergency-uninstall nonce burned at initiation; 3-day reset dead-ends the original signature; reset branch wins at exactly t+3d -> #326. Same root cause; excluded.
+K-08. Emergency-uninstall timelock keyed by hook address only; later request (different nonce/deInitData, incl. same address under a different hookType 4/8/9) rides the earlier clock -> #332. Same root cause (key lacks request identity); the cross-hookType variant is the same mechanism, not a distinct one; excluded.
+K-09. Stale emergencyUninstallTimelock survives normal uninstallModule removal, shortening a later emergency uninstall after reinstall -> EX-063 (Pashov L-08). Same root cause; excluded. (Verified: no timelock clearing in _uninstallHook or uninstallModule.)
+K-10. _checkInitializedValidators unbounded loop gas DoS bricks validator uninstall -> EX-075 (#309). Same root cause; excluded. (Function lives in Nexus.sol — evidence-only for this domain in any case.)
+K-11. _checkInitializedValidators raw isInitialized() call: one reverting remaining validator blocks all uninstalls -> EX-081 (#300). Same root cause; excluded.
+K-12. Default validator unaddressable by its own address in validateUserOp / isValidSignature / enable mode / emergencyUninstallHook (_handleValidator resolves only address(0)) -> EX-072 (#316) + EX-046 (Zenith M-1) + EX-053 (Zenith L-5). Same root cause; excluded.
+K-13. Hook bypass via enable mode (hook sees wrong selector/sender) -> EX-054 (Pashov M-01). Same root cause; excluded. (Verified current code routes via this.installModule, so the hook sees installModule calldata with msg.sender == self — the reported mechanism's premise no longer holds as stated; either way excluded, do not re-litigate.)
+K-14. Users can delete all validators / last-validator removal bricks account -> EX-055 (Pashov M-02). Guard _checkInitializedValidators present in uninstallModule; excluded.
+K-15. _uninstallPreValidationHook double onUninstall invocation -> EX-052 (Zenith L-4). Verified fixed: _uninstallPreValidationHook only clears the slot; exactly one onUninstall via _uninstallHook; excluded.
+K-16. Registry never checked for bootstrap-installed modules (install-before-configure) -> EX-002 (CodeHawks H-02) + EX-034 (Cantina 5.3.4). Verified fixed: _configureRegistry runs first in every _init* flow; excluded.
+K-17. Registry checks missing at use-time (validator still validates after de-attestation; no withRegistry on validateUserOp) -> EX-018 (Cantina 5.1.4) + EX-059 (Pashov L-04). Same root cause; excluded. SCOPE-UNCERTAIN (see flags).
+K-18. setRegistry lacks withHook (inner) + registry swap puts modules in insecure state -> EX-023 (Cantina 5.2.5) + THREAT-MODEL KILL: setRegistry requires msg.sender == address(this) (Nexus.sol:363-366), reachable only via owner-validated userOp self-call, trusted-executor path, or 7702 EOA-key tx — all require the owner key / trusted executor, zero incremental privilege per H-B1 reasoning (same principal already has delayed hook removal via emergency uninstall + unrestricted delegatecall via execute). SCOPE-UNCERTAIN (registry). Excluded on both grounds; do not file.
+K-19. fallback() unrestricted: anyone can invoke installed fallback handlers -> EX-006 (CodeHawks M-02) + EX-024 (Cantina 5.2.6, acknowledged by design). Same root cause; excluded.
+K-20. Fallback handler installed with invalid calltype silently no-ops -> EX-014 + EX-026. Verified fixed: _installFallbackHandler requires CALLTYPE_SINGLE || CALLTYPE_STATIC; _fallback reverts UnsupportedCallType otherwise; excluded.
+K-21. Fallback handler can be routed to sensitive module selectors beyond onInstall/onUninstall -> EX-036 (Cantina 5.3.6, acknowledged). Same root cause; excluded.
+K-22. Fallback handler for empty calldata unreachable (receive intercepts) / NFT-callback selectors bypass handlers -> EX-027 + EX-028. Verified fixes present (bytes4(0) forbidden at install; handler consulted before NFT short-circuit in _fallback); excluded.
+K-23. Malicious module prevents its own uninstall by reverting onUninstall -> EX-022 (Cantina 5.2.4). Verified fixed: all _uninstall* use excessivelySafeCall with ignored result; excluded.
+K-24. Gas grief via onUninstall burning all gas before withHook postCheck -> EX-064 (Pashov L-09, acknowledged). Same root cause; excluded.
+K-25. Emergency-uninstall timelock bypass by pre-recording timestamp before hook installation -> EX-020 (Cantina 5.2.2). Verified fixed: signature check + _isModuleInstalled check precede any timelock write; excluded.
+K-26. Enable-mode signature replay (no nonce/userOpHash binding) -> EX-004 (CodeHawks H-04) + EX-016 (Cantina 5.1.2). Verified fixed: userOpHash is hashed into _getEnableModeDataHash; excluded.
+K-27. Enable-mode signature ignores moduleType / type confusion (incl. registry bypass on multi-type modules) -> EX-003 + EX-017 + EX-039. Verified fixed: moduleType is hashed; per-sub-type withRegistry checks run in _multiTypeInstall; excluded.
+K-28. MODULE_ENABLE_MODE_TYPE_HASH EIP-712 defects (space / bytes-vs-bytes32) -> EX-008 + EX-068 + EX-I06. Same root cause; excluded.
+K-29. Account initializable with zero validators while uninstall enforces at-least-one (empty validators[] in _initNexus/_initNexusScoped) -> #329. Same root cause; excluded. (Bootstrap evidence-only for this domain in any case.)
+K-30. NexusBootstrap._initNexus validators loop lacks zero-address skip; single zero entry reverts whole init / CREATE2 brick -> #325. Same root cause; excluded. (Bootstrap evidence-only.)
+K-31. Missing/coarse ModuleInstalled events (multi-type install emits single type-0 event; per-type installs invisible to indexers) -> EX-091 (#260) + EX-I33 (Zenith I-2) event-gap family. Same family; excluded.
+K-32. Pre-validation hooks uninstallable/uninstallable-at-bootstrap gaps -> EX-066 (Pashov L-11) + EX-090 (#262). Install paths present in all bootstrap flows; excluded.
+K-33. withHook bypass via NexusBootstrap installs -> EX-067 (Pashov L-12). All _install* carry withHook (no-op at init since hook == 0); excluded.
+K-34. H-B1 self-call re-initialization via initializeAccount msg.sender == address(this) branch -> REPORT-delta.md DISPROVED (NOT_A_BUG, zero incremental privilege). NEVER re-reported. Mechanism-level reinforcement verified this pass: SentinelListLib.init() reverts LinkedList_AlreadyInitialized if already initialized, so re-init cannot silently corrupt the validator/executor lists either.
+K-35. RegistryAdapter.registry storage-slot exposure / collision via delegatecall -> EX-056 (Pashov L-01). Verified fixed: registry lives in ERC-7201 namespaced AccountStorage (IStorage.sol); excluded. SCOPE-UNCERTAIN (registry).
+K-36. Registry threshold unattainable (no threshold <= attesters check in _configureRegistry) -> EX-I18 (Cantina 5.5.18). Same root cause; excluded. (Owner-recoverable via setRegistry in any case.) SCOPE-UNCERTAIN (registry).
+K-37. Hook double-invocation: withHook on both external installModule and internal _installModule -> EX-032 (Cantina 5.3.2). Verified fixed: Nexus.installModule carries no withHook; each _install* carries exactly one; excluded.
+K-38. withHook transient-flag bypass (second hooked call in one tx skips checks) -> EX-065 (Pashov L-10). Current withHook has no transient flag (direct preCheck/postCheck); excluded.
+K-39. fallback() assembly bare return skips hook postCheck on success -> EX-015 (Cantina 5.1.1). Verified fixed: postCheck runs before the assembly return in _fallback; excluded.
+K-40. Default validator usable for validation without isInitialized check / never onInstall'ed -> EX-049 (Zenith L-1). Same root cause family; excluded.
+K-41. isValidSignature reverts on short/malformed signatures / unknown validator prefix (pre-try/catch slicing) -> EX-078 (#306) + EX-088 (#324) + #331 + #335. Same root cause; excluded. (Nexus validation surface — outside Domain B files; observed, not claimed.)
+K-42. checkERC7739Support gaps (loop / default-validator / no try/catch) -> EX-042 + EX-048 + EX-058 + EX-069 (#321). Same family; excluded. (Outside Domain B files; observed, not claimed.)
+
+=== VERIFICATION KILLS (checked against code/pinned libs; no exclusion entry needed — mechanism absent or precondition unreachable) ===
+V-01. _uninstallFallbackHandler clears fallbacks[selector] without verifying the stored handler matches: SAFE — Nexus.uninstallModule enforces _isModuleInstalled (selector+module pair) first; emergency path never calls it; grep confirms no other callers.
+V-02. _uninstallHook does not verify the hook is installed / matches: SAFE — both callers (uninstallModule, emergencyUninstallHook) enforce _isModuleInstalled first; no other callers.
+V-03. uninstallModule silent no-op for MULTI(0)/unknown moduleTypeId: ABSENT — _isModuleInstalled returns false for unhandled types, so the require reverts ModuleNotInstalled before the if/else chain.
+V-04. _uninstallValidator/_uninstallExecutor wrong-prev / non-member removal corrupting the list: SAFE — SentinelListLib.pop reverts unless entries[prev] == popEntry (pinned 1.0.1 source); Nexus-level contains check runs first.
+V-05. Duplicate validator/executor install corrupting the list: ABSENT — SentinelListLib.push reverts LinkedList_EntryAlreadyInList; also reverts for address(0)/SENTINEL.
+V-06. Partial sentinel-list init bricking _installModule (init() reverts if one list already initialized): UNREACHABLE — both lists are only ever initialized together atomically (_initSentinelLists); no contract path initializes one alone; only owner delegatecall storage writes could create it (threat-model kill).
+V-07. _checkInitializedValidators silent pass on uninitialized lists (entries[SENTINEL]==0 exits loop with next==0 != SENTINEL): UNREACHABLE — _isModuleInstalled/contains returns false (no revert) on uninitialized lists, so uninstallModule reverts before the check; verified contains() semantics in pinned lib.
+V-08. K1Validator.isInitialized reverting and bricking uninstalls: ABSENT — pure mapping read (smartAccountOwners[account] != 0), cannot revert; verified K1Validator.sol:127-128, 277-278.
+V-09. onInstall reentrancy into install/uninstall: BLOCKED — installModule/uninstallModule require EntryPoint-or-self; a module's onInstall runs with msg.sender == module (install path) or == account only via delegatecall init (bootstrap, deployer-chosen); no unguarded reentry. Owner-chosen module in any case.
+V-10. Executor reaching _installModule via executeFromExecutor delegatecall: THREAT-MODEL KILL — executors are owner-installed and fully trusted per brief; zero incremental privilege (H-B1 reasoning).
+V-11. Install/uninstall state asymmetry: NONE FOUND — validator (push/pop), executor (push/pop), fallback ((handler,calltype)/(0,0x00)), hook (set/clear), pre-validation hooks (set/clear + exactly one onUninstall); deInitData slicing consistent (install strips 5 bytes selector+calltype, uninstall strips 4 bytes selector, both pass the remainder to onInstall/onUninstall).
+V-12. _getPreValidationHook ternary default (non-8 -> ERC4337 slot) + _setPreValidationHook silent no-op for other hookTypes: SAFE on Nexus paths (callers restrict to 8/9; uninstallModule/emergencyUninstallHook enforce); odd hookType reachable only via bootstrap init config supplied by the deployer for their own account (no attacker principal; bootstrap evidence-only).
+V-13. _multiTypeInstall duplicate types in one call (e.g. [1,1]) partially installing: FAIL-CLOSED — second _installValidator push reverts (duplicate), second _installHook reverts HookAlreadyInstalled, etc.; whole tx reverts atomically.
+V-14. _multiTypeInstall N hook pre/post pairs (one per sub-install) breaking one-shot hooks: NOT A FINDING — per-install hook granularity is the design; no state corruption; hook-authored behavior; single-type installs unaffected.
+V-15. _enableMode state changes during validateUserOp (validation phase): BY DESIGN — documented EIP-7579 enable-mode flow; bundler simulation discards the state change; the install persists only in the executed userOp.
+V-16. Fallback CALLTYPE_STATIC call with msg.value: NOT A FINDING — value cannot be forwarded by staticcall and remains in the account, owner-recoverable via execute; no loss (EX-001 family adjacent, no new mechanism).
+V-17. Fallback handler installed for a Nexus-owned selector (dead install): NOT A FINDING — account functions take precedence over fallback; owner-chosen install; _isModuleInstalled reporting is accurate as installed.
+V-18. Emergency-uninstall onUninstall reentrancy: FAIL-CLOSED — nonce already burned in the outer call (replay reverts InvalidNonce); hook slot already cleared (reentrant _isModuleInstalled check fails); excessivelySafeCall return ignored.
+V-19. EOA / no-code module passing isModuleType checks: ABSENT — high-level call returning empty returndata fails bool ABI-decode and reverts; fail-closed for all five _install* type checks.
+V-20. Default validator installable as executor/hook/fallback, confusing role checks: ABSENT — K1Validator.isModuleType returns true ONLY for MODULE_TYPE_VALIDATOR (verified); _installValidator additionally reverts DefaultValidatorAlreadyInstalled.
+V-21. Emergency-uninstall signature check ordering (nonce burned before sig verification): SAFE — invalid signature reverts the whole tx, rolling back the nonce burn; no griefing (distinct from #326's initiation-burn mechanism, which is excluded as K-07).
+V-22. _checkEmergencyUninstallSignature validator routing via _handleValidator: covered by K-12 (EX-072) for addressability and K-06 (EX-074) for any-validator authorization; no third mechanism found.
+V-23. Timelock arithmetic (hookTimelock + 3 days overflow / timestamp games): NO ISSUE — block.timestamp magnitudes cannot overflow uint256 at these offsets; sub-minute validator timestamp influence is immaterial against a 1-day window.
+
+=== UNRESOLVED CROSS-REFERENCES ===
+None material. All cross-file traces closed: every _install*/_uninstall* caller enumerated by grep; every Nexus external entry point's hook/registry/gating modifiers inventoried; SentinelListLib + K1Validator behaviors verified against pinned sources. One non-blocking note: EXCLUSION_LIST.md §F's stx-contracts diff was used as a proxy for the absent STX-DIFF.md file (see header); no conclusion depends solely on it.
+
+=== SCOPE-UNCERTAINTY FLAGS ===
+S-1. REGISTRY (RegistryAdapter.sol + all withRegistry/_configureRegistry/setRegistry mechanisms): SCOPE-UNCERTAIN per SCOPE.md §5a and EXCLUSION_LIST.md §F/§G — the `dev` branch REMOVES RegistryAdapter.sol entirely (PR #295) and stx-contracts 1.3.x removed the registry entirely (withRegistry modifiers deleted, setRegistry deleted). Any RegistryAdapter finding would need confirmation with Biconomy before filing. NO registry finding is claimed in this pass; kills K-16/K-17/K-18/K-35/K-36 carry this flag.
+S-2. LINEAGE (whole surface): SCOPE.md §6.5 — this repo is Nexus 1.2.1 while deployed code is v1.3.3 from bcnmy/stx-contracts; whether Biconomy pays for 1.2.1-only bugs is UNVERIFIED. No finding claimed, so no payout-relevance assertion is made.
+S-3. #303 UNKNOWN PRIVATE REPORT (EX-080): contents unknowable; residual duplicate risk cannot be retired by any public dedup. Applies to the whole audit, recorded here for completeness.
+
+=== ANYTHING NOT VERIFIED ===
+- No forge builds/tests were run (brief: coordinator owns the toolchain; read-only task). All conclusions are code traces + pinned-source verification, never executed repros. No finding depended on execution.
+- STX-DIFF.md did not exist at read time (see header); §F proxy used instead.
+- Issue comments on #325-#338 were not read (per the delta sweep's own limits); a post-crawl maintainer triage note could change an exclusion's status. Re-check the tracker before any filing (coordinator's step, not this Hunter's).
+- Third-party ERC-7484 registry implementation behavior (trustAttesters/check internals) was not traced: out of bounty scope (third-party component) and no candidate depended on it; _checkRegistry fail-closed behavior (revert propagates) is sufficient for the kills above.
+
+=== COVERAGE SUMMARY ===
+Assigned files: ModuleManager.sol 732/732 lines, RegistryAdapter.sol 53/53 lines — complete. Evidence files: NexusBootstrap.sol complete, Nexus.sol install/validation entry points complete, parsers/storage/interfaces complete, SentinelListLib + K1Validator targeted verification complete. 42 dedup kills + 23 verification kills recorded. Zero candidates survive. This is the expected outcome on this heavily-audited surface (5 audits + 31 open tracker issues, 14 filed in the last ~24h).

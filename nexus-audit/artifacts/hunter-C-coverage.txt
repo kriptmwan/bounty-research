@@ -1,0 +1,74 @@
+HUNTER C COVERAGE — Domain C: bootstrap + ModuleManager/BaseAccount delta
+Run: 2026-11-13 (WIB). Target: ~/workspace/nexus-audit/repos/nexus @ 9007ba1352e606575e32456512e25c41a9bf449c.
+HEAD verified with `git rev-parse HEAD` before starting AND before writing artifacts; `git status --porcelain` empty both times. Read-only; repo untouched.
+
+RESULT: 0 findings. Every hinted check resolved to fail-safe behavior, an excluded root cause, or a behavior-neutral delta hunk. No IN-DELTA claim survived; no OUT-OF-SCOPE-DELTA item met the severity bar (see "Observed, not reported").
+
+FILES READ (assigned scope, full reads unless noted)
+- contracts/utils/NexusBootstrap.sol — 447 LOC, read in full. Delta hunks verified against `git diff 9af2d1d..HEAD`.
+- contracts/base/ModuleManager.sol — 732 LOC. Delta hunks + all directly-interacting functions read: constructor (lines 84-90), getDefaultValidator (101-105), _installModule (191-213), _installValidator (216-231), _uninstallValidator (234-242), _uninstallHook (296-303), _installPreValidationHook (368-381), _uninstallPreValidationHook (386-388), _setPreValidationHook (394-399), _multiTypeInstall (407-449), _checkEmergencyUninstallSignature (453-461), _withPreValidationHook ERC-4337/ERC-1271 + _getPreValidationHook (464-510), _isModuleInstalled (541-558), _isValidatorInstalled (599-601), _amIERC7702 (624-634), _handleValidator (637-643), _getEnableModeDataHash (651-653), withHook modifier (73-82). Remaining lines (fallback, executor/hook install, pagination getters, _enableMode) NOT read line-by-line — untouched by delta, another scope's; see Skipped.
+- contracts/base/BaseAccount.sol — 130 LOC. Delta hunk verified via diff (1 line); _ACCOUNT_IMPLEMENTATION_ID uses grepped repo-wide.
+- contracts/interfaces/INexusEventsAndErrors.sol — 71 LOC. New error verified via repo-wide grep of throw sites.
+- contracts/lib/NonceLib.sol — 60 LOC. Full diff verified (see verification section below).
+- contracts/lib/local/LocalCallDataParserLib.sol — 65 LOC. Full diff verified (see below).
+
+EVIDENCE-ONLY READS (not report scope)
+- contracts/Nexus.sol (578 LOC): initializeAccount/_initializeAccount (lines 305-357), uninstallModule (248-264), emergencyUninstallHook (266-294), accountId (452-453), _domainNameAndVersion (574-577). Rest not read.
+- contracts/base/RegistryAdapter.sol (53 LOC): withRegistry modifier + _checkRegistry (lines 19-51) via grep context.
+- K1Validator.sol: NOT read — not needed; the default-validator-in-array question is decided by the revert in _installValidator before any onInstall call.
+
+SKIPPED + WHY
+- ModuleManager.sol non-delta regions (enable-mode core _enableMode/_checkEnableModeSignature, _fallback, executor/hook install/uninstall bodies, getValidatorsPaginated): untouched by the delta per the full diff; another scope's. Only read where needed to trace delta-hunk callers.
+- Nexus.sol validation/execution/7739 paths: evidence-only scope; Domain A/B surface.
+- test/ and contracts/mocks/: context-only per triage; grepped for getDefaultValidator call sites (none) and _initNexusWithDefaultValidatorAndOtherModules callers (only the 2 wrappers + definition).
+- Dependency sources (sentinellist, solady, OZ): node_modules NOT installed in the checkout; see Unresolved.
+
+DELTA-HUNK VERIFICATIONS (all checks from the brief)
+1. validators[] in _initNexusWithDefaultValidatorAndOtherModules (NexusBootstrap.sol:163-167):
+   - Default-validator entry: ENFORCED by revert, not doc-only. _installValidator (ModuleManager.sol:226-228) reverts DefaultValidatorAlreadyInstalled() BEFORE push/onInstall, after the isModuleType check. No double-install, no second onInstall, no owner overwrite; whole init tx reverts, no partial state. Empty array: loop no-ops; default-validator-only account, intended.
+   - Duplicates: SentinelList push uniqueness is asserted by _installModule natspec (ModuleManager.sol:189-190: "this check is done when trying to sstore the module in an appropriate SentinelList"); a duplicate reverts the whole init (fail-safe). Dependency source unverified (see Unresolved).
+   - address(0) entries: SKIPPED via `continue` (line 164). No parallel array exists (BootstrapConfig structs carry module+data together), so no index desync is possible. Skip matches the file's established opt-out convention used for executors/fallbacks/preValidationHooks in every init function.
+   - Sibling comparison: _initNexus (lines 325-328) and _initNexusScoped (lines 418-421) validators loops have NO zero-skip (pre-existing, untouched by delta); _initNexusWithSingleValidator has no zero check either. There are NO separate 7702 init variants in the bootstrap (grep for "7702|PREP" returns 0 matches) — the same entry points serve classic + 7702 via Nexus._initializeAccount delegatecall. See "Observed, not reported" for the sibling inconsistency.
+2. Loop-path checks: the loop calls _installValidator directly, which carries withHook + withRegistry(validator, MODULE_TYPE_VALIDATOR), the isModuleType check, and the default-validator rejection — IDENTICAL checks to the single-validator path (same function). No bypass. Registry ordering intact: _configureRegistry runs FIRST (line 158), before onInstall and all loops — the EX-002/EX-034 fix is preserved for the new loop. ModuleInstalled(MODULE_TYPE_VALIDATOR, ...) emitted per install (line 166).
+3. getDefaultValidator() (ModuleManager.sol:101-105): new external view getter returning immutable _DEFAULT_VALIDATOR. ZERO call sites repo-wide (grep over contracts/ + test/ finds only the definition) — no caller trusts it differently. The immutable is already public (embedded in deployed bytecode). No information disclosure beyond public data. Adjacent EX-072 root cause (returned address unusable for routing) is excluded; the getter adds no new behavior.
+4. _uninstallPreValidationHook re-sign (ModuleManager.sol:386-388): old 3-arg body (verified in diff) was ALREADY just `_setPreValidationHook(hookType, address(0))` — the dropped (preValidationHook, data) params were unused. Behavior-neutral. Exactly ONE caller (line 300, inside _uninstallHook), updated consistently. No aliasing window: both _uninstallHook entry points (Nexus.uninstallModule line 249, emergencyUninstallHook line 277) require _isModuleInstalled(hookType, hook, ...) first, which for pre-validation types checks `_getPreValidationHook(type) == module` — storage hook == intended hook is enforced pre-clear, single transaction, no reentrancy gap (onUninstall runs AFTER the clear). Double-onUninstall: exactly ONE onUninstall call exists on the path (ModuleManager.sol:302, excessivelySafeCall); _uninstallPreValidationHook makes no external call. EX-052 fix intact.
+5. _getEnableModeDataHash view->pure (ModuleManager.sol:651-653): body BYTE-IDENTICAL to the pre-delta view version (diff shows only move + mutability): keccak256(abi.encode(MODULE_ENABLE_MODE_TYPE_HASH, module, moduleType, userOpHash, keccak256(initData))). Reads no state (constant + params only); pure is correct. No field dropped/reordered. Preimage defects are excluded (EX-003/EX-004/EX-008/EX-068).
+6. BaseAccount delta: single-line version string "biconomy.nexus.1.2.0" -> "1.2.1". Only consumer is Nexus.accountId() (Nexus.sol:452-453) returning the constant; no logic branches on it (repo-wide grep). Intended version bump; no effect on validateUserOp/_validateSignature paths. NexusBootstrap EIP-712 domain version bumped to "1.2.1" identically (line 431), consistent with Nexus domain "Nexus"/"1.2.1" (Nexus.sol:574-577); no EIP-712 verification runs in bootstrap delegatecall context.
+7. Bootstrap + 7702 interplay (evidence-only trace): Nexus.initializeAccount (lines 305-333) skips the signature/transient checks ONLY when msg.sender == address(this). Pre-init, that branch is reachable only by the account itself: an EOA self-transaction (the owner, for 7702 accounts) or a validated userOp via EntryPoint (no validator installed pre-init, so no attacker-validated userOp). No path found where an attacker-chosen bootstrap address meets a skipped signature check. The relay branch (raw-hash signature) is EX-076; the transient-flag classic path is EX-116. Both excluded; no finding here. Full init-path verdict belongs to Domain A.
+
+NEW-ERROR VERIFICATION (INexusEventsAndErrors.sol)
+- InvalidSignature() (line 70) is declared AND thrown exactly once: Nexus.sol:326, the 7702 relay branch (`require(ECDSA.recover(initDataHash, signature) == address(this), InvalidSignature())`) — the delta's new branch, i.e. thrown where intended. No missed throw site: enable-mode and emergency-uninstall paths use their own pre-existing dedicated errors (EnableModeSigError, EmergencyUninstallSigError). No finding.
+
+PRAGMA/COMMENT-ONLY VERIFICATION (NonceLib + LocalCallDataParserLib)
+- contracts/lib/NonceLib.sol, `git diff 9af2d1d..HEAD`: 4 hunks, ALL non-behavioral — (a) `pragma solidity 0.8.27` -> `^0.8.27` (widens permitted compiler range; toolchain pins solc 0.8.27 per SCOPE.md §3, no practical effect); (b-d) three comment typo fixes ("Validaton" -> "Validation", "Validate Mode" -> "Validation Mode" in @return). Zero executable lines changed. BEHAVIOR-NEUTRAL, zero findings.
+- contracts/lib/local/LocalCallDataParserLib.sol, same diff: SINGLE hunk, pragma `0.8.27` -> `^0.8.27` only. Zero executable lines changed. BEHAVIOR-NEUTRAL, zero findings. (Note: _multiTypeInstall silent-skip root cause EX-071/EX-086 lives in ModuleManager + this lib's parser, but the parser logic itself is untouched by the delta.)
+
+CONSTRUCTOR RENAME VERIFICATION (ModuleManager.sol:84-90)
+- Param names `_defaultValidator`/`_initData` -> `defaultValidator_`/`initData_`, function moved within file. Body identical: isModuleType check, onInstall, immutable assignment. Behavior-neutral.
+
+CANDIDATES KILLED BY DEDUP (root-cause overlap; not reported)
+- K1: Default validator double-install / owner overwrite via validators[] — killed by code (revert, see check 1) AND root-cause-adjacent to EX-049 (default-validator init gating), EX-050 (default-validator install-path fix), EX-072 (default-validator addressability cluster). Dedup checked: EX-049, EX-050, EX-072.
+- K2: Enable-mode hash preimage missing/dropped field — killed by diff (preimage unchanged) AND excluded: EX-003, EX-004, EX-008, EX-016, EX-017, EX-068. Dedup checked: all six.
+- K3: Double onUninstall on pre-validation-hook uninstall after re-sign — killed by code (single call site) AND excluded: EX-052. Dedup checked: EX-052.
+- K4: Registry attestation skipped for delta-loop validators — killed by code (_configureRegistry first) AND excluded: EX-002, EX-034. Dedup checked: EX-002, EX-034.
+- K5: Missing ModuleInstalled event for the default validator's onInstall in the delta function (line 160) — excluded: EX-I33, EX-091 (same event-gap family; pre-existing pattern). Dedup checked: EX-I33, EX-091. (The delta validators loop DOES emit the event.)
+- K6: _checkInitializedValidators loop DoS/revert bricking uninstall — NOT re-examined as a claim; excluded: EX-075, EX-081 (and origin EX-055). Out of delta scope (cosmetic-only touch). Dedup checked: EX-075, EX-081, EX-055.
+- K7: Session-key oracle confusion via enable-mode / emergency-uninstall — excluded: EX-073, EX-074. Delta does not touch those paths. Dedup checked: EX-073, EX-074.
+- K8: 7702 relay signature not chain-bound (raw initDataHash) — excluded: EX-076. Nexus.sol, other domain. Dedup checked: EX-076.
+- K9: Stale transient init flag / re-init in deploying tx — excluded: EX-116. Other domain. Dedup checked: EX-116.
+- K10: Bootstrap installs skipping hook checks (no withHook on bootstrap entry points) — excluded: EX-067. Note _installValidator itself carries withHook but no hook exists yet during init, so it is a no-op on these paths regardless. Dedup checked: EX-067.
+- K11: Pre-validation hooks uninstallable at setup — excluded: EX-066, EX-090 (resolved; params present in all delta-touched init functions). Dedup checked: EX-066, EX-090.
+- K12: _multiTypeInstall silently skipping unknown types — excluded: EX-071, EX-086. Function untouched by delta. Dedup checked: EX-071, EX-086.
+- K13: Zero-owner signature acceptance in K1Validator paths — excluded: EX-045, EX-077, EX-087. K1Validator out of scope; not examined. Dedup checked: EX-045, EX-077.
+- K14: view->pure / assembly fmp hazards in _getEnableModeDataHash — excluded-pattern: EX-120 (Pashov-stx L-03; defect pattern absent in 1.2.1 — Solidity-level keccak256, no assembly). Dedup checked: EX-120.
+- K15: Uninitialized default validator validating (Zenith L-1 family) — excluded: EX-049. Dedup checked: EX-049.
+
+OBSERVED, NOT REPORTED (below bar; recorded for honesty, not a finding)
+- O1: Sibling zero-skip inconsistency. _initNexus and _initNexusScoped validators loops lack the `address(0)` skip that the delta added to _initNexusWithDefaultValidatorAndOtherModules. A zero entry in those pre-existing loops reaches _installValidator(address(0)), where the high-level `IValidator(address(0)).isModuleType(...)` call reverts on empty returndata — the whole init reverts (fail-safe, no partial state, no funds at risk). Trigger requires the deployer/owner to supply a zero placeholder in their own init array (self-inflicted); recovery is retrying with a cleaned array. Pre-existing behavior untouched by the delta, fail-safe revert, no attacker leverage: Low/Info at best, OUT-OF-SCOPE-DELTA, and per the brief ("scopeTag OUT-OF-SCOPE-DELTA if severe") not severe enough to report. The delta's skip is the file's established opt-out convention, not a new hazard.
+
+UNRESOLVED CROSS-REFERENCES
+- U1: SentinelListLib.push duplicate-entry behavior — dependency source NOT available locally (node_modules absent from the checkout; remapping points to node_modules/sentinellist). Conclusion (duplicates revert) rests on the in-repo natspec at ModuleManager.sol:189-190 plus the fail-safe direction of any revert. If push did NOT enforce uniqueness, the consequence would be rooted in the third-party sentinellist lib + shared pre-existing _installValidator — out of delta scope and out of bounty scope (third-party) either way. No finding depends on resolving this.
+- U2: K1Validator.onInstall behavior on a second call (owner overwrite vs revert) — NOT traced; unreachable via the delta loop because _installValidator reverts for the default validator before onInstall. Moot for all delta paths.
+- U3: Deployed-bytecode correspondence (repo 1.2.1 vs deployed 1.3.3 from stx-contracts) — out of scope for this Hunter; per SCOPE.md §6 the payout relevance of 1.2.1-only issues is unconfirmed. No finding depends on it.
+
+DEDUP SOURCES CONSULTED: SCOPE.md, triage.json, recon.json, EXCLUSION_LIST.md in full (161 entries: EX-001–EX-121, EX-G01–G07, EX-I01–I33). Exclusion IDs checked for each killed candidate are listed above.

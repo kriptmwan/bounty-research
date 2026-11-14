@@ -1,0 +1,14 @@
+{
+  "run": "fraxlend-audit-2026-11-14",
+  "repoRoot": "~/workspace/frax-audit/repos/fraxlend",
+  "pinnedHead": "2bed49d4dcc6702d92dede825c3424893517d841",
+  "checks": [
+    {"check": "fork smoke test (deal+prank whale transfer, pinned block 26410483, evm_version=cancun)", "command": "forge test --fork-url https://ethereum-rpc.publicnode.com --fork-block-number 26410483 -vvv (in poc-smoke/)", "outcome": "PASS, 13s wall", "budget": "1 run after 1 diagnosed NotActivated failure fixed by cancun EVM"},
+    {"check": "parent re-read VaultAccount.sol toAmount/toShares", "outcome": "confirmed div-by-zero shape when total.amount==0 && shares>0 && roundUp; kill accepted (state unreachable without privileged writeoff; any permissionless borrow heals it)", "budget": "code read"},
+    {"check": "parent re-read _calculateInterest/_addInterest overflow-skip", "outcome": "confirmed silent skip advances lastTimestamp; requires uint128-max interest — unreachable; kill accepted", "budget": "code read"},
+    {"check": "parent cast call: dust oracle 0x05D95C1fCB2C2ef1553De5e208D268002724c278 getPrices()", "outcome": "reverts with panic division-by-zero (0x12) — Hunter C dust-oracle observation confirmed for this pair; pair holds 5 FRAX, 0 borrows — non-qualifying", "budget": "2 read-only RPC calls"},
+    {"check": "repo integrity at conclusion", "command": "git rev-parse HEAD && git status --short", "outcome": "HEAD unchanged, tree clean (verified by Phase 0A/0B workers and hunters; re-verified before report)"}
+  ],
+  "summary": "No finding PoCs built — none required with zero survivors. Fork infrastructure proven working for any future PoC.",
+  "findingEvidenceLinks": []
+}

@@ -1,0 +1,73 @@
+{
+  "strategy": "single-pass, impact-gated adversarial audit (Frax bar: demonstrated theft-of-funds or permanent-freezing vs CURRENT LIVE deployments, fork PoC required). Domain Hunters in risk order, then Skeptic, then Referee per domain with surviving candidates.",
+  "target": {
+    "repo": "FraxFinance/frax-bonds",
+    "path": "/home/hatch/workspace/frax-audit/repos/frax-bonds",
+    "commit": "4ef235e68c8277ad3dbc676762fffe663c9896fc",
+    "commitDate": "2025-07-09",
+    "chain": "Ethereum mainnet (chain 1) only",
+    "scopeNote": "src/contracts only for findings. Tests, scripts, specification/, flattened.sol, docs are context/evidence only. lib/ vendored code excluded."
+  },
+  "fileBudget": 24,
+  "scanOrder": ["CRITICAL", "HIGH", "MEDIUM"],
+  "riskMap": {
+    "critical": [
+      "src/contracts/FXB.sol",
+      "src/contracts/FXB_LFRAX.sol",
+      "src/contracts/SlippageAuction.sol",
+      "src/contracts/FXBFactory.sol",
+      "src/contracts/SlippageAuctionFactory.sol"
+    ],
+    "high": [
+      "src/contracts/FraxBeacon.sol",
+      "src/contracts/FraxBeaconProxy.sol",
+      "src/contracts/FraxUpgradeableProxy.sol",
+      "src/contracts/utils/StorageSetterLFRAX.sol",
+      "src/contracts/ERC20PermitPermissionedOptiMintable.sol",
+      "src/contracts/utils/Storage.sol"
+    ],
+    "medium": [
+      "src/contracts/utils/BokkyPooBahsDateTimeLibrary.sol",
+      "src/contracts/utils/EIP712StoragePad.sol",
+      "src/contracts/OwnedV2.sol",
+      "src/Constants.sol"
+    ],
+    "contextOnly": [
+      "src/test/",
+      "src/script/",
+      "specification/",
+      "flattened.sol",
+      "src/contracts/interfaces/"
+    ]
+  },
+  "domains": {
+    "A": {
+      "name": "Bond mint/redeem + maturity accounting",
+      "files": ["src/contracts/FXB.sol", "src/contracts/FXB_LFRAX.sol", "src/contracts/utils/BokkyPooBahsDateTimeLibrary.sol"],
+      "evidenceOnly": ["src/contracts/ERC20PermitPermissionedOptiMintable.sol", "src/contracts/interfaces/IERC20PermitPermissionedOptiMintable.sol"]
+    },
+    "B": {
+      "name": "SlippageAuction mechanics",
+      "files": ["src/contracts/SlippageAuction.sol", "src/contracts/SlippageAuctionFactory.sol"],
+      "evidenceOnly": ["src/contracts/interfaces/IUniswapV2Callee.sol"]
+    },
+    "C": {
+      "name": "Factory/deployment + upgrade paths",
+      "files": ["src/contracts/FXBFactory.sol", "src/contracts/FraxBeacon.sol", "src/contracts/FraxBeaconProxy.sol", "src/contracts/FraxUpgradeableProxy.sol", "src/contracts/utils/StorageSetterLFRAX.sol", "src/contracts/utils/Storage.sol", "src/contracts/utils/EIP712StoragePad.sol"],
+      "evidenceOnly": ["src/script/LFRAX_FXB_Upgrade/", "FXB_UPGRADE_NOT_V2_WALKTHROUGH.md", "AUDIT_SCOPE_LFRAX_AND_FXB_UPGRADE.md"]
+    },
+    "D": {
+      "name": "Access control / privileged roles + FRAX-frxUSD boundary",
+      "files": ["src/contracts/OwnedV2.sol", "src/contracts/ERC20PermitPermissionedOptiMintable.sol"],
+      "evidenceOnly": ["src/contracts/FXB.sol", "src/contracts/FXB_LFRAX.sol", "src/contracts/SlippageAuction.sol", "src/contracts/FXBFactory.sol"],
+      "note": "Role-misuse findings whose flawed code lives in another domain's file must be relayed to the coordinator for dedup/reassignment, not reported under D."
+    }
+  },
+  "needsLoop": false,
+  "notes": [
+    "Single-pass default. Coverage: all 10 src/contracts/*.sol files + utils + Constants assigned across 4 domains; interfaces context-only.",
+    "Frax bar gates every claim: only theft-of-funds / permanent-freezing vs live deployments with fork PoC. Sub-bar observations go to nonqualifying-{A,B,C,D}.md, never inflated.",
+    "Exclusion list (Phase 0A) is authoritative: ToB Oct 2023 + ChainSecurity Jul 2025 findings must not be re-reported.",
+    "Live-state gating: a source-level defect in a contract with no live deployment, or in dead code paths, is sub-bar unless a live instance is proven (Phase 0B/0C)."
+  ]
+}

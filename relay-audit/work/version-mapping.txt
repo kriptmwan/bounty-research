@@ -1,0 +1,35 @@
+Router 3.2 (0x0729e2a4..., cancun, 1M runs): 48 chains
+  ethereum(1), optimism(10), bnb(56), gnosis(100), unichain(130), polygon(137), monad(143), sonic(146), manta(169), xlayer(196), boba(288), zksync(324), shape(360), worldchain(480), flow(747), stable(988), hyperevm(999), lisk(1135), soneium(1868), ronin(2020), abstract(2741), morph(2818), tempo(4217), megaeth(4326), robinhood(4663), somnia(5031), arc(5042), superseed(5330), base(8453), plasma(9745), apechain(33139), mode(34443), mythos(42018), arbitrum(42161), celo(42220), avalanche(43114), zircuit(48900), ink(57073), bob(60808), berachain(80094), blast(81457), doma(97477), plume(98866), scroll(534352), gensyn(685689), katana(747474), ethereal(5064014), zora(7777777)
+Proxy gen-48 (0x5567954c..., cancun, 1M runs): 48 chains
+  ethereum(1), optimism(10), bnb(56), gnosis(100), unichain(130), polygon(137), monad(143), sonic(146), manta(169), xlayer(196), boba(288), zksync(324), shape(360), worldchain(480), flow(747), stable(988), hyperevm(999), lisk(1135), soneium(1868), ronin(2020), abstract(2741), morph(2818), tempo(4217), megaeth(4326), robinhood(4663), somnia(5031), arc(5042), superseed(5330), base(8453), plasma(9745), apechain(33139), mode(34443), mythos(42018), arbitrum(42161), celo(42220), avalanche(43114), zircuit(48900), ink(57073), bob(60808), berachain(80094), blast(81457), doma(97477), plume(98866), scroll(534352), gensyn(685689), katana(747474), ethereal(5064014), zora(7777777)
+Router older-gen A (0xB92fe925..., cancun, 200 runs, no optimizerRuns field): 0 chains
+  
+Proxy older-gen A (0xccc88a9d..., 200 runs): 22 chains
+  mint(185), appchain(466), redstone(690), eden(714), perennial(1424), gravity(1625), swellchain(1923), sanko(1996), cyber(7560), powerloom(7869), arena_z(7897), funki(33979), hemi(43111), superposition(55244), syndicate(510003), xai(660279), forma(984122), corn(21000000), lordchain(84530008), metacade(845300014), ancient8(888888888), rari(1380012617)
+Router older-gen B (0xe6b730e5..., cancun, 200 runs, no optimizerRuns field): 7 chains
+  sei(1329), story(1514), b3(8333), arbitrum_nova(42170), gunz(43419), anime(69000), degen(666666666)
+Proxy older-gen B (0x5a0fa369..., 200 runs): 7 chains
+  sei(1329), story(1514), b3(8333), arbitrum_nova(42170), gunz(43419), anime(69000), degen(666666666)
+Router NonTstore 3.2 (0x6328ea02..., london, 1M runs): 5 chains
+  cronos(25), metis(1088), mantle(5000), linea(59144), taiko(167000)
+Proxy NonTstore-gen (0xe4dfbd5e..., london, 1M runs): 5 chains
+  cronos(25), metis(1088), mantle(5000), linea(59144), taiko(167000)
+Router NonTstore singleton polygon_zkevm (0x9ef6d3c2..., london, 200 runs): 1 chains
+  polygon_zkevm(1101)
+Proxy singleton polygon_zkevm (0x8754bc61...): 1 chains
+  polygon_zkevm(1101)
+Router NonTstore singleton zero (0xe16870b0..., london, 200 runs): 1 chains
+  zero(543210)
+Proxy singleton zero (0xf6e54bbf..., nonstandard permit2): 1 chains
+  zero(543210)
+
+Pairing check (router,proxy) combos:
+  0x0729e2a4716d9f7dd17858d5d504426d228697f7 + 0x5567954cd026cebfe486062cb75848e0f1c12e58: 48
+  0x6328ea02d28131e58b28e55c6258258a30d90e05 + 0xe4dfbd5e6784db1058124e2c87554c0591f0fb7b: 5
+  0x9ef6d3c2f60d7b9008d74cab1fc0f899c957c819 + 0x8754bc615047de01228a7527b712806a71a8dc9a: 1
+  0xb92fe925dc43a0ecde6c8b1a2709c170ec4fff4f + 0xccc88a9d1b4ed6b0eaba998850414b24f1c315be: 22
+  0xe16870b028704e38dbc254a84d3f72c8ba345ca9 + 0xf6e54bbf91e564fcf0df3ed9f2dd82913e9232c3: 1
+  0xe6b730e58088884704cdf11cbe95c224d4d34154 + 0x5a0fa369d634f49c76b08dc6c299800c1a2af977: 7
+
+Nonstandard permit2 / missing factory:
+  {'name': 'zero', 'chainId': 543210, 'compilerVersion': '0.8.28', 'evmVersion': 'london', 'explorerUrl': 'https://explorer.zero.network', 'verificationFlags': '--chain 543210 --verifier blockscout --verifier-url https://explorer.zero.network/api', 'relayRouter_nonTstore': '0xe16870b028704e38dbc254a84d3f72c8ba345ca9', 'relayApprovalProxy': '0xf6e54bbf91e564fcf0df3ed9f2dd82913e9232c3', 'permit2': '0x6b4420f66de496d18a6c36367cf7f1440fd9289f'}

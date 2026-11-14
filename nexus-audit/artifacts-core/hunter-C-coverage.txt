@@ -1,0 +1,255 @@
+HUNTER C COVERAGE — Domain C: execution helper, storage, supporting libs
+Biconomy Nexus Option 2 audit. Repo: ~/workspace/nexus-audit/repos/nexus
+Pinned HEAD 9007ba1352e606575e32456512e25c41a9bf449c — verified matching at
+dispatch AND again before concluding; tree clean both times (git status empty).
+STX-DIFF.md: ABSENT at time of reading (2026-11-14 ~09:50 WIB) — proceeded
+without it; lineage duplicate-signal check done via EXCLUSION_LIST.md §F instead.
+Mode: read-only. No builds, no forge runs, no repo edits, no contact, no filing.
+Mandatory dedup-first reading completed BEFORE any claim work:
+- SCOPE.md §5 (incl. §5b tracker issues) — read in full.
+- exclusions/EXCLUSION_LIST.md — read IN FULL, all 1066 lines / 161 entries.
+- REPORT-delta.md — read in full (H-B1 disproved; NonceLib/LocalCallDataParserLib
+  deltas pragma/comment-only; _getEnableModeDataHash view->pure byte-identical).
+- exclusions/NEW-ISSUES-2026-11-14.md (dedup update) — read IN FULL, all 14
+  issues #325-#338 treated as exclusions.
+
+RESULT: ZERO candidates. hunter-findings-C.json = [].
+
+================================================================================
+FILES READ (assigned files, in risk order, full reads)
+================================================================================
+1. contracts/base/ExecutionHelper.sol — lines 1-284 (full).
+   _execute/_executeMemory/_executeNoReturndata/_tryExecute, batch variants,
+   delegatecall variants, all six _handle*Execution* handlers.
+2. contracts/base/Storage.sol — lines 1-40 (full).
+   contracts/interfaces/base/IStorage.sol — lines 1-63 (full).
+3. contracts/lib/ExecLib.sol — lines 1-90 (full).
+   contracts/lib/ModeLib.sol — lines 1-156 (full).
+   contracts/lib/ModuleTypeLib.sol — lines 1-48 (full).
+4. contracts/lib/EnumerableMap4337.sol — lines 1-535 (full).
+   contracts/lib/EnumerableSet4337.sol — lines 1-371 (full).
+   contracts/lib/AssociatedArrayLib.sol — lines 1-276 (full).
+5. contracts/lib/NonceLib.sol — lines 1-60 (full).
+   contracts/lib/BytesLib.sol — lines 1-25 (full).
+   contracts/lib/BootstrapLib.sol — lines 1-56 (full).
+   contracts/lib/local/LocalCallDataParserLib.sol — lines 1-65 (full).
+   contracts/types/Constants.sol — lines 1-59 (full).
+   contracts/types/DataTypes.sol — lines 1-37 (full).
+Total assigned: 15 files, 2,165 lines, 100% read.
+
+EVIDENCE-ONLY READS (no findings claimed there; cross-ref verification only):
+- contracts/Nexus.sol lines 130-234 (execute/executeFromExecutor/executeUserOp/
+  executeComposable/_executeAction/installModule) and 410-454
+  (supportsExecutionMode/isModuleInstalled/isInitialized) — dispatch/guard
+  symmetry for the sibling-function rule.
+- contracts/base/ModuleManager.sol lines 640-709 (_handleValidator tail,
+  _getEnableModeDataHash, _fallback incl. get2771CallData call sites and hook
+  pre/postCheck) — fallback calltype branches + 2771 context.
+- contracts/lib/Initializable.sol (grep: tstore/tload transient slot only).
+- contracts/modules/validators/K1Validator.sol (grep only: _safeSenders
+  add/remove/removeAll/contains call sites, lines 45/94/106-118/251/266-270)
+  — confirms EnumerableSet4337 is live via safe-sender management.
+- Pinned dependency sources (read-only, ~/workspace/nexus-audit/poc/node_modules):
+  solady v0.1.9 LibERC7579.sol decodeBatch (lines 149-184); sentinellist
+  SentinelList.sol struct definition (lines 16-18).
+- Greps across contracts/: get2771CallData/_executeMemory/decode*/getCallType/
+  BytesLib/BootstrapLib/Enumerable*/AssociatedArray callers; CallType !=
+  usage; namespace string + slot constant occurrences; ".slot :=" assignments;
+  erc7201 annotations; getNamespace absence.
+
+FILES SKIPPED: none of the assigned files. (Evidence-only files listed in the
+brief that were not needed: ModuleManager.sol beyond _fallback region,
+BaseAccount.sol, LibPREP.sol, ProxyLib.sol, NexusBootstrap.sol — not read
+except via grep; no cross-reference in my domain required them.)
+
+================================================================================
+DEDUP KILLS (candidate examined -> exclusion ID + reason)
+================================================================================
+K1. ExecLib.decodeSingle unguarded slices [0:20]/[20:52] panic 0x32 on short
+    input -> #328 (NEW-ISSUES delta, novel mechanism, names decodeSingle
+    explicitly). KILLED. (decodeDelegateCall [0:20]/[20:] same family.)
+K2. LocalCallDataParserLib.parseEnableModeData raw calldataload length/offset
+    reads, panic when offset exceeds input -> #328 (names parseEnableModeData
+    explicitly). KILLED. Independent merits kill also applies: parsed slices
+    feed both the enable-mode digest and the install, and both signatures must
+    be owner signatures, so no attacker principal can exploit parser laxity.
+K3. LocalCallDataParserLib.parseMultiTypeInitData hand-rolled assembly, no
+    bounds/length checks, calldataload past end returns zero -> #333 gap (1)
+    (parser half novel) + EX-071 (#319, entry notes this parser does no bounds
+    validation). KILLED.
+K4. _multiTypeInstall silent skip of unknown types (parser consumer context) ->
+    EX-071 (#319) + EX-086 (#322) + #330 + #333 gap (2). KILLED. (Consumer is
+    in evidence-only ModuleManager.sol in any case.)
+K5. ExecutionHelper reports success for calls to EOAs (low-level call to
+    no-code address returns success) -> EX-037 (Cantina 5.3.7, acknowledged).
+    KILLED. Natspec in ExecutionHelper documents this behavior.
+K6. msg.value not forwarded on some paths (fallback STATIC branch uses
+    staticcall; _execute forwards value) -> EX-001/EX-021 cluster (CodeHawks
+    H-01 / Cantina 5.2.3). KILLED. Verified: SINGLE fallback branch forwards
+    msg.value; STATIC cannot forward value by construction; both branches
+    hook-guarded identically.
+K7. TryExecute event gaps / TRY-mode observability asymmetry across the six
+    _handle* handlers -> EX-038 (fixed), EX-I15, EX-I21. KILLED. Verified all
+    six handlers emit on TRY failure (single/batch -> TryExecuteUnsuccessful,
+    delegatecall -> TryDelegateCallUnsuccessful) and all revert
+    UnsupportedExecType for other exec types. No asymmetry remains.
+K8. ModuleTypeLib.bitEncode duplicate-type mis-encoding (addition vs OR) ->
+    EX-029 (Cantina 5.2.11, fixed). KILLED. Verified both bitEncode and
+    bitEncodeCalldata use |= (idempotent); isType shift max 255 (uint8), no
+    overflow; cf. EX-I24 (range) also checked.
+K9. CALLTYPE_STATIC (0xFE) accepted in fallback but rejected in execute() ->
+    EX-I25 (undocumented CALLTYPE_STATIC) + EX-I11 (static-call compliance).
+    KILLED. Verified dispatch: execute()/executeFromExecutor() revert
+    UnsupportedCallType for 0xFE; _fallback handles STATIC and SINGLE only and
+    reverts otherwise. No guard asymmetry: both execute entry points carry
+    withHook; _fallback hook pre/postCheck wraps both calltype branches.
+K10. Fallback handler installed with invalid calltype silently no-ops ->
+    EX-014/EX-026 cluster. KILLED. (Install validation lives in evidence-only
+    ModuleManager.sol; _fallback itself reverts on unrecognized calltype.)
+K11. Storage pattern inconsistency: registry at slot 0 (RegistryAdapter) vs
+    namespaced AccountStorage.registry -> EX-056 (Pashov L-01). KILLED.
+    (RegistryAdapter is evidence-only; noted, not claimed.)
+K12. #304 / EX-079 "Constraint Validation Bypass in Nexus ComposableExecution":
+    root cause is ComposableExecutionLib._validateConstraints in THIRD-PARTY
+    package @biconomy/composability v1.1.0 — verified it does NOT touch
+    ExecutionHelper/ExecLib. ExecutionHelper's only composability touchpoint is
+    _executeMemory via Nexus._executeAction (plain call, no constraint logic).
+    No adjacent claim exists in my files. KILLED (out of scope + excluded).
+K13. H-B1 self-call re-init (REPORT-delta, DISPROVED) — never re-reported; not
+    in assigned files. No re-litigation attempted.
+K14. getNamespace assembly packing collisions -> EX-117 (Pashov-stx H-01,
+    other lineage). KILLED. Verified by grep: getNamespace does not exist
+    anywhere under contracts/.
+K15. NonceLib layout / mode-byte documentation mismatch -> #327 (docs-only).
+    KILLED (docs are out of scope regardless). Verified layout arithmetic
+    independently: byte(3) = mode byte; getValidator shr(96,shl(32,nonce))
+    extracts the 20-byte validator field correctly.
+K16. Enable-mode typehash defects (space in preimage, bytes vs bytes32) ->
+    EX-008/EX-068/EX-I06 cluster. KILLED. Constants verified to be correct
+    keccak256 of their documented preimages (see verifications); any
+    declaration/encoding-design complaint is the excluded family.
+K17. Unused-returndata / gas-only observations in _execute variants -> EX-G01
+    + gas observations out of scope. KILLED.
+K18. Missing "memory-safe" assembly annotations in ExecLib/LocalCallDataParserLib
+    -> EX-I12. KILLED. (All assembly blocks in assigned files now carry the
+    annotation or are scratch-only; no memory-corruption behavior found.)
+
+MERITS KILLS (no exclusion entry; killed on threat model / no reachable harm):
+M1. parseEnableModeData / parseMultiTypeInitData caller-controlled lengths can
+    produce slices extending past calldata end (zero-reads): both parsers'
+    outputs are consumed only on owner/executor-validated paths, and for
+    enable-mode the same parsed bytes feed the signed digest and the install,
+    so no parser differential exists and no different principal is harmed.
+    Worst case is a revert of the owner's own userOp. Not a finding.
+M2. ModeLib.decode()/decodeBasic()/getCallType() assembly assigns full/shifted
+    mode words to bytes1/bytes4-typed returns (low bytes not zeroed):
+    decode() and getCallType() have ZERO callers (dead code, out of scope);
+    decodeBasic() results are compared only with == against clean constants
+    (no != use on CallType anywhere in contracts/), and any dirtiness fails
+    closed (false negative -> revert UnsupportedCallType/UnsupportedExecType),
+    never toward a guard bypass. supportsExecutionMode uses the same decode
+    and same constants as execute(), so no support/dispatch mismatch. The
+    mode selector/payload are ignored identically by both. Not a finding.
+    (Solidity cleanup codegen for small-type == was NOT verified by
+    compilation — no builds permitted — but the conclusion holds under either
+    codegen behavior since only the fail-closed direction is reachable.)
+M3. AssociatedArrayLib._pop on an empty array silently returns instead of
+    reverting: no state change, no invariant broken; sole in-repo caller chain
+    (EnumerableSet._remove) only pops when length >= 1. Not a finding.
+M4. AssociatedArrayLib element slots at slot+32*(index+1) could in theory
+    collide with another (struct, account) length slot: requires a keccak256
+    output difference that is a small multiple of 32 (~2^-248 per pair).
+    Negligible / impossible precondition. Not a finding.
+M5. ExecutionHelper _executeNoReturndata advances the free-memory pointer by
+    the unrounded calldata length (possibly unaligned): EVM memory ops are
+    alignment-agnostic and every subsequent use re-reads the pointer; no live
+    object is clobbered. Same pattern as the Solady/Rhinestone code it derives
+    from. Not a finding.
+M6. ExecLib.get2771CallData ignores its `cd` parameter and copies the full
+    calldata: sole callers are the two _fallback branches where full calldata
+    == the passed callData, and caller() == the original msg.sender, so the
+    appended-sender construction is correct in every reachable context. The
+    ignored-arg shape is fragile for future callers only. Not a finding.
+M7. _execute/_tryExecute forward all gas() to owner-chosen targets (reentrancy
+    surface): targets are chosen by the owner/validated userOp or a trusted
+    executor; re-entering account functions re-runs validation guards. No
+    different principal harmed. Not a finding.
+M8. decodeBatch accepts overlapping/aliased element encodings (two elements
+    pointing at the same struct data): executes the same call twice, exactly
+    what the owner-encoded batch says. No invariant broken. Not a finding.
+M9. BytesLib.slice is dead code (zero callers in contracts/ incl. mocks
+    checked via grep): no reachable trigger by construction. Read and
+    verified correct anyway (overflow in start+length reverts via checked
+    arithmetic). Not a finding.
+M10. EnumerableMap4337 has zero callers outside its own file (only
+    EnumerableSet4337 is live, via K1Validator._safeSenders): map code read
+    in full and verified consistent (set/remove/contains/get/tryGet/at/keys
+    all delegate correctly to the inner map/set); no defect found regardless
+    of reachability. Not a finding.
+
+================================================================================
+CHECKS PERFORMED WITH POSITIVE RESULTS (verified sound)
+================================================================================
+- ERC-7201 slot: keccak256(abi.encode(uint256(keccak256("biconomy.storage.Nexus"))-1))
+  & ~0xff == 0x0bb70095...b82f00, matching Storage.sol:28 exactly (computed
+  with ethers v6 keccak, read-only arithmetic, no build). Only Storage.sol
+  assigns the slot; no second struct shares the namespace; Initializable uses
+  transient storage (disjoint namespace); ERC-1967 proxy slots are different
+  hash domains. No collision found. SentinelList = single mapping = 1 slot,
+  so AccountStorage field offsets are compiler-managed with no raw access.
+- Error selectors: AssociatedArray_OutOfBounds(uint256) = 0x8277484f and
+  DecodingError() = 0xba597e7e both match the assembly constants used.
+- Typehash constants match documented preimages exactly (see K16).
+- decodeBatch is instruction-identical to pinned solady v0.1.9
+  LibERC7579.decodeBatch (modulo return-variable naming) — zero drift from the
+  cited upstream copy. Bounds-check logic traced: short/empty input reverts
+  (e=offset+len-0x20 underflow direction fails the length check); huge lengths
+  OOG in the per-element loop before any overflow can be exploited; per-element
+  p/q/length constrained to <2^64 before use.
+- Sibling-function rule, execution: all six _handle* handlers accept exactly
+  EXECTYPE_DEFAULT/EXECTYPE_TRY and revert otherwise; all TRY branches emit;
+  execute()/executeFromExecutor() dispatch identical calltype sets with
+  withHook on both; supportsExecutionMode matches the dispatch exactly.
+- Sibling-function rule, modes: NonceLib isModuleEnableMode/isPrepMode/
+  isValidateMode all use byte(3) + shl(248) comparison against bytes1 mode
+  constants; isDefaultValidatorMode uses the same extraction as getValidator.
+- Enumeration invariants: EnumerableSet add/remove/contains symmetric via
+  position+1 sentinel; swap-and-pop handles valueIndex==lastIndex (A==B)
+  correctly; removeAll removes last-first so no swap occurs; positions deleted
+  on remove; AssociatedArrayLib push/set/get/pop/remove length bookkeeping
+  consistent (element i at slot+32*(i+1), length at slot); _remove handles
+  index==length-1 correctly (self-set then clear + decrement).
+- Fallback branches: STATIC->staticcall (no value), SINGLE->call with
+  msg.value, else revert; hook preCheck before and postCheck after both.
+- K1Validator safe-sender lifecycle: onUninstall removeAll clears length and
+  positions, so re-install starts from a clean set (no stale entries).
+
+================================================================================
+UNRESOLVED CROSS-REFERENCES
+================================================================================
+- None that affect any claim (zero claims). Two observations passed to the
+  coordinator for other domains, NOT findings in my files:
+  (a) K1Validator.sol:270 slices install data in 20-byte chunks
+      (data[20*i:20*(i+1)]) with no multiple-of-20 length check — K1Validator
+      is outside Domain C; flagging only as a cross-ref for the validator
+      domain, no verdict offered.
+  (b) RegistryAdapter slot-0 `registry` vs AccountStorage.registry duality —
+      already excluded (EX-056); noted here only so the coordinator sees the
+      overlap was considered, not missed.
+
+================================================================================
+COULD NOT VERIFY
+================================================================================
+- STX-DIFF.md did not exist; team-changed-code duplicate signals could not be
+  checked from it. Mitigated via EXCLUSION_LIST.md §F (stx-contracts lineage
+  diff summary, incl. "NonceLib/LocalCallDataParserLib: comments/formatting
+  only" and "IStorage: comment only"). No candidate was in team-changed code,
+  so no candidate needed the duplicate-suspect flag.
+- Solidity codegen cleanup behavior for small-type == on assembly-produced
+  values (see M2): not verified by compilation (builds forbidden for this
+  task). Conclusion does not depend on it (fail-closed direction only).
+- SentinelListLib runtime behavior beyond the struct definition: only the
+  struct layout was read from pinned source; list operations themselves are
+  dependency code outside assigned files and were not audited.
+- No execution/POCs: none required (zero surviving candidates); all traces
+  are static code traces, labeled as such.

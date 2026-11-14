@@ -1,0 +1,3946 @@
+{
+  "meta": {
+    "title": "Frax FXB / SlippageAuction on-chain deployment inventory (Ethereum mainnet only)",
+    "repo": "frax-bonds",
+    "repoCommit": "4ef235e68c8277ad3dbc676762fffe663c9896fc",
+    "chain": "Ethereum mainnet",
+    "chainId": 1,
+    "rpc": "https://ethereum-rpc.publicnode.com",
+    "blockNumber": 26411541,
+    "blockTimestamp": 1794639059,
+    "blockTimestampUTC": "2026-11-14T06:50:59.000Z",
+    "probedAtWIB": "2026-11-14 ~13:42-14:05 WIB",
+    "method": "read-only eth_call / eth_getCode / eth_getStorageAt / eth_getBalance / eth_getTransactionCount via ethers v6; no transactions, no signatures, no broadcasts; no block-explorer visits; no GitHub API; cast not installed/used",
+    "maturityReferenceTime": 1794639059
+  },
+  "factories": {
+    "fxbFactory": {
+      "address": "0x7a07D606c87b7251c2953A30Fa445d8c5F856C7A",
+      "codePresent": true,
+      "codeLengthBytes": 13205,
+      "codeHash": "0x03faf65fc69243032d0fea780f721be045997d5724664e4fe98e1f5324e47d28",
+      "nonce": 6,
+      "ethBalanceWei": "0",
+      "role": "FXBFactory (v1, direct deployment, NOT the HEAD v2 beacon/proxy factory)",
+      "chain": "ethereum",
+      "views": {
+        "timelockAddress": "0x831822660572bd54ebaa065C2acef662a6277D40",
+        "pendingTimelockAddress": "0x0000000000000000000000000000000000000000",
+        "FRAX": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+        "fxbsLength": "5",
+        "fxbs": [
+          "0xfb51435D48cB04dbE5f23b22f80aDe6D996473F5",
+          "0x0dE54CFdfeD8005176f8b7A9D5438B45c4F1df1e",
+          "0xF8FDe8A259A3698902C88bdB1E13Ff28Cd7f6F09",
+          "0x13f19441Fb473fE96F1928d4a90f79fDb59675F1",
+          "0x76237BCfDbe8e06FB774663add96216961df4ff3"
+        ],
+        "fxbsIndexOutOfBoundsReverts": true,
+        "owner_reverts": true,
+        "beacon_reverts": true,
+        "token_reverts": true,
+        "version_reverts": true
+      },
+      "isFxb": {
+        "0xfb51435D48cB04dbE5f23b22f80aDe6D996473F5": "true",
+        "0x0dE54CFdfeD8005176f8b7A9D5438B45c4F1df1e": "true",
+        "0xF8FDe8A259A3698902C88bdB1E13Ff28Cd7f6F09": "true",
+        "0x13f19441Fb473fE96F1928d4a90f79fDb59675F1": "true",
+        "0x76237BCfDbe8e06FB774663add96216961df4ff3": "true"
+      },
+      "storageSlots0to2": [
+        "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "0x000000000000000000000000831822660572bd54ebaa065c2acef662a6277d40",
+        "0x0000000000000000000000000000000000000000000000000000000000000005"
+      ],
+      "proxy": {
+        "isProxy": false,
+        "eip1967Implementation": {
+          "slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "address": null
+        },
+        "eip1967Admin": {
+          "slot": "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103",
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "address": null
+        },
+        "eip1967Beacon": {
+          "slot": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50",
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "address": null
+        }
+      },
+      "registryCompleteEvidence": "fxbsLength=5; fxbs(0..4) all return distinct addresses with isFxb=true; fxbs(5) and fxbs(99) revert; factory account nonce=6 (1 + 5 CREATEs); storage slot 2 (array length) = 5"
+    },
+    "auctionFactory": {
+      "address": "0x983aF86c94Fe3963989c22CeeEb6eA8Eac32D263",
+      "codePresent": true,
+      "codeLengthBytes": 18458,
+      "codeHash": "0xdac17261fa76c6ba5d6ac660731a24b449164fb32d06cdb1378a67ab3f7d6745",
+      "nonce": 6,
+      "ethBalanceWei": "0",
+      "role": "SlippageAuctionFactory (v1, direct, permissionless creation)",
+      "chain": "ethereum",
+      "views": {
+        "auctionsLength": "5",
+        "auctions": [
+          "0xEC7CD06EA2fE3E2A9bFB4F75467617B35F0931D7",
+          "0xC92067D8DDb1970ecB93202DA31a3C45cC2c1F44",
+          "0xc9aa98788a675FF0846E8856cb83F19452f3b0c8",
+          "0x50c4b90bE25a2de0cd6Ad8dF5047B4C50C78FDE8",
+          "0x63981f5E690eaF7E8795c42832664e8848F532fB"
+        ],
+        "auctionsByIndex": [
+          "0xEC7CD06EA2fE3E2A9bFB4F75467617B35F0931D7",
+          "0xC92067D8DDb1970ecB93202DA31a3C45cC2c1F44",
+          "0xc9aa98788a675FF0846E8856cb83F19452f3b0c8",
+          "0x50c4b90bE25a2de0cd6Ad8dF5047B4C50C78FDE8",
+          "0x63981f5E690eaF7E8795c42832664e8848F532fB"
+        ],
+        "getAuctionsEqualsByIndex": true,
+        "auctionsIndexOutOfBoundsReverts": true,
+        "version_reverts": true,
+        "owner_reverts": true
+      },
+      "isAuction": {
+        "0xEC7CD06EA2fE3E2A9bFB4F75467617B35F0931D7": "true",
+        "0xC92067D8DDb1970ecB93202DA31a3C45cC2c1F44": "true",
+        "0xc9aa98788a675FF0846E8856cb83F19452f3b0c8": "true",
+        "0x50c4b90bE25a2de0cd6Ad8dF5047B4C50C78FDE8": "true",
+        "0x63981f5E690eaF7E8795c42832664e8848F532fB": "true"
+      },
+      "storageSlot0": "0x0000000000000000000000000000000000000000000000000000000000000005",
+      "proxy": {
+        "isProxy": false,
+        "eip1967Implementation": {
+          "slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "address": null
+        },
+        "eip1967Admin": {
+          "slot": "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103",
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "address": null
+        },
+        "eip1967Beacon": {
+          "slot": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50",
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "address": null
+        }
+      },
+      "registryCompleteEvidence": "auctionsLength=5; getAuctions() == auctions(0..4) == getAuction(0..4); auctions(5) reverts; factory account nonce=6 (1 + 5 CREATEs); storage slot 0 (array length) = 5"
+    }
+  },
+  "fxbs": [
+    {
+      "index": 0,
+      "address": "0xfb51435D48cB04dbE5f23b22f80aDe6D996473F5",
+      "codePresent": true,
+      "codeLengthBytes": 6237,
+      "codeHash": "0xe6f378db5ec4ce686c33ed79e458756ae0bf1a21e32fe172ba9a7c4b9f551ae7",
+      "nonce": 1,
+      "ethBalanceWei": "0",
+      "role": "FXB maturity contract (v1.0.2, direct/immutable, no proxy)",
+      "chain": "ethereum",
+      "name": "FXB_0_MAR312024",
+      "symbol": "FXB_20240331",
+      "decimals": 18,
+      "version": "1.0.2",
+      "maturityTimestamp": 1711929600,
+      "maturityUTC": "2024-04-01T00:00:00.000Z",
+      "maturedAsOfProbeBlock": true,
+      "underlying": {
+        "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+        "label": "FRAX (legacy FRAX / LFRAX on Ethereum)",
+        "variant": "FRAX-denominated; NOT frxUSD; no frxUSD() view"
+      },
+      "totalSupplyWei": "0",
+      "totalSupplyTokens": "0.0",
+      "totalFxbMintedWei": "0",
+      "totalFxbRedeemedWei": "0",
+      "supplyReconciliation": {
+        "mintedMinusRedeemedEqualsSupply": true,
+        "mintedMinusRedeemedWei": "0"
+      },
+      "underlyingBalanceWei": "0",
+      "underlyingBalanceTokens": "0.0",
+      "fullyCollateralizedOutstanding": true,
+      "factoryRegistry": {
+        "isFxb": true,
+        "isTimestampFxb": true
+      },
+      "views": {
+        "factory_reverts": true,
+        "token_reverts": true,
+        "frxUSD_reverts": true,
+        "owner_reverts": true,
+        "timelockAddress_reverts": true,
+        "getBeacon_reverts": true,
+        "bondInfo": {
+          "symbol": "FXB_20240331",
+          "name": "FXB_0_MAR312024",
+          "maturityTimestamp": "1711929600"
+        },
+        "isRedeemableFromZeroAddress": "true",
+        "isRedeemableFromTimelockSafe": "true",
+        "isRedeemableFromFactory": "true",
+        "domainSeparator": "0x1774634779ae93606ac1dc8176fa662f97558b034e1e861273ae247f70307720"
+      },
+      "proxy": {
+        "isProxy": false,
+        "implementation": null,
+        "upgradeAuthority": "none (immutable)",
+        "eip1967Implementation": {
+          "slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "address": null
+        },
+        "eip1967Admin": {
+          "slot": "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103",
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "address": null
+        },
+        "eip1967Beacon": {
+          "slot": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50",
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "address": null
+        }
+      },
+      "minterRole": "anyone (mint pulls 1:1 FRAX via transferFrom; no minter allowlist observed in v1 interface)"
+    },
+    {
+      "index": 1,
+      "address": "0x0dE54CFdfeD8005176f8b7A9D5438B45c4F1df1e",
+      "codePresent": true,
+      "codeLengthBytes": 6237,
+      "codeHash": "0x4c47b5636139a506b2095703375d2c45d07e3a9c421ce0202c340993be9072b6",
+      "nonce": 1,
+      "ethBalanceWei": "0",
+      "role": "FXB maturity contract (v1.0.2, direct/immutable, no proxy)",
+      "chain": "ethereum",
+      "name": "FXB_1_JUN302024",
+      "symbol": "FXB_20240630",
+      "decimals": 18,
+      "version": "1.0.2",
+      "maturityTimestamp": 1719792000,
+      "maturityUTC": "2024-07-01T00:00:00.000Z",
+      "maturedAsOfProbeBlock": true,
+      "underlying": {
+        "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+        "label": "FRAX (legacy FRAX / LFRAX on Ethereum)",
+        "variant": "FRAX-denominated; NOT frxUSD; no frxUSD() view"
+      },
+      "totalSupplyWei": "365977104976327354023",
+      "totalSupplyTokens": "365.977104976327354023",
+      "totalFxbMintedWei": "4260002452861961722380045",
+      "totalFxbRedeemedWei": "4259636475756985395026022",
+      "supplyReconciliation": {
+        "mintedMinusRedeemedEqualsSupply": true,
+        "mintedMinusRedeemedWei": "365977104976327354023"
+      },
+      "underlyingBalanceWei": "365977104976327354023",
+      "underlyingBalanceTokens": "365.977104976327354023",
+      "fullyCollateralizedOutstanding": true,
+      "factoryRegistry": {
+        "isFxb": true,
+        "isTimestampFxb": true
+      },
+      "views": {
+        "factory_reverts": true,
+        "token_reverts": true,
+        "frxUSD_reverts": true,
+        "owner_reverts": true,
+        "timelockAddress_reverts": true,
+        "getBeacon_reverts": true,
+        "bondInfo": {
+          "symbol": "FXB_20240630",
+          "name": "FXB_1_JUN302024",
+          "maturityTimestamp": "1719792000"
+        },
+        "isRedeemableFromZeroAddress": "true",
+        "isRedeemableFromTimelockSafe": "true",
+        "isRedeemableFromFactory": "true",
+        "domainSeparator": "0x467632567070b03aecdd450cabd0779d7774e96f024c990b2f59e02063b4522d"
+      },
+      "proxy": {
+        "isProxy": false,
+        "implementation": null,
+        "upgradeAuthority": "none (immutable)",
+        "eip1967Implementation": {
+          "slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "address": null
+        },
+        "eip1967Admin": {
+          "slot": "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103",
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "address": null
+        },
+        "eip1967Beacon": {
+          "slot": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50",
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "address": null
+        }
+      },
+      "minterRole": "anyone (mint pulls 1:1 FRAX via transferFrom; no minter allowlist observed in v1 interface)"
+    },
+    {
+      "index": 2,
+      "address": "0xF8FDe8A259A3698902C88bdB1E13Ff28Cd7f6F09",
+      "codePresent": true,
+      "codeLengthBytes": 6237,
+      "codeHash": "0xfb1bc5f3dad74a04fc96ae80aad478877ef14870b8182381dbbf31fc7bc2c5f7",
+      "nonce": 1,
+      "ethBalanceWei": "0",
+      "role": "FXB maturity contract (v1.0.2, direct/immutable, no proxy)",
+      "chain": "ethereum",
+      "name": "FXB_2_DEC312024",
+      "symbol": "FXB_20241231",
+      "decimals": 18,
+      "version": "1.0.2",
+      "maturityTimestamp": 1735689600,
+      "maturityUTC": "2025-01-01T00:00:00.000Z",
+      "maturedAsOfProbeBlock": true,
+      "underlying": {
+        "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+        "label": "FRAX (legacy FRAX / LFRAX on Ethereum)",
+        "variant": "FRAX-denominated; NOT frxUSD; no frxUSD() view"
+      },
+      "totalSupplyWei": "35533154030874480338554",
+      "totalSupplyTokens": "35533.154030874480338554",
+      "totalFxbMintedWei": "4662748640232400611499160",
+      "totalFxbRedeemedWei": "4627215486201526131160606",
+      "supplyReconciliation": {
+        "mintedMinusRedeemedEqualsSupply": true,
+        "mintedMinusRedeemedWei": "35533154030874480338554"
+      },
+      "underlyingBalanceWei": "35533154030874480338554",
+      "underlyingBalanceTokens": "35533.154030874480338554",
+      "fullyCollateralizedOutstanding": true,
+      "factoryRegistry": {
+        "isFxb": true,
+        "isTimestampFxb": true
+      },
+      "views": {
+        "factory_reverts": true,
+        "token_reverts": true,
+        "frxUSD_reverts": true,
+        "owner_reverts": true,
+        "timelockAddress_reverts": true,
+        "getBeacon_reverts": true,
+        "bondInfo": {
+          "symbol": "FXB_20241231",
+          "name": "FXB_2_DEC312024",
+          "maturityTimestamp": "1735689600"
+        },
+        "isRedeemableFromZeroAddress": "true",
+        "isRedeemableFromTimelockSafe": "true",
+        "isRedeemableFromFactory": "true",
+        "domainSeparator": "0x17b5358f1c1e761973e6f4f240fac845ddfb285803537cf143b6e7865ce98aa3"
+      },
+      "proxy": {
+        "isProxy": false,
+        "implementation": null,
+        "upgradeAuthority": "none (immutable)",
+        "eip1967Implementation": {
+          "slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "address": null
+        },
+        "eip1967Admin": {
+          "slot": "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103",
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "address": null
+        },
+        "eip1967Beacon": {
+          "slot": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50",
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "address": null
+        }
+      },
+      "minterRole": "anyone (mint pulls 1:1 FRAX via transferFrom; no minter allowlist observed in v1 interface)"
+    },
+    {
+      "index": 3,
+      "address": "0x13f19441Fb473fE96F1928d4a90f79fDb59675F1",
+      "codePresent": true,
+      "codeLengthBytes": 6237,
+      "codeHash": "0xe823dd475ad0b49d2a9df8fb7769a51c545863cc921be76268d2a873ca11f8fa",
+      "nonce": 1,
+      "ethBalanceWei": "0",
+      "role": "FXB maturity contract (v1.0.2, direct/immutable, no proxy)",
+      "chain": "ethereum",
+      "name": "FXB_3_DEC312025",
+      "symbol": "FXB_20251231",
+      "decimals": 18,
+      "version": "1.0.2",
+      "maturityTimestamp": 1767225600,
+      "maturityUTC": "2026-01-01T00:00:00.000Z",
+      "maturedAsOfProbeBlock": true,
+      "underlying": {
+        "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+        "label": "FRAX (legacy FRAX / LFRAX on Ethereum)",
+        "variant": "FRAX-denominated; NOT frxUSD; no frxUSD() view"
+      },
+      "totalSupplyWei": "0",
+      "totalSupplyTokens": "0.0",
+      "totalFxbMintedWei": "0",
+      "totalFxbRedeemedWei": "0",
+      "supplyReconciliation": {
+        "mintedMinusRedeemedEqualsSupply": true,
+        "mintedMinusRedeemedWei": "0"
+      },
+      "underlyingBalanceWei": "0",
+      "underlyingBalanceTokens": "0.0",
+      "fullyCollateralizedOutstanding": true,
+      "factoryRegistry": {
+        "isFxb": true,
+        "isTimestampFxb": true
+      },
+      "views": {
+        "factory_reverts": true,
+        "token_reverts": true,
+        "frxUSD_reverts": true,
+        "owner_reverts": true,
+        "timelockAddress_reverts": true,
+        "getBeacon_reverts": true,
+        "bondInfo": {
+          "symbol": "FXB_20251231",
+          "name": "FXB_3_DEC312025",
+          "maturityTimestamp": "1767225600"
+        },
+        "isRedeemableFromZeroAddress": "true",
+        "isRedeemableFromTimelockSafe": "true",
+        "isRedeemableFromFactory": "true",
+        "domainSeparator": "0x0f459178446a9f7ed1c0e1d0439e4f25df1b1ff573ac7af7d8ae44c66a3e4b46"
+      },
+      "proxy": {
+        "isProxy": false,
+        "implementation": null,
+        "upgradeAuthority": "none (immutable)",
+        "eip1967Implementation": {
+          "slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "address": null
+        },
+        "eip1967Admin": {
+          "slot": "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103",
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "address": null
+        },
+        "eip1967Beacon": {
+          "slot": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50",
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "address": null
+        }
+      },
+      "minterRole": "anyone (mint pulls 1:1 FRAX via transferFrom; no minter allowlist observed in v1 interface)"
+    },
+    {
+      "index": 4,
+      "address": "0x76237BCfDbe8e06FB774663add96216961df4ff3",
+      "codePresent": true,
+      "codeLengthBytes": 6237,
+      "codeHash": "0x685d9f25bdbcfd71d0211875213ebd84b9fc482cce6ae52bc753c0aed148d5c1",
+      "nonce": 1,
+      "ethBalanceWei": "0",
+      "role": "FXB maturity contract (v1.0.2, direct/immutable, no proxy)",
+      "chain": "ethereum",
+      "name": "FXB_4_DEC312026",
+      "symbol": "FXB_20261231",
+      "decimals": 18,
+      "version": "1.0.2",
+      "maturityTimestamp": 1798761600,
+      "maturityUTC": "2027-01-01T00:00:00.000Z",
+      "maturedAsOfProbeBlock": false,
+      "underlying": {
+        "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+        "label": "FRAX (legacy FRAX / LFRAX on Ethereum)",
+        "variant": "FRAX-denominated; NOT frxUSD; no frxUSD() view"
+      },
+      "totalSupplyWei": "6046780873165932571809639",
+      "totalSupplyTokens": "6046780.873165932571809639",
+      "totalFxbMintedWei": "6046780873165932571809639",
+      "totalFxbRedeemedWei": "0",
+      "supplyReconciliation": {
+        "mintedMinusRedeemedEqualsSupply": true,
+        "mintedMinusRedeemedWei": "6046780873165932571809639"
+      },
+      "underlyingBalanceWei": "6046780873165932571809639",
+      "underlyingBalanceTokens": "6046780.873165932571809639",
+      "fullyCollateralizedOutstanding": true,
+      "factoryRegistry": {
+        "isFxb": true,
+        "isTimestampFxb": true
+      },
+      "views": {
+        "factory_reverts": true,
+        "token_reverts": true,
+        "frxUSD_reverts": true,
+        "owner_reverts": true,
+        "timelockAddress_reverts": true,
+        "getBeacon_reverts": true,
+        "bondInfo": {
+          "symbol": "FXB_20261231",
+          "name": "FXB_4_DEC312026",
+          "maturityTimestamp": "1798761600"
+        },
+        "isRedeemableFromZeroAddress": "false",
+        "isRedeemableFromTimelockSafe": "false",
+        "isRedeemableFromFactory": "false",
+        "domainSeparator": "0xe420e2bbea854acc5f972cc5dbb0327068ca66d93cccdd087896336272b46792"
+      },
+      "proxy": {
+        "isProxy": false,
+        "implementation": null,
+        "upgradeAuthority": "none (immutable)",
+        "eip1967Implementation": {
+          "slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "address": null
+        },
+        "eip1967Admin": {
+          "slot": "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103",
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "address": null
+        },
+        "eip1967Beacon": {
+          "slot": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50",
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "address": null
+        }
+      },
+      "minterRole": "anyone (mint pulls 1:1 FRAX via transferFrom; no minter allowlist observed in v1 interface)"
+    }
+  ],
+  "auctions": [
+    {
+      "index": 0,
+      "address": "0xEC7CD06EA2fE3E2A9bFB4F75467617B35F0931D7",
+      "codePresent": true,
+      "codeLengthBytes": 15533,
+      "codeHash": "0xc8a3f1b0daaad9a8b4587f346e56e268c98b564343a1bd6cee9eb0dffa8f9466",
+      "nonce": 1,
+      "ethBalanceWei": "0",
+      "role": "SlippageAuction (v1.0.1, direct, no proxy)",
+      "chain": "ethereum",
+      "name": "SlippageAuction: FXB_20240331",
+      "version": "1.0.1",
+      "tokenBuy": {
+        "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+        "symbol": "FRAX",
+        "name": "Frax",
+        "decimals": "18"
+      },
+      "tokenSell": {
+        "address": "0xfb51435D48cB04dbE5f23b22f80aDe6D996473F5",
+        "symbol": "FXB_20240331",
+        "name": "FXB_0_MAR312024",
+        "decimals": "18"
+      },
+      "pairedFxbIndex": 0,
+      "timelockAddress": "0x452420df4AC1e3db5429b5FD629f3047482C543C",
+      "pendingTimelockAddress": "0x0000000000000000000000000000000000000000",
+      "detailsLength": 0,
+      "details": [],
+      "liveState": {
+        "anyDetailActive": false,
+        "anyDetailUnexpired": false,
+        "liveAuction": false,
+        "swapRevertsExpected": true
+      },
+      "balances": {
+        "tokenBuyBalanceWei": "0",
+        "tokenSellBalanceWei": "0"
+      },
+      "proxy": {
+        "isProxy": false,
+        "implementation": null,
+        "upgradeAuthority": "none (immutable)",
+        "eip1967Implementation": {
+          "slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "address": null
+        },
+        "eip1967Admin": {
+          "slot": "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103",
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "address": null
+        },
+        "eip1967Beacon": {
+          "slot": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50",
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "address": null
+        }
+      },
+      "factoryRegistry": {
+        "isAuction": true
+      }
+    },
+    {
+      "index": 1,
+      "address": "0xC92067D8DDb1970ecB93202DA31a3C45cC2c1F44",
+      "codePresent": true,
+      "codeLengthBytes": 15533,
+      "codeHash": "0xe39fea2cdd79ae2210362a9f95a23f95b7f5bce2e121e65bc82cb2e098c5b573",
+      "nonce": 1,
+      "ethBalanceWei": "0",
+      "role": "SlippageAuction (v1.0.1, direct, no proxy)",
+      "chain": "ethereum",
+      "name": "SlippageAuction: FXB_20240630",
+      "version": "1.0.1",
+      "tokenBuy": {
+        "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+        "symbol": "FRAX",
+        "name": "Frax",
+        "decimals": "18"
+      },
+      "tokenSell": {
+        "address": "0x0dE54CFdfeD8005176f8b7A9D5438B45c4F1df1e",
+        "symbol": "FXB_20240630",
+        "name": "FXB_1_JUN302024",
+        "decimals": "18"
+      },
+      "pairedFxbIndex": 1,
+      "timelockAddress": "0x452420df4AC1e3db5429b5FD629f3047482C543C",
+      "pendingTimelockAddress": "0x0000000000000000000000000000000000000000",
+      "detailsLength": 10,
+      "details": [
+        {
+          "auctionNumber": 0,
+          "amountListed": "1000000000000000000000",
+          "amountLeft": "871939628025601053861",
+          "amountExcessBuy": "0",
+          "amountExcessSell": "0",
+          "tokenBuyReceived": "124256018759682907700",
+          "priceLast": "970240900774632618",
+          "priceMin": "970000000000000000",
+          "priceDecay": "29000000000",
+          "priceSlippage": "6200000000",
+          "lastBuyTime": "1705086995",
+          "expiry": "1705104000",
+          "active": "false",
+          "expiryUTC": "2024-01-13T00:00:00.000Z",
+          "lastBuyTimeUTC": "2024-01-12T19:16:35.000Z",
+          "expiredAsOfProbeBlock": true,
+          "amountListedTokens": "1000.0",
+          "amountLeftTokens": "871.939628025601053861",
+          "tokenBuyReceivedTokens": "124.2560187596829077"
+        },
+        {
+          "auctionNumber": 1,
+          "amountListed": "250000000000000000000000",
+          "amountLeft": "2408665531000000000000",
+          "amountExcessBuy": "0",
+          "amountExcessSell": "0",
+          "tokenBuyReceived": "241789279137053454000000",
+          "priceLast": "976566000000000000",
+          "priceMin": "976566000000000000",
+          "priceDecay": "0",
+          "priceSlippage": "0",
+          "lastBuyTime": "1705542911",
+          "expiry": "1705708800",
+          "active": "false",
+          "expiryUTC": "2024-01-20T00:00:00.000Z",
+          "lastBuyTimeUTC": "2024-01-18T01:55:11.000Z",
+          "expiredAsOfProbeBlock": true,
+          "amountListedTokens": "250000.0",
+          "amountLeftTokens": "2408.665531",
+          "tokenBuyReceivedTokens": "241789.279137053454"
+        },
+        {
+          "auctionNumber": 2,
+          "amountListed": "250000000000000000000000",
+          "amountLeft": "0",
+          "amountExcessBuy": "0",
+          "amountExcessSell": "0",
+          "tokenBuyReceived": "243880890932811239931574",
+          "priceLast": "970076009818075706",
+          "priceMin": "970000000000000000",
+          "priceDecay": "29000000000",
+          "priceSlippage": "6200000000",
+          "lastBuyTime": "1705931915",
+          "expiry": "1706140800",
+          "active": "false",
+          "expiryUTC": "2024-01-25T00:00:00.000Z",
+          "lastBuyTimeUTC": "2024-01-22T13:58:35.000Z",
+          "expiredAsOfProbeBlock": true,
+          "amountListedTokens": "250000.0",
+          "amountLeftTokens": "0.0",
+          "tokenBuyReceivedTokens": "243880.890932811239931574"
+        },
+        {
+          "auctionNumber": 3,
+          "amountListed": "2000000000000000000000000",
+          "amountLeft": "2000000000000000000000000",
+          "amountExcessBuy": "0",
+          "amountExcessSell": "0",
+          "tokenBuyReceived": "0",
+          "priceLast": "980000000000000000",
+          "priceMin": "977000000000000000",
+          "priceDecay": "29000000000",
+          "priceSlippage": "6200000000",
+          "lastBuyTime": "1706056415",
+          "expiry": "1706659200",
+          "active": "false",
+          "expiryUTC": "2024-01-31T00:00:00.000Z",
+          "lastBuyTimeUTC": "2024-01-24T00:33:35.000Z",
+          "expiredAsOfProbeBlock": true,
+          "amountListedTokens": "2000000.0",
+          "amountLeftTokens": "2000000.0",
+          "tokenBuyReceivedTokens": "0.0"
+        },
+        {
+          "auctionNumber": 4,
+          "amountListed": "3000000000000000000000000",
+          "amountLeft": "2604058710355225155051758",
+          "amountExcessBuy": "0",
+          "amountExcessSell": "0",
+          "tokenBuyReceived": "386807501255118282644275",
+          "priceLast": "976918302470180908",
+          "priceMin": "976810000000000000",
+          "priceDecay": "2900000000",
+          "priceSlippage": "620000000",
+          "lastBuyTime": "1706729867",
+          "expiry": "1706745600",
+          "active": "false",
+          "expiryUTC": "2024-02-01T00:00:00.000Z",
+          "lastBuyTimeUTC": "2024-01-31T19:37:47.000Z",
+          "expiredAsOfProbeBlock": true,
+          "amountListedTokens": "3000000.0",
+          "amountLeftTokens": "2604058.710355225155051758",
+          "tokenBuyReceivedTokens": "386807.501255118282644275"
+        },
+        {
+          "auctionNumber": 5,
+          "amountListed": "3000000000000000000000000",
+          "amountLeft": "2634440261591410554665231",
+          "amountExcessBuy": "0",
+          "amountExcessSell": "0",
+          "tokenBuyReceived": "357957183312873921617701",
+          "priceLast": "979147083695547986",
+          "priceMin": "979100000000000000",
+          "priceDecay": "2900000000",
+          "priceSlippage": "620000000",
+          "lastBuyTime": "1707806231",
+          "expiry": "1707955200",
+          "active": "false",
+          "expiryUTC": "2024-02-15T00:00:00.000Z",
+          "lastBuyTimeUTC": "2024-02-13T06:37:11.000Z",
+          "expiredAsOfProbeBlock": true,
+          "amountListedTokens": "3000000.0",
+          "amountLeftTokens": "2634440.261591410554665231",
+          "tokenBuyReceivedTokens": "357957.183312873921617701"
+        },
+        {
+          "auctionNumber": 6,
+          "amountListed": "3000000000000000000000000",
+          "amountLeft": "2929111309789734596136408",
+          "amountExcessBuy": "0",
+          "amountExcessSell": "0",
+          "tokenBuyReceived": "69853304298486650597233",
+          "priceLast": "985336538897330120",
+          "priceMin": "982900000000000000",
+          "priceDecay": "2900000000",
+          "priceSlippage": "620000000",
+          "lastBuyTime": "1708389875",
+          "expiry": "1709164800",
+          "active": "false",
+          "expiryUTC": "2024-02-29T00:00:00.000Z",
+          "lastBuyTimeUTC": "2024-02-20T00:44:35.000Z",
+          "expiredAsOfProbeBlock": true,
+          "amountListedTokens": "3000000.0",
+          "amountLeftTokens": "2929111.309789734596136408",
+          "tokenBuyReceivedTokens": "69853.304298486650597233"
+        },
+        {
+          "auctionNumber": 7,
+          "amountListed": "2000000000000000000000000",
+          "amountLeft": "2000000000000000000000000",
+          "amountExcessBuy": "0",
+          "amountExcessSell": "0",
+          "tokenBuyReceived": "0",
+          "priceLast": "987300000000000000",
+          "priceMin": "987170000000000000",
+          "priceDecay": "2900000000",
+          "priceSlippage": "620000000",
+          "lastBuyTime": "1709922035",
+          "expiry": "1711670400",
+          "active": "false",
+          "expiryUTC": "2024-03-29T00:00:00.000Z",
+          "lastBuyTimeUTC": "2024-03-08T18:20:35.000Z",
+          "expiredAsOfProbeBlock": true,
+          "amountListedTokens": "2000000.0",
+          "amountLeftTokens": "2000000.0",
+          "tokenBuyReceivedTokens": "0.0"
+        },
+        {
+          "auctionNumber": 8,
+          "amountListed": "2000000000000000000000000",
+          "amountLeft": "2000000000000000000000000",
+          "amountExcessBuy": "0",
+          "amountExcessSell": "0",
+          "tokenBuyReceived": "0",
+          "priceLast": "987300000000000000",
+          "priceMin": "987100000000000000",
+          "priceDecay": "2900000000",
+          "priceSlippage": "620000000",
+          "lastBuyTime": "1710952727",
+          "expiry": "1712880000",
+          "active": "false",
+          "expiryUTC": "2024-04-12T00:00:00.000Z",
+          "lastBuyTimeUTC": "2024-03-20T16:38:47.000Z",
+          "expiredAsOfProbeBlock": true,
+          "amountListedTokens": "2000000.0",
+          "amountLeftTokens": "2000000.0",
+          "tokenBuyReceivedTokens": "0.0"
+        },
+        {
+          "auctionNumber": 9,
+          "amountListed": "2000000000000000000000000",
+          "amountLeft": "1999999999985463294894156",
+          "amountExcessBuy": "0",
+          "amountExcessSell": "0",
+          "tokenBuyReceived": "14415759719363",
+          "priceLast": "991680000000017874",
+          "priceMin": "991680000000000000",
+          "priceDecay": "2900000000",
+          "priceSlippage": "620000000",
+          "lastBuyTime": "1714269899",
+          "expiry": "1715299200",
+          "active": "false",
+          "expiryUTC": "2024-05-10T00:00:00.000Z",
+          "lastBuyTimeUTC": "2024-04-28T02:04:59.000Z",
+          "expiredAsOfProbeBlock": true,
+          "amountListedTokens": "2000000.0",
+          "amountLeftTokens": "1999999.999985463294894156",
+          "tokenBuyReceivedTokens": "0.000014415759719363"
+        }
+      ],
+      "liveState": {
+        "anyDetailActive": false,
+        "anyDetailUnexpired": false,
+        "liveAuction": false,
+        "swapRevertsExpected": true
+      },
+      "balances": {
+        "tokenBuyBalanceWei": "0",
+        "tokenSellBalanceWei": "0"
+      },
+      "proxy": {
+        "isProxy": false,
+        "implementation": null,
+        "upgradeAuthority": "none (immutable)",
+        "eip1967Implementation": {
+          "slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "address": null
+        },
+        "eip1967Admin": {
+          "slot": "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103",
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "address": null
+        },
+        "eip1967Beacon": {
+          "slot": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50",
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "address": null
+        }
+      },
+      "factoryRegistry": {
+        "isAuction": true
+      }
+    },
+    {
+      "index": 2,
+      "address": "0xc9aa98788a675FF0846E8856cb83F19452f3b0c8",
+      "codePresent": true,
+      "codeLengthBytes": 15533,
+      "codeHash": "0x1f4cc6e3baf971536a457d1a25fa8e5a46cf2935927d06944f8818b786bbb1c7",
+      "nonce": 1,
+      "ethBalanceWei": "0",
+      "role": "SlippageAuction (v1.0.1, direct, no proxy)",
+      "chain": "ethereum",
+      "name": "SlippageAuction: FXB_20241231",
+      "version": "1.0.1",
+      "tokenBuy": {
+        "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+        "symbol": "FRAX",
+        "name": "Frax",
+        "decimals": "18"
+      },
+      "tokenSell": {
+        "address": "0xF8FDe8A259A3698902C88bdB1E13Ff28Cd7f6F09",
+        "symbol": "FXB_20241231",
+        "name": "FXB_2_DEC312024",
+        "decimals": "18"
+      },
+      "pairedFxbIndex": 2,
+      "timelockAddress": "0x452420df4AC1e3db5429b5FD629f3047482C543C",
+      "pendingTimelockAddress": "0x0000000000000000000000000000000000000000",
+      "detailsLength": 10,
+      "details": [
+        {
+          "auctionNumber": 0,
+          "amountListed": "1000000000000000000000",
+          "amountLeft": "989440339303017515442",
+          "amountExcessBuy": "0",
+          "amountExcessSell": "0",
+          "tokenBuyReceived": "10000000000000000000",
+          "priceLast": "947000249999999998",
+          "priceMin": "947000000000000000",
+          "priceDecay": "60000000000",
+          "priceSlippage": "12500000000",
+          "lastBuyTime": "1705087031",
+          "expiry": "1705104000",
+          "active": "false",
+          "expiryUTC": "2024-01-13T00:00:00.000Z",
+          "lastBuyTimeUTC": "2024-01-12T19:17:11.000Z",
+          "expiredAsOfProbeBlock": true,
+          "amountListedTokens": "1000.0",
+          "amountLeftTokens": "989.440339303017515442",
+          "tokenBuyReceivedTokens": "10.0"
+        },
+        {
+          "auctionNumber": 1,
+          "amountListed": "250000000000000000000000",
+          "amountLeft": "0",
+          "amountExcessBuy": "0",
+          "amountExcessSell": "0",
+          "tokenBuyReceived": "239250000000000000000000",
+          "priceLast": "957000000000000000",
+          "priceMin": "957000000000000000",
+          "priceDecay": "0",
+          "priceSlippage": "0",
+          "lastBuyTime": "1705542635",
+          "expiry": "1705708800",
+          "active": "false",
+          "expiryUTC": "2024-01-20T00:00:00.000Z",
+          "lastBuyTimeUTC": "2024-01-18T01:50:35.000Z",
+          "expiredAsOfProbeBlock": true,
+          "amountListedTokens": "250000.0",
+          "amountLeftTokens": "0.0",
+          "tokenBuyReceivedTokens": "239250.0"
+        },
+        {
+          "auctionNumber": 2,
+          "amountListed": "250000000000000000000000",
+          "amountLeft": "0",
+          "amountExcessBuy": "0",
+          "amountExcessSell": "0",
+          "tokenBuyReceived": "237391659006335987536176",
+          "priceLast": "948835752118820796",
+          "priceMin": "947000000000000000",
+          "priceDecay": "60000000000",
+          "priceSlippage": "12500000000",
+          "lastBuyTime": "1705927331",
+          "expiry": "1706140800",
+          "active": "false",
+          "expiryUTC": "2024-01-25T00:00:00.000Z",
+          "lastBuyTimeUTC": "2024-01-22T12:42:11.000Z",
+          "expiredAsOfProbeBlock": true,
+          "amountListedTokens": "250000.0",
+          "amountLeftTokens": "0.0",
+          "tokenBuyReceivedTokens": "237391.659006335987536176"
+        },
+        {
+          "auctionNumber": 3,
+          "amountListed": "2000000000000000000000000",
+          "amountLeft": "1817508304307889560704299",
+          "amountExcessBuy": "0",
+          "amountExcessSell": "0",
+          "tokenBuyReceived": "173393964440565846993145",
+          "priceLast": "948949089111014136",
+          "priceMin": "947000000000000000",
+          "priceDecay": "60000000000",
+          "priceSlippage": "12500000000",
+          "lastBuyTime": "1706179511",
+          "expiry": "1706659200",
+          "active": "false",
+          "expiryUTC": "2024-01-31T00:00:00.000Z",
+          "lastBuyTimeUTC": "2024-01-25T10:45:11.000Z",
+          "expiredAsOfProbeBlock": true,
+          "amountListedTokens": "2000000.0",
+          "amountLeftTokens": "1817508.304307889560704299",
+          "tokenBuyReceivedTokens": "173393.964440565846993145"
+        },
+        {
+          "auctionNumber": 4,
+          "amountListed": "3000000000000000000000000",
+          "amountLeft": "2366854355851070948299717",
+          "amountExcessBuy": "0",
+          "amountExcessSell": "0",
+          "tokenBuyReceived": "604039223693882243838671",
+          "priceLast": "954029498059234694",
+          "priceMin": "950040000000000000",
+          "priceDecay": "6000000000",
+          "priceSlippage": "1250000000",
+          "lastBuyTime": "1706724035",
+          "expiry": "1706745600",
+          "active": "false",
+          "expiryUTC": "2024-02-01T00:00:00.000Z",
+          "lastBuyTimeUTC": "2024-01-31T18:00:35.000Z",
+          "expiredAsOfProbeBlock": true,
+          "amountListedTokens": "3000000.0",
+          "amountLeftTokens": "2366854.355851070948299717",
+          "tokenBuyReceivedTokens": "604039.223693882243838671"
+        },
+        {
+          "auctionNumber": 5,
+          "amountListed": "3000000000000000000000000",
+          "amountLeft": "2819999658976367111981382",
+          "amountExcessBuy": "0",
+          "amountExcessSell": "0",
+          "tokenBuyReceived": "171913862161655310370694",
+          "priceLast": "955278162155404138",
+          "priceMin": "954920000000000000",
+          "priceDecay": "6000000000",
+          "priceSlippage": "1250000000",
+          "lastBuyTime": "1707875207",
+          "expiry": "1707955200",
+          "active": "false",
+          "expiryUTC": "2024-02-15T00:00:00.000Z",
+          "lastBuyTimeUTC": "2024-02-14T01:46:47.000Z",
+          "expiredAsOfProbeBlock": true,
+          "amountListedTokens": "3000000.0",
+          "amountLeftTokens": "2819999.658976367111981382",
+          "tokenBuyReceivedTokens": "171913.862161655310370694"
+        },
+        {
+          "auctionNumber": 6,
+          "amountListed": "3000000000000000000000000",
+          "amountLeft": "2937614765437132714729666",
+          "amountExcessBuy": "0",
+          "amountExcessSell": "0",
+          "tokenBuyReceived": "60000000000000000000000",
+          "priceLast": "961841039999999998",
+          "priceMin": "960690000000000000",
+          "priceDecay": "6000000000",
+          "priceSlippage": "1250000000",
+          "lastBuyTime": "1708349387",
+          "expiry": "1709164800",
+          "active": "false",
+          "expiryUTC": "2024-02-29T00:00:00.000Z",
+          "lastBuyTimeUTC": "2024-02-19T13:29:47.000Z",
+          "expiredAsOfProbeBlock": true,
+          "amountListedTokens": "3000000.0",
+          "amountLeftTokens": "2937614.765437132714729666",
+          "tokenBuyReceivedTokens": "60000.0"
+        },
+        {
+          "auctionNumber": 7,
+          "amountListed": "2000000000000000000000000",
+          "amountLeft": "2000000000000000000000000",
+          "amountExcessBuy": "0",
+          "amountExcessSell": "0",
+          "tokenBuyReceived": "0",
+          "priceLast": "962000000000000000",
+          "priceMin": "960460000000000000",
+          "priceDecay": "6000000000",
+          "priceSlippage": "1250000000",
+          "lastBuyTime": "1709922035",
+          "expiry": "1711670400",
+          "active": "false",
+          "expiryUTC": "2024-03-29T00:00:00.000Z",
+          "lastBuyTimeUTC": "2024-03-08T18:20:35.000Z",
+          "expiredAsOfProbeBlock": true,
+          "amountListedTokens": "2000000.0",
+          "amountLeftTokens": "2000000.0",
+          "tokenBuyReceivedTokens": "0.0"
+        },
+        {
+          "auctionNumber": 8,
+          "amountListed": "2000000000000000000000000",
+          "amountLeft": "2000000000000000000000000",
+          "amountExcessBuy": "0",
+          "amountExcessSell": "0",
+          "tokenBuyReceived": "0",
+          "priceLast": "963900000000000000",
+          "priceMin": "963720000000000000",
+          "priceDecay": "6000000000",
+          "priceSlippage": "1250000000",
+          "lastBuyTime": "1710952727",
+          "expiry": "1712880000",
+          "active": "false",
+          "expiryUTC": "2024-04-12T00:00:00.000Z",
+          "lastBuyTimeUTC": "2024-03-20T16:38:47.000Z",
+          "expiredAsOfProbeBlock": true,
+          "amountListedTokens": "2000000.0",
+          "amountLeftTokens": "2000000.0",
+          "tokenBuyReceivedTokens": "0.0"
+        },
+        {
+          "auctionNumber": 9,
+          "amountListed": "2000000000000000000000000",
+          "amountLeft": "2000000000000000000000000",
+          "amountExcessBuy": "0",
+          "amountExcessSell": "0",
+          "tokenBuyReceived": "0",
+          "priceLast": "961200000000000000",
+          "priceMin": "961150000000000000",
+          "priceDecay": "6000000000",
+          "priceSlippage": "1250000000",
+          "lastBuyTime": "1713807623",
+          "expiry": "1715299200",
+          "active": "false",
+          "expiryUTC": "2024-05-10T00:00:00.000Z",
+          "lastBuyTimeUTC": "2024-04-22T17:40:23.000Z",
+          "expiredAsOfProbeBlock": true,
+          "amountListedTokens": "2000000.0",
+          "amountLeftTokens": "2000000.0",
+          "tokenBuyReceivedTokens": "0.0"
+        }
+      ],
+      "liveState": {
+        "anyDetailActive": false,
+        "anyDetailUnexpired": false,
+        "liveAuction": false,
+        "swapRevertsExpected": true
+      },
+      "balances": {
+        "tokenBuyBalanceWei": "0",
+        "tokenSellBalanceWei": "0"
+      },
+      "proxy": {
+        "isProxy": false,
+        "implementation": null,
+        "upgradeAuthority": "none (immutable)",
+        "eip1967Implementation": {
+          "slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "address": null
+        },
+        "eip1967Admin": {
+          "slot": "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103",
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "address": null
+        },
+        "eip1967Beacon": {
+          "slot": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50",
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "address": null
+        }
+      },
+      "factoryRegistry": {
+        "isAuction": true
+      }
+    },
+    {
+      "index": 3,
+      "address": "0x50c4b90bE25a2de0cd6Ad8dF5047B4C50C78FDE8",
+      "codePresent": true,
+      "codeLengthBytes": 15533,
+      "codeHash": "0x0e9bbeef3ba873c917f75ffa5127e4a397f069a703e441682934f960c7c3102f",
+      "nonce": 1,
+      "ethBalanceWei": "0",
+      "role": "SlippageAuction (v1.0.1, direct, no proxy)",
+      "chain": "ethereum",
+      "name": "SlippageAuction: FXB_20251231",
+      "version": "1.0.1",
+      "tokenBuy": {
+        "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+        "symbol": "FRAX",
+        "name": "Frax",
+        "decimals": "18"
+      },
+      "tokenSell": {
+        "address": "0x13f19441Fb473fE96F1928d4a90f79fDb59675F1",
+        "symbol": "FXB_20251231",
+        "name": "FXB_3_DEC312025",
+        "decimals": "18"
+      },
+      "pairedFxbIndex": 3,
+      "timelockAddress": "0x452420df4AC1e3db5429b5FD629f3047482C543C",
+      "pendingTimelockAddress": "0x0000000000000000000000000000000000000000",
+      "detailsLength": 0,
+      "details": [],
+      "liveState": {
+        "anyDetailActive": false,
+        "anyDetailUnexpired": false,
+        "liveAuction": false,
+        "swapRevertsExpected": true
+      },
+      "balances": {
+        "tokenBuyBalanceWei": "0",
+        "tokenSellBalanceWei": "0"
+      },
+      "proxy": {
+        "isProxy": false,
+        "implementation": null,
+        "upgradeAuthority": "none (immutable)",
+        "eip1967Implementation": {
+          "slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "address": null
+        },
+        "eip1967Admin": {
+          "slot": "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103",
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "address": null
+        },
+        "eip1967Beacon": {
+          "slot": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50",
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "address": null
+        }
+      },
+      "factoryRegistry": {
+        "isAuction": true
+      }
+    },
+    {
+      "index": 4,
+      "address": "0x63981f5E690eaF7E8795c42832664e8848F532fB",
+      "codePresent": true,
+      "codeLengthBytes": 15533,
+      "codeHash": "0x11e39973d30f0f05c3612970f36c93fae4c5dfafb88388cb1a353f78190118a7",
+      "nonce": 1,
+      "ethBalanceWei": "0",
+      "role": "SlippageAuction (v1.0.1, direct, no proxy)",
+      "chain": "ethereum",
+      "name": "SlippageAuction: FXB_20261231",
+      "version": "1.0.1",
+      "tokenBuy": {
+        "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+        "symbol": "FRAX",
+        "name": "Frax",
+        "decimals": "18"
+      },
+      "tokenSell": {
+        "address": "0x76237BCfDbe8e06FB774663add96216961df4ff3",
+        "symbol": "FXB_20261231",
+        "name": "FXB_4_DEC312026",
+        "decimals": "18"
+      },
+      "pairedFxbIndex": 4,
+      "timelockAddress": "0x452420df4AC1e3db5429b5FD629f3047482C543C",
+      "pendingTimelockAddress": "0x0000000000000000000000000000000000000000",
+      "detailsLength": 13,
+      "details": [
+        {
+          "auctionNumber": 0,
+          "amountListed": "1000000000000000000000",
+          "amountLeft": "1000000000000000000000",
+          "amountExcessBuy": "0",
+          "amountExcessSell": "0",
+          "tokenBuyReceived": "0",
+          "priceLast": "888000000000000000",
+          "priceMin": "878000000000000000",
+          "priceDecay": "180000000000",
+          "priceSlippage": "37500000000",
+          "lastBuyTime": "1704922835",
+          "expiry": "1705104000",
+          "active": "false",
+          "expiryUTC": "2024-01-13T00:00:00.000Z",
+          "lastBuyTimeUTC": "2024-01-10T21:40:35.000Z",
+          "expiredAsOfProbeBlock": true,
+          "amountListedTokens": "1000.0",
+          "amountLeftTokens": "1000.0",
+          "tokenBuyReceivedTokens": "0.0"
+        },
+        {
+          "auctionNumber": 1,
+          "amountListed": "250000000000000000000000",
+          "amountLeft": "4750420639371845205",
+          "amountExcessBuy": "0",
+          "amountExcessSell": "0",
+          "tokenBuyReceived": "222870765000000000000000",
+          "priceLast": "891500000000000000",
+          "priceMin": "891500000000000000",
+          "priceDecay": "0",
+          "priceSlippage": "0",
+          "lastBuyTime": "1705542527",
+          "expiry": "1705708800",
+          "active": "false",
+          "expiryUTC": "2024-01-20T00:00:00.000Z",
+          "lastBuyTimeUTC": "2024-01-18T01:48:47.000Z",
+          "expiredAsOfProbeBlock": true,
+          "amountListedTokens": "250000.0",
+          "amountLeftTokens": "4.750420639371845205",
+          "tokenBuyReceivedTokens": "222870.765"
+        },
+        {
+          "auctionNumber": 2,
+          "amountListed": "250000000000000000000000",
+          "amountLeft": "192063274999262280264957",
+          "amountExcessBuy": "0",
+          "amountExcessSell": "0",
+          "tokenBuyReceived": "51362494862310790115899",
+          "priceLast": "886378747114673304",
+          "priceMin": "878000000000000000",
+          "priceDecay": "180000000000",
+          "priceSlippage": "37500000000",
+          "lastBuyTime": "1705659059",
+          "expiry": "1706140800",
+          "active": "false",
+          "expiryUTC": "2024-01-25T00:00:00.000Z",
+          "lastBuyTimeUTC": "2024-01-19T10:10:59.000Z",
+          "expiredAsOfProbeBlock": true,
+          "amountListedTokens": "250000.0",
+          "amountLeftTokens": "192063.274999262280264957",
+          "tokenBuyReceivedTokens": "51362.494862310790115899"
+        },
+        {
+          "auctionNumber": 3,
+          "amountListed": "2000000000000000000000000",
+          "amountLeft": "1443614124453398365136837",
+          "amountExcessBuy": "0",
+          "amountExcessSell": "0",
+          "tokenBuyReceived": "495082535126015746410239",
+          "priceLast": "900103270134451156",
+          "priceMin": "878000000000000000",
+          "priceDecay": "180000000000",
+          "priceSlippage": "37500000000",
+          "lastBuyTime": "1706195459",
+          "expiry": "1706659200",
+          "active": "false",
+          "expiryUTC": "2024-01-31T00:00:00.000Z",
+          "lastBuyTimeUTC": "2024-01-25T15:10:59.000Z",
+          "expiredAsOfProbeBlock": true,
+          "amountListedTokens": "2000000.0",
+          "amountLeftTokens": "1443614.124453398365136837",
+          "tokenBuyReceivedTokens": "495082.535126015746410239"
+        },
+        {
+          "auctionNumber": 4,
+          "amountListed": "3000000000000000000000000",
+          "amountLeft": "2164917302219626231840395",
+          "amountExcessBuy": "0",
+          "amountExcessSell": "0",
+          "tokenBuyReceived": "743211720109817692011992",
+          "priceLast": "888441511900823620",
+          "priceMin": "886340000000000000",
+          "priceDecay": "18000000000",
+          "priceSlippage": "3750000000",
+          "lastBuyTime": "1706722967",
+          "expiry": "1706745600",
+          "active": "false",
+          "expiryUTC": "2024-02-01T00:00:00.000Z",
+          "lastBuyTimeUTC": "2024-01-31T17:42:47.000Z",
+          "expiredAsOfProbeBlock": true,
+          "amountListedTokens": "3000000.0",
+          "amountLeftTokens": "2164917.302219626231840395",
+          "tokenBuyReceivedTokens": "743211.720109817692011992"
+        },
+        {
+          "auctionNumber": 5,
+          "amountListed": "3000000000000000000000000",
+          "amountLeft": "1819844998119504793134020",
+          "amountExcessBuy": "0",
+          "amountExcessSell": "0",
+          "tokenBuyReceived": "1050116024338529727269153",
+          "priceLast": "889362495330963710",
+          "priceMin": "888800000000000000",
+          "priceDecay": "18000000000",
+          "priceSlippage": "3750000000",
+          "lastBuyTime": "1707937031",
+          "expiry": "1707955200",
+          "active": "false",
+          "expiryUTC": "2024-02-15T00:00:00.000Z",
+          "lastBuyTimeUTC": "2024-02-14T18:57:11.000Z",
+          "expiredAsOfProbeBlock": true,
+          "amountListedTokens": "3000000.0",
+          "amountLeftTokens": "1819844.99811950479313402",
+          "tokenBuyReceivedTokens": "1050116.024338529727269153"
+        },
+        {
+          "auctionNumber": 6,
+          "amountListed": "3000000000000000000000000",
+          "amountLeft": "2550157135575874982474896",
+          "amountExcessBuy": "0",
+          "amountExcessSell": "0",
+          "tokenBuyReceived": "400201431846705876323676",
+          "priceLast": "886907858036116252",
+          "priceMin": "886110000000000000",
+          "priceDecay": "18000000000",
+          "priceSlippage": "3750000000",
+          "lastBuyTime": "1708802171",
+          "expiry": "1709164800",
+          "active": "false",
+          "expiryUTC": "2024-02-29T00:00:00.000Z",
+          "lastBuyTimeUTC": "2024-02-24T19:16:11.000Z",
+          "expiredAsOfProbeBlock": true,
+          "amountListedTokens": "3000000.0",
+          "amountLeftTokens": "2550157.135575874982474896",
+          "tokenBuyReceivedTokens": "400201.431846705876323676"
+        },
+        {
+          "auctionNumber": 7,
+          "amountListed": "2000000000000000000000000",
+          "amountLeft": "1193309501640869617232457",
+          "amountExcessBuy": "0",
+          "amountExcessSell": "0",
+          "tokenBuyReceived": "716162107658894009550952",
+          "priceLast": "887964999999999998",
+          "priceMin": "886690000000000000",
+          "priceDecay": "18000000000",
+          "priceSlippage": "3750000000",
+          "lastBuyTime": "1710593531",
+          "expiry": "1711670400",
+          "active": "false",
+          "expiryUTC": "2024-03-29T00:00:00.000Z",
+          "lastBuyTimeUTC": "2024-03-16T12:52:11.000Z",
+          "expiredAsOfProbeBlock": true,
+          "amountListedTokens": "2000000.0",
+          "amountLeftTokens": "1193309.501640869617232457",
+          "tokenBuyReceivedTokens": "716162.107658894009550952"
+        },
+        {
+          "auctionNumber": 8,
+          "amountListed": "2000000000000000000000000",
+          "amountLeft": "2000000000000000000000000",
+          "amountExcessBuy": "0",
+          "amountExcessSell": "0",
+          "tokenBuyReceived": "0",
+          "priceLast": "889000000000000000",
+          "priceMin": "886690000000000000",
+          "priceDecay": "18000000000",
+          "priceSlippage": "3750000000",
+          "lastBuyTime": "1710952727",
+          "expiry": "1712880000",
+          "active": "false",
+          "expiryUTC": "2024-04-12T00:00:00.000Z",
+          "lastBuyTimeUTC": "2024-03-20T16:38:47.000Z",
+          "expiredAsOfProbeBlock": true,
+          "amountListedTokens": "2000000.0",
+          "amountLeftTokens": "2000000.0",
+          "tokenBuyReceivedTokens": "0.0"
+        },
+        {
+          "auctionNumber": 9,
+          "amountListed": "2000000000000000000000000",
+          "amountLeft": "1999230000000000000000000",
+          "amountExcessBuy": "0",
+          "amountExcessSell": "0",
+          "tokenBuyReceived": "680096763779405413033",
+          "priceLast": "883245100725728344",
+          "priceMin": "883240000000000000",
+          "priceDecay": "18000000000",
+          "priceSlippage": "3750000000",
+          "lastBuyTime": "1714002419",
+          "expiry": "1715299200",
+          "active": "false",
+          "expiryUTC": "2024-05-10T00:00:00.000Z",
+          "lastBuyTimeUTC": "2024-04-24T23:46:59.000Z",
+          "expiredAsOfProbeBlock": true,
+          "amountListedTokens": "2000000.0",
+          "amountLeftTokens": "1999230.0",
+          "tokenBuyReceivedTokens": "680.096763779405413033"
+        },
+        {
+          "auctionNumber": 10,
+          "amountListed": "1500000000000000000000000",
+          "amountLeft": "1500000000000000000000000",
+          "amountExcessBuy": "0",
+          "amountExcessSell": "0",
+          "tokenBuyReceived": "0",
+          "priceLast": "925000000000000000",
+          "priceMin": "922650000000000000",
+          "priceDecay": "18000000000",
+          "priceSlippage": "3750000000",
+          "lastBuyTime": "1725489539",
+          "expiry": "1727913600",
+          "active": "false",
+          "expiryUTC": "2024-10-03T00:00:00.000Z",
+          "lastBuyTimeUTC": "2024-09-04T22:38:59.000Z",
+          "expiredAsOfProbeBlock": true,
+          "amountListedTokens": "1500000.0",
+          "amountLeftTokens": "1500000.0",
+          "tokenBuyReceivedTokens": "0.0"
+        },
+        {
+          "auctionNumber": 11,
+          "amountListed": "1500000000000000000000000",
+          "amountLeft": "1500000000000000000000000",
+          "amountExcessBuy": "0",
+          "amountExcessSell": "0",
+          "tokenBuyReceived": "0",
+          "priceLast": "925000000000000000",
+          "priceMin": "922650000000000000",
+          "priceDecay": "18000000000",
+          "priceSlippage": "3750000000",
+          "lastBuyTime": "1727971871",
+          "expiry": "1730937600",
+          "active": "false",
+          "expiryUTC": "2024-11-07T00:00:00.000Z",
+          "lastBuyTimeUTC": "2024-10-03T16:11:11.000Z",
+          "expiredAsOfProbeBlock": true,
+          "amountListedTokens": "1500000.0",
+          "amountLeftTokens": "1500000.0",
+          "tokenBuyReceivedTokens": "0.0"
+        },
+        {
+          "auctionNumber": 12,
+          "amountListed": "1500000000000000000000000",
+          "amountLeft": "1500000000000000000000000",
+          "amountExcessBuy": "0",
+          "amountExcessSell": "0",
+          "tokenBuyReceived": "0",
+          "priceLast": "919000000000000000",
+          "priceMin": "917290000000000000",
+          "priceDecay": "18000000000",
+          "priceSlippage": "3750000000",
+          "lastBuyTime": "1730944883",
+          "expiry": "1733356800",
+          "active": "false",
+          "expiryUTC": "2024-12-05T00:00:00.000Z",
+          "lastBuyTimeUTC": "2024-11-07T02:01:23.000Z",
+          "expiredAsOfProbeBlock": true,
+          "amountListedTokens": "1500000.0",
+          "amountLeftTokens": "1500000.0",
+          "tokenBuyReceivedTokens": "0.0"
+        }
+      ],
+      "liveState": {
+        "anyDetailActive": false,
+        "anyDetailUnexpired": false,
+        "liveAuction": false,
+        "swapRevertsExpected": true
+      },
+      "balances": {
+        "tokenBuyBalanceWei": "0",
+        "tokenSellBalanceWei": "0"
+      },
+      "proxy": {
+        "isProxy": false,
+        "implementation": null,
+        "upgradeAuthority": "none (immutable)",
+        "eip1967Implementation": {
+          "slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "address": null
+        },
+        "eip1967Admin": {
+          "slot": "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103",
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "address": null
+        },
+        "eip1967Beacon": {
+          "slot": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50",
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "address": null
+        }
+      },
+      "factoryRegistry": {
+        "isAuction": true
+      }
+    }
+  ],
+  "roles": {
+    "timelockSafe": {
+      "address": "0x831822660572bd54ebaa065C2acef662a6277D40",
+      "codePresent": true,
+      "codeLengthBytes": 171,
+      "codeHash": "0xb89c1b3bdf2cf8827818646bce9a8f6e372885f8c55e5c07acbd307cb133b000",
+      "nonce": 1,
+      "ethBalanceWei": "99000000000000000",
+      "role": "FXB Timelock = Gnosis Safe 1.3.0 proxy; owner of FXBFactory (timelockAddress) and of the auction operator contract",
+      "chain": "ethereum",
+      "version": "1.3.0",
+      "owners": [
+        "0x8da4E997e051605878c9C0B793c496556EACC2C0",
+        "0xcbc616D595D38483e6AdC45C7E426f44bF230928",
+        "0x6933BCC3e96f1C4d2cb73Cb391d854b18Ab7A4F2",
+        "0x05FB8eC3C41da95b26fCb85503DaF8B89B89A935",
+        "0xc28339c70054bC22255A74E927a0B9e9A475F224",
+        "0x6e74053a3798e0fC9a9775F7995316b27f21c4D2"
+      ],
+      "threshold": "3",
+      "safeNonce": "68",
+      "singleton": {
+        "address": "0xd9Db270c1B5E3Bd161E8c8503c55cEABeE709552",
+        "codeLengthBytes": 22958,
+        "codeHash": "0xbba688fbdb21ad2bb58bc320638b43d94e7d100f6f3ebaab0a4e4de6304b1c2e"
+      },
+      "guard": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "fallbackHandler": {
+        "address": "0xf48f2B2d2a534e402487b3ee7C18c33Aec0Fe5e4",
+        "codeLengthBytes": 5492,
+        "codeHash": "0x03e69f7ce809e81687c69b19a7d7cca45b6d551ffdec73d9bb87178476de1abf"
+      },
+      "modules": {
+        "ok": true,
+        "value": [
+          [],
+          "0x0000000000000000000000000000000000000001"
+        ]
+      },
+      "domainSeparator": "0x8e5688c829a507077770d246d253892f8b06809b4461c8d0474921ffb8ca15d7",
+      "balances": {
+        "ethWei": "99000000000000000",
+        "fraxWei": "0"
+      }
+    },
+    "fxbFactoryControl": {
+      "canCreateFxb": [
+        "0x831822660572bd54ebaa065C2acef662a6277D40"
+      ],
+      "mechanism": "FXBFactory.createFxbContract is timelock-gated (Timelock2Step); only timelockAddress can call; pendingTimelockAddress is zero address (no transfer in flight)"
+    },
+    "auctionFactoryControl": {
+      "canCreateAuction": "anyone (permissionless factory per HEAD source; on-chain factory has no owner/timelock views)",
+      "note": "factory registry enumerates all 5 factory-created auctions; direct SlippageAuction constructor deployments would bypass the registry and cannot be ruled out from RPC alone (owed explorer follow-up)"
+    },
+    "auctionControl": {
+      "canStartStopAuction": [
+        "0x452420df4AC1e3db5429b5FD629f3047482C543C"
+      ],
+      "mechanism": "each SlippageAuction startAuction/stopAuction requires msg.sender == timelockAddress == operator contract; operator is itself timelock-gated by the Safe"
+    },
+    "upgradeAuthority": {
+      "fxbFactory": "none (direct deployment, no proxy)",
+      "fxbs": "none (immutable)",
+      "auctions": "none (immutable)",
+      "auctionFactory": "none (direct deployment, no proxy)",
+      "safe": "Safe owners (3-of-6) via Safe execution; singleton/fallback-handler changes require Safe tx"
+    }
+  },
+  "operatorContract": {
+    "address": "0x452420df4AC1e3db5429b5FD629f3047482C543C",
+    "codePresent": true,
+    "codeLengthBytes": 18064,
+    "codeHash": "0xb0bcba4a06615a38a435ec62f90e9ac92729d523f3fc3722aae531de1aee2a06",
+    "nonce": 1,
+    "ethBalanceWei": "0",
+    "role": "Auction operator contract (NOT in repo; discovered on-chain as timelockAddress of all 5 auctions). Version 1.0.2. Timelock2Step-gated by the Safe.",
+    "chain": "ethereum",
+    "views": {
+      "timelockAddress": "0x831822660572bd54ebaa065C2acef662a6277D40",
+      "pendingTimelockAddress": "0x0000000000000000000000000000000000000000",
+      "version": "1.0.2"
+    },
+    "storageSlots0to12": {
+      "slot0": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "slot1": "0x000000000000000000000000831822660572bd54ebaa065c2acef662a6277d40",
+      "slot2": "0x000000000000000000000000831822660572bd54ebaa065c2acef662a6277d40",
+      "slot3": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "slot4": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "slot5": "0x0000000000000000000000000000000000000000002f26dad268aa3a74e00000",
+      "slot6": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "slot7": "0x00000000000000000000000000000000000000000005593fe426ccf0a1006714",
+      "slot8": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "slot9": "0x000000000000000000000000000000000000000000079654addb0e78808e2134",
+      "slot10": "0x00000000000000000000000000000000000000000005cf9a182d68a4d9bea251",
+      "slot11": "0x000000000000000000000000000000000000000000295740ba3b41959b215daf",
+      "slot12": "0x0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "embeddedKnownAddresses": [
+      "FXBFactory",
+      "AuctionFactory",
+      "FRAX"
+    ],
+    "selectorPresenceInBytecode": {
+      "transferTimelock(address)": true,
+      "acceptTransferTimelock()": true,
+      "renounceTimelock()": true,
+      "startAuction((uint128,uint128,uint128,uint64,uint64,uint32))": true,
+      "stopAuction()": true,
+      "mint(address,uint256)": true,
+      "burn(address,uint256)": true,
+      "createAuctionContract(address,address,address)": true,
+      "createFxbContract(uint256)": false,
+      "execute(address,uint256,bytes)": false
+    },
+    "balances": {
+      "fraxWei": "0"
+    },
+    "fxbBalancesWei": {
+      "0xfb51435D48cB04dbE5f23b22f80aDe6D996473F5": "0",
+      "0x0dE54CFdfeD8005176f8b7A9D5438B45c4F1df1e": "0",
+      "0xF8FDe8A259A3698902C88bdB1E13Ff28Cd7f6F09": "0",
+      "0x13f19441Fb473fE96F1928d4a90f79fDb59675F1": "0",
+      "0x76237BCfDbe8e06FB774663add96216961df4ff3": "1999230000000000000000000"
+    },
+    "proxy": {
+      "isProxy": false,
+      "eip1967Implementation": {
+        "slot": "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "address": null
+      },
+      "eip1967Admin": {
+        "slot": "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "address": null
+      },
+      "eip1967Beacon": {
+        "slot": "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50",
+        "value": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "address": null
+      }
+    },
+    "sourceStatus": "UNIDENTIFIED from RPC alone; no matching contract in repo HEAD; full ABI/interface identification is an owed block-explorer follow-up",
+    "dispatcherSelectorCandidates": {
+      "method": "PUSH4+EQ pattern scan over first 3000 bytes of runtime bytecode; heuristic, may include false positives / miss selectors",
+      "count": 46,
+      "selectors": [
+        "0x0311fe2d",
+        "0x03b8e8e4",
+        "0x090f3f50",
+        "0x11f23b34",
+        "0x127e1682",
+        "0x127effb2",
+        "0x138ffa24",
+        "0x189bd1ae",
+        "0x222adc56",
+        "0x25d12fca",
+        "0x285e8869",
+        "0x29605e77",
+        "0x2ab6f8db",
+        "0x400a3b8b",
+        "0x427ce874",
+        "0x45014095",
+        "0x4776bc45",
+        "0x4bc66f32",
+        "0x4f8b4ae7",
+        "0x54fd4d50",
+        "0x571a26a0",
+        "0x601a16cd",
+        "0x6e882e1b",
+        "0x734ca819",
+        "0x7f593d9e",
+        "0x8402d16b",
+        "0x878f7ed9",
+        "0x8a97eb41",
+        "0x8ebde500",
+        "0x8fcd890d",
+        "0xa05386b8",
+        "0xa1031477",
+        "0xa85374e1",
+        "0xac9650d8",
+        "0xb03d6e0f",
+        "0xc67cce9f",
+        "0xc77e58c2",
+        "0xc84f9f69",
+        "0xcec72131",
+        "0xd3cc6eb2",
+        "0xd44845fd",
+        "0xe9139813",
+        "0xedfb1336",
+        "0xf1c0a453",
+        "0xf5f259f9",
+        "0xf6ccaad4"
+      ]
+    }
+  },
+  "underlying": {
+    "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+    "codePresent": true,
+    "codeLengthBytes": 14894,
+    "codeHash": "0xc4ede467721f985a631faeb0c8954b5b07645da7cb9bc1bbd0a912aa6649c9fc",
+    "nonce": 1,
+    "ethBalanceWei": "0",
+    "role": "FRAX (legacy FRAX / LFRAX on Ethereum); sole underlying/denomination of all 5 mainnet FXBs and buy token of all 5 auctions",
+    "chain": "ethereum",
+    "name": "Frax",
+    "symbol": "FRAX",
+    "decimals": "18",
+    "totalSupplyWei": "219173039721717401905920735",
+    "totalSupplyTokens": "219173039.721717401905920735"
+  },
+  "sweep": {
+    "method": "grep -rnoE '0x[0-9a-fA-F]{40}' over src/, scripts/, specification/, and repo *.md (excluding lib/, flattened.sol, lockfiles); plus manual decode of the 40-hex address words inside LFRAX JSON calldata (no additional addresses beyond the 0x-prefixed set); eth_getCode for every unique value on Ethereum mainnet",
+    "uniqueRepoAddresses": 171,
+    "groupCounts": {
+      "mainnet-constant": 82,
+      "mainnet-fxb-system": 5,
+      "fragment-not-an-address": 14,
+      "fraxtal-system": 20,
+      "polygon-test-output": 47,
+      "test-actor": 3
+    },
+    "withCodeOnMainnet": 85,
+    "noCodeOnMainnet": 86,
+    "separatelyFlaggedCodedButNotInFactoryRegistry": [
+      {
+        "address": "0xC4EB45d80DC1F079045E75D5d55de8eD1c1090E6",
+        "finding": "Same address has a Gnosis Safe 1.3.0 proxy on mainnet (5 owners, threshold 3, nonce 19, singleton 0xfb1bffC9d739B8D520DaF37dF666da4C687191EA) \u2014 a cross-chain same-address Safe deployment. NOT part of the mainnet FXB system; its Fraxtal incarnation is the v2 factory owner. No FXB/auction interface."
+      },
+      {
+        "address": "0xaCa39B187352D9805DECEd6E73A3d72ABf86E7A0",
+        "finding": "23-byte EIP-7702 delegation code (0xef0100 + delegate 0x63c0c19a282a1B52b07dD5a65b58948A07DAE32B) on mainnet. Test 'whale' label is Fraxtal-context only. No FXB/auction interface."
+      },
+      {
+        "address": "0x13Fe62cB24aEa5afd179F20D362c056c3881ABcA",
+        "finding": "6,565-byte Ownable contract (owner 0xe0d7755252873c4eF5788f7f45764E0e17610508) on mainnet; test-only 'proxyAdmin' label; getProxyImplementation/getProxyAdmin revert; no FXB/auction interface. Unrelated to the FXB system on mainnet."
+      }
+    ],
+    "missedDeploymentCandidatesInRegistrySense": 0,
+    "note": "No repo address with code on mainnet is an FXB or SlippageAuction outside the two factory registries. All 47 Polygon test-output addresses have no code on mainnet (other chain). 18 of 20 Fraxtal-system addresses have no code on mainnet (Fraxtal chain 252 only; Fraxtal inventory is out of scope for this mainnet-only task and is an owed follow-up). 4 of the 5 mainnet FXBs and all 5 mainnet auctions never appear anywhere in the repo \u2014 they were found only via the on-chain factory registries.",
+    "entries": [
+      {
+        "address": "0x8412ebf45bAC1B340BbE8F318b928C466c4E39CA",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 6862,
+        "codeHash": "0x052a557bd5ec8b75d86d043eeae828d5c34f071391218b636beccc991791a755",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:9",
+          "src/Constants.sol:14",
+          "src/Constants.sol:112",
+          "src/Constants.sol:117",
+          "scripts/constants/mainnet.ts:1",
+          "scripts/constants/mainnet.ts:8"
+        ]
+      },
+      {
+        "address": "0xB1748C79709f4Ba2Dd82834B8c82D4a505003f27",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 171,
+        "codeHash": "0xb89c1b3bdf2cf8827818646bce9a8f6e372885f8c55e5c07acbd307cb133b000",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:10",
+          "src/Constants.sol:15",
+          "src/Constants.sol:88",
+          "src/Constants.sol:113",
+          "src/Constants.sol:118",
+          "src/Constants.sol:191",
+          "scripts/constants/mainnet.ts:2",
+          "scripts/constants/mainnet.ts:9",
+          "scripts/constants/mainnet.ts:107"
+        ]
+      },
+      {
+        "address": "0xc8418aF6358FFddA74e09Ca9CC3Fe03Ca6aDC5b0",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 12873,
+        "codeHash": "0xc0533b473ee0da0861c080c9dc3a0ccd458d591e6b160c5eac1b8f7d0d659a9d",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:11",
+          "src/Constants.sol:114",
+          "scripts/constants/mainnet.ts:3"
+        ]
+      },
+      {
+        "address": "0xcEe284F754E854890e311e3280b767F80797180d",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 2092,
+        "codeHash": "0x685718cbe6f1ee62236ffbab640612cebc70c6cc69a54aacb83d0790d42e247a",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:12",
+          "src/Constants.sol:115",
+          "scripts/constants/mainnet.ts:4"
+        ]
+      },
+      {
+        "address": "0x5180db0237291A6449DdA9ed33aD90a38787621c",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 7655,
+        "repoSources": [
+          "src/Constants.sol:13",
+          "src/Constants.sol:116",
+          "scripts/constants/mainnet.ts:5"
+        ]
+      },
+      {
+        "address": "0xC14d550632db8592D1243Edc8B95b0Ad06703867",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 23773,
+        "codeHash": "0x9db25446358b9a455da7fba2b74f1b47ef1f023dfc369472afd40c28fd45c418",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:16",
+          "src/Constants.sol:119",
+          "scripts/constants/mainnet.ts:12"
+        ]
+      },
+      {
+        "address": "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 21943,
+        "codeHash": "0xa324bc7db3d091b6f1a2d526e48a9c7039e03b3cc35f7d44b15ac7a1544c11d2",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:17",
+          "src/Constants.sol:120",
+          "scripts/constants/mainnet.ts:13"
+        ]
+      },
+      {
+        "address": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+        "group": "mainnet-fxb-system",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 14894,
+        "codeHash": "0xc4ede467721f985a631faeb0c8954b5b07645da7cb9bc1bbd0a912aa6649c9fc",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:18",
+          "src/Constants.sol:121",
+          "src/script/LFRAX_FXB_Upgrade/00_DeployImpls.s.sol:30",
+          "scripts/constants/mainnet.ts:16",
+          "AUDIT_SCOPE_LFRAX_AND_FXB_UPGRADE.md:3",
+          "AUDIT_SCOPE_LFRAX_AND_FXB_UPGRADE.md:3"
+        ]
+      },
+      {
+        "address": "0x3432B6A60D23Ca0dFCa7761B7ab56459D9C964D0",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 12769,
+        "codeHash": "0xf19bbd7bc6a4a6c7edd6bf1542de2491e76935de8e52f8420c3dfc207ad27bdf",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:19",
+          "src/Constants.sol:122",
+          "src/test/BaseTest.t.sol:30",
+          "scripts/constants/mainnet.ts:17"
+        ]
+      },
+      {
+        "address": "0x5E8422345238F34275888049021821E8E08CAa1f",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 6734,
+        "codeHash": "0x030c096222e8746193408e3a8fa65f7bc051c4f680bcd589ee5b476401fcb951",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:20",
+          "src/Constants.sol:86",
+          "src/Constants.sol:123",
+          "src/Constants.sol:189",
+          "scripts/constants/mainnet.ts:18",
+          "scripts/constants/mainnet.ts:103"
+        ]
+      },
+      {
+        "address": "0xac3E018457B222d93114458476f3E3416Abbe38F",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 7109,
+        "codeHash": "0x251c9c1fcabf4dd36157cc995ab6beec40439d7f781bfae4ae8247a96558ea2b",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:21",
+          "src/Constants.sol:124",
+          "scripts/constants/mainnet.ts:19"
+        ]
+      },
+      {
+        "address": "0xa1F8A6807c402E4A15ef4EBa36528A3FED24E577",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 14338,
+        "codeHash": "0xa9c07587e2c24e7da7e403b74d5ccbd0759de8f190228b0d9ed25e97fbe4cdbc",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:22",
+          "src/Constants.sol:84",
+          "src/Constants.sol:125",
+          "src/Constants.sol:187",
+          "scripts/constants/mainnet.ts:22",
+          "scripts/constants/mainnet.ts:101"
+        ]
+      },
+      {
+        "address": "0xDcEF968d416a41Cdac0ED8702fAC8128A64241A2",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 13709,
+        "codeHash": "0x304e2199bfe57413d95a53efb2f3df8ed69be12f7df5770b874c9b3a30d9cafd",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:23",
+          "src/Constants.sol:25",
+          "src/Constants.sol:126",
+          "src/Constants.sol:128",
+          "scripts/constants/mainnet.ts:23",
+          "scripts/constants/mainnet.ts:25"
+        ]
+      },
+      {
+        "address": "0x9409280DC1e6D33AB7A8C6EC03e5763FB61772B5",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 45,
+        "codeHash": "0x6dfb9f924888fe0d10b50c35ced3f2cf372073a7e524450f1ebe491415db66e0",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:24",
+          "src/Constants.sol:127",
+          "scripts/constants/mainnet.ts:24"
+        ]
+      },
+      {
+        "address": "0x2397321b301B80A1C0911d6f9ED4b6033d43cF51",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 18693,
+        "codeHash": "0x8f8968ffbb928926343d4217667f094cc938f359e253ef25ff33ee7b85ec1132",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:26",
+          "src/Constants.sol:129",
+          "scripts/constants/mainnet.ts:28"
+        ]
+      },
+      {
+        "address": "0x54a3A6aFd87F10Eea4Acc2A067A2C0b612B6D315",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 45,
+        "codeHash": "0xffd85c723f093b0ad78b2bdc1e55eca3eed34f5b7156eb73d84bea90537cb37b",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:27",
+          "src/Constants.sol:130",
+          "scripts/constants/mainnet.ts:31"
+        ]
+      },
+      {
+        "address": "0xd1b222AAEdf2877CeEB3c66BDaA6858200eb48fC",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 45,
+        "codeHash": "0xffd85c723f093b0ad78b2bdc1e55eca3eed34f5b7156eb73d84bea90537cb37b",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:28",
+          "src/Constants.sol:131",
+          "scripts/constants/mainnet.ts:32"
+        ]
+      },
+      {
+        "address": "0x3284E1BCEaf70767A7575d0e1e10fAFbC4618B52",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 5846,
+        "codeHash": "0xba5cf706959350fad690ee48d11ba007bd5278fc46434c197e29329f058a2a6c",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:29",
+          "src/Constants.sol:132",
+          "scripts/constants/mainnet.ts:35"
+        ]
+      },
+      {
+        "address": "0x605F7ADD3A14ACA676B1F60F3b36C772720946Aa",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 5851,
+        "codeHash": "0x96bd02f48b8121a1ba17bcccf003aed5668bafe3852f29ee5f5afd07efc680f0",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:30",
+          "src/Constants.sol:133",
+          "scripts/constants/mainnet.ts:36"
+        ]
+      },
+      {
+        "address": "0x2Ad35cce2a690E0bF1e6dCAC2F9175389F31D7F4",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 7134,
+        "codeHash": "0x6e46a958a1cb10b6f4ecb08484fc61deaec06ac2489299ee7febabf5e2855d3b",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:31",
+          "src/Constants.sol:134",
+          "scripts/constants/mainnet.ts:37"
+        ]
+      },
+      {
+        "address": "0x013723E5631c591Af50E89C2892b464530103481",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 7371,
+        "codeHash": "0x02afa65404ca71faa2d03ac11e2d9e529e25e7bfefefc83302fcaf6cd64916cd",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:32",
+          "src/Constants.sol:135",
+          "scripts/constants/mainnet.ts:38"
+        ]
+      },
+      {
+        "address": "0x4c7b43EcE8958D7f6b184B3833DD1D383db1f83b",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 5842,
+        "codeHash": "0x52bc6f453e46ef0e7e96a4fd2391bada74cff124f66408ff3fe175fcc4f9836c",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:33",
+          "src/Constants.sol:136",
+          "scripts/constants/mainnet.ts:39"
+        ]
+      },
+      {
+        "address": "0x33A9D662d9F7cb2153e3a5102615B08865BeAbdB",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 5844,
+        "codeHash": "0x61fc8e3de3ef0d9afc4be7c066439516bcb7acc35597f0630a78e43cab65f300",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:34",
+          "src/Constants.sol:137",
+          "scripts/constants/mainnet.ts:40"
+        ]
+      },
+      {
+        "address": "0xb12c19C838499E3447AFd9e59274B1BE56b1546A",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 7897,
+        "codeHash": "0x0ec2e9fc387748739cd6ddf7d0c7c08749771244933620a15bf71c94e7b05e73",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:35",
+          "src/Constants.sol:138",
+          "scripts/constants/mainnet.ts:41"
+        ]
+      },
+      {
+        "address": "0x1473F3e4d236CBBe3412b9f65B4c210756BE2C0E",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 8243,
+        "codeHash": "0x6490d408ad0a2f59144e77a4d7e1aeca32e7847b27e7a13fa0c09e8d1a2e7893",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:36",
+          "src/Constants.sol:139",
+          "scripts/constants/mainnet.ts:42"
+        ]
+      },
+      {
+        "address": "0xC58F3385FBc1C8AD2c0C9a061D7c13b141D7A5Df",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 4845,
+        "codeHash": "0x8ffbd60ceafc3db03ca164535ebf3764829c8f97ebe2e31a10ff4f841b02eab6",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:37",
+          "src/Constants.sol:140",
+          "scripts/constants/mainnet.ts:45"
+        ]
+      },
+      {
+        "address": "0xB9af7723CfBd4469A7E8aa60B93428D648Bda99d",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 4845,
+        "codeHash": "0x7b02897f4caa50153ebc8320e66572c4112b0d72a7a0d74fbac41ac326da0cae",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:38",
+          "src/Constants.sol:141",
+          "scripts/constants/mainnet.ts:46"
+        ]
+      },
+      {
+        "address": "0x5aB53EE1d50eeF2C1DD3d5402789cd27bB52c1bB",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 22142,
+        "codeHash": "0x4bcc3f0b1245c0be7d103ba3bd854ce70ca80a22d363c8715fccb80d8c3d6ec8",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:39",
+          "src/Constants.sol:142",
+          "scripts/constants/mainnet.ts:49"
+        ]
+      },
+      {
+        "address": "0xAc4b3DacB91461209Ae9d41EC517c2B9Cb1B7DAF",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 22142,
+        "codeHash": "0x5ac5567dd2e7c2920c78bc1bd37dba1df0efefb454e33b705c3d616715d9fcfa",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:40",
+          "src/Constants.sol:143",
+          "scripts/constants/mainnet.ts:50"
+        ]
+      },
+      {
+        "address": "0xc63B0708E2F7e69CB8A1df0e1389A98C35A76D52",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 22142,
+        "codeHash": "0x3dc9249fac6592619b4f9aab232fa5204f6713c7637d96be617cbf23ddf5be48",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:41",
+          "src/Constants.sol:144",
+          "scripts/constants/mainnet.ts:51"
+        ]
+      },
+      {
+        "address": "0x36C060Cc4b088c830a561E959A679A58205D3F56",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 22142,
+        "codeHash": "0xff36962836c6c48c1f73f9d2573de77d54daad4b15b07dbca43b358f637729e2",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:42",
+          "src/Constants.sol:145",
+          "scripts/constants/mainnet.ts:52"
+        ]
+      },
+      {
+        "address": "0xa6Cc3C2531FdaA6Ae1A3CA84c2855806728693e8",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 22142,
+        "codeHash": "0xed9b9665147a9655ca7e2e520b0b0ac2f7acc7b10d79851868798ed8d422393b",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:43",
+          "src/Constants.sol:146",
+          "scripts/constants/mainnet.ts:53"
+        ]
+      },
+      {
+        "address": "0xe8c6c9227491C0a8156A0106A0204d881BB7E531",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 22142,
+        "codeHash": "0x5359a4b5857b3e1a3f0ca9b99931493b199a200671afcbebd55201eff177f1b4",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:44",
+          "src/Constants.sol:147",
+          "scripts/constants/mainnet.ts:54"
+        ]
+      },
+      {
+        "address": "0xB210CE856631EeEB767eFa666EC7C1C57738d438",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 9957,
+        "codeHash": "0x6e4dd7cab8a791d592a8d275ded4baaa03e2e0f2661e08334a5878471c3f95dd",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:45",
+          "src/Constants.sol:148",
+          "scripts/constants/mainnet.ts:55"
+        ]
+      },
+      {
+        "address": "0x1d42064Fc4Beb5F8aAF85F4617AE8b3b5B8Bd801",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 22142,
+        "codeHash": "0x6579730b3a52cd12b1e82fcb7478b4b2c129a507da01ff5aae1275cc6135408d",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:46",
+          "src/Constants.sol:149",
+          "scripts/constants/mainnet.ts:56"
+        ]
+      },
+      {
+        "address": "0x92c7b5Ce4CB0e5483F3365C1449f21578eE9f21A",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 22142,
+        "codeHash": "0xb39ef82abf449a5d8a4d2488fdcf2ab0c737f3e1da08bedbc9de56eb7c41cc06",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:47",
+          "src/Constants.sol:150",
+          "scripts/constants/mainnet.ts:57"
+        ]
+      },
+      {
+        "address": "0x88e6A0c2dDD26FEEb64F039a2c41296FcB3f5640",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 22142,
+        "codeHash": "0xa981b66c747a3d9fa29d7e200d5faaa2826960523d0e5a0df8148e8868c480b4",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:48",
+          "src/Constants.sol:151",
+          "scripts/constants/mainnet.ts:58"
+        ]
+      },
+      {
+        "address": "0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 2491,
+        "codeHash": "0x98a3150c9759d754a4b31f6fb3f4828371c60c2c07fb0754cfa2b230cb601001",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:49",
+          "src/Constants.sol:152",
+          "scripts/constants/mainnet.ts:61"
+        ]
+      },
+      {
+        "address": "0x4d224452801ACEd8B2F0aebE155379bb5D594381",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 2244,
+        "codeHash": "0x86cc3092a7d90269edf27eb088feea0d277b77a77bfbbe06dff0a1b1affbfb9e",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:50",
+          "src/Constants.sol:153",
+          "scripts/constants/mainnet.ts:62"
+        ]
+      },
+      {
+        "address": "0xD533a949740bb3306d119CC777fa900bA034cd52",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 4369,
+        "codeHash": "0xb76a9f27b7c56b437bd85288ec0b47df9b0dcbc0e8893940e7e1cb7fef862eef",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:51",
+          "src/Constants.sol:154",
+          "scripts/constants/mainnet.ts:63"
+        ]
+      },
+      {
+        "address": "0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 3756,
+        "codeHash": "0xfa5d25e3982980ec31d90377da689c97859cbd1a7f524b9d9da4a9421988a3f5",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:52",
+          "src/Constants.sol:155",
+          "scripts/constants/mainnet.ts:64"
+        ]
+      },
+      {
+        "address": "0xB8B01cec5CEd05C457654Fc0fda0948f859883CA",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 1754,
+        "codeHash": "0xaa66ded9c66a7a9c592ad97477d57fe46f7a8ff2bdea8e68ab79955d8b0857b4",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:53",
+          "src/Constants.sol:156",
+          "scripts/constants/mainnet.ts:65"
+        ]
+      },
+      {
+        "address": "0xc2544A32872A91F4A553b404C6950e89De901fdb",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 7450,
+        "codeHash": "0xa7a26823dbf99dbb31c0a6c17c64925564e78b14af71345a9fe1c0fdf4bd46a4",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:54",
+          "src/Constants.sol:157",
+          "scripts/constants/mainnet.ts:66"
+        ]
+      },
+      {
+        "address": "0x5Ca135cB8527d76e932f34B5145575F9d8cbE08E",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 6974,
+        "codeHash": "0x3a4b6eee0f5b8f2858867f2bcac026c48f1f59c1755b406989d48452a71e9ecf",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:55",
+          "src/Constants.sol:158",
+          "scripts/constants/mainnet.ts:67"
+        ]
+      },
+      {
+        "address": "0x3175Df0976dFA876431C2E9eE6Bc45b65d3473CC",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 2163,
+        "codeHash": "0x247dbc76a2d4e734c1121ac9aad92399cec0e3b7edfa24c33042c8c71a3c9883",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:56",
+          "src/Constants.sol:159",
+          "scripts/constants/mainnet.ts:68"
+        ]
+      },
+      {
+        "address": "0xf43211935C781D5ca1a41d2041F397B8A7366C7A",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 2163,
+        "codeHash": "0x247dbc76a2d4e734c1121ac9aad92399cec0e3b7edfa24c33042c8c71a3c9883",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:57",
+          "src/Constants.sol:85",
+          "src/Constants.sol:160",
+          "src/Constants.sol:188",
+          "scripts/constants/mainnet.ts:69",
+          "scripts/constants/mainnet.ts:102"
+        ]
+      },
+      {
+        "address": "0x0ab87046fBb341D058F17CBC4c1133F25a20a52f",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 11811,
+        "codeHash": "0x09cabd71e420dac57ffa1cc568893a32b683d2f98076570c1756e1ec14d13bb9",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:58",
+          "src/Constants.sol:161",
+          "scripts/constants/mainnet.ts:70"
+        ]
+      },
+      {
+        "address": "0x5A98FcBEA516Cf06857215779Fd812CA3beF1B32",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 7440,
+        "codeHash": "0x2dda0f3a6bee3e5768e41adb77021f8f5653897a1c65a5f106265b17fa2c299b",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:59",
+          "src/Constants.sol:162",
+          "scripts/constants/mainnet.ts:71"
+        ]
+      },
+      {
+        "address": "0x514910771AF9Ca656af840dff83E8264EcF986CA",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 3153,
+        "codeHash": "0x77c633ba07c8cb94cd4864092fd8b31e31cf9d065f6fb6acf617298bc0008785",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:60",
+          "src/Constants.sol:163",
+          "scripts/constants/mainnet.ts:72"
+        ]
+      },
+      {
+        "address": "0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 3379,
+        "codeHash": "0x8f1fbeb4a337d5526b982caa415e71dc55dc8fa2585ab5e4b6df45bdb263bc7f",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:61",
+          "src/Constants.sol:164",
+          "scripts/constants/mainnet.ts:73"
+        ]
+      },
+      {
+        "address": "0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 12567,
+        "codeHash": "0xdeba17f16fdba566b45d8019575e068625403cc6986fa17ceadd6edf08aa0868",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:62",
+          "src/Constants.sol:165",
+          "scripts/constants/mainnet.ts:74"
+        ]
+      },
+      {
+        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 2186,
+        "codeHash": "0xd80d4b7c890cb9d6a4893e6b52bc34b56b25335cb13716e0d1d31383e6b41505",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:63",
+          "src/Constants.sol:166",
+          "src/test/BaseTest.t.sol:32",
+          "src/test/BaseTest_FXB_LFRAX.t.sol:52",
+          "scripts/constants/mainnet.ts:75"
+        ]
+      },
+      {
+        "address": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 4582,
+        "codeHash": "0x131ff5c755b710d543ea70fede2eb38e5d15b1456df0ae932ba12e2786f7e5df",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:64",
+          "src/Constants.sol:167",
+          "scripts/constants/mainnet.ts:76"
+        ]
+      },
+      {
+        "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 3124,
+        "codeHash": "0xd0a06b12ac47863b5c7be4185c2deaad1c61557033f56c7d4ea74429cbb25e23",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:65",
+          "src/Constants.sol:168",
+          "scripts/constants/mainnet.ts:77"
+        ]
+      },
+      {
+        "address": "0x547a514d5e3769680Ce22B2361c10Ea13619e8a9",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 9571,
+        "codeHash": "0xbd6f524cdc4268b6bd1bb6f77a8821faeea9c52ee9e0afa0b6d948ce82c966c2",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:66",
+          "src/Constants.sol:169",
+          "scripts/constants/mainnet.ts:80"
+        ]
+      },
+      {
+        "address": "0xD10aBbC76679a20055E167BB80A24ac851b37056",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 9571,
+        "codeHash": "0xbd6f524cdc4268b6bd1bb6f77a8821faeea9c52ee9e0afa0b6d948ce82c966c2",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:67",
+          "src/Constants.sol:170",
+          "scripts/constants/mainnet.ts:81"
+        ]
+      },
+      {
+        "address": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 9571,
+        "codeHash": "0x4b79b5c8aee6da0f7b393e8b53e6265ef7320a1d16184c65bd3841b5aa3d700d",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:68",
+          "src/Constants.sol:171",
+          "scripts/constants/mainnet.ts:82"
+        ]
+      },
+      {
+        "address": "0xCd627aA160A6fA45Eb793D19Ef54f5062F20f33f",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 9571,
+        "codeHash": "0xbd6f524cdc4268b6bd1bb6f77a8821faeea9c52ee9e0afa0b6d948ce82c966c2",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:69",
+          "src/Constants.sol:172",
+          "scripts/constants/mainnet.ts:83"
+        ]
+      },
+      {
+        "address": "0xd962fC30A72A84cE50161031391756Bf2876Af5D",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 9571,
+        "codeHash": "0xbd6f524cdc4268b6bd1bb6f77a8821faeea9c52ee9e0afa0b6d948ce82c966c2",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:70",
+          "src/Constants.sol:173",
+          "scripts/constants/mainnet.ts:84"
+        ]
+      },
+      {
+        "address": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 9571,
+        "codeHash": "0x4b79b5c8aee6da0f7b393e8b53e6265ef7320a1d16184c65bd3841b5aa3d700d",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:71",
+          "src/Constants.sol:174",
+          "scripts/constants/mainnet.ts:85"
+        ]
+      },
+      {
+        "address": "0x0606Be69451B1C9861Ac6b3626b99093b713E801",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 9571,
+        "codeHash": "0xbd6f524cdc4268b6bd1bb6f77a8821faeea9c52ee9e0afa0b6d948ce82c966c2",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:72",
+          "src/Constants.sol:175",
+          "scripts/constants/mainnet.ts:86"
+        ]
+      },
+      {
+        "address": "0x1A31D42149e82Eb99777f903C08A2E41A00085d3",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 9571,
+        "codeHash": "0xbd6f524cdc4268b6bd1bb6f77a8821faeea9c52ee9e0afa0b6d948ce82c966c2",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:73",
+          "src/Constants.sol:176",
+          "scripts/constants/mainnet.ts:87"
+        ]
+      },
+      {
+        "address": "0xB9E1E3A9feFf48998E45Fa90847ed4D467E8BcfD",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 9571,
+        "codeHash": "0xbd6f524cdc4268b6bd1bb6f77a8821faeea9c52ee9e0afa0b6d948ce82c966c2",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:74",
+          "src/Constants.sol:177",
+          "scripts/constants/mainnet.ts:88"
+        ]
+      },
+      {
+        "address": "0x6Ebc52C8C1089be9eB3945C4350B68B8E4C2233f",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 9571,
+        "codeHash": "0xbd6f524cdc4268b6bd1bb6f77a8821faeea9c52ee9e0afa0b6d948ce82c966c2",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:75",
+          "src/Constants.sol:178",
+          "scripts/constants/mainnet.ts:89"
+        ]
+      },
+      {
+        "address": "0x4e844125952D32AcdF339BE976c98E22F6F318dB",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 9571,
+        "codeHash": "0xbd6f524cdc4268b6bd1bb6f77a8821faeea9c52ee9e0afa0b6d948ce82c966c2",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:76",
+          "src/Constants.sol:179",
+          "scripts/constants/mainnet.ts:90"
+        ]
+      },
+      {
+        "address": "0x2c1d072e956AFFC0D435Cb7AC38EF18d24d9127c",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 9571,
+        "codeHash": "0x4b79b5c8aee6da0f7b393e8b53e6265ef7320a1d16184c65bd3841b5aa3d700d",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:77",
+          "src/Constants.sol:180",
+          "scripts/constants/mainnet.ts:91"
+        ]
+      },
+      {
+        "address": "0x24551a8Fb2A7211A25a17B1481f043A8a8adC7f2",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 9571,
+        "codeHash": "0x4b79b5c8aee6da0f7b393e8b53e6265ef7320a1d16184c65bd3841b5aa3d700d",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:78",
+          "src/Constants.sol:181",
+          "scripts/constants/mainnet.ts:92"
+        ]
+      },
+      {
+        "address": "0xec1D1B3b0443256cc3860e24a46F108e699484Aa",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 9571,
+        "codeHash": "0xbd6f524cdc4268b6bd1bb6f77a8821faeea9c52ee9e0afa0b6d948ce82c966c2",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:79",
+          "src/Constants.sol:182",
+          "scripts/constants/mainnet.ts:93"
+        ]
+      },
+      {
+        "address": "0x9a72298ae3886221820B1c878d12D872087D3a23",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 9571,
+        "codeHash": "0xbd6f524cdc4268b6bd1bb6f77a8821faeea9c52ee9e0afa0b6d948ce82c966c2",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:80",
+          "src/Constants.sol:183",
+          "scripts/constants/mainnet.ts:94"
+        ]
+      },
+      {
+        "address": "0x553303d460EE0afB37EdFf9bE42922D8FF63220e",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 9571,
+        "codeHash": "0xbd6f524cdc4268b6bd1bb6f77a8821faeea9c52ee9e0afa0b6d948ce82c966c2",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:81",
+          "src/Constants.sol:184",
+          "scripts/constants/mainnet.ts:95"
+        ]
+      },
+      {
+        "address": "0x8fFfFfd4AfB6115b954Bd326cbe7B4BA576818f6",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 9571,
+        "codeHash": "0xbd6f524cdc4268b6bd1bb6f77a8821faeea9c52ee9e0afa0b6d948ce82c966c2",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:82",
+          "src/Constants.sol:185",
+          "scripts/constants/mainnet.ts:96"
+        ]
+      },
+      {
+        "address": "0xe5Ca8CB440A6f9F6fA1D535D94A839CED59D9942",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 1218,
+        "codeHash": "0x2af86968ef566cd7b4fe8933b7e0488b9b35916b55ea66cdf892af6166a9b219",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:83",
+          "src/Constants.sol:186",
+          "scripts/constants/mainnet.ts:99"
+        ]
+      },
+      {
+        "address": "0xcf37B62109b537fa0Cb9A90Af4CA72f6fb85E241",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 16107,
+        "codeHash": "0x5c6d1056a46875b0996e266a68ddb9e0acaf777732f431078e51be229c9ba351",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:87",
+          "src/Constants.sol:190",
+          "scripts/constants/mainnet.ts:106"
+        ]
+      },
+      {
+        "address": "0x733371d7C15ACECF9e120dd037D6BcDb6E069148",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 781,
+        "repoSources": [
+          "src/Constants.sol:89",
+          "src/Constants.sol:192",
+          "scripts/constants/mainnet.ts:108"
+        ]
+      },
+      {
+        "address": "0x8D8Cb63BcB8AD89Aa750B9f80Aa8Fa4CfBcC8E0C",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 171,
+        "codeHash": "0xb89c1b3bdf2cf8827818646bce9a8f6e372885f8c55e5c07acbd307cb133b000",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:90",
+          "src/Constants.sol:193",
+          "scripts/constants/mainnet.ts:109"
+        ]
+      },
+      {
+        "address": "0x00000000219ab540356cBB839Cbe05303d7705Fa",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 6358,
+        "codeHash": "0x6c029a231254fadb724d63be769f75eedd66362df034a3e663252b49d062a666",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:91",
+          "src/Constants.sol:194",
+          "scripts/constants/mainnet.ts:110"
+        ]
+      },
+      {
+        "address": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE",
+        "group": "fragment-not-an-address",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/Constants.sol:92",
+          "src/Constants.sol:195",
+          "scripts/constants/mainnet.ts:111"
+        ]
+      },
+      {
+        "address": "0x8306300ffd616049FD7e4b0354a64Da835c1A81C",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 171,
+        "codeHash": "0xb89c1b3bdf2cf8827818646bce9a8f6e372885f8c55e5c07acbd307cb133b000",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:93",
+          "src/Constants.sol:94",
+          "src/Constants.sol:196",
+          "src/Constants.sol:197",
+          "scripts/constants/mainnet.ts:112",
+          "scripts/constants/mainnet.ts:113"
+        ]
+      },
+      {
+        "address": "0xCFc25170633581Bf896CB6CDeE170e3E3Aa59503",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 10663,
+        "codeHash": "0x2f20f75b582e45565d79e673fca75d74b42fcdca86771d250c9a679630c57986",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:95",
+          "src/Constants.sol:198",
+          "scripts/constants/mainnet.ts:114"
+        ]
+      },
+      {
+        "address": "0xD6216fC19DB775Df9774a6E33526131dA7D19a2c",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 12704,
+        "repoSources": [
+          "src/Constants.sol:96",
+          "src/Constants.sol:199",
+          "scripts/constants/mainnet.ts:115"
+        ]
+      },
+      {
+        "address": "0x8EB8a3b98659Cce290402893d0123abb75E3ab28",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 50217,
+        "repoSources": [
+          "src/Constants.sol:97",
+          "src/Constants.sol:200",
+          "scripts/constants/mainnet.ts:116"
+        ]
+      },
+      {
+        "address": "0x32467a5fc2d72D21E8DCe990906547A2b012f382",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 24544,
+        "codeHash": "0x0aaf6e2d093608a2b7479319b6d6b4e0477ebed5de314a16628f41ba07410591",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:98",
+          "src/Constants.sol:201",
+          "scripts/constants/mainnet.ts:117"
+        ]
+      },
+      {
+        "address": "0x794F6B13FBd7EB7ef10d1ED205c9a416910207Ff",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 24544,
+        "codeHash": "0xb0908b7296f8e971e3d3ad2dc44b18d496185bd69f9563689507484a047c5db5",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:99",
+          "src/Constants.sol:202",
+          "scripts/constants/mainnet.ts:118"
+        ]
+      },
+      {
+        "address": "0xb0E1650A9760e0f383174af042091fc544b8356f",
+        "group": "mainnet-constant",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 376,
+        "repoSources": [
+          "src/Constants.sol:100",
+          "src/Constants.sol:203",
+          "scripts/constants/mainnet.ts:120"
+        ]
+      },
+      {
+        "address": "0x831822660572bd54ebaa065C2acef662a6277D40",
+        "group": "mainnet-fxb-system",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 171,
+        "codeHash": "0xb89c1b3bdf2cf8827818646bce9a8f6e372885f8c55e5c07acbd307cb133b000",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:101",
+          "src/Constants.sol:204",
+          "scripts/constants/mainnet.ts:122",
+          "README.md:6",
+          "README.md:11"
+        ]
+      },
+      {
+        "address": "0xC4EB45d80DC1F079045E75D5d55de8eD1c1090E6",
+        "group": "fraxtal-system",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 171,
+        "codeHash": "0xb89c1b3bdf2cf8827818646bce9a8f6e372885f8c55e5c07acbd307cb133b000",
+        "nonce": 1,
+        "repoSources": [
+          "src/Constants.sol:209",
+          "src/Constants.sol:221",
+          "src/script/DeployFXBFactory.s.sol:16",
+          "src/script/LFRAX_FXB_Upgrade/JSONs/00_DeployImpls.json:9",
+          "src/script/LFRAX_FXB_Upgrade/JSONs/01_HandleNewLFRAX.json:9",
+          "src/script/LFRAX_FXB_Upgrade/JSONs/02_UpgradeFXBs.json:9",
+          "AUDIT_SCOPE_LFRAX_AND_FXB_UPGRADE.md:65"
+        ]
+      },
+      {
+        "address": "0xaFa1705021f65418e746D8664f4B8A58271f6De4",
+        "group": "fraxtal-system",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/Constants.sol:210",
+          "src/Constants.sol:222",
+          "src/script/LFRAX_FXB_Upgrade/LFRAXUpgradeSharedState.sol:36",
+          "src/test/BaseTest_FXB_LFRAX.t.sol:56",
+          "scripts/constants/fraxtal-l2.ts:1"
+        ]
+      },
+      {
+        "address": "0x4200000000000000000000000000000000000010",
+        "group": "fraxtal-system",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/Constants.sol:211",
+          "src/Constants.sol:223",
+          "src/script/LFRAX_FXB_Upgrade/00_DeployImpls.s.sol:29"
+        ]
+      },
+      {
+        "address": "0xDfA77cE8B723C5e13e20E8938A18648022b7Fe18",
+        "group": "fraxtal-system",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/Constants.sol:212",
+          "src/Constants.sol:224",
+          "scripts/constants/fraxtal-l2.ts:2"
+        ]
+      },
+      {
+        "address": "0xacA9A33698cF96413A40A4eB9E87906ff40fC6CA",
+        "group": "fraxtal-system",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/Constants.sol:213",
+          "src/Constants.sol:225",
+          "src/contracts/FXBFactory.sol:69",
+          "src/contracts/FXBFactory.sol:70",
+          "src/script/LFRAX_FXB_Upgrade/LFRAXUpgradeSharedState.sol:38",
+          "scripts/constants/fraxtal-l2.ts:3",
+          "README_DEV.md:2",
+          "AUDIT_SCOPE_LFRAX_AND_FXB_UPGRADE.md:36"
+        ]
+      },
+      {
+        "address": "0x6c9f4E6089c8890AfEE2bcBA364C2712f88fA818",
+        "group": "fraxtal-system",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/Constants.sol:214",
+          "src/Constants.sol:226",
+          "src/contracts/FXBFactory.sol:74",
+          "src/contracts/FXBFactory.sol:75",
+          "src/script/LFRAX_FXB_Upgrade/LFRAXUpgradeSharedState.sol:39",
+          "AUDIT_SCOPE_LFRAX_AND_FXB_UPGRADE.md:37"
+        ]
+      },
+      {
+        "address": "0xF1e2b576aF4C6a7eE966b14C810b772391e92153",
+        "group": "fraxtal-system",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/Constants.sol:215",
+          "src/Constants.sol:227",
+          "src/contracts/FXBFactory.sol:79",
+          "src/contracts/FXBFactory.sol:80",
+          "src/script/LFRAX_FXB_Upgrade/LFRAXUpgradeSharedState.sol:40",
+          "scripts/constants/fraxtal-l2.ts:4",
+          "AUDIT_SCOPE_LFRAX_AND_FXB_UPGRADE.md:38"
+        ]
+      },
+      {
+        "address": "0xc38173D34afaEA88Bc482813B3CD267bc8A1EA83",
+        "group": "fraxtal-system",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/Constants.sol:216",
+          "src/Constants.sol:228",
+          "src/contracts/FXBFactory.sol:84",
+          "src/contracts/FXBFactory.sol:85",
+          "src/script/LFRAX_FXB_Upgrade/LFRAXUpgradeSharedState.sol:41",
+          "src/test/SlippageAuction/InsufficientInputAmountTest.t.sol:18",
+          "scripts/constants/fraxtal-l2.ts:5",
+          "AUDIT_SCOPE_LFRAX_AND_FXB_UPGRADE.md:29",
+          "AUDIT_SCOPE_LFRAX_AND_FXB_UPGRADE.md:39",
+          "FXB_UPGRADE_NOT_V2_WALKTHROUGH.md:49"
+        ]
+      },
+      {
+        "address": "0x63aDb8B9C786D426a73800E40F1f67355aC36Bb7",
+        "group": "fraxtal-system",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/Constants.sol:234"
+        ]
+      },
+      {
+        "address": "0x17FdBAdAc06C76C73Ea73b834341b02779C36AA0",
+        "group": "fraxtal-system",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/Constants.sol:235",
+          "src/test/BaseTest_FXB_LFRAX.t.sol:45",
+          "README_DEV.md:4",
+          "AUDIT_SCOPE_LFRAX_AND_FXB_UPGRADE.md:3"
+        ]
+      },
+      {
+        "address": "0xA7c3C04D0c762F7f3B8fdeeE195dB66160bdf2eB",
+        "group": "fraxtal-system",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/Constants.sol:236"
+        ]
+      },
+      {
+        "address": "0xF0c57E16840dF040F15088DC2F81fE391c3923BE",
+        "group": "fragment-not-an-address",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/contracts/utils/StorageSetterLFRAX.sol:7",
+          "src/contracts/utils/StorageSetterLFRAX.sol:35"
+        ]
+      },
+      {
+        "address": "0xff000000000000000000000000000000000001Fd",
+        "group": "fraxtal-system",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/DeployFXBFactory.s.sol:17",
+          "src/script/LFRAX_FXB_Upgrade/LFRAXUpgradeSharedState.sol:25",
+          "src/test/BaseTest_FXB_LFRAX.t.sol:44",
+          "AUDIT_SCOPE_LFRAX_AND_FXB_UPGRADE.md:3",
+          "AUDIT_SCOPE_LFRAX_AND_FXB_UPGRADE.md:3",
+          "AUDIT_SCOPE_LFRAX_AND_FXB_UPGRADE.md:23",
+          "FXB_UPGRADE_NOT_V2_WALKTHROUGH.md:46"
+        ]
+      },
+      {
+        "address": "0xfC0000000000000000000000000000000000000a",
+        "group": "fraxtal-system",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/DeployFXBFactory.s.sol:22",
+          "src/script/LFRAX_FXB_Upgrade/JSONs/02_UpgradeFXBs.json:15",
+          "src/script/LFRAX_FXB_Upgrade/JSONs/02_UpgradeFXBs.json:22",
+          "src/script/LFRAX_FXB_Upgrade/JSONs/02_UpgradeFXBs.json:29",
+          "src/script/LFRAX_FXB_Upgrade/JSONs/02_UpgradeFXBs.json:36",
+          "AUDIT_SCOPE_LFRAX_AND_FXB_UPGRADE.md:63"
+        ]
+      },
+      {
+        "address": "0xfC00000000000000000000000000000000000009",
+        "group": "fraxtal-system",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/LFRAX_FXB_Upgrade/JSONs/01_HandleNewLFRAX.json:15",
+          "src/script/LFRAX_FXB_Upgrade/JSONs/01_HandleNewLFRAX.json:22",
+          "src/script/LFRAX_FXB_Upgrade/LFRAXUpgradeSharedState.sol:71",
+          "src/test/BaseTest_FXB_LFRAX.t.sol:150"
+        ]
+      },
+      {
+        "address": "0x9623609d000000000000000000000000FF000000",
+        "group": "fragment-not-an-address",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/LFRAX_FXB_Upgrade/JSONs/01_HandleNewLFRAX.json:17"
+        ]
+      },
+      {
+        "address": "0x99A88EC4000000000000000000000000FF000000",
+        "group": "fragment-not-an-address",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/LFRAX_FXB_Upgrade/JSONs/01_HandleNewLFRAX.json:24"
+        ]
+      },
+      {
+        "address": "0x9623609d000000000000000000000000acA9A336",
+        "group": "fragment-not-an-address",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/LFRAX_FXB_Upgrade/JSONs/02_UpgradeFXBs.json:17"
+        ]
+      },
+      {
+        "address": "0x9623609D0000000000000000000000006c9F4e60",
+        "group": "fragment-not-an-address",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/LFRAX_FXB_Upgrade/JSONs/02_UpgradeFXBs.json:24"
+        ]
+      },
+      {
+        "address": "0x9623609D000000000000000000000000f1E2B576",
+        "group": "fragment-not-an-address",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/LFRAX_FXB_Upgrade/JSONs/02_UpgradeFXBs.json:31"
+        ]
+      },
+      {
+        "address": "0x9623609d000000000000000000000000c38173D3",
+        "group": "fragment-not-an-address",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/LFRAX_FXB_Upgrade/JSONs/02_UpgradeFXBs.json:38"
+        ]
+      },
+      {
+        "address": "0xFc00000000000000000000000000000000000001",
+        "group": "fraxtal-system",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/LFRAX_FXB_Upgrade/LFRAXUpgradeSharedState.sol:30",
+          "src/test/BaseTest_FXB_LFRAX.t.sol:40",
+          "src/test/SlippageAuction/InsufficientInputAmountTest.t.sol:16",
+          "src/test/SlippageAuction/InsufficientInputAmountTest.t.sol:24"
+        ]
+      },
+      {
+        "address": "0x70e3E00095DF0B5F131f4B691a3D105A38Ce5832",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/1.yaml:1"
+        ]
+      },
+      {
+        "address": "0x94D4D7a98f3dB4AE0da39ecE78EB40cd84aE6e66",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/1.yaml:2"
+        ]
+      },
+      {
+        "address": "0x7d759039fC37eaF849cEB41d85a8E7EC48E2d22d",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/1.yaml:3"
+        ]
+      },
+      {
+        "address": "0x6e78f16dAe5B851b90e302c12D562315aE99f19A",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/1.yaml:4"
+        ]
+      },
+      {
+        "address": "0xa703DeFF78Ad5a9D50bA2EF3314a9ceA97f4fA42",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/1.yaml:5"
+        ]
+      },
+      {
+        "address": "0x67c3905A9F4632474b4a3B95870181E0e21ad89b",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/1.yaml:6"
+        ]
+      },
+      {
+        "address": "0x792821a237AEdD7756077f396fd7282fdB41d968",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/1.yaml:7"
+        ]
+      },
+      {
+        "address": "0x575Be852F0525ABd15398Ecbba76a2cad9ef2462",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/1.yaml:8"
+        ]
+      },
+      {
+        "address": "0x77FBe472DA1cEcC9747d7a40A0172C5426B34b75",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/1.yaml:9"
+        ]
+      },
+      {
+        "address": "0x12875e696C20eB7cA7115581ada76e3703cD9c9E",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/1.yaml:10"
+        ]
+      },
+      {
+        "address": "0xa7cC20968908ea12C17019D029592eaac8761fEA",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/1.yaml:11"
+        ]
+      },
+      {
+        "address": "0x198928C2b01f1809Df9C9373694436b03ed431B6",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/1.yaml:12"
+        ]
+      },
+      {
+        "address": "0x6723CB72326927823b1fB796239f4a800e024875",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/2.yaml:1"
+        ]
+      },
+      {
+        "address": "0x55271b0d4DaC2664Fa9d44F8cccd89A3e6342313",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/2.yaml:2"
+        ]
+      },
+      {
+        "address": "0x5B359497F38843fDfb8320ea26e666488CBC6E5c",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/2.yaml:3"
+        ]
+      },
+      {
+        "address": "0xfaD441A482226C75Ef54E4B8999032fc543CB595",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/2.yaml:4"
+        ]
+      },
+      {
+        "address": "0xB97F934029eA2aDa9c756521E54160d40cA0b09D",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/2.yaml:5"
+        ]
+      },
+      {
+        "address": "0xfB54dF6D72A4c829f147487b056877eae9Ee5A18",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/2.yaml:6"
+        ]
+      },
+      {
+        "address": "0x7262555e67f844F8d46C2574A3822F578d024694",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/2.yaml:7"
+        ]
+      },
+      {
+        "address": "0x2A362A9772eCE65407d886E562383B844f3C3351",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/2.yaml:8"
+        ]
+      },
+      {
+        "address": "0x654D400248D9c5d2564Eae11244A7973Ec9F3870",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/2.yaml:9"
+        ]
+      },
+      {
+        "address": "0xb51cA450968663506e4edeEdA8E0D4dF903A6513",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/2.yaml:10"
+        ]
+      },
+      {
+        "address": "0x1F537323b65fBBDcE8138af08bd4f51b9dFC0657",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/2.yaml:11"
+        ]
+      },
+      {
+        "address": "0x2c1f951c44c8Adb19d7b02b93Fb10EDBC92d08ac",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/2.yaml:12"
+        ]
+      },
+      {
+        "address": "0x85a0dAd647a41c9A64E2Ea696CC9220B395666c6",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/3.yaml:1"
+        ]
+      },
+      {
+        "address": "0x080E89619882dcE392E311a7945c06Bc807c9130",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/3.yaml:2"
+        ]
+      },
+      {
+        "address": "0xA27C3FAa2e7c8e66794Dc02F7cBac3953B0679a3",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/3.yaml:3"
+        ]
+      },
+      {
+        "address": "0xe8B98ADBE820a85AB8E71c8500a10501F7FfCe84",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/3.yaml:4"
+        ]
+      },
+      {
+        "address": "0x6493CB47eAe30CB8B160fd004e8245803F4477A6",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/3.yaml:5"
+        ]
+      },
+      {
+        "address": "0xA9cCDC14E2FE73394253b8F586008DE84942e2f7",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/3.yaml:6"
+        ]
+      },
+      {
+        "address": "0xE091d6436b36C94a733Ea0513e7Fc3746Ca4a422",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/3.yaml:7",
+          "src/script/output/DeployPolygonTestSuite/3.yaml:12"
+        ]
+      },
+      {
+        "address": "0x22AdB75FE57bC782658353994857ccBc5bB50382",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/3.yaml:8"
+        ]
+      },
+      {
+        "address": "0x01668AC077729742B868Bd30F57762D2E170EB4E",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/3.yaml:9"
+        ]
+      },
+      {
+        "address": "0x9B57e5d8a1939D8c8fCC8b10f140D595502EE777",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/3.yaml:10"
+        ]
+      },
+      {
+        "address": "0xff895AF8Ae6279792127f3456158294F5c50721c",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/3.yaml:11"
+        ]
+      },
+      {
+        "address": "0xd7258fa8DC786f36cfb93010Cd5c2F3782C7B846",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/4.yaml:1"
+        ]
+      },
+      {
+        "address": "0x2FD649ec2617FEFa1f3DFAEf460aF25b186D3281",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/4.yaml:2"
+        ]
+      },
+      {
+        "address": "0xB1d4f8BC61A53fdb619E302571b6d4cB26b46713",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/4.yaml:3"
+        ]
+      },
+      {
+        "address": "0x76f4401f21b53Dc2ABCD0658464FB85d141C465A",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/4.yaml:4"
+        ]
+      },
+      {
+        "address": "0x6a311C32e39b5E6a96e304136A2406F47ab4AA45",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/4.yaml:5"
+        ]
+      },
+      {
+        "address": "0x6f1F106AB7C5A5B744Ea4AeE03b005FEECECcff5",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/4.yaml:6"
+        ]
+      },
+      {
+        "address": "0x5CC6dF75D4dFB3956f9EDf10401C9716f08B23A3",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/4.yaml:7"
+        ]
+      },
+      {
+        "address": "0x333bD2dE714E5AF8E8d05741d934acd30A92c6Af",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/4.yaml:8"
+        ]
+      },
+      {
+        "address": "0x7e43739C114aaCDd1dfA36fbD5e8C48043D6d1b0",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/4.yaml:9"
+        ]
+      },
+      {
+        "address": "0x668bB5733d41680497a6bdDd91a973F64B287fcA",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/4.yaml:10"
+        ]
+      },
+      {
+        "address": "0x87b258Ae814b7c421475D85d93Cc34439914BFf3",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/4.yaml:11"
+        ]
+      },
+      {
+        "address": "0xA754a66128be2743f03Aab753E33901ffb5170f3",
+        "group": "polygon-test-output",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/script/output/DeployPolygonTestSuite/4.yaml:12"
+        ]
+      },
+      {
+        "address": "0x13Fe62cB24aEa5afd179F20D362c056c3881ABcA",
+        "group": "test-actor",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 6565,
+        "codeHash": "0x1fd790cbb6ef839dc5f380794bb0221dcad2ad5b5fab6323e2c419be2e9452c6",
+        "nonce": 1,
+        "repoSources": [
+          "src/test/BaseTest.t.sol:25"
+        ]
+      },
+      {
+        "address": "0xFc00000000000000000000000000000000000002",
+        "group": "fraxtal-system",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/test/BaseTest_FXB_LFRAX.t.sol:50",
+          "README_DEV.md:3"
+        ]
+      },
+      {
+        "address": "0x96A394058E2b84A89bac9667B19661Ed003cF5D4",
+        "group": "fraxtal-system",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/test/BaseTest_FXB_LFRAX.t.sol:99",
+          "src/test/LFRAX_Upgrade_Test.t.sol:82"
+        ]
+      },
+      {
+        "address": "0x5f4E3B89133a578E128eb3b238aa502C675cc210",
+        "group": "test-actor",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/test/FXB_LFRAX_Test.t.sol:22",
+          "src/test/LFRAX_Upgrade_Test.t.sol:18"
+        ]
+      },
+      {
+        "address": "0x36A87d1E3200225f881488E4AEedF25303FebcAe",
+        "group": "test-actor",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 2459,
+        "repoSources": [
+          "src/test/FXB_LFRAX_Test.t.sol:23",
+          "src/test/LFRAX_Upgrade_Test.t.sol:19"
+        ]
+      },
+      {
+        "address": "0xfC9f079e9D7Fa6080f61F8541870580Ee7af7CF2",
+        "group": "fraxtal-system",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/test/SlippageAuction/InsufficientInputAmountTest.t.sol:14"
+        ]
+      },
+      {
+        "address": "0xaCa39B187352D9805DECEd6E73A3d72ABf86E7A0",
+        "group": "fraxtal-system",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 23,
+        "codeHash": "0xb09ef517c48d2bf6eed05457ff56871b2596e3fc904fc6e9795882a870c2e993",
+        "nonce": 1419,
+        "repoSources": [
+          "src/test/SlippageAuction/InsufficientInputAmountTest.t.sol:21"
+        ]
+      },
+      {
+        "address": "0x6e71EDAe12b1b97f4d1f60370feF10105Fa2Faae",
+        "group": "fragment-not-an-address",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "src/test/utils/SigUtils.sol:13"
+        ]
+      },
+      {
+        "address": "0x7a07D606c87b7251c2953A30Fa445d8c5F856C7A",
+        "group": "mainnet-fxb-system",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 13205,
+        "codeHash": "0x03faf65fc69243032d0fea780f721be045997d5724664e4fe98e1f5324e47d28",
+        "nonce": 6,
+        "repoSources": [
+          "README.md:10"
+        ]
+      },
+      {
+        "address": "0x983aF86c94Fe3963989c22CeeEb6eA8Eac32D263",
+        "group": "mainnet-fxb-system",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 18458,
+        "codeHash": "0xdac17261fa76c6ba5d6ac660731a24b449164fb32d06cdb1378a67ab3f7d6745",
+        "nonce": 6,
+        "repoSources": [
+          "README.md:39"
+        ]
+      },
+      {
+        "address": "0x1D72DDC524F099da2Ce1573fB61769119689CF52",
+        "group": "fragment-not-an-address",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "AUDIT_SCOPE_LFRAX_AND_FXB_UPGRADE.md:9"
+        ]
+      },
+      {
+        "address": "0x6ee4827099d4dF93A74fba4F046E554520E636c3",
+        "group": "fragment-not-an-address",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "AUDIT_SCOPE_LFRAX_AND_FXB_UPGRADE.md:10"
+        ]
+      },
+      {
+        "address": "0x9f350efe74a46BA65fB70353B7958E7c05D43434",
+        "group": "fragment-not-an-address",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "AUDIT_SCOPE_LFRAX_AND_FXB_UPGRADE.md:13"
+        ]
+      },
+      {
+        "address": "0x7Dda3Ed0F2580113545cB45aA417db13039F2e23",
+        "group": "fragment-not-an-address",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "AUDIT_SCOPE_LFRAX_AND_FXB_UPGRADE.md:14"
+        ]
+      },
+      {
+        "address": "0x526C5BF3C71a2b2d6C737c2B54E1234518D2714e",
+        "group": "fragment-not-an-address",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "AUDIT_SCOPE_LFRAX_AND_FXB_UPGRADE.md:15"
+        ]
+      },
+      {
+        "address": "0x76237BCfDbe8e06FB774663add96216961df4ff3",
+        "group": "mainnet-fxb-system",
+        "codePresentOnMainnet": true,
+        "codeLengthBytes": 6237,
+        "codeHash": "0x685d9f25bdbcfd71d0211875213ebd84b9fc482cce6ae52bc753c0aed148d5c1",
+        "nonce": 1,
+        "repoSources": [
+          "AUDIT_SCOPE_LFRAX_AND_FXB_UPGRADE.md:18",
+          "FXB_UPGRADE_NOT_V2_WALKTHROUGH.md:13"
+        ]
+      },
+      {
+        "address": "0xfcc0d376Af4c6a7EE966B14c810B772391E92153",
+        "group": "fraxtal-system",
+        "codePresentOnMainnet": false,
+        "codeLengthBytes": 0,
+        "codeHash": null,
+        "nonce": 0,
+        "repoSources": [
+          "AUDIT_SCOPE_LFRAX_AND_FXB_UPGRADE.md:29",
+          "FXB_UPGRADE_NOT_V2_WALKTHROUGH.md:49"
+        ]
+      }
+    ]
+  },
+  "discrepancies": [
+    "HEAD source (FXBFactory v2.0.0 beacon/proxy, Ownable2Step, token()/beacon()) does NOT match the deployed mainnet FXBFactory (v1: Timelock2Step, FRAX(), no beacon/token/owner/version). The deployed factory predates the repo HEAD; v2 code in HEAD targets Fraxtal (DeployFXBFactory.s.sol hardcodes Fraxtal Safe + LFRAX + Fraxtal ProxyAdmin). Auditing HEAD code against mainnet state without this distinction would misstate roles, upgradeability, and creation gating.",
+    "HEAD FXB.sol (v2.0.0 upgradeable, factory()/token(), isRedeemable with owner early-burn) does NOT match deployed mainnet FXBs (v1.0.2 immutable, FRAX() immutable, no factory()/token() views; isRedeemable() is timestamp-only as observed from zero/timelock/factory callers). HEAD FXB_LFRAX.sol (v1.2.0) is a Fraxtal-only upgrade implementation; no mainnet FXB runs it (no frxUSD() view, no proxy slots).",
+    "HEAD SlippageAuctionFactory (version 1.0.0) vs deployed factory (no version() view); deployed SlippageAuctions report version 1.0.1, matching HEAD SlippageAuction.sol version 1.0.1 \u2014 the auction logic is the closest HEAD/live match, but the factory differs.",
+    "README/docs describe the FXB creator as the AMO Timelock 0x8318... \u2014 confirmed on-chain for FXB creation. BUT auction control is delegated one hop further: all 5 auctions name operator contract 0x452420df... as timelock, and only that contract (gated by the Safe) can start/stop auctions. The operator contract does not appear in the repo at all.",
+    "FXBFactory.initialize() in HEAD hardcodes 4 Fraxtal FXB addresses into fxbs[] \u2014 those addresses have NO code on Ethereum mainnet and are not in the mainnet factory registry. They are Fraxtal (chain 252) deployments. The mainnet registry (5 FXBs) and the Fraxtal set (4 FXBs) are disjoint systems sharing only the FXB naming scheme.",
+    "JSON calldata in 00_DeployImpls.json is placeholder (11 empty transactions); 01/02 JSONs target Fraxtal ProxyAdmins (0xfc...0009/000a) and Fraxtal addresses, with chainId field '1' in the file despite Fraxtal execution context (scripts use --chain-id 252). The JSON chainId field must not be read as 'mainnet'.",
+    "Auction factory is permissionless, so the registry is authoritative only for factory-created auctions. Direct constructor deployments (if any) would be invisible to this inventory; eth_getLogs cross-check was unavailable (see owed follow-ups)."
+  ],
+  "counts": {
+    "liveFxbContractsInFactoryRegistry": 5,
+    "unmaturedFxbContracts": 1,
+    "maturedFxbContracts": 4,
+    "fxbContractsWithNonzeroSupply": 3,
+    "auctionContractsInFactoryRegistry": 5,
+    "liveAuctions": 0,
+    "totalHistoricalAuctionRuns": 33,
+    "missedDeploymentCandidates": 0,
+    "repoAddressesSwept": 171
+  }
+}

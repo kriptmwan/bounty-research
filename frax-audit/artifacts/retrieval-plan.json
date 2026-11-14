@@ -1,0 +1,6 @@
+{
+  "budgets": {"sourceTokenBudgetPerChunk": 48000, "fileBudget": 39},
+  "selected": ["all 11 implementation files + VaultAccount/SafeERC20 libs + deployed Sourcify sources for pair core deltas, rate calculator, oracle, registry"],
+  "omitted": ["interfaces (context-only, read as evidence)", "tests/scripts/liquidatorBot (context-only)", "V1 pairs (older code, out of reference scope)", "v3.2.0 pair sources (not diffed; only used if a finding needs them)"],
+  "instructions": "Deployed-source primacy: pair core 3 deltas from sourcify pair__src_FraxlendPairCore.sol; rate calculator + oracle ONLY from sourcify sources (absent from public repos); registry from deployed older version. Dedup against exclusions/EXCLUSION_LIST.md (22 entries) + DELTA-2023-2025.md. Jan 2023 ToB report unretrieved: flag any candidate touching pre-v3 paths as dedup-uncertain."
+}

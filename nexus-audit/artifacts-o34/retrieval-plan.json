@@ -1,0 +1,27 @@
+{
+  "budgets": {
+    "estimatedSourceTokens": 9000,
+    "fileBudget": 10
+  },
+  "instructions": "Read all assigned files in full (O3) or the stated gap regions (O4). Other repo files and pinned dependency sources as evidence only. Dedup-first against the 176-entry exclusion list plus the Step 0 re-sweep delta (zero new issues).",
+  "notes": [
+    "Nexus.sol and RegistryAdapter.sol were read in full during Option 2; O4 gap-checks only the 7739/signature-validation regions Option 2 did not adjudicate.",
+    "LibPREP.sol internals relied on from Option 1 Domain A verification; O3 re-read the binding structure but did not re-prove the mining argument."
+  ],
+  "omitted": [],
+  "omittedCount": 0,
+  "run": "nexus-options34-2026-11-14",
+  "selected": [
+    "contracts/utils/NexusBootstrap.sol",
+    "contracts/lib/Initializable.sol",
+    "contracts/utils/NexusProxy.sol",
+    "contracts/factory/NexusAccountFactory.sol",
+    "contracts/factory/BiconomyMetaFactory.sol",
+    "contracts/factory/K1ValidatorFactory.sol",
+    "contracts/lib/BootstrapLib.sol",
+    "contracts/modules/validators/K1Validator.sol",
+    "contracts/Nexus.sol (7739 gap regions only)",
+    "contracts/base/RegistryAdapter.sol (gap re-check only)"
+  ],
+  "selectedCount": 10
+}

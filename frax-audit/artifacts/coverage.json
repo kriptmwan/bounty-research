@@ -1,0 +1,26 @@
+{
+  "mode": "single-pass",
+  "target": "FraxFinance/fraxlend @ 2bed49d4dcc6702d92dede825c3424893517d841",
+  "filesScanned": [
+    "src/contracts/FraxlendPairCore.sol (1277 lines, Hunter A, full read; deployed v3.1.0 source cross-checked, exactly 3 deltas)",
+    "src/contracts/libraries/VaultAccount.sol (39 lines, Hunter A, full read)",
+    "src/contracts/FraxlendPair.sol (648 lines, Hunter B, full read; byte-identical to deployed)",
+    "src/contracts/FraxlendPairAccessControl.sol (218 lines, Hunter B, full read; byte-identical to deployed)",
+    "src/contracts/FraxlendPairConstants.sol (Hunter B, full read)",
+    "src/contracts/FraxlendPairAccessControlErrors.sol (Hunter B, full read)",
+    "src/contracts/VariableInterestRate.sol (182 lines, Hunter C, full read)",
+    "src/contracts/LinearInterestRate.sol (93 lines, Hunter C, full read; no live deployment found)",
+    "src/contracts/oracles/dual-oracles/DualOracleChainlinkUniV3.sol (Hunter C, full read; no live deployment found)",
+    "sourcify rate__src_VariableInterestRateSettable.sol (Hunter C, full read; deployed 0x987a...)",
+    "sourcify oracle__src_contracts_SfrxEthUsdTripleOracle.sol + DualOracleBase.sol + 5 abstracts (Hunter C, full read; deployed 0x4355...)",
+    "src/contracts/FraxlendPairDeployer.sol (366 lines, Hunter D, full read; byte-identical to deployed canonical deployer)",
+    "sourcify registry__src_contracts_FraxlendPairRegistry.sol (Hunter D, full read; deployed older Ownable version)",
+    "src/contracts/FraxlendPairRegistry.sol (Hunter D, divergence comparison only)",
+    "src/contracts/FraxlendWhitelist.sol (50 lines, Hunter D, full read)",
+    "src/contracts/Timelock2Step.sol (123 lines, Hunter D, full read)"
+  ],
+  "filesSkipped": ["interfaces (context-only, read as evidence)", "test/script/liquidatorBot (context-only)", "V1 pair code (older generation, out of reference scope)", "v3.2.0 pair Sourcify sources (not diffed; no finding depended on them)", "legacy deployer (evidence only)"],
+  "hunterFindings": {"A": 0, "B": 0, "C": 0, "D": 0},
+  "nonQualifying": {"A": 9, "B": 14, "C": 17, "D": 12, "total": 52},
+  "skepticReferee": "skipped per skill (zero findings per domain); empty artifacts preserved"
+}

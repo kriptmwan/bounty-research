@@ -1,0 +1,405 @@
+host	scheme	status	server	location	cf_ray	verdict	curl_rc	flags	secs
+app.deriv.com	https	302	cloudflare	https://deriv.com/	yes	alive	0		0.824380
+smarttrader.deriv.com	https	301	cloudflare	https://dsmarttrader.deriv.com/	yes	alive	0		0.720686
+cashier.deriv.com	https	404	cloudflare		yes	alive	0		0.809816
+oauth.deriv.com	https	302	cloudflare	https://deriv.com/	yes	alive	0		0.732408
+api.deriv.com	https	301	cloudflare	https://developers.deriv.com/	yes	alive	0		0.685865
+secure-dfadmin.deriv.com	https	403	cloudflare		yes	blocked	0		0.760478
+home.deriv.com	https	301	cloudflare	http://home.deriv.com/dashboard	yes	alive	0		0.637765
+core-api.deriv.com	https	404	cloudflare		yes	alive	0		0.800640
+api-core.deriv.com	https	404	cloudflare		yes	alive	0		0.735316
+derivws.com	https	520	cloudflare		yes	alive	0		5.817785
+api.derivws.com	https	404	cloudflare		yes	alive	0		1.050429
+staging-api.derivws.com	https	403	cloudflare		yes	blocked	0		0.769492
+deriv.slack.com	https	403	Apache		no	blocked	0		1.458191
+tradingview.deriv.com	https	301	cloudflare	https://charts.deriv.com/	yes	alive	0		0.627321
+trade.mql5.com	https	301	Caddy	https://metatraderweb.app/	no	alive	0		0.728484
+community.deriv.com	https	200	nginx		no	alive	0		0.931293
+ct.deriv.com	https	200	nginx/1.31.3		no	alive	0		1.634374
+deriv.atlassian.net	https	302	AtlassianEdge	https://deriv.atlassian.net/login.jsp?os_destination=https%3A%2F%2Fderiv.atlassian.net%2F	no	alive	0		1.691117
+deriv.ae	https	301	cloudflare	https://deriv.com/ae/	yes	alive	0		0.620957
+deriv.partners	https	301	cloudflare	https://home.deriv.com/partners-app	yes	alive	0		0.783611
+partners.deriv.com	https	302	cloudflare	https://home.deriv.com/partners-app/login	yes	alive	0		0.713225
+academy-test.deriv.com	https	200			no	alive	52		0.544793
+academy.deriv.com	https	301	cloudflare	https://traders-academy.deriv.com/	yes	alive	0		0.614879
+accounts.staging-home.deriv.com	https	200			no	alive	52		0.527360
+ae-academy.deriv.com	https	200	cloudflare		yes	alive	0		0.701276
+ae.deriv.com	https	200	cloudflare		yes	alive	0		0.664121
+af-com-deriv-nakala.deriv.com	https	200	cloudflare		yes	alive	0		1.002636
+api-core-aws.deriv.com	https	530	cloudflare		yes	alive	0		2.809165
+api-gateway.deriv.com	https	404	cloudflare		yes	alive	0		0.835132
+apigateway.deriv.com	https	200			no	alive	52		0.601376
+assets.deriv.com	https	404	cloudflare		yes	alive	0		1.089419
+auth.deriv.com	https	404	cloudflare		yes	alive	0		0.634534
+besquare.deriv.com	https	301	cloudflare	https://deriv.com/careers/	yes	alive	0		1.615523
+beta-api.deriv.com	https	301	cloudflare	http://developers.deriv.com/	yes	alive	0		1.382048
+beta-bot.deriv.com	https	200	cloudflare		yes	alive	0		0.911211
+beta-dtrader.deriv.com	https	200	cloudflare		yes	alive	0		0.753077
+beta-eu.deriv.com	https	200			no	alive	52		0.575413
+beta.deriv.com	https	200			no	alive	52		0.539869
+blog.deriv.com	https	200	cloudflare		yes	alive	0		0.808526
+blox.deriv.com	https	403	cloudflare		yes	blocked	0		0.751319
+bot.deriv.com	https	200	cloudflare		yes	alive	0		0.739958
+bug-bounty.deriv.com	https	200			no	alive	52		0.584353
+careers.deriv.com	https	200	cloudflare		yes	alive	0		0.774610
+cashier-crypto-iframe-demo.deriv.com	https	200			no	alive	52		0.631432
+cashier-crypto-iframe.deriv.com	https	200	Vercel		no	alive	0		0.911073
+cashier-demo.deriv.com	https	200	Vercel		no	alive	0		3.063522
+cf-pages-app.deriv.com	https	200			no	alive	52		0.610155
+cf-pages-binary-bot.deriv.com	https	200			no	alive	52		0.606443
+cf-pages-binary-static.deriv.com	https	200			no	alive	52		0.536188
+cf-pages-deriv-app.deriv.com	https	200			no	alive	52		0.522740
+cf-pages-deriv-binary-bot.deriv.com	https	200			no	alive	52		0.551185
+cf-pages-deriv-binary-static.deriv.com	https	200			no	alive	52		0.566501
+cf-pages-deriv-com.deriv.com	https	200			no	alive	52		0.568779
+cf-pages-deriv-components.deriv.com	https	200			no	alive	52		0.541864
+cf-pages-deriv-developers-portal.deriv.com	https	200			no	alive	52		0.538385
+cf-pages-deriv-static-content.deriv.com	https	200			no	alive	52		0.548230
+cf-pages-firstsource-io.deriv.com	https	200			no	alive	52		0.541886
+cf-pages-sinbad.deriv.com	https	200			no	alive	52		0.549534
+cf-pages-smart-charts.deriv.com	https	200			no	alive	52		0.545381
+cf-pages-staging.deriv.com	https	200			no	alive	52		0.552089
+cf-pages-tradingview.deriv.com	https	200			no	alive	52		0.571595
+cf-pages-webtrader.deriv.com	https	200			no	alive	52		0.531165
+cf-pages.deriv.com	https	200			no	alive	52		1.499574
+cf.api.deriv.com	https	200			no	alive	52		0.572145
+cf.bot.deriv.com	https	200			no	alive	52		0.531512
+cf.deriv.com	https	200			no	alive	52		0.536773
+charts.deriv.com	https	200	cloudflare		yes	alive	0		0.919735
+clerk.staging-home.deriv.com	https	200			no	alive	52		0.524119
+cms.deriv.com	https	200			no	alive	52		0.585049
+contest.deriv.com	https	301	cloudflare	https://deriv.com/	yes	alive	0		0.698924
+ct-uat.deriv.com	https	200	nginx/1.31.3		no	alive	0		1.218631
+ct-uat2.deriv.com	https	200	nginx/1.31.3		no	alive	0		1.840112
+ct-uat3.deriv.com	https	200	nginx/1.31.3		no	alive	0		1.809499
+dashboard-preview.deriv.com	https	200			no	alive	52		0.532959
+datahub.deriv.com	https	200			no	alive	52		0.544103
+dbot.deriv.com	https	301	cloudflare	https://bot.deriv.com/	yes	alive	0		0.711820
+demo-partnershub.deriv.com	https	200			no	alive	52		0.551991
+deriv-home-2-5-preview.test-home-agent.deriv.com	https	404	cloudflare		yes	alive	0		0.598291
+deriv.com	https	200	cloudflare		yes	alive	0		0.858491
+derivatives-bot.deriv.com	https	200			no	alive	52		0.539758
+dev-home.deriv.com	https	200			no	alive	52		0.521678
+dev-hub.deriv.com	https	200			no	alive	52		0.574983
+dev-partners-app.deriv.com	https	200			no	alive	52		0.564283
+developer.deriv.com	https	301	cloudflare	https://developers.deriv.com/	yes	alive	0		0.821182
+developers.deriv.com	https	200	cloudflare		yes	alive	0		0.789831
+development-api-core.deriv.com	https	403	cloudflare		yes	blocked	0		0.645230
+discourse.deriv.com	https	200			no	alive	52		0.567940
+docs-core.deriv.com	https	403	cloudflare		yes	blocked	0		0.766736
+docs.deriv.com	https	200	cloudflare		yes	alive	0		0.757481
+dp2p.deriv.com	https	200	cloudflare		yes	alive	0		1.248818
+dr-api-docs.deriv.com	https	200			no	alive	52		0.538245
+dr-deriv-app.deriv.com	https	200			no	alive	52		0.552229
+dr-staging-app.deriv.com	https	200			no	alive	52		0.537055
+dr.deriv.com	https	403	cloudflare		yes	blocked	0		0.706351
+dsmarttrader.deriv.com	https	200	cloudflare		yes	alive	0		0.787622
+dtrader.deriv.com	https	200	cloudflare		yes	alive	0		0.737040
+dx-api.deriv.com	https	200			no	alive	52		0.538125
+dx-demo.deriv.com	https	530	cloudflare		yes	alive	0		0.675025
+dx-mobile.deriv.com	https	200			no	alive	52		0.631151
+dx.deriv.com	https	530	cloudflare		yes	alive	0		0.744840
+e360-assets.deriv.com	https	404	cloudflare		yes	alive	0		0.960391
+e360.deriv.com	https	200			no	alive	52		0.515502
+eu.cf-pages-deriv-com.deriv.com	https	200			no	alive	52		0.616537
+eu.cf-pages.deriv.com	https	200			no	alive	52		0.537719
+eu.cf.deriv.com	https	200			no	alive	52		0.570593
+eu.deriv.com	https	301	cloudflare	https://deriv.com/eu/	yes	alive	0		0.814732
+event.deriv.com	https	200			no	alive	52		0.559375
+experiment.deriv.com	https	200			no	alive	52		0.552069
+experiments.deriv.com	https	200			no	alive	52		0.560036
+experts.deriv.com	https	301	cloudflare	/insights	yes	alive	0		0.834177
+fix.deriv.com	https	200			no	alive	52		0.617491
+fixtls.deriv.com	https	200			no	alive	28		10.001258
+flags.deriv.com	https	200	cloudflare		yes	alive	0		0.817704
+help.deriv.com	https	200			no	alive	52		0.599239
+hub.deriv.com	https	302	cloudflare	https://deriv.com/	yes	alive	0		0.603826
+id-ct-uat.deriv.com	https	401	nginx		no	alive	0		1.215844
+id-ct-uat2.deriv.com	https	302	nginx	https://chsandbox.id.ctrader.com/	no	alive	0		1.543867
+id-ct-uat3.deriv.com	https	302	nginx	https://chsandbox.id.ctrader.com/	no	alive	0		1.426806
+id-ct.deriv.com	https	302	nginx	https://ct.deriv.com	no	alive	0		1.295346
+idv.staging-auth.deriv.com	https	200			no	alive	52		0.588897
+join.deriv.com	https	200	cloudflare		yes	alive	0		0.672639
+kyc-adaptor-staging.deriv.com	https	200			no	alive	52		0.601872
+kyc-adaptor.deriv.com	https	200	cloudflare		yes	alive	0		0.804614
+kyc.deriv.com	https	200	cloudflare		yes	alive	0		0.772958
+landing.deriv.com	https	200			no	alive	52		0.541563
+learning.deriv.com	https	200			no	alive	52		0.552828
+legacy-api.deriv.com	https	301	cloudflare	https://developers.deriv.com/	yes	alive	0		0.649723
+legacy-docs.deriv.com	https	302	cloudflare	/docs	yes	alive	0		0.677535
+link.deriv.com	https	404	cloudflare		yes	alive	0		0.805037
+login.deriv.com	https	302	cloudflare	https://login.deriv.com/signin.php	yes	alive	0		0.922432
+lp.deriv.com	https	200			no	alive	52		0.565492
+media.deriv.com	https	404	cloudflare		yes	alive	0		0.816973
+molink.deriv.com	https	200			no	alive	52		0.579525
+mt5-demo-sg.deriv.com	https	200			no	alive	52	mt5	1.063083
+mt5-demo-web.deriv.com	https	400	cloudflare		yes	alive	0	mt5	1.012526
+mta-sts.deriv.com	https	200	cloudflare		yes	alive	0		0.887834
+no404.cf-pages-deriv-app.deriv.com	https	200			no	alive	52		0.551260
+notfound.cf-pages-deriv-app.deriv.com	https	200			no	alive	52		0.548742
+okta.deriv.com	https	200			no	alive	52		0.554689
+options.deriv.com	https	200			no	alive	52		0.541718
+outsystems.deriv.com	https	200			no	alive	52		0.546769
+p2p-dev1.deriv.com	https	200			no	alive	52		0.540251
+p2p-dev2.deriv.com	https	200			no	alive	52		0.543078
+p2p-dev3.deriv.com	https	200			no	alive	52		0.548134
+p2p-dev4.deriv.com	https	200			no	alive	52		0.553446
+p2p-dev5.deriv.com	https	200			no	alive	52		0.538544
+p2p.deriv.com	https	200	cloudflare		yes	alive	0		0.805319
+partner-academy.deriv.com	https	200			no	alive	52		0.569778
+partners-academy.deriv.com	https	200	cloudflare		yes	alive	0		0.759167
+partners-app.deriv.com	https	200	cloudflare		yes	alive	0		0.688059
+partnersapp-preview.deriv.com	https	200			no	alive	52		0.545813
+partnershub-assets.deriv.com	https	404	cloudflare		yes	alive	0		1.113807
+preview.deriv.com	https	200			no	alive	52		0.615516
+prince.cf-pages-binary-static.deriv.com	https	200			no	alive	52		0.680064
+region-assets.deriv.com	https	404	cloudflare		yes	alive	0		0.623007
+remote-config.deriv.com	https	404	cloudflare		yes	alive	0		0.635384
+seo.deriv.com	https	200			no	alive	52		0.546496
+signup.deriv.com	https	200			no	alive	52		0.553241
+ssd.deriv.com	https	403	cloudflare		yes	blocked	0		0.719334
+staging-ae.deriv.com	https	200			no	alive	52		0.540866
+staging-api-core-aws.deriv.com	https	530	cloudflare		yes	alive	0		0.796833
+staging-api-core.deriv.com	https	404	cloudflare		yes	alive	0		0.763979
+staging-api-gateway.deriv.com	https	200			no	alive	52		0.545738
+staging-api-partners.deriv.com	https	403	cloudflare		yes	blocked	0		0.678232
+staging-api.deriv.com	https	200	cloudflare		yes	alive	0		0.659589
+staging-app-agent.deriv.com	https	403	cloudflare		yes	blocked	0		0.761038
+staging-app.deriv.com	https	302	cloudflare	https://deriv.com/	yes	alive	0		0.609513
+staging-auth-proxy.deriv.com	https	200			no	alive	52		0.549348
+staging-auth.deriv.com	https	404	cloudflare		yes	alive	0		0.708916
+staging-blog.deriv.com	https	403	cloudflare		yes	blocked	0		0.580399
+staging-blox.deriv.com	https	403	cloudflare		yes	blocked	0		0.781474
+staging-bot.deriv.com	https	403	cloudflare		yes	blocked	0		0.681887
+staging-cashier-crypto-iframe.deriv.com	https	403	cloudflare		yes	blocked	0		0.696948
+staging-charts.deriv.com	https	200	cloudflare		yes	alive	0		0.678485
+staging-dbot.deriv.com	https	301	cloudflare	https://staging-bot.deriv.com/	yes	alive	0		0.694045
+staging-developer.deriv.com	https	403	cloudflare		yes	blocked	0		0.752385
+staging-developers.deriv.com	https	403	cloudflare		yes	blocked	0		0.646781
+staging-dp2p.deriv.com	https	403	cloudflare		yes	blocked	0		0.824170
+staging-dsmarttrader.deriv.com	https	403	cloudflare		yes	blocked	0		0.631722
+staging-dtrader.deriv.com	https	403	cloudflare		yes	blocked	0		0.636850
+staging-dx.deriv.com	https	302	cloudflare	https://derivcom.cloudflareaccess.com/cdn-cgi/access/login/staging-dx.deriv.com?kid=3da24ed0867833cac23d9c0e147cc2d4c8518e750c0a254ad228820a89dc7498&meta=eyJ0eX	yes	alive	0		0.687867
+staging-eu.cf-pages-deriv-com.deriv.com	https	200			no	alive	52		0.561291
+staging-eu.cf-pages.deriv.com	https	200			no	alive	52		0.595078
+staging-eu.deriv.com	https	200			no	alive	52		0.573710
+staging-event.deriv.com	https	200			no	alive	52		0.696632
+staging-experts.deriv.com	https	403	cloudflare		yes	blocked	0		2.222546
+staging-home.deriv.com	https	403	cloudflare		yes	blocked	0		0.668128
+staging-hub.deriv.com	https	404	cloudflare		yes	alive	0		1.087330
+staging-join.deriv.com	https	403	cloudflare		yes	blocked	0		0.708831
+staging-kyc-adaptor.deriv.com	https	403	cloudflare		yes	blocked	0		1.296433
+staging-kyc.deriv.com	https	200	cloudflare		yes	alive	0		0.813633
+staging-legacy-api.deriv.com	https	200			no	alive	52		0.537765
+staging-p2p.deriv.com	https	200	cloudflare		yes	alive	0		0.608141
+staging-partner-academy.deriv.com	https	200			no	alive	52		0.571131
+staging-partner.deriv.com	https	200			no	alive	52		0.550349
+staging-partners-academy.deriv.com	https	403	cloudflare		yes	blocked	0		0.690210
+staging-partners-app.deriv.com	https	403	cloudflare		yes	blocked	0		0.635055
+staging-partners.deriv.com	https	307	cloudflare	/welcome	yes	alive	0		1.052431
+staging-partnershub.deriv.com	https	200			no	alive	52		0.565424
+staging-sg-hub.deriv.com	https	200			no	alive	52		0.552627
+staging-smartcharts.deriv.com	https	200			no	alive	52		0.575493
+staging-smarttrader.deriv.com	https	403	cloudflare		yes	blocked	0		0.748479
+staging-static.deriv.com	https	403	cloudflare		yes	blocked	0		0.722868
+staging-store.deriv.com	https	403	cloudflare		yes	blocked	0		0.729715
+staging-swipe.deriv.com	https	403	cloudflare		yes	blocked	0		0.741210
+staging-templates-preview-developers.deriv.com	https	403	cloudflare		yes	blocked	0		1.265490
+staging-trade.deriv.com	https	301	cloudflare	https://staging.deriv.com/	yes	alive	0		0.654254
+staging-trader.deriv.com	https	200			no	alive	52		0.534545
+staging-traders-academy.deriv.com	https	403	cloudflare		yes	blocked	0		0.627017
+staging-trading-flutter.deriv.com	https	403	cloudflare		yes	blocked	0		0.722171
+staging-trading.deriv.com	https	200			no	alive	52		0.569044
+staging-tradingview.deriv.com	https	200			no	alive	52		0.622440
+staging-uk-hub.deriv.com	https	200			no	alive	52		1.106307
+staging-us-hub.deriv.com	https	200			no	alive	52		0.647129
+staging-webflow.deriv.com	https	403	cloudflare		yes	blocked	0		0.787326
+staging.cf-pages-app.deriv.com	https	200			no	alive	52		0.548904
+staging.cf-pages-binary-bot.deriv.com	https	200			no	alive	52		0.580254
+staging.cf-pages-binary-static.deriv.com	https	200			no	alive	52		0.544616
+staging.cf-pages-deriv-app.deriv.com	https	200			no	alive	52		0.551202
+staging.cf-pages-deriv-binary-bot.deriv.com	https	200			no	alive	52		0.581447
+staging.cf-pages-deriv-binary-static.deriv.com	https	200			no	alive	52		0.573004
+staging.cf-pages-deriv-com.deriv.com	https	200			no	alive	52		0.567896
+staging.cf-pages-deriv-components.deriv.com	https	200			no	alive	52		0.548861
+staging.cf-pages-deriv-developers-portal.deriv.com	https	200			no	alive	52		0.547049
+staging.cf-pages-deriv-static-content.deriv.com	https	200			no	alive	52		0.566107
+staging.cf-pages-firstsource-io.deriv.com	https	200			no	alive	52		0.545063
+staging.cf-pages-sinbad.deriv.com	https	200			no	alive	52		0.553938
+staging.cf-pages-smart-charts.deriv.com	https	200			no	alive	52		0.555619
+staging.cf-pages-tradingview.deriv.com	https	200			no	alive	52		0.579272
+staging.cf-pages-webtrader.deriv.com	https	200			no	alive	52		0.564307
+staging.cf-pages.deriv.com	https	200			no	alive	52		0.579660
+staging.deriv.com	https	200	cloudflare		yes	alive	0		1.719592
+staging.derivatives-bot.deriv.com	https	200			no	alive	52		0.627983
+static-core-staging.deriv.com	https	200			no	alive	52		0.543156
+static.deriv.com	https	301	cloudflare	https://deriv.com/	yes	alive	0		0.699620
+store.deriv.com	https	403	cloudflare		yes	blocked	0		0.679392
+stream.deriv.com	https	200			no	alive	52		0.540736
+support.deriv.com	https	200			no	alive	52		0.546726
+swipe.deriv.com	https	200			no	alive	52		0.630385
+t.deriv.com	https	200			no	alive	52		0.541032
+tech.deriv.com	https	301	cloudflare	https://derivai.substack.com/	yes	alive	0		0.827294
+templates-preview-developers.deriv.com	https	404	cloudflare		yes	alive	0		0.687274
+test-api.deriv.com	https	302	cloudflare	https://derivcom.cloudflareaccess.com/cdn-cgi/access/login/test-api.deriv.com?kid=9fe8e1f291da834c832cf92c83f139f473c4d18cb1cee6d67b81d83540476c16&meta=eyJ0eXAi	yes	alive	0		0.732876
+test-app.deriv.com	https	200			no	alive	52		0.544550
+test-dalus.deriv.com	https	200			no	alive	52		0.557439
+test-developers.deriv.com	https	200			no	alive	52		0.558453
+test-home-agent.deriv.com	https	200	cloudflare		yes	alive	0		0.755349
+test-home-builder.deriv.com	https	200			no	alive	52		0.634032
+test-home.deriv.com	https	200			no	alive	52		0.532741
+test.cf-pages-binary-bot.deriv.com	https	200			no	alive	52		0.575302
+test.cf-pages-binary-static.deriv.com	https	200			no	alive	52		0.538220
+test.cf-pages-deriv-binary-bot.deriv.com	https	200			no	alive	52		0.547298
+test.cf-pages-deriv-binary-static.deriv.com	https	200			no	alive	52		0.544754
+track.deriv.com	https	301	cloudflare	https://api-core.deriv.com/v1/partners/partner-referral/legacy-redirect?provider=myaffiliate&legacy_token=/	yes	alive	0		0.595388
+trade.deriv.com	https	301	cloudflare	https://deriv.com/	yes	alive	0		0.576270
+trader.deriv.com	https	200			no	alive	52		0.531775
+traders-academy.deriv.com	https	200	cloudflare		yes	alive	0		0.717313
+traders-hub.deriv.com	https	200			no	alive	52		0.537133
+trading.deriv.com	https	200			no	alive	52		0.532684
+translations.deriv.com	https	404	cloudflare		yes	alive	0		0.978550
+uat-app.deriv.com	https	200			no	alive	52		0.569469
+uat2-app.deriv.com	https	200			no	alive	52		0.592414
+urls.deriv.com	https	301	cloudflare	https://urls.deriv.com/sitemap.xml	yes	alive	0		0.643018
+vtrack.deriv.com	https	200			no	alive	52		0.546558
+webflow-copy.deriv.com	https	200			no	alive	52		0.584016
+webflow.deriv.com	https	301	cloudflare	https://deriv.com/	yes	alive	0		0.597645
+workaround.cf-pages-binary-bot.deriv.com	https	200			no	alive	52		0.541991
+workaround.cf-pages-binary-static.deriv.com	https	200			no	alive	52		0.547324
+www.cashier.deriv.com	https	200			no	alive	52		0.578713
+www.deriv.com	https	301	cloudflare	https://deriv.com/	yes	alive	0		0.832250
+www.dx-mobile.deriv.com	https	200			no	alive	52		0.561130
+www.mt5-demo-web.deriv.com	https	200			no	alive	52	mt5	0.590635
+x.deriv.com	https	301		https://www.deriv.com/	yes	alive	0		1.730394
+backoffice-commissions.deriv.cloud	https	403	cloudflare		yes	blocked	0	internal	0.665153
+backoffice-feed-studio.deriv.cloud	https	403	cloudflare		yes	blocked	0	internal	0.637678
+backoffice-options.deriv.cloud	https	403	cloudflare		yes	blocked	0	internal	0.720060
+backoffice-synthetic-feed.deriv.cloud	https	403	cloudflare		yes	blocked	0	internal	0.676174
+backoffice.deriv.cloud	https	403	cloudflare		yes	blocked	0	internal	0.726511
+bridge-api-zuplo.deriv.cloud	https	403	cloudflare		yes	blocked	0		0.676318
+bridge-api.deriv.cloud	https	404	cloudflare		yes	alive	0		0.896665
+client-migration-staging.deriv.cloud	https	403	cloudflare		yes	blocked	0		0.634957
+client-migration.deriv.cloud	https	403	cloudflare		yes	blocked	0		0.669010
+cms.deriv.cloud	https	200			no	alive	52		0.557034
+commissions.deriv.cloud	https	200			no	alive	52		0.552252
+crypto-backoffice.deriv.cloud	https	403	cloudflare		yes	blocked	0	internal	0.666229
+data-modeler.deriv.cloud	https	403	cloudflare		yes	blocked	0		0.689882
+data.deriv.cloud	https	403	cloudflare		yes	blocked	0		0.709010
+dealing-desk.deriv.cloud	https	403	cloudflare		yes	blocked	0	internal	0.707105
+deriv.cloud	https	200			no	alive	52		0.553306
+deriv.deriv.cloud	https	200			no	alive	52		0.559722
+derivedge.deriv.cloud	https	200			no	alive	52		0.545790
+derivpay-fe-poc.deriv.cloud	https	403	cloudflare		yes	blocked	0		0.663076
+derivpay-poc.deriv.cloud	https	403	cloudflare		yes	blocked	0		0.692430
+dev-mt5-demo-p01-ts01.deriv.cloud	https	403			no	blocked	0	mt5	1.506266
+dev-mt5-demo-p01-ts03.deriv.cloud	https	403			no	blocked	0	mt5	1.517188
+dev-mt5-real-p01-ts01.deriv.cloud	https	403			no	blocked	0	mt5	1.350414
+dev-mt5-real-p02-ts01.deriv.cloud	https	403			no	blocked	0	mt5	1.702272
+dev-mt5-real-p03-ts01.deriv.cloud	https	403			no	blocked	0	mt5	2.165479
+dev.deriv.cloud	https	200			no	alive	52		0.953974
+dev.qadev01.deriv.cloud	https	200			no	alive	52		0.686544
+drona-dev.apigw.deriv.cloud	https	200			no	alive	52		0.772947
+drone-test.deriv.cloud	https	200			no	alive	52		0.771654
+dx-admin.deriv.cloud	https	200			no	alive	52	internal	1.464813
+dx-dealer.deriv.cloud	https	200			no	alive	52	internal	1.016000
+external-aws-deriv-ai.deriv.cloud	https	200			no	alive	52		0.888316
+external-gcp-ai-agents.deriv.cloud	https	200			no	alive	52		0.850334
+frontend.deriv.cloud	https	200			no	alive	52		0.812073
+gcp-ai-agents.deriv.cloud	https	200			no	alive	52		0.821621
+integration.deriv.cloud	https	200			no	alive	52		0.928267
+internal-aws-deriv-ai.deriv.cloud	https	200			no	alive	52	internal	0.699902
+internal-gcp-ai-agents.deriv.cloud	https	200			no	alive	52	internal	1.115017
+internaltools.deriv.cloud	https	200			no	alive	52	internal	0.811470
+kyc-backoffice.deriv.cloud	https	403	cloudflare		yes	blocked	0	internal	0.930863
+lens.deriv.cloud	https	403	cloudflare		yes	blocked	0		0.793358
+microservices.deriv.cloud	https	200			no	alive	52		0.874400
+office-cup.deriv.cloud	https	403	cloudflare		yes	blocked	0	internal	1.206303
+p2p-backoffice.deriv.cloud	https	403	cloudflare		yes	blocked	0	internal	0.908002
+pa-backoffice.deriv.cloud	https	403	cloudflare		yes	blocked	0	internal	0.827639
+pages.deriv.cloud	https	200			no	alive	52		0.857328
+partners-events.deriv.cloud	https	403	cloudflare		yes	blocked	0		1.053113
+portainer-test.deriv.cloud	https	200			no	alive	52	internal	0.868847
+preview-prod-backoffice-commissions.deriv.cloud	https	403	cloudflare		yes	blocked	0	internal	1.042494
+preview-staging-backoffice-commissions.deriv.cloud	https	403	cloudflare		yes	blocked	0	internal	1.041640
+prod-mt5-connection-manager.deriv.cloud	https	200			no	alive	52	mt5	1.252522
+prod-mt5-demo-p01-ts03.deriv.cloud	https	403			no	blocked	0	mt5	1.462583
+prod-mt5-real-p03-ts01.deriv.cloud	https	403			no	blocked	0	mt5	1.546751
+product-universe.deriv.cloud	https	403	cloudflare		yes	blocked	0		1.015430
+qa-openstack.deriv.cloud	https	200			no	alive	52		0.696682
+rancher.deriv.cloud	https	200			no	alive	52	internal	0.772675
+registry-test.deriv.cloud	https	200			no	alive	52	internal	1.016424
+smartcharts-champion.deriv.cloud	https	200			no	alive	52		0.834370
+smartcharts.deriv.cloud	https	200			no	alive	52		0.926517
+staging-auth.deriv.cloud	https	403	cloudflare		yes	blocked	0		0.887149
+staging-backoffice-commissions.deriv.cloud	https	403	cloudflare		yes	blocked	0	internal	1.293195
+staging-backoffice-feed-studio.deriv.cloud	https	403	cloudflare		yes	blocked	0	internal	0.863722
+staging-backoffice-options.deriv.cloud	https	403	cloudflare		yes	blocked	0	internal	1.089429
+staging-backoffice-synthetic-feed.deriv.cloud	https	403	cloudflare		yes	blocked	0	internal	0.808747
+staging-backoffice.deriv.cloud	https	403	cloudflare		yes	blocked	0	internal	0.974882
+staging-bridge-api-zuplo.deriv.cloud	https	403	cloudflare		yes	blocked	0		0.775603
+staging-bridge-api.deriv.cloud	https	404	cloudflare		yes	alive	0		0.934902
+staging-crypto-backoffice.deriv.cloud	https	403	cloudflare		yes	blocked	0	internal	0.920433
+staging-data.deriv.cloud	https	403	cloudflare		yes	blocked	0		0.878704
+staging-dealfix.deriv.cloud	https	200			no	alive	28		10.002189
+staging-dealfix2.deriv.cloud	https	200			no	alive	28		10.001297
+staging-kyc-backoffice.deriv.cloud	https	403	cloudflare		yes	blocked	0	internal	0.886937
+staging-p2p-backoffice.deriv.cloud	https	403	cloudflare		yes	blocked	0	internal	0.774210
+staging-pa-backoffice.deriv.cloud	https	403	cloudflare		yes	blocked	0	internal	0.809254
+staging-partners-events.deriv.cloud	https	403	cloudflare		yes	blocked	0		0.824980
+staging-smartcharts.deriv.cloud	https	403	cloudflare		yes	blocked	0		0.946517
+staging-trading-game-backoffice.deriv.cloud	https	200			no	alive	52	internal	0.759686
+staging-workflow-automation.deriv.cloud	https	403	cloudflare		yes	blocked	0		0.878045
+staging.backoffice.deriv.cloud	https	200			no	alive	52	internal	0.691486
+staging.deriv.cloud	https	200			no	alive	52		0.785942
+stream.deriv.cloud	https	403	cloudflare		yes	blocked	0		0.925499
+team-metrics.deriv.cloud	https	200			no	alive	52		0.750827
+test-home.deriv.cloud	https	200			no	alive	52		0.701342
+training.deriv.cloud	https	200			no	alive	52		0.908985
+vault-loadtest.deriv.cloud	https	200			no	alive	52	internal	0.780989
+vault-openstack.deriv.cloud	https	200			no	alive	52	internal	0.766485
+vault-test.deriv.cloud	https	200			no	alive	52	internal	0.807095
+vault-test1.deriv.cloud	https	200			no	alive	52	internal	0.725443
+win-mgmt-dev.deriv.cloud	https	403	cloudflare		yes	blocked	0	internal	0.822211
+win-mgmt-lt.deriv.cloud	https	200			no	alive	52	internal	0.755935
+win-mgmt-octopus.deriv.cloud	https	403	cloudflare		yes	blocked	0	internal	0.806319
+win-mgmt-wac.deriv.cloud	https	200			no	alive	28	internal	10.000967
+win-mgmt.deriv.cloud	https	200			no	alive	52	internal	1.212993
+workflow-automation.deriv.cloud	https	403	cloudflare		yes	blocked	0		0.883276
+workplace-analytics.deriv.cloud	https	200			no	alive	52		0.715782
+ws.staging.deriv.cloud	https	200			no	alive	52		0.703078
+www.dx-dealer.deriv.cloud	https	200			no	alive	52	internal	0.732921
+www.xano.pl.deriv.cloud	https	200			no	alive	52	xano	0.920644
+xano-pii-uae.deriv.cloud	https	403	cloudflare		yes	blocked	0	xano	0.970370
+xano-pii.deriv.cloud	https	403	cloudflare		yes	blocked	0	xano	0.964203
+xano-pii.pl.deriv.cloud	https	200			no	alive	52	xano	0.710886
+xano-prod.deriv.cloud	https	403	cloudflare		yes	blocked	0	xano	1.001491
+xano-sandbox.deriv.cloud	https	403	cloudflare		yes	blocked	0	xano	1.110338
+xano.pl.deriv.cloud	https	200			no	alive	52	xano	1.033037
+xanoproxytest.deriv.cloud	https	200			no	alive	52	xano	0.820465
+xd4b-d4ka-fjga-t11o-fm2z-4314.xano-prod.deriv.cloud	https	403	cloudflare		yes	blocked	0	xano	1.087903
+xd4b-d4ka-fjga-t4j6-dl0l-3154.xano-prod.deriv.cloud	https	403	cloudflare		yes	blocked	0	xano	1.019091
+xd4b-d4ka-fjga-t5af-i7tc-e789.xano-prod.deriv.cloud	https	403	cloudflare		yes	blocked	0	xano	0.942022
+xd4b-d4ka-fjga-t7fe-8qim-0805.xano-prod.deriv.cloud	https	403	cloudflare		yes	blocked	0	xano	1.266193
+xd4b-d4ka-fjga-t9ru-cayu-39e6.xano-prod.deriv.cloud	https	403	cloudflare		yes	blocked	0	xano	0.998217
+xd4b-d4ka-fjga-taus-sv3s-e893.xano-prod.deriv.cloud	https	403	cloudflare		yes	blocked	0	xano	0.823243
+xd4b-d4ka-fjga-tbfs-tjen-dbcb.xano-prod.deriv.cloud	https	403	cloudflare		yes	blocked	0	xano	1.056057
+xd4b-d4ka-fjga-thdx-jooc-be2d.xano-prod.deriv.cloud	https	403	cloudflare		yes	blocked	0	xano	0.999939
+xd4b-d4ka-fjga-thgv-gbj8-5ae9.xano-prod.deriv.cloud	https	403	cloudflare		yes	blocked	0	xano	1.026554
+xd4b-d4ka-fjga-thyu-gofa-4381.xano-prod.deriv.cloud	https	403	cloudflare		yes	blocked	0	xano	0.796927
+xd4b-d4ka-fjga-tlfe-l1vw-709f.xano-prod.deriv.cloud	https	403	cloudflare		yes	blocked	0	xano	0.892634
+xd4b-d4ka-fjga-tlhb-e5fh-c2f7.xano-prod.deriv.cloud	https	403	cloudflare		yes	blocked	0	xano	1.064481
+xd4b-d4ka-fjga-tm28-qq35-a21a.xano-prod.deriv.cloud	https	403	cloudflare		yes	blocked	0	xano	0.917853
+xd4b-d4ka-fjga-tmtl-q0go-9b90.xano-prod.deriv.cloud	https	403	cloudflare		yes	blocked	0	xano	1.120116
+xd4b-d4ka-fjga-tnk1-8yrr-cce6.xano-prod.deriv.cloud	https	403	cloudflare		yes	blocked	0	xano	0.776397
+xd4b-d4ka-fjga-tnll-hpwb-3586.xano-prod.deriv.cloud	https	403	cloudflare		yes	blocked	0	xano	1.104054
+xd4b-d4ka-fjga-tqbx-4p5d-7a86.xano-prod.deriv.cloud	https	403	cloudflare		yes	blocked	0	xano	0.841315
+xd4b-d4ka-fjga-tsqn-flfv-648c.xano-prod.deriv.cloud	https	403	cloudflare		yes	blocked	0	xano	0.765746
+xd4b-d4ka-fjga-ttgy-zaa4-def7.xano-prod.deriv.cloud	https	403	cloudflare		yes	blocked	0	xano	0.956630
+xd4b-d4ka-fjga-tu5y-h3s2-07c0.xano-prod.deriv.cloud	https	403	cloudflare		yes	blocked	0	xano	0.781187
+xd4b-d4ka-fjga-tuv1-bx50-2c0c.xano-prod.deriv.cloud	https	403	cloudflare		yes	blocked	0	xano	0.773557
+xd4b-d4ka-fjga-tx8i-qloj-4e03.xano-prod.deriv.cloud	https	403	cloudflare		yes	blocked	0	xano	1.051512
+xd4b-d4ka-fjga-tz7x-vhft-de07.xano-prod.deriv.cloud	https	403	cloudflare		yes	blocked	0	xano	1.161934
+xd4b-d4ka-fjga-tzil-o2dh-f4fe.xano-prod.deriv.cloud	https	403	cloudflare		yes	blocked	0	xano	0.964640
+xpex-zssa-kasm-t5jl-kp7h-ec68.xano-pii.deriv.cloud	https	403	cloudflare		yes	blocked	0	xano	0.909590
+xpex-zssa-kasm-tmpi-ufqd-3bf9.xano-pii.deriv.cloud	https	403	cloudflare		yes	blocked	0	xano	0.807116

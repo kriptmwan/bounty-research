@@ -1,0 +1,44 @@
+{
+  "domains": [
+    "O3-factories-bootstrap-proxy",
+    "O4-k1validator-7739-gapcheck"
+  ],
+  "fileBudget": 10,
+  "needsLoop": false,
+  "riskMap": {
+    "contextOnly": [
+      "contracts/mocks/*",
+      "test/*"
+    ],
+    "critical": [
+      "contracts/utils/NexusBootstrap.sol",
+      "contracts/lib/Initializable.sol",
+      "contracts/modules/validators/K1Validator.sol"
+    ],
+    "high": [
+      "contracts/utils/NexusProxy.sol",
+      "contracts/factory/NexusAccountFactory.sol",
+      "contracts/factory/BiconomyMetaFactory.sol",
+      "contracts/factory/K1ValidatorFactory.sol",
+      "contracts/Nexus.sol (7739 gap regions)"
+    ],
+    "medium": [
+      "contracts/lib/BootstrapLib.sol",
+      "contracts/base/RegistryAdapter.sol (gap re-check)"
+    ]
+  },
+  "run": "nexus-options34-2026-11-14",
+  "scanOrder": [
+    "contracts/utils/NexusBootstrap.sol",
+    "contracts/lib/Initializable.sol",
+    "contracts/utils/NexusProxy.sol",
+    "contracts/factory/NexusAccountFactory.sol",
+    "contracts/factory/BiconomyMetaFactory.sol",
+    "contracts/factory/K1ValidatorFactory.sol",
+    "contracts/lib/BootstrapLib.sol",
+    "contracts/modules/validators/K1Validator.sol",
+    "contracts/Nexus.sol (7739 gap regions only)",
+    "contracts/base/RegistryAdapter.sol (gap re-check only)"
+  ],
+  "strategy": "single-pass, dedup-first, two Hunter domains (O3 factories/bootstrap/proxy full read; O4 K1Validator/7739 gap-check only)"
+}

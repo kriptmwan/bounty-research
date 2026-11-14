@@ -1,0 +1,10 @@
+No files changed, compilation skipped
+
+Ran 4 tests for test/CronosAudit.t.sol:CronosAuditTest
+[PASS] testBenchRequiredToLeaveStaking() (gas: 182586)
+[PASS] testEmergencyWithdrawKeepsBenchButExtractsNothing() (gas: 362163)
+[PASS] testHookLpDepositDoublePaysPending() (gas: 683001)
+[PASS] testPlainLpDepositPaysExactlyPending() (gas: 327170)
+Suite result: ok. 4 passed; 0 failed; 0 skipped; finished in 22.43ms (6.63ms CPU time)
+
+Ran 1 test suite in 36.55ms (22.43ms CPU time): 4 tests passed, 0 failed, 0 skipped (4 total tests)

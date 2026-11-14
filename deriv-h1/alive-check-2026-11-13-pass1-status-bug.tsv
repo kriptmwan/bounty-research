@@ -1,0 +1,297 @@
+host	scheme	status	server	location	cf_ray	verdict	curl_rc	flags	secs
+app.deriv.com	https	000	cloudflare	https://deriv.com/	yes	dead	0		1.382753
+smarttrader.deriv.com	https	000	cloudflare	https://dsmarttrader.deriv.com/	yes	dead	0		0.923534
+cashier.deriv.com	https	000	cloudflare		yes	dead	0		1.013191
+oauth.deriv.com	https	000	cloudflare	https://deriv.com/	yes	dead	0		0.916455
+api.deriv.com	https	000	cloudflare	https://developers.deriv.com/	yes	dead	0		0.930192
+secure-dfadmin.deriv.com	https	000	cloudflare		yes	dead	0		1.373444
+home.deriv.com	https	000	cloudflare	http://home.deriv.com/dashboard	yes	dead	0		0.895129
+core-api.deriv.com	https	000	cloudflare		yes	dead	0		1.029089
+api-core.deriv.com	https	000	cloudflare		yes	dead	0		0.834947
+derivws.com	https	000	cloudflare		yes	dead	0		6.032461
+api.derivws.com	https	000	cloudflare		yes	dead	0		1.114864
+staging-api.derivws.com	https	000	cloudflare		yes	dead	0		0.920128
+deriv.slack.com	https	000	Apache		no	dead	0		1.080570
+tradingview.deriv.com	https	000	cloudflare	https://charts.deriv.com/	yes	dead	0		1.092462
+trade.mql5.com	https	000	Caddy	https://metatraderweb.app/	no	dead	0		1.144517
+community.deriv.com	https	000	nginx		no	dead	0		0.954396
+ct.deriv.com	https	000	nginx/1.31.3		no	dead	0		1.584432
+deriv.atlassian.net	https	000	AtlassianEdge	https://deriv.atlassian.net/login.jsp?os_destination=https%3A%2F%2Fderiv.atlassian.net%2F	no	dead	0		1.989053
+deriv.ae	https	000	cloudflare	https://deriv.com/ae/	yes	dead	0		0.856905
+deriv.partners	https	000	cloudflare	https://home.deriv.com/partners-app	yes	dead	0		0.973472
+partners.deriv.com	https	000	cloudflare	https://home.deriv.com/partners-app/login	yes	dead	0		0.882000
+academy-test.deriv.com	https	000			no	dead	52		0.688840
+academy.deriv.com	https	000	cloudflare	https://traders-academy.deriv.com/	yes	dead	0		0.868705
+accounts.staging-home.deriv.com	https	000			no	dead	52		0.736592
+ae-academy.deriv.com	https	000	cloudflare		yes	dead	0		1.790615
+ae.deriv.com	https	000	cloudflare		yes	dead	0		1.038236
+af-com-deriv-nakala.deriv.com	https	000	cloudflare		yes	dead	0		1.567261
+api-core-aws.deriv.com	https	000	cloudflare		yes	dead	0		1.330904
+api-gateway.deriv.com	https	000	cloudflare		yes	dead	0		0.896863
+apigateway.deriv.com	https	000			no	dead	52		0.787071
+assets.deriv.com	https	000	cloudflare		yes	dead	0		0.964135
+auth.deriv.com	https	000	cloudflare		yes	dead	0		0.867207
+besquare.deriv.com	https	000	cloudflare	https://deriv.com/careers/	yes	dead	0		0.842383
+beta-api.deriv.com	https	000	cloudflare	http://developers.deriv.com/	yes	dead	0		1.201405
+beta-bot.deriv.com	https	000	cloudflare		yes	dead	0		0.954700
+beta-dtrader.deriv.com	https	000	cloudflare		yes	dead	0		1.071700
+beta-eu.deriv.com	https	000			no	dead	52		0.830208
+beta.deriv.com	https	000			no	dead	52		0.773004
+blog.deriv.com	https	000	cloudflare		yes	dead	0		1.408492
+blox.deriv.com	https	000	cloudflare		yes	dead	0		1.044553
+bot.deriv.com	https	000	cloudflare		yes	dead	0		0.941585
+bug-bounty.deriv.com	https	000			no	dead	52		0.778551
+careers.deriv.com	https	000	cloudflare		yes	dead	0		0.891356
+cashier-crypto-iframe-demo.deriv.com	https	000			no	dead	52		0.906066
+cashier-crypto-iframe.deriv.com	https	000	Vercel		no	dead	0		1.026416
+cashier-demo.deriv.com	https	000	Vercel		no	dead	0		1.106099
+cf-pages-app.deriv.com	https	000			no	dead	52		0.728449
+cf-pages-binary-bot.deriv.com	https	000			no	dead	52		0.845419
+cf-pages-binary-static.deriv.com	https	000			no	dead	52		0.724951
+cf-pages-deriv-app.deriv.com	https	000			no	dead	52		1.147463
+cf-pages-deriv-binary-bot.deriv.com	https	000			no	dead	52		0.681864
+cf-pages-deriv-binary-static.deriv.com	https	000			no	dead	52		0.695631
+cf-pages-deriv-com.deriv.com	https	000			no	dead	52		0.718546
+cf-pages-deriv-components.deriv.com	https	000			no	dead	52		0.875954
+cf-pages-deriv-developers-portal.deriv.com	https	000			no	dead	52		0.725745
+cf-pages-deriv-static-content.deriv.com	https	000			no	dead	52		0.947480
+cf-pages-firstsource-io.deriv.com	https	000			no	dead	52		0.768667
+cf-pages-sinbad.deriv.com	https	000			no	dead	52		0.697324
+cf-pages-smart-charts.deriv.com	https	000			no	dead	52		0.712586
+cf-pages-staging.deriv.com	https	000			no	dead	52		0.799864
+cf-pages-tradingview.deriv.com	https	000			no	dead	52		0.700067
+cf-pages-webtrader.deriv.com	https	000			no	dead	52		0.925326
+cf-pages.deriv.com	https	000			no	dead	52		0.712575
+cf.api.deriv.com	https	000			no	dead	52		0.804729
+cf.bot.deriv.com	https	000			no	dead	52		0.904313
+cf.deriv.com	https	000			no	dead	52		0.795384
+charts.deriv.com	https	000	cloudflare		yes	dead	0		1.268146
+clerk.staging-home.deriv.com	https	000			no	dead	52		0.703234
+cms.deriv.com	https	000			no	dead	52		0.859616
+contest.deriv.com	https	000	cloudflare	https://deriv.com/	yes	dead	0		0.827030
+ct-uat.deriv.com	https	000	nginx/1.31.3		no	dead	0		1.480227
+ct-uat2.deriv.com	https	000	nginx/1.31.3		no	dead	0		1.578846
+ct-uat3.deriv.com	https	000	nginx/1.31.3		no	dead	0		2.185372
+dashboard-preview.deriv.com	https	000			no	dead	52		0.683204
+datahub.deriv.com	https	000			no	dead	52		0.684992
+dbot.deriv.com	https	000	cloudflare	https://bot.deriv.com/	yes	dead	0		0.777672
+demo-partnershub.deriv.com	https	000			no	dead	52		1.025593
+deriv-home-2-5-preview.test-home-agent.deriv.com	https	000	cloudflare		yes	dead	0		0.916942
+deriv.com	https	000	cloudflare		yes	dead	0		1.076353
+derivatives-bot.deriv.com	https	000			no	dead	52		0.952998
+dev-home.deriv.com	https	000			no	dead	52		0.776523
+dev-hub.deriv.com	https	000			no	dead	52		0.785396
+dev-partners-app.deriv.com	https	000			no	dead	52		0.966293
+developer.deriv.com	https	000	cloudflare	https://developers.deriv.com/	yes	dead	0		0.765398
+developers.deriv.com	https	000	cloudflare		yes	dead	0		1.022588
+development-api-core.deriv.com	https	000	cloudflare		yes	dead	0		0.818510
+discourse.deriv.com	https	000			no	dead	52		0.809927
+docs-core.deriv.com	https	000	cloudflare		yes	dead	0		0.851182
+docs.deriv.com	https	000	cloudflare		yes	dead	0		0.953764
+dp2p.deriv.com	https	000	cloudflare		yes	dead	0		1.249481
+dr-api-docs.deriv.com	https	000			no	dead	52		0.688735
+dr-deriv-app.deriv.com	https	000			no	dead	52		0.821028
+dr-staging-app.deriv.com	https	000			no	dead	52		0.842298
+dr.deriv.com	https	000	cloudflare		yes	dead	0		1.018119
+dsmarttrader.deriv.com	https	000	cloudflare		yes	dead	0		0.912435
+dtrader.deriv.com	https	000	cloudflare		yes	dead	0		0.921973
+dx-api.deriv.com	https	000			no	dead	52		0.779747
+dx-demo.deriv.com	https	000	cloudflare		yes	dead	0		0.876746
+dx-mobile.deriv.com	https	000			no	dead	52		0.818964
+dx.deriv.com	https	000	cloudflare		yes	dead	0		1.568351
+e360-assets.deriv.com	https	000	cloudflare		yes	dead	0		1.135597
+e360.deriv.com	https	000			no	dead	52		0.720012
+eu.cf-pages-deriv-com.deriv.com	https	000			no	dead	52		1.106905
+eu.cf-pages.deriv.com	https	000			no	dead	52		0.972438
+eu.cf.deriv.com	https	000			no	dead	52		1.163770
+eu.deriv.com	https	000	cloudflare	https://deriv.com/eu/	yes	dead	0		1.048953
+event.deriv.com	https	000			no	dead	52		0.701950
+experiment.deriv.com	https	000			no	dead	52		0.848852
+experiments.deriv.com	https	000			no	dead	52		0.712394
+experts.deriv.com	https	000	cloudflare	/insights	yes	dead	0		0.835688
+fix.deriv.com	https	000			no	dead	52		0.743612
+fixtls.deriv.com	https	000			no	dead	28		10.002513
+flags.deriv.com	https	000	cloudflare		yes	dead	0		1.116004
+help.deriv.com	https	000			no	dead	52		0.797284
+hub.deriv.com	https	000	cloudflare	https://deriv.com/	yes	dead	0		0.929895
+id-ct-uat.deriv.com	https	000	nginx		no	dead	0		1.477047
+id-ct-uat2.deriv.com	https	000	nginx	https://chsandbox.id.ctrader.com/	no	dead	0		1.683102
+id-ct-uat3.deriv.com	https	000	nginx	https://chsandbox.id.ctrader.com/	no	dead	0		1.480178
+id-ct.deriv.com	https	000	nginx	https://ct.deriv.com	no	dead	0		1.449353
+idv.staging-auth.deriv.com	https	000			no	dead	52		0.729180
+join.deriv.com	https	000	cloudflare		yes	dead	0		0.886094
+kyc-adaptor-staging.deriv.com	https	000			no	dead	52		0.674740
+kyc-adaptor.deriv.com	https	000	cloudflare		yes	dead	0		0.869711
+kyc.deriv.com	https	000	cloudflare		yes	dead	0		0.867009
+landing.deriv.com	https	000			no	dead	52		0.972968
+learning.deriv.com	https	000			no	dead	52		3.147042
+legacy-api.deriv.com	https	000	cloudflare	https://developers.deriv.com/	yes	dead	0		1.385080
+legacy-docs.deriv.com	https	000	cloudflare	/docs	yes	dead	0		1.178808
+link.deriv.com	https	000	cloudflare		yes	dead	0		1.108653
+login.deriv.com	https	000	cloudflare	https://login.deriv.com/signin.php	yes	dead	0		1.544435
+lp.deriv.com	https	000			no	dead	52		0.852327
+media.deriv.com	https	000	cloudflare		yes	dead	0		1.144504
+molink.deriv.com	https	000			no	dead	52		0.797015
+mt5-demo-sg.deriv.com	https	000			no	dead	52	mt5	1.085033
+mt5-demo-web.deriv.com	https	000	cloudflare		yes	dead	0	mt5	1.453536
+mta-sts.deriv.com	https	000	cloudflare		yes	dead	0		0.965863
+no404.cf-pages-deriv-app.deriv.com	https	000			no	dead	52		0.823153
+notfound.cf-pages-deriv-app.deriv.com	https	000			no	dead	52		0.710604
+okta.deriv.com	https	000			no	dead	52		0.750552
+options.deriv.com	https	000			no	dead	52		0.852388
+outsystems.deriv.com	https	000			no	dead	52		0.743559
+p2p-dev1.deriv.com	https	000			no	dead	52		0.696905
+p2p-dev2.deriv.com	https	000			no	dead	52		0.724984
+p2p-dev3.deriv.com	https	000			no	dead	52		0.702135
+p2p-dev4.deriv.com	https	000			no	dead	52		0.712279
+p2p-dev5.deriv.com	https	000			no	dead	52		0.997051
+p2p.deriv.com	https	000	cloudflare		yes	dead	0		0.921905
+partner-academy.deriv.com	https	000			no	dead	52		0.752272
+partners-academy.deriv.com	https	000	cloudflare		yes	dead	0		1.040852
+partners-app.deriv.com	https	000	cloudflare		yes	dead	0		0.878393
+partnersapp-preview.deriv.com	https	000			no	dead	52		0.737353
+partnershub-assets.deriv.com	https	000	cloudflare		yes	dead	0		1.116886
+preview.deriv.com	https	000			no	dead	52		0.776797
+prince.cf-pages-binary-static.deriv.com	https	000			no	dead	52		0.705234
+region-assets.deriv.com	https	000	cloudflare		yes	dead	0		1.292938
+remote-config.deriv.com	https	000	cloudflare		yes	dead	0		1.122851
+seo.deriv.com	https	000			no	dead	52		0.746386
+signup.deriv.com	https	000			no	dead	52		0.752408
+ssd.deriv.com	https	000	cloudflare		yes	dead	0		0.887663
+staging-ae.deriv.com	https	000			no	dead	52		0.742994
+staging-api-core-aws.deriv.com	https	000	cloudflare		yes	dead	0		0.963388
+staging-api-core.deriv.com	https	000	cloudflare		yes	dead	0		1.134030
+staging-api-gateway.deriv.com	https	000			no	dead	52		0.699097
+staging-api-partners.deriv.com	https	000	cloudflare		yes	dead	0		0.929200
+staging-api.deriv.com	https	000	cloudflare		yes	dead	0		0.994725
+staging-app-agent.deriv.com	https	000	cloudflare		yes	dead	0		0.810304
+staging-app.deriv.com	https	000	cloudflare	https://deriv.com/	yes	dead	0		0.951907
+staging-auth-proxy.deriv.com	https	000			no	dead	52		0.927887
+staging-auth.deriv.com	https	000	cloudflare		yes	dead	0		1.473269
+staging-blog.deriv.com	https	000	cloudflare		yes	dead	0		1.117862
+staging-blox.deriv.com	https	000	cloudflare		yes	dead	0		1.167460
+staging-bot.deriv.com	https	000	cloudflare		yes	dead	0		0.947570
+staging-cashier-crypto-iframe.deriv.com	https	000	cloudflare		yes	dead	0		1.312093
+staging-charts.deriv.com	https	000	cloudflare		yes	dead	0		1.148587
+staging-dbot.deriv.com	https	000	cloudflare	https://staging-bot.deriv.com/	yes	dead	0		0.881738
+staging-developer.deriv.com	https	000	cloudflare		yes	dead	0		1.010887
+staging-developers.deriv.com	https	000	cloudflare		yes	dead	0		0.898869
+staging-dp2p.deriv.com	https	000	cloudflare		yes	dead	0		1.601284
+staging-dsmarttrader.deriv.com	https	000	cloudflare		yes	dead	0		0.948736
+staging-dtrader.deriv.com	https	000	cloudflare		yes	dead	0		0.962187
+staging-dx.deriv.com	https	000	cloudflare	https://derivcom.cloudflareaccess.com/cdn-cgi/access/login/staging-dx.deriv.com?kid=3da24ed0867833cac23d9c0e147cc2d4c8518e750c0a254ad228820a89dc7498&meta=eyJ0eX	yes	dead	0		0.936248
+staging-eu.cf-pages-deriv-com.deriv.com	https	000			no	dead	52		0.776922
+staging-eu.cf-pages.deriv.com	https	000			no	dead	52		0.746467
+staging-eu.deriv.com	https	000			no	dead	52		0.834671
+staging-event.deriv.com	https	000			no	dead	52		0.939968
+staging-experts.deriv.com	https	000	cloudflare		yes	dead	0		0.861916
+staging-home.deriv.com	https	000	cloudflare		yes	dead	0		0.887301
+staging-hub.deriv.com	https	000	cloudflare		yes	dead	0		1.230033
+staging-join.deriv.com	https	000	cloudflare		yes	dead	0		0.976885
+staging-kyc-adaptor.deriv.com	https	000	cloudflare		yes	dead	0		0.808855
+staging-kyc.deriv.com	https	000	cloudflare		yes	dead	0		0.997882
+staging-legacy-api.deriv.com	https	000			no	dead	52		0.785981
+staging-p2p.deriv.com	https	000	cloudflare		yes	dead	0		1.312658
+staging-partner-academy.deriv.com	https	000			no	dead	52		0.962667
+staging-partner.deriv.com	https	000			no	dead	52		0.684694
+staging-partners-academy.deriv.com	https	000	cloudflare		yes	dead	0		1.493320
+staging-partners-app.deriv.com	https	000	cloudflare		yes	dead	0		0.890844
+staging-partners.deriv.com	https	000	cloudflare	/welcome	yes	dead	0		1.593899
+staging-partnershub.deriv.com	https	000			no	dead	52		0.717322
+staging-sg-hub.deriv.com	https	000			no	dead	52		0.726571
+staging-smartcharts.deriv.com	https	000			no	dead	52		0.727637
+staging-smarttrader.deriv.com	https	000	cloudflare		yes	dead	0		1.043802
+staging-static.deriv.com	https	000	cloudflare		yes	dead	0		0.855451
+staging-store.deriv.com	https	000	cloudflare		yes	dead	0		0.880384
+staging-swipe.deriv.com	https	000	cloudflare		yes	dead	0		0.842440
+staging-templates-preview-developers.deriv.com	https	000	cloudflare		yes	dead	0		0.916272
+staging-trade.deriv.com	https	000	cloudflare	https://staging.deriv.com/	yes	dead	0		1.261244
+staging-trader.deriv.com	https	000			no	dead	52		0.773414
+staging-traders-academy.deriv.com	https	000	cloudflare		yes	dead	0		1.027239
+staging-trading-flutter.deriv.com	https	000	cloudflare		yes	dead	0		0.879360
+staging-trading.deriv.com	https	000			no	dead	52		0.684469
+staging-tradingview.deriv.com	https	000			no	dead	52		0.694551
+staging-uk-hub.deriv.com	https	000			no	dead	52		1.048564
+staging-us-hub.deriv.com	https	000			no	dead	52		0.907048
+staging-webflow.deriv.com	https	000	cloudflare		yes	dead	0		0.933536
+staging.cf-pages-app.deriv.com	https	000			no	dead	52		0.760592
+staging.cf-pages-binary-bot.deriv.com	https	000			no	dead	52		0.772698
+staging.cf-pages-binary-static.deriv.com	https	000			no	dead	52		1.016565
+staging.cf-pages-deriv-app.deriv.com	https	000			no	dead	52		0.713489
+staging.cf-pages-deriv-binary-bot.deriv.com	https	000			no	dead	52		0.748271
+staging.cf-pages-deriv-binary-static.deriv.com	https	000			no	dead	52		0.817578
+staging.cf-pages-deriv-com.deriv.com	https	000			no	dead	52		0.726196
+staging.cf-pages-deriv-components.deriv.com	https	000			no	dead	52		0.744157
+staging.cf-pages-deriv-developers-portal.deriv.com	https	000			no	dead	52		0.986508
+staging.cf-pages-deriv-static-content.deriv.com	https	000			no	dead	52		0.836133
+staging.cf-pages-firstsource-io.deriv.com	https	000			no	dead	52		0.988076
+staging.cf-pages-sinbad.deriv.com	https	000			no	dead	52		0.810477
+staging.cf-pages-smart-charts.deriv.com	https	000			no	dead	52		0.695369
+staging.cf-pages-tradingview.deriv.com	https	000			no	dead	52		0.729098
+staging.cf-pages-webtrader.deriv.com	https	000			no	dead	52		0.691646
+staging.cf-pages.deriv.com	https	000			no	dead	52		0.708666
+staging.deriv.com	https	000	cloudflare		yes	dead	0		2.060875
+staging.derivatives-bot.deriv.com	https	000			no	dead	52		0.892085
+static-core-staging.deriv.com	https	000			no	dead	52		0.693201
+static.deriv.com	https	000	cloudflare	https://deriv.com/	yes	dead	0		1.126500
+store.deriv.com	https	000	cloudflare		yes	dead	0		1.203337
+stream.deriv.com	https	000			no	dead	52		0.722746
+support.deriv.com	https	000			no	dead	52		0.977938
+swipe.deriv.com	https	000			no	dead	52		0.701978
+t.deriv.com	https	000			no	dead	52		0.751380
+tech.deriv.com	https	000	cloudflare	https://derivai.substack.com/	yes	dead	0		0.936107
+templates-preview-developers.deriv.com	https	000	cloudflare		yes	dead	0		0.896714
+test-api.deriv.com	https	000	cloudflare	https://derivcom.cloudflareaccess.com/cdn-cgi/access/login/test-api.deriv.com?kid=9fe8e1f291da834c832cf92c83f139f473c4d18cb1cee6d67b81d83540476c16&meta=eyJ0eXAi	yes	dead	0		0.810353
+test-app.deriv.com	https	000			no	dead	52		0.771500
+test-dalus.deriv.com	https	000			no	dead	52		1.155076
+test-developers.deriv.com	https	000			no	dead	52		0.710575
+test-home-agent.deriv.com	https	000	cloudflare		yes	dead	0		2.536886
+test-home-builder.deriv.com	https	000			no	dead	52		0.823354
+test-home.deriv.com	https	000			no	dead	52		0.702439
+test.cf-pages-binary-bot.deriv.com	https	000			no	dead	52		0.777132
+test.cf-pages-binary-static.deriv.com	https	000			no	dead	52		0.728010
+test.cf-pages-deriv-binary-bot.deriv.com	https	000			no	dead	52		0.829159
+test.cf-pages-deriv-binary-static.deriv.com	https	000			no	dead	52		0.746632
+track.deriv.com	https	000	cloudflare	https://api-core.deriv.com/v1/partners/partner-referral/legacy-redirect?provider=myaffiliate&legacy_token=/	yes	dead	0		1.143190
+trade.deriv.com	https	000	cloudflare	https://deriv.com/	yes	dead	0		0.872449
+trader.deriv.com	https	000			no	dead	52		0.807347
+traders-academy.deriv.com	https	000	cloudflare		yes	dead	0		1.014885
+traders-hub.deriv.com	https	000			no	dead	52		0.740013
+trading.deriv.com	https	000			no	dead	52		1.027048
+translations.deriv.com	https	000	cloudflare		yes	dead	0		1.008043
+uat-app.deriv.com	https	000			no	dead	52		0.684303
+uat2-app.deriv.com	https	000			no	dead	52		0.694738
+urls.deriv.com	https	000	cloudflare	https://urls.deriv.com/sitemap.xml	yes	dead	0		1.152705
+vtrack.deriv.com	https	000			no	dead	52		0.722224
+webflow-copy.deriv.com	https	000			no	dead	52		1.085912
+webflow.deriv.com	https	000	cloudflare	https://deriv.com/	yes	dead	0		0.876077
+workaround.cf-pages-binary-bot.deriv.com	https	000			no	dead	52		0.716990
+workaround.cf-pages-binary-static.deriv.com	https	000			no	dead	52		0.712629
+www.cashier.deriv.com	https	000			no	dead	52		0.735330
+www.deriv.com	https	000	cloudflare	https://deriv.com/	yes	dead	0		0.843686
+www.dx-mobile.deriv.com	https	000			no	dead	52		0.743494
+www.mt5-demo-web.deriv.com	https	000			no	dead	52	mt5	0.697126
+x.deriv.com	https	000		https://www.deriv.com/	yes	dead	0		1.524783
+backoffice-commissions.deriv.cloud	https	000	cloudflare		yes	dead	0	internal	0.889123
+backoffice-feed-studio.deriv.cloud	https	000	cloudflare		yes	dead	0	internal	1.143537
+backoffice-options.deriv.cloud	https	000	cloudflare		yes	dead	0	internal	0.917308
+backoffice-synthetic-feed.deriv.cloud	https	000	cloudflare		yes	dead	0	internal	0.859199
+backoffice.deriv.cloud	https	000	cloudflare		yes	dead	0	internal	0.930322
+bridge-api-zuplo.deriv.cloud	https	000	cloudflare		yes	dead	0		0.921800
+bridge-api.deriv.cloud	https	000	cloudflare		yes	dead	0		1.149554
+client-migration-staging.deriv.cloud	https	000	cloudflare		yes	dead	0		1.018240
+client-migration.deriv.cloud	https	000	cloudflare		yes	dead	0		0.883527
+cms.deriv.cloud	https	000			no	dead	52		0.972328
+commissions.deriv.cloud	https	000			no	dead	52		0.971268
+crypto-backoffice.deriv.cloud	https	000	cloudflare		yes	dead	0	internal	0.840600
+data-modeler.deriv.cloud	https	000	cloudflare		yes	dead	0		0.925369
+data.deriv.cloud	https	000	cloudflare		yes	dead	0		0.910414
+dealing-desk.deriv.cloud	https	000	cloudflare		yes	dead	0	internal	0.814558
+deriv.cloud	https	000			no	dead	52		0.737594
+deriv.deriv.cloud	https	000			no	dead	52		0.721213
+derivedge.deriv.cloud	https	000			no	dead	52		0.836906
+derivpay-fe-poc.deriv.cloud	https	000	cloudflare		yes	dead	0		0.874010
+derivpay-poc.deriv.cloud	https	000	cloudflare		yes	dead	0		1.072833
+dev-mt5-demo-p01-ts01.deriv.cloud	https	000			no	dead	0	mt5	2.048103
+dev-mt5-demo-p01-ts03.deriv.cloud	https	000			no	dead	0	mt5	1.293088
+dev-mt5-real-p01-ts01.deriv.cloud	https	000			no	dead	0	mt5	1.296778

@@ -1,0 +1,1 @@
+{"findings":[],"note":"No Referee-confirmed security findings. The single Hunter candidate (H-B1) was disproved by the Skeptic and adjudicated NOT_A_BUG by the Referee; §7 validation has no confirmed HIGH/CRITICAL security bug to validate. See referee.json and gate-7q.json.","validatedAt":"2026-11-13"}

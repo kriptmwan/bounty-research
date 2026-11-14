@@ -1,0 +1,24 @@
+{
+  "budgets": {"fileBudget": 24, "estimatedSourceTokens": 14000},
+  "selected": [
+    "src/contracts/FXB.sol (169)",
+    "src/contracts/FXB_LFRAX.sol (387)",
+    "src/contracts/FXBFactory.sol (223)",
+    "src/contracts/SlippageAuction.sol (776)",
+    "src/contracts/SlippageAuctionFactory.sol (110)",
+    "src/contracts/FraxBeacon.sol (60)",
+    "src/contracts/FraxBeaconProxy.sol (30)",
+    "src/contracts/FraxUpgradeableProxy.sol (83)",
+    "src/contracts/OwnedV2.sol (41)",
+    "src/contracts/ERC20PermitPermissionedOptiMintable.sol (249)",
+    "src/contracts/utils/BokkyPooBahsDateTimeLibrary.sol (358)",
+    "src/contracts/utils/Storage.sol (88)",
+    "src/contracts/utils/StorageSetterLFRAX.sol (57)",
+    "src/contracts/utils/EIP712StoragePad.sol (31)",
+    "src/Constants.sol (237)"
+  ],
+  "selectedCount": 15,
+  "omitted": ["lib/ (vendored)", "src/test/ (context-only, read for intended behavior)", "src/script/ (evidence only)", "specification/ (docs)", "flattened.sol (generated)"],
+  "omittedCount": 5,
+  "instructions": "Read in risk order. Interfaces read as evidence. Tests read for intended behavior only."
+}

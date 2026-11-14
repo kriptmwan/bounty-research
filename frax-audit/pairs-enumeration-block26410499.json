@@ -1,0 +1,2553 @@
+{
+  "blockNumber": 26410499,
+  "registry": "0xD6E9D27C75Afd88ad24Cd5EdccdC76fd2fc3A751",
+  "registryLength": "71",
+  "owner": "0xB1748C79709f4Ba2Dd82834B8c82D4a505003f27",
+  "pendingOwner": "REVERT: Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\", reason=\"require(fa",
+  "deployerA_pairs": [
+    "0x32467a5fc2d72D21E8DCe990906547A2b012f382",
+    "0x794F6B13FBd7EB7ef10d1ED205c9a416910207Ff",
+    "0xc4d57603D47FB842EC11A5332748f9F96d44cbEB",
+    "0xa1D100a5bf6BFd2736837c97248853D989a9ED84",
+    "0xDbe88DBAc39263c47629ebbA02b3eF4cf0752A72",
+    "0x3835a58CA93Cdb5f912519ad366826aC9a752510",
+    "0x50E627a1DF8D665524942aD7eC6392b6BA60293a",
+    "0xF1b3Cbc51a7483C656af9Aa09F319a3b66aD5e04"
+  ],
+  "deployerB_pairs": [
+    "0xaB3cb84c310186B2Fa4B4503624A5D90b5DcB22D",
+    "0x28Cdf6Ce79702AAeFbF217cF98cbD11f5639B9f1",
+    "0x37110563E3856D413B821f07C7E3991c4493673D",
+    "0x8087346b8865e5B0bF9F8A49742c2D83f6a50a6c",
+    "0x8E5f09de0cD7841239410F929A905E214443d9E0",
+    "0x7640Aeed096982aDaD9c8BA668eBE35c1f6551DE",
+    "0x809d2fBffA273334b73A5d1F070eE421a0A4f3c1",
+    "0xEdBa32045Bb3d69e42E6BcB6Ef6f1337c89c76c8",
+    "0xdB856AfaE2A71eb20Bd47D5dc37deF1D83d29fD7",
+    "0x470c677AF6CCE089ac38245332BfA03b22b4caeD",
+    "0xC045A53936D793839BFCA146058976ef4285161E",
+    "0xA201E7bBb7Ca60ab88514d12dD91fC6748E6D050",
+    "0x00C242cA3Ef5c2CB909ed3eD972B6f24624B4337"
+  ],
+  "pairs": [
+    {
+      "pair": "0x32467a5fc2d72D21E8DCe990906547A2b012f382",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "totalAsset": [
+        "1284021144500520336583156",
+        "903785792510839361324530"
+      ],
+      "totalBorrow": [
+        "699453108949807414290391",
+        "416450548300504015863987"
+      ],
+      "totalSupply": "903785792510839361324530",
+      "totalCollateral": "2973893780",
+      "paused": false,
+      "name": "FraxlendV1 - Wrapped BTC/Frax - Variable Time-Weighted Interest Rate - 1",
+      "symbol": "FraxlendV1 - WBTC/FRAX",
+      "decimals": "18",
+      "oracleMultiply": "0x0000000000000000000000000000000000000000",
+      "oracleDivide": "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c",
+      "rateContract": "0x3da1bf0Be175B7cAa38d67A6E78371947d2F51f7",
+      "maxLTV": "75000",
+      "version": [
+        "32",
+        "5",
+        "22244937074597041345535687918817492743208931653510314877398361346409823731712"
+      ],
+      "exchangeRateInfo": [
+        "1793743943",
+        "1284"
+      ]
+    },
+    {
+      "pair": "0x794F6B13FBd7EB7ef10d1ED205c9a416910207Ff",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "totalAsset": [
+        "3420966390666499865871",
+        "2256859896791145079990"
+      ],
+      "totalBorrow": [
+        "2383523159885245119663",
+        "1345477713604542083030"
+      ],
+      "totalSupply": "2256859896791145079990",
+      "totalCollateral": "3221568674617562353",
+      "paused": false,
+      "name": "FraxlendV1 - Wrapped Ether/Frax - Variable Time-Weighted Interest Rate - 2",
+      "symbol": "FraxlendV1 - WETH/FRAX",
+      "decimals": "18",
+      "oracleMultiply": "0x0000000000000000000000000000000000000000",
+      "oracleDivide": "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
+      "rateContract": "0x3da1bf0Be175B7cAa38d67A6E78371947d2F51f7",
+      "maxLTV": "75000",
+      "version": [
+        "32",
+        "5",
+        "22244937074597041345535687918817492743208931653510314877398361346409823731712"
+      ],
+      "exchangeRateInfo": [
+        "1794549191",
+        "522571912566674"
+      ]
+    },
+    {
+      "pair": "0xc4d57603D47FB842EC11A5332748f9F96d44cbEB",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0xD533a949740bb3306d119CC777fa900bA034cd52",
+      "totalAsset": [
+        "46113295481143891228",
+        "46031243353953243734"
+      ],
+      "totalBorrow": [
+        "0",
+        "0"
+      ],
+      "totalSupply": "46031243353953243734",
+      "totalCollateral": "0",
+      "paused": false,
+      "name": "FraxlendV1 - Curve DAO Token/Frax - Variable Time-Weighted Interest Rate - 3",
+      "symbol": "FraxlendV1 - CRV/FRAX",
+      "decimals": "18",
+      "oracleMultiply": "0x0000000000000000000000000000000000000000",
+      "oracleDivide": "0xCd627aA160A6fA45Eb793D19Ef54f5062F20f33f",
+      "rateContract": "0x3da1bf0Be175B7cAa38d67A6E78371947d2F51f7",
+      "maxLTV": "75000",
+      "version": [
+        "32",
+        "5",
+        "22244937074597041345535687918817492743208931653510314877398361346409823731712"
+      ],
+      "exchangeRateInfo": [
+        "1665163139",
+        "1126670543990676756"
+      ]
+    },
+    {
+      "pair": "0xa1D100a5bf6BFd2736837c97248853D989a9ED84",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B",
+      "totalAsset": [
+        "36802861673061373436610",
+        "27484664731708722747618"
+      ],
+      "totalBorrow": [
+        "21624989441892761224051",
+        "13770026109738922496883"
+      ],
+      "totalSupply": "27484664731708722747618",
+      "totalCollateral": "25020651189446201849755",
+      "paused": false,
+      "name": "FraxlendV1 - Convex Token/Frax - Variable Time-Weighted Interest Rate - 4",
+      "symbol": "FraxlendV1 - CVX/FRAX",
+      "decimals": "18",
+      "oracleMultiply": "0x0000000000000000000000000000000000000000",
+      "oracleDivide": "0xd962fC30A72A84cE50161031391756Bf2876Af5D",
+      "rateContract": "0xFf7846bAcB63FE97406a1E1e48CAf1595f66A98c",
+      "maxLTV": "75000",
+      "version": [
+        "32",
+        "5",
+        "22244937074597041345535687918817492743208931653510314877398361346409823731712"
+      ],
+      "exchangeRateInfo": [
+        "1794608255",
+        "627179448583828805"
+      ]
+    },
+    {
+      "pair": "0xDbe88DBAc39263c47629ebbA02b3eF4cf0752A72",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0x3432B6A60D23Ca0dFCa7761B7ab56459D9C964D0",
+      "totalAsset": [
+        "3190803671218821843744",
+        "2500325705534248167919"
+      ],
+      "totalBorrow": [
+        "169116966773427234949",
+        "114094524849365745064"
+      ],
+      "totalSupply": "2500325705534248167919",
+      "totalCollateral": "31424513037256909282996",
+      "paused": false,
+      "name": "FraxlendV1 - Frax Share/Frax - Variable Time-Weighted Interest Rate - 5",
+      "symbol": "FraxlendV1 - FXS/FRAX",
+      "decimals": "18",
+      "oracleMultiply": "0x0000000000000000000000000000000000000000",
+      "oracleDivide": "0x6Ebc52C8C1089be9eB3945C4350B68B8E4C2233f",
+      "rateContract": "0xFf7846bAcB63FE97406a1E1e48CAf1595f66A98c",
+      "maxLTV": "75000",
+      "version": [
+        "32",
+        "5",
+        "22244937074597041345535687918817492743208931653510314877398361346409823731712"
+      ],
+      "exchangeRateInfo": [
+        "1794175043",
+        "4583638546365039415"
+      ]
+    },
+    {
+      "pair": "0x3835a58CA93Cdb5f912519ad366826aC9a752510",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0xD533a949740bb3306d119CC777fa900bA034cd52",
+      "totalAsset": [
+        "37745555224292353393638",
+        "24870900360961084664842"
+      ],
+      "totalBorrow": [
+        "12622569853502013737457",
+        "6669887800968999133916"
+      ],
+      "totalSupply": "24870900360961084664842",
+      "totalCollateral": "117436292076696160728914",
+      "paused": false,
+      "name": "FraxlendV1 - Curve DAO Token/Frax - Variable Time-Weighted Interest Rate - 6",
+      "symbol": "FraxlendV1 - CRV/FRAX",
+      "decimals": "18",
+      "oracleMultiply": "0x0000000000000000000000000000000000000000",
+      "oracleDivide": "0xCd627aA160A6fA45Eb793D19Ef54f5062F20f33f",
+      "rateContract": "0xFf7846bAcB63FE97406a1E1e48CAf1595f66A98c",
+      "maxLTV": "75000",
+      "version": [
+        "32",
+        "5",
+        "22244937074597041345535687918817492743208931653510314877398361346409823731712"
+      ],
+      "exchangeRateInfo": [
+        "1794467147",
+        "4211762357205461981"
+      ]
+    },
+    {
+      "pair": "0x50E627a1DF8D665524942aD7eC6392b6BA60293a",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0x5Ca135cB8527d76e932f34B5145575F9d8cbE08E",
+      "totalAsset": [
+        "257177099349081653860",
+        "254491384538638133101"
+      ],
+      "totalBorrow": [
+        "15689357116444998205",
+        "15479764237523850697"
+      ],
+      "totalSupply": "254491384538638133101",
+      "totalCollateral": "37793265365384061970",
+      "paused": false,
+      "name": "FraxlendV1 - Frax Price Index/Frax - Variable Time-Weighted Interest Rate - 7",
+      "symbol": "fFRAX(FPI)",
+      "decimals": "18",
+      "oracleMultiply": "0x0000000000000000000000000000000000000000",
+      "oracleDivide": "0xd2516e709a2e9D64F66B4c4009efE4F74F5FA40D",
+      "rateContract": "0x3da1bf0Be175B7cAa38d67A6E78371947d2F51f7",
+      "maxLTV": "95000",
+      "version": [
+        "32",
+        "5",
+        "22244943976343388136099475353573355020234384104619287047784916508934047531008"
+      ],
+      "exchangeRateInfo": [
+        "1675450115",
+        "939423364616357393"
+      ]
+    },
+    {
+      "pair": "0x62e3FcDFcbef3fd7eD344aEa26939e8980c83CEC",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0xac3E018457B222d93114458476f3E3416Abbe38F",
+      "totalAsset": [
+        "0",
+        "0"
+      ],
+      "totalBorrow": [
+        "0",
+        "0"
+      ],
+      "totalSupply": "0",
+      "totalCollateral": "0",
+      "paused": false,
+      "name": "Fraxlend Interest Bearing FRAX (Staked Frax Ether) - 8",
+      "symbol": "fFRAX(sfrxETH)-8",
+      "decimals": "18",
+      "oracleMultiply": "0x27942aFe4EcB7F9945168094e0749CAC749aC97B",
+      "oracleDivide": "0x0000000000000000000000000000000000000000",
+      "rateContract": "0x18500cB1f2fE7a40eBdA393383A0B8548a31F261",
+      "maxLTV": "75000",
+      "version": [
+        "2",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "1669080359",
+        "1110992826221474779578"
+      ]
+    },
+    {
+      "pair": "0x21E354Da5D929A4da55428F6bfd71eD9Ffd5001F",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0xac3E018457B222d93114458476f3E3416Abbe38F",
+      "totalAsset": [
+        "30101667067284567362",
+        "2234687893481708187"
+      ],
+      "totalBorrow": [
+        "17159334766355542147",
+        "507341981226413"
+      ],
+      "totalSupply": "2234687893481708187",
+      "totalCollateral": "1468591172820820128",
+      "paused": false,
+      "name": "Fraxlend Interest Bearing FRAX (Staked Frax Ether) - 9",
+      "symbol": "fFRAX(sfrxETH)-9",
+      "decimals": "18",
+      "oracleMultiply": "0x0000000000000000000000000000000000000000",
+      "oracleDivide": "0x27942aFe4EcB7F9945168094e0749CAC749aC97B",
+      "rateContract": "0x18500cB1f2fE7a40eBdA393383A0B8548a31F261",
+      "maxLTV": "75000",
+      "version": [
+        "2",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "1787432099",
+        "352640596440210"
+      ]
+    },
+    {
+      "pair": "0x918Ac498470d073C6518b55F3f74C203D6Df38fd",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0x5Ca135cB8527d76e932f34B5145575F9d8cbE08E",
+      "totalAsset": [
+        "2",
+        "1"
+      ],
+      "totalBorrow": [
+        "1",
+        "1"
+      ],
+      "totalSupply": "1",
+      "totalCollateral": "11",
+      "paused": false,
+      "name": "Fraxlend Interest Bearing FRAX (Frax Price Index) - 10",
+      "symbol": "fFRAX(FPI)-10",
+      "decimals": "18",
+      "oracleMultiply": "0x0000000000000000000000000000000000000000",
+      "oracleDivide": "0x2469757756ebA7Bea6B7F054896e3Db74103A962",
+      "rateContract": "0x18500cB1f2fE7a40eBdA393383A0B8548a31F261",
+      "maxLTV": "95000",
+      "version": [
+        "2",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "1674383447",
+        "939094268341760999"
+      ]
+    },
+    {
+      "pair": "0x66bf36dBa79d4606039f04b32946A260BCd3FF52",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0x0ab87046fBb341D058F17CBC4c1133F25a20a52f",
+      "totalAsset": [
+        "6248634417460149091920",
+        "1862116361857806309735"
+      ],
+      "totalBorrow": [
+        "39996626147750037997",
+        "9856027565947838173"
+      ],
+      "totalSupply": "1862116361857806309735",
+      "totalCollateral": "1783134945723794527",
+      "paused": false,
+      "name": "Fraxlend Interest Bearing FRAX (Governance OHM) - 11",
+      "symbol": "fFRAX(gOHM)-11",
+      "decimals": "18",
+      "oracleMultiply": "0x0000000000000000000000000000000000000000",
+      "oracleDivide": "0xe893297a9d4310976424fD0B25f53aC2B6464fe3",
+      "rateContract": "0x18500cB1f2fE7a40eBdA393383A0B8548a31F261",
+      "maxLTV": "75000",
+      "version": [
+        "2",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "1793743943",
+        "201902782069234"
+      ]
+    },
+    {
+      "pair": "0x74F82Bd9D0390A4180DaaEc92D64cf0708751759",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0x5Ca135cB8527d76e932f34B5145575F9d8cbE08E",
+      "totalAsset": [
+        "101376485858307089559",
+        "89166736152831068865"
+      ],
+      "totalBorrow": [
+        "46230605056837463064",
+        "39992385068022068380"
+      ],
+      "totalSupply": "89166736152831068865",
+      "totalCollateral": "177783870711147747925",
+      "paused": false,
+      "name": "Fraxlend Interest Bearing FRAX (Frax Price Index) - 12",
+      "symbol": "fFRAX(FPI)-12",
+      "decimals": "18",
+      "oracleMultiply": "0x0000000000000000000000000000000000000000",
+      "oracleDivide": "0x2469757756ebA7Bea6B7F054896e3Db74103A962",
+      "rateContract": "0x9599033315C29Be9690b716bFE409381426dAD41",
+      "maxLTV": "95000",
+      "version": [
+        "2",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "1784513531",
+        "863605534454693450"
+      ]
+    },
+    {
+      "pair": "0x9234EA70C2360576C3C9E706e7F3F3219e6d885C",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0xac3E018457B222d93114458476f3E3416Abbe38F",
+      "totalAsset": [
+        "0",
+        "0"
+      ],
+      "totalBorrow": [
+        "0",
+        "0"
+      ],
+      "totalSupply": "0",
+      "totalCollateral": "0",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing FRAX (Staked Frax Ether) - 13",
+      "symbol": "fFRAX(sfrxETH)-13",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x18500cB1f2fE7a40eBdA393383A0B8548a31F261",
+      "maxLTV": "75000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "3111690028",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0xA96eB85D1AfB297Bb67EB4856ad5A469Ec921D00",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0xac3E018457B222d93114458476f3E3416Abbe38F",
+      "totalAsset": [
+        "0",
+        "0"
+      ],
+      "totalBorrow": [
+        "0",
+        "0"
+      ],
+      "totalSupply": "0",
+      "totalCollateral": "0",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing FRAX (Staked Frax Ether) - 14",
+      "symbol": "fFRAX(sfrxETH)-14",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x18500cB1f2fE7a40eBdA393383A0B8548a31F261",
+      "maxLTV": "75000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "3111690028",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0xe1B6A8C4A044b38FCd862ba509844C54393cc737",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0xac3E018457B222d93114458476f3E3416Abbe38F",
+      "totalAsset": [
+        "0",
+        "0"
+      ],
+      "totalBorrow": [
+        "0",
+        "0"
+      ],
+      "totalSupply": "0",
+      "totalCollateral": "0",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing FRAX (Staked Frax Ether) - 15",
+      "symbol": "fFRAX(sfrxETH)-15",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x18500cB1f2fE7a40eBdA393383A0B8548a31F261",
+      "maxLTV": "75000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "3111690028",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0x78bB3aEC3d855431bd9289fD98dA13F9ebB7ef15",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0xac3E018457B222d93114458476f3E3416Abbe38F",
+      "totalAsset": [
+        "894945683894415472376019",
+        "674872676823360149241879"
+      ],
+      "totalBorrow": [
+        "708719216212454730039631",
+        "485709870057863058994766"
+      ],
+      "totalSupply": "674872676823360149241879",
+      "totalCollateral": "960891382490901179074",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing FRAX (Staked Frax Ether) - 16",
+      "symbol": "fFRAX(sfrxETH)-16",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x18500cB1f2fE7a40eBdA393383A0B8548a31F261",
+      "maxLTV": "75000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "4286512865",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0x3a25B9aB8c07FfEFEe614531C75905E810d8A239",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0x4d224452801ACEd8B2F0aebE155379bb5D594381",
+      "totalAsset": [
+        "500473986398438180007",
+        "500000000000000000000"
+      ],
+      "totalBorrow": [
+        "192925898516053034151",
+        "190965267478848341966"
+      ],
+      "totalSupply": "500000000000000000000",
+      "totalCollateral": "13394975779207977713",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing FRAX (ApeCoin) - 17",
+      "symbol": "fFRAX(APE)-17",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x18500cB1f2fE7a40eBdA393383A0B8548a31F261",
+      "maxLTV": "75000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "1699824928",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0x82Ec28636B77661a95f021090F6bE0C8d379DD5D",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2",
+      "totalAsset": [
+        "212241085509040985451",
+        "96815876264525883251"
+      ],
+      "totalBorrow": [
+        "148066312581260138236",
+        "65721061167645900247"
+      ],
+      "totalSupply": "96815876264525883251",
+      "totalCollateral": "2815734040989953204",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing FRAX (Maker) - 18",
+      "symbol": "fFRAX(MKR)-18",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x18500cB1f2fE7a40eBdA393383A0B8548a31F261",
+      "maxLTV": "75000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "1035073595",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0xc6CadA314389430d396C7b0C70c6281e99ca7fe8",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984",
+      "totalAsset": [
+        "20903582881074988013871",
+        "14225563091729099062845"
+      ],
+      "totalBorrow": [
+        "210606806582937790322",
+        "137068032490589984487"
+      ],
+      "totalSupply": "14225563091729099062845",
+      "totalCollateral": "1401612405148089129485",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing FRAX (Uniswap) - 19",
+      "symbol": "fFRAX(UNI)-19",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x18500cB1f2fE7a40eBdA393383A0B8548a31F261",
+      "maxLTV": "75000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "1706994651",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0xc779fEE076EB04b9F8EA424ec19DE27Efd17A68d",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9",
+      "totalAsset": [
+        "906029881382827255995",
+        "838520410836870279785"
+      ],
+      "totalBorrow": [
+        "104142676376059104850",
+        "93847436758239392685"
+      ],
+      "totalSupply": "838520410836870279785",
+      "totalCollateral": "5204645775105633927",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing FRAX (Aave Token) - 20",
+      "symbol": "fFRAX(AAVE)-20",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x18500cB1f2fE7a40eBdA393383A0B8548a31F261",
+      "maxLTV": "75000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "3294726994",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0x281E6CB341a552E4faCCc6b4eEF1A6fCC523682d",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0xf43211935C781D5ca1a41d2041F397B8A7366C7A",
+      "totalAsset": [
+        "305305255775659770423",
+        "158217037101102710011"
+      ],
+      "totalBorrow": [
+        "1513279096149030",
+        "719876438188738"
+      ],
+      "totalSupply": "158217037101102710011",
+      "totalCollateral": "38761808451335616",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing FRAX (Curve.fi ETH/frxETH) - 21",
+      "symbol": "fFRAX(frxETHCRV)-21",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x18500cB1f2fE7a40eBdA393383A0B8548a31F261",
+      "maxLTV": "75000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "1752193499",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0x1Fff4a418471a7b44EFa023320e02DCDB486ED77",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0x3175Df0976dFA876431C2E9eE6Bc45b65d3473CC",
+      "totalAsset": [
+        "200361328680064263983",
+        "200000000000000000000"
+      ],
+      "totalBorrow": [
+        "140511025825609170376",
+        "140000000000000000000"
+      ],
+      "totalSupply": "200000000000000000000",
+      "totalCollateral": "197000000000000000000",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing FRAX (Curve.fi FRAX/USDC) - 22",
+      "symbol": "fFRAX(crvFRAX)-22",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x18500cB1f2fE7a40eBdA393383A0B8548a31F261",
+      "maxLTV": "75000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "4006313062",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0x35E08B28d5b01D058cbB1c39dA9188CC521a79aF",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0x0dE54CFdfeD8005176f8b7A9D5438B45c4F1df1e",
+      "totalAsset": [
+        "101104570927303473671",
+        "100000000638719188408"
+      ],
+      "totalBorrow": [
+        "40727806743379950833",
+        "40000000520607386044"
+      ],
+      "totalSupply": "100000000638719188408",
+      "totalCollateral": "50000004868541754559",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing FRAX (FXB_1_JUN302024) - 23",
+      "symbol": "fFRAX(FXB_20240630)-23",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x01480a0C134CeCC309015a564C7e292ba6E0F358",
+      "maxLTV": "90000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "4073327255",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0x1c0C222989a37247D974937782cebc8bF4f25733",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0x76237BCfDbe8e06FB774663add96216961df4ff3",
+      "totalAsset": [
+        "357248695361327796090991",
+        "300157361564873962829756"
+      ],
+      "totalBorrow": [
+        "357248532085399916227343",
+        "294827089407702749536196"
+      ],
+      "totalSupply": "300157361564873962829756",
+      "totalCollateral": "685610361695308091473462",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing FRAX (FXB_4_DEC312026) - 24",
+      "symbol": "fFRAX(FXB_20261231)-24",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x01480a0C134CeCC309015a564C7e292ba6E0F358",
+      "maxLTV": "75000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "1849606387",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0xd1887398f3bbdC9d10D0d5616AD83506DdF5057a",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0xF8FDe8A259A3698902C88bdB1E13Ff28Cd7f6F09",
+      "totalAsset": [
+        "103034513785289712201",
+        "100000000000000000000"
+      ],
+      "totalBorrow": [
+        "52371133527676982040",
+        "50000000000000000000"
+      ],
+      "totalSupply": "100000000000000000000",
+      "totalCollateral": "105246350456983697834",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing FRAX (FXB_2_DEC312024) - 25",
+      "symbol": "fFRAX(FXB_20241231)-25",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x01480a0C134CeCC309015a564C7e292ba6E0F358",
+      "maxLTV": "90000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "2865153559",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0xeE847a804b67f4887c9E8fe559A2dA4278deFB52",
+      "asset": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "collateral": "0xac3E018457B222d93114458476f3E3416Abbe38F",
+      "totalAsset": [
+        "23715560093",
+        "20022123972"
+      ],
+      "totalBorrow": [
+        "16846804283",
+        "13252018304"
+      ],
+      "totalSupply": "20022123972",
+      "totalCollateral": "27550275411339014699",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing USDC (Staked Frax Ether) - 26",
+      "symbol": "fUSDC(sfrxETH)-26",
+      "decimals": "6",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x18500cB1f2fE7a40eBdA393383A0B8548a31F261",
+      "maxLTV": "85000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "931630111",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0x7093F6141293F7C4F67E5efD922aC934402E452d",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0x514910771AF9Ca656af840dff83E8264EcF986CA",
+      "totalAsset": [
+        "7519901813426354668909",
+        "2783478866472967550587"
+      ],
+      "totalBorrow": [
+        "43481920310623159",
+        "13709965592911888"
+      ],
+      "totalSupply": "2783478866472967550587",
+      "totalCollateral": "45034491659728593559",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing FRAX (ChainLink Token) - 27",
+      "symbol": "fFRAX(LINK)-27",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x18500cB1f2fE7a40eBdA393383A0B8548a31F261",
+      "maxLTV": "75000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "3407834544",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0xb5a46f712F03808aE5c4B885C6F598fA06442684",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "totalAsset": [
+        "40068340687919791082308",
+        "35042086472573308613457"
+      ],
+      "totalBorrow": [
+        "34529379471957833299151",
+        "28697341438690968431178"
+      ],
+      "totalSupply": "35042086472573308613457",
+      "totalCollateral": "28561871704863561772",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing FRAX (Wrapped liquid staked Ether 2.0) - 28",
+      "symbol": "fFRAX(wstETH)-28",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x18500cB1f2fE7a40eBdA393383A0B8548a31F261",
+      "maxLTV": "75000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "837222778",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0x0601B72bEF2b3F09E9f48B7d60a8d7D2D3800C6e",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0x5A98FcBEA516Cf06857215779Fd812CA3beF1B32",
+      "totalAsset": [
+        "580713453654126776226",
+        "550057623910561081667"
+      ],
+      "totalBorrow": [
+        "761333095756966964",
+        "700295531734505360"
+      ],
+      "totalSupply": "550057623910561081667",
+      "totalCollateral": "1134561101496434410",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing FRAX (Lido DAO Token) - 29",
+      "symbol": "fFRAX(LDO)-29",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x18500cB1f2fE7a40eBdA393383A0B8548a31F261",
+      "maxLTV": "75000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "2039430749",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0xa4Ddd4770588EF97A3a03E4B7E3885d824159bAA",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0xae78736Cd615f374D3085123A210448E74Fc6393",
+      "totalAsset": [
+        "1078147252502539800069",
+        "1048451803134896292583"
+      ],
+      "totalBorrow": [
+        "1041823342550097725",
+        "999821622034425866"
+      ],
+      "totalSupply": "1048451803134896292583",
+      "totalCollateral": "1101351176387805",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing FRAX (Rocket Pool ETH) - 30",
+      "symbol": "fFRAX(rETH)-30",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x18500cB1f2fE7a40eBdA393383A0B8548a31F261",
+      "maxLTV": "75000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "2764469131",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0xb5Ae5b75C0DF5632c572A657109375646Ce66f90",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
+      "totalAsset": [
+        "13637731364118458805564",
+        "12433439402846963665295"
+      ],
+      "totalBorrow": [
+        "6602657785113207991210",
+        "5728687756506523173585"
+      ],
+      "totalSupply": "12433439402846963665295",
+      "totalCollateral": "6178403583296232041647",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing FRAX (Staked USDe) - 31",
+      "symbol": "fFRAX(sUSDe)-31",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x576E23b6E2665A91DdF301DcfF53d1fFA2972bB5",
+      "maxLTV": "90000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "1750027578",
+        "100"
+      ]
+    },
+    {
+      "pair": "0xeca60a11c49486088Ad7c5e4aD7Dae2C061DBb1c",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3",
+      "totalAsset": [
+        "1199353293179096115972",
+        "1078374240818550341686"
+      ],
+      "totalBorrow": [
+        "126146007770963370010",
+        "107951416468517783391"
+      ],
+      "totalSupply": "1078374240818550341686",
+      "totalCollateral": "278220142493515015577",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing FRAX (USDe) - 32",
+      "symbol": "fFRAX(USDe)-32",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x576E23b6E2665A91DdF301DcfF53d1fFA2972bB5",
+      "maxLTV": "90000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "313588096",
+        "100"
+      ]
+    },
+    {
+      "pair": "0x5Ee658b7f46FD9DeE4608aE9c8E7d78AAD7509C2",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
+      "totalAsset": [
+        "5000000000000000000",
+        "5000000000000000000"
+      ],
+      "totalBorrow": [
+        "0",
+        "0"
+      ],
+      "totalSupply": "5000000000000000000",
+      "totalCollateral": "0",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing FRAX (Renzo Restaked ETH) - 33",
+      "symbol": "fFRAX(ezETH)-33",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x18500cB1f2fE7a40eBdA393383A0B8548a31F261",
+      "maxLTV": "75000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "656720504",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0xb67Bd04f74BD79a505c5167675E8812355270eD5",
+      "asset": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "collateral": "0xA663B02CF0a4b149d2aD41910CB81e23e1c41c32",
+      "totalAsset": [
+        "0",
+        "0"
+      ],
+      "totalBorrow": [
+        "0",
+        "0"
+      ],
+      "totalSupply": "0",
+      "totalCollateral": "0",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing WBTC (Staked FRAX) - 34",
+      "symbol": "fWBTC(sFRAX)-34",
+      "decimals": "8",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x18500cB1f2fE7a40eBdA393383A0B8548a31F261",
+      "maxLTV": "75000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "3577556956",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0x501256B1DC7bb99CdE57AF188a69307BCC7E00E8",
+      "asset": "0xac3E018457B222d93114458476f3E3416Abbe38F",
+      "collateral": "0xA663B02CF0a4b149d2aD41910CB81e23e1c41c32",
+      "totalAsset": [
+        "60271361980248",
+        "60142026891318"
+      ],
+      "totalBorrow": [
+        "0",
+        "0"
+      ],
+      "totalSupply": "60142026891318",
+      "totalCollateral": "245835139107783693517",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing sfrxETH (Staked FRAX) - 35",
+      "symbol": "fsfrxETH(sFRAX)-35",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x18500cB1f2fE7a40eBdA393383A0B8548a31F261",
+      "maxLTV": "75000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "961535212",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0x1eE17BE9B788bcf3EB86C08D0E2b049e036F6eb1",
+      "asset": "0x5E8422345238F34275888049021821E8E08CAa1f",
+      "collateral": "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110",
+      "totalAsset": [
+        "0",
+        "0"
+      ],
+      "totalBorrow": [
+        "0",
+        "0"
+      ],
+      "totalSupply": "0",
+      "totalCollateral": "0",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing frxETH (Renzo Restaked ETH) - 36",
+      "symbol": "ffrxETH(ezETH)-36",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x576E23b6E2665A91DdF301DcfF53d1fFA2972bB5",
+      "maxLTV": "60000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "3168055149",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0xCfE3550206ea801c3F7Dc7997376F09E0b7e4B81",
+      "asset": "0x5E8422345238F34275888049021821E8E08CAa1f",
+      "collateral": "0xA1290d69c65A6Fe4DF752f95823fae25cB99e5A7",
+      "totalAsset": [
+        "0",
+        "0"
+      ],
+      "totalBorrow": [
+        "0",
+        "0"
+      ],
+      "totalSupply": "0",
+      "totalCollateral": "0",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing frxETH (rsETH) - 37",
+      "symbol": "ffrxETH(rsETH)-37",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x576E23b6E2665A91DdF301DcfF53d1fFA2972bB5",
+      "maxLTV": "60000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "2189957050",
+        "3000"
+      ]
+    },
+    {
+      "pair": "0x48f32B7c960fD0280297F6F0182E2607a3398Db5",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0xb45ad160634c528Cc3D2926d9807104FA3157305",
+      "totalAsset": [
+        "816861036535756524282",
+        "803068797434772493984"
+      ],
+      "totalBorrow": [
+        "549427945300342973",
+        "534790417938236700"
+      ],
+      "totalSupply": "803068797434772493984",
+      "totalCollateral": "571840925571184316",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing FRAX (Staked Dola) - 38",
+      "symbol": "fFRAX(sDOLA)-38",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x576E23b6E2665A91DdF301DcfF53d1fFA2972bB5",
+      "maxLTV": "90000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "2749925026",
+        "50"
+      ]
+    },
+    {
+      "pair": "0xbE08194b3F4ae9CD80Bd7f553A9a782c0ed65d17",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0xBe9895146f7AF43049ca1c1AE358B0541Ea49704",
+      "totalAsset": [
+        "15519564131178543105",
+        "15498004172923542690"
+      ],
+      "totalBorrow": [
+        "0",
+        "0"
+      ],
+      "totalSupply": "15498004172923542690",
+      "totalCollateral": "970578088322",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing FRAX (Coinbase Wrapped Staked ETH) - 39",
+      "symbol": "fFRAX(cbETH)-39",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x576E23b6E2665A91DdF301DcfF53d1fFA2972bB5",
+      "maxLTV": "75000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "1237570239",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0x1D95C12d7A8d525F8d8Cb0C44814B12cd13Dfa01",
+      "asset": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "collateral": "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+      "totalAsset": [
+        "5000000",
+        "5000000"
+      ],
+      "totalBorrow": [
+        "0",
+        "0"
+      ],
+      "totalSupply": "5000000",
+      "totalCollateral": "0",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing USDC (Wrapped liquid staked Ether 2.0) - 40",
+      "symbol": "fUSDC(wstETH)-40",
+      "decimals": "6",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x18500cB1f2fE7a40eBdA393383A0B8548a31F261",
+      "maxLTV": "75000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "3062805749",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0x8C9dB7a9329f221eD1fFE56BF4Bd073aA320eed9",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
+      "totalAsset": [
+        "5010388452002849858",
+        "5000000000000000000"
+      ],
+      "totalBorrow": [
+        "0",
+        "0"
+      ],
+      "totalSupply": "5000000000000000000",
+      "totalCollateral": "190609337427427450",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing FRAX (Wrapped eETH) - 41",
+      "symbol": "fFRAX(weETH)-41",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x18500cB1f2fE7a40eBdA393383A0B8548a31F261",
+      "maxLTV": "75000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "731976345",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0x76FF120FF669591b7cb5452995C0269437beA414",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "totalAsset": [
+        "57934133426393829277",
+        "57685645371873733598"
+      ],
+      "totalBorrow": [
+        "0",
+        "0"
+      ],
+      "totalSupply": "57685645371873733598",
+      "totalCollateral": "4025641974223",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing FRAX (Wrapped Ether) - 42",
+      "symbol": "fFRAX(WETH)-42",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x18500cB1f2fE7a40eBdA393383A0B8548a31F261",
+      "maxLTV": "82000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "1270183619",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0x138E6B890d14a07C11F69b51dCa9270968B01B8B",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0",
+      "totalAsset": [
+        "0",
+        "0"
+      ],
+      "totalBorrow": [
+        "0",
+        "0"
+      ],
+      "totalSupply": "0",
+      "totalCollateral": "0",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing FRAX (Matic Token) - 43",
+      "symbol": "fFRAX(MATIC)-43",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x576E23b6E2665A91DdF301DcfF53d1fFA2972bB5",
+      "maxLTV": "65000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "4017475889",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0x254fbc9dBB12C446ea5c9a4439C816d34b875920",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0xDcEe70654261AF21C44c093C300eD3Bb97b78192",
+      "totalAsset": [
+        "0",
+        "0"
+      ],
+      "totalBorrow": [
+        "0",
+        "0"
+      ],
+      "totalSupply": "0",
+      "totalCollateral": "0",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing FRAX (Wrapped OETH) - 44",
+      "symbol": "fFRAX(WOETH)-44",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x18500cB1f2fE7a40eBdA393383A0B8548a31F261",
+      "maxLTV": "75000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "2281922158",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0x54e20B542EEd95e6c7d8F29aD46A3cf5661C3048",
+      "asset": "0x5E8422345238F34275888049021821E8E08CAa1f",
+      "collateral": "0xDcEe70654261AF21C44c093C300eD3Bb97b78192",
+      "totalAsset": [
+        "10001235524534702883",
+        "10000123542325944062"
+      ],
+      "totalBorrow": [
+        "0",
+        "0"
+      ],
+      "totalSupply": "10000123542325944062",
+      "totalCollateral": "416640679852",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing frxETH (Wrapped OETH) - 45",
+      "symbol": "ffrxETH(WOETH)-45",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x576E23b6E2665A91DdF301DcfF53d1fFA2972bB5",
+      "maxLTV": "90000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "621277799",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0xc16B81e004288C465EaAdf080028994044a3C69F",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0x6982508145454Ce325dDbE47a25d4ec3d2311933",
+      "totalAsset": [
+        "129198625907265111",
+        "129168588436400704"
+      ],
+      "totalBorrow": [
+        "446213206361",
+        "445095316020"
+      ],
+      "totalSupply": "129168588436400704",
+      "totalCollateral": "30942339283152957",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing FRAX (Pepe) - 46",
+      "symbol": "fFRAX(PEPE)-46",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x576E23b6E2665A91DdF301DcfF53d1fFA2972bB5",
+      "maxLTV": "65000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "1872652046",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0x6A80bE9Df5F46eB11d0C6ed706607F72c0d1C337",
+      "asset": "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E",
+      "collateral": "0xac3E018457B222d93114458476f3E3416Abbe38F",
+      "totalAsset": [
+        "5000000337429263918",
+        "5000000337429263918"
+      ],
+      "totalBorrow": [
+        "0",
+        "0"
+      ],
+      "totalSupply": "5000000337429263918",
+      "totalCollateral": "0",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing crvUSD (Staked Frax Ether) - 47",
+      "symbol": "fcrvUSD(sfrxETH)-47",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x18500cB1f2fE7a40eBdA393383A0B8548a31F261",
+      "maxLTV": "75000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "4286512865",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0x5EA719aA26C158B7B0F5b6363c6beBCF4aE3cdB6",
+      "asset": "0x865377367054516e17014CcdED1e7d814EDC9ce4",
+      "collateral": "0xac3E018457B222d93114458476f3E3416Abbe38F",
+      "totalAsset": [
+        "5000000000000000000",
+        "5000000000000000000"
+      ],
+      "totalBorrow": [
+        "0",
+        "0"
+      ],
+      "totalSupply": "5000000000000000000",
+      "totalCollateral": "0",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing DOLA (Staked Frax Ether) - 48",
+      "symbol": "fDOLA(sfrxETH)-48",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x18500cB1f2fE7a40eBdA393383A0B8548a31F261",
+      "maxLTV": "75000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "4286512865",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0xA042F783B33f78E7580608D1698fA35b2dEc245A",
+      "asset": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      "collateral": "0xac3E018457B222d93114458476f3E3416Abbe38F",
+      "totalAsset": [
+        "2000000000000000000",
+        "2000000000000000000"
+      ],
+      "totalBorrow": [
+        "0",
+        "0"
+      ],
+      "totalSupply": "2000000000000000000",
+      "totalCollateral": "100000000000000",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing DAI (Staked Frax Ether) - 49",
+      "symbol": "fDAI(sfrxETH)-49",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x18500cB1f2fE7a40eBdA393383A0B8548a31F261",
+      "maxLTV": "75000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "4286512865",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0xb49B5cF2efB64d97825c70706a49059E93625865",
+      "asset": "0x865377367054516e17014CcdED1e7d814EDC9ce4",
+      "collateral": "0xA663B02CF0a4b149d2aD41910CB81e23e1c41c32",
+      "totalAsset": [
+        "42977940777716841606",
+        "42713988220775542268"
+      ],
+      "totalBorrow": [
+        "209563719843138721",
+        "206266289209577749"
+      ],
+      "totalSupply": "42713988220775542268",
+      "totalCollateral": "213485406142451387",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing DOLA (Staked FRAX) - 50",
+      "symbol": "fDOLA(sFRAX)-50",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x576E23b6E2665A91DdF301DcfF53d1fFA2972bB5",
+      "maxLTV": "90000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "1897043987",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0xBb95286B7973f8B217cE903CA15c75528CBd8E69",
+      "asset": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "collateral": "0xA663B02CF0a4b149d2aD41910CB81e23e1c41c32",
+      "totalAsset": [
+        "5000000",
+        "5000000"
+      ],
+      "totalBorrow": [
+        "0",
+        "0"
+      ],
+      "totalSupply": "5000000",
+      "totalCollateral": "248279987763",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing USDC (Staked FRAX) - 51",
+      "symbol": "fUSDC(sFRAX)-51",
+      "decimals": "6",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x576E23b6E2665A91DdF301DcfF53d1fFA2972bB5",
+      "maxLTV": "90000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "2677084444",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0x672500520A4734Af8401915DBDDa42F6E01BFBA9",
+      "asset": "0x00000000eFE302BEAA2b3e6e1b18d08D69a9012a",
+      "collateral": "0xA663B02CF0a4b149d2aD41910CB81e23e1c41c32",
+      "totalAsset": [
+        "5000000",
+        "5000000"
+      ],
+      "totalBorrow": [
+        "0",
+        "0"
+      ],
+      "totalSupply": "5000000",
+      "totalCollateral": "0",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing AUSD (Staked FRAX) - 52",
+      "symbol": "fAUSD(sFRAX)-52",
+      "decimals": "6",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x576E23b6E2665A91DdF301DcfF53d1fFA2972bB5",
+      "maxLTV": "90000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "2677084444",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0x5F9deea62fDd79EfDd22Fd714670e53dE33463A5",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "totalAsset": [
+        "5000000000000000000",
+        "5000000000000000000"
+      ],
+      "totalBorrow": [
+        "0",
+        "0"
+      ],
+      "totalSupply": "5000000000000000000",
+      "totalCollateral": "108",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing FRAX (Wrapped BTC) - 53",
+      "symbol": "fFRAX(WBTC)-53",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x18500cB1f2fE7a40eBdA393383A0B8548a31F261",
+      "maxLTV": "75000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "3195234872",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0x81268A140AE319C744388d1e4203B21Bf8879129",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0xC18360217D8F7Ab5e7c516566761Ea12Ce7F9D72",
+      "totalAsset": [
+        "5000000000000000000",
+        "5000000000000000000"
+      ],
+      "totalBorrow": [
+        "0",
+        "0"
+      ],
+      "totalSupply": "5000000000000000000",
+      "totalCollateral": "0",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing FRAX (Ethereum Name Service) - 54",
+      "symbol": "fFRAX(ENS)-54",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x18500cB1f2fE7a40eBdA393383A0B8548a31F261",
+      "maxLTV": "75000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "2347751008",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0xB5FbAB8eBD088c512AdD09A0Cf3ffa9F9CA437bf",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0xc944E90C64B2c07662A292be6244BDf05Cda44a7",
+      "totalAsset": [
+        "5000000000000000000",
+        "5000000000000000000"
+      ],
+      "totalBorrow": [
+        "0",
+        "0"
+      ],
+      "totalSupply": "5000000000000000000",
+      "totalCollateral": "0",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing FRAX (Graph Token) - 55",
+      "symbol": "fFRAX(GRT)-55",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x18500cB1f2fE7a40eBdA393383A0B8548a31F261",
+      "maxLTV": "75000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "105646122",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0x427d3b3b645Ec5CbaA321cdCab1af1D9CE4C0805",
+      "asset": "0x853d955aCEf822Db058eb8505911ED77F175b99e",
+      "collateral": "0xE72B141DF173b999AE7c1aDcbF60Cc9833Ce56a8",
+      "totalAsset": [
+        "5000000000000000000",
+        "5000000000000000000"
+      ],
+      "totalBorrow": [
+        "0",
+        "0"
+      ],
+      "totalSupply": "5000000000000000000",
+      "totalCollateral": "0",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing FRAX (ETHPlus) - 56",
+      "symbol": "fFRAX(ETH+)-56",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x18500cB1f2fE7a40eBdA393383A0B8548a31F261",
+      "maxLTV": "75000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "3493841201",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0xCe2C6D5DD135D1190822CE0e21EDD4ADF41350C9",
+      "asset": "0x5E8422345238F34275888049021821E8E08CAa1f",
+      "collateral": "0xE72B141DF173b999AE7c1aDcbF60Cc9833Ce56a8",
+      "totalAsset": [
+        "10000000000000000",
+        "10000000000000000"
+      ],
+      "totalBorrow": [
+        "0",
+        "0"
+      ],
+      "totalSupply": "10000000000000000",
+      "totalCollateral": "0",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing frxETH (ETHPlus) - 57",
+      "symbol": "ffrxETH(ETH+)-57",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x18500cB1f2fE7a40eBdA393383A0B8548a31F261",
+      "maxLTV": "75000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "2470751511",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0xaB3cb84c310186B2Fa4B4503624A5D90b5DcB22D",
+      "asset": "0xCAcd6fd266aF91b8AeD52aCCc382b4e165586E29",
+      "collateral": "0xac3E018457B222d93114458476f3E3416Abbe38F",
+      "totalAsset": [
+        "4592962532789343590656850",
+        "4319466505069158671044958"
+      ],
+      "totalBorrow": [
+        "3424868497084372747584150",
+        "3112873561840053919643043"
+      ],
+      "totalSupply": "4319466505069158671044958",
+      "totalCollateral": "4329777905726386172461",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing frxUSD (Staked Frax Ether) - 58",
+      "symbol": "ffrxUSD(sfrxETH)-58",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x987a96c6637cF7E7B369BA7C1110d5fB69fb2d17",
+      "maxLTV": "75000",
+      "version": [
+        "3",
+        "1",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "4286512865",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0x28Cdf6Ce79702AAeFbF217cF98cbD11f5639B9f1",
+      "asset": "0xCAcd6fd266aF91b8AeD52aCCc382b4e165586E29",
+      "collateral": "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497",
+      "totalAsset": [
+        "199670797915820661688111",
+        "193138850282217571011635"
+      ],
+      "totalBorrow": [
+        "118053354824228734731659",
+        "110491635945096671876581"
+      ],
+      "totalSupply": "193138850282217571011635",
+      "totalCollateral": "111473797037351326844215",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing frxUSD (Staked USDe) - 59",
+      "symbol": "ffrxUSD(sUSDe)-59",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x987a96c6637cF7E7B369BA7C1110d5fB69fb2d17",
+      "maxLTV": "95000",
+      "version": [
+        "3",
+        "1",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "1750027578",
+        "100"
+      ]
+    },
+    {
+      "pair": "0x37110563E3856D413B821f07C7E3991c4493673D",
+      "asset": "0xCAcd6fd266aF91b8AeD52aCCc382b4e165586E29",
+      "collateral": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "totalAsset": [
+        "12000000000000000000",
+        "12000000000000000000"
+      ],
+      "totalBorrow": [
+        "0",
+        "0"
+      ],
+      "totalSupply": "12000000000000000000",
+      "totalCollateral": "710",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing frxUSD (Wrapped BTC) - 60",
+      "symbol": "ffrxUSD(WBTC)-60",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x18500cB1f2fE7a40eBdA393383A0B8548a31F261",
+      "maxLTV": "75000",
+      "version": [
+        "3",
+        "1",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "3195234872",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0x8087346b8865e5B0bF9F8A49742c2D83f6a50a6c",
+      "asset": "0xCAcd6fd266aF91b8AeD52aCCc382b4e165586E29",
+      "collateral": "0x0655977FEb2f289A4aB78af67BAB0d17aAb84367",
+      "totalAsset": [
+        "51493295701495965088071",
+        "50233913936796317600071"
+      ],
+      "totalBorrow": [
+        "22226726208128647683772",
+        "20929493989591726896012"
+      ],
+      "totalSupply": "50233913936796317600071",
+      "totalCollateral": "21716316271052017563793",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing frxUSD (Savings crvUSD) - 61",
+      "symbol": "ffrxUSD(scrvUSD)-61",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x987a96c6637cF7E7B369BA7C1110d5fB69fb2d17",
+      "maxLTV": "95000",
+      "version": [
+        "3",
+        "1",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "185422634",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0x8E5f09de0cD7841239410F929A905E214443d9E0",
+      "asset": "0xCAcd6fd266aF91b8AeD52aCCc382b4e165586E29",
+      "collateral": "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
+      "totalAsset": [
+        "137693151291757756780881",
+        "134191300578866100727042"
+      ],
+      "totalBorrow": [
+        "66771421320700738925027",
+        "63064077874286077379100"
+      ],
+      "totalSupply": "134191300578866100727042",
+      "totalCollateral": "204720741",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing frxUSD (Wrapped BTC) - 62",
+      "symbol": "ffrxUSD(WBTC)-62",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x987a96c6637cF7E7B369BA7C1110d5fB69fb2d17",
+      "maxLTV": "75000",
+      "version": [
+        "3",
+        "2",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "3195234872",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0x7640Aeed096982aDaD9c8BA668eBE35c1f6551DE",
+      "asset": "0xCAcd6fd266aF91b8AeD52aCCc382b4e165586E29",
+      "collateral": "0xD533a949740bb3306d119CC777fa900bA034cd52",
+      "totalAsset": [
+        "10000000000000000000",
+        "10000000000000000000"
+      ],
+      "totalBorrow": [
+        "0",
+        "0"
+      ],
+      "totalSupply": "10000000000000000000",
+      "totalCollateral": "0",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing frxUSD (Curve DAO Token) - 63",
+      "symbol": "ffrxUSD(CRV)-63",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x18500cB1f2fE7a40eBdA393383A0B8548a31F261",
+      "maxLTV": "75000",
+      "version": [
+        "3",
+        "2",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "2780187458",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0x809d2fBffA273334b73A5d1F070eE421a0A4f3c1",
+      "asset": "0xCAcd6fd266aF91b8AeD52aCCc382b4e165586E29",
+      "collateral": "0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B",
+      "totalAsset": [
+        "35767960491355250688",
+        "35767960491355250688"
+      ],
+      "totalBorrow": [
+        "0",
+        "0"
+      ],
+      "totalSupply": "35767960491355250688",
+      "totalCollateral": "0",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing frxUSD (Convex Token) - 64",
+      "symbol": "ffrxUSD(CVX)-64",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x18500cB1f2fE7a40eBdA393383A0B8548a31F261",
+      "maxLTV": "75000",
+      "version": [
+        "3",
+        "2",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "152040582",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0xEdBa32045Bb3d69e42E6BcB6Ef6f1337c89c76c8",
+      "asset": "0xCAcd6fd266aF91b8AeD52aCCc382b4e165586E29",
+      "collateral": "0xb45ad160634c528Cc3D2926d9807104FA3157305",
+      "totalAsset": [
+        "10000000000000000000",
+        "10000000000000000000"
+      ],
+      "totalBorrow": [
+        "0",
+        "0"
+      ],
+      "totalSupply": "10000000000000000000",
+      "totalCollateral": "0",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing frxUSD (Staked Dola) - 65",
+      "symbol": "ffrxUSD(sDOLA)-65",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x576E23b6E2665A91DdF301DcfF53d1fFA2972bB5",
+      "maxLTV": "90000",
+      "version": [
+        "3",
+        "2",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "1365860946",
+        "50"
+      ]
+    },
+    {
+      "pair": "0xdB856AfaE2A71eb20Bd47D5dc37deF1D83d29fD7",
+      "asset": "0xCAcd6fd266aF91b8AeD52aCCc382b4e165586E29",
+      "collateral": "0xcf62F905562626CfcDD2261162a51fd02Fc9c5b6",
+      "totalAsset": [
+        "10000000000000000000",
+        "10000000000000000000"
+      ],
+      "totalBorrow": [
+        "0",
+        "0"
+      ],
+      "totalSupply": "10000000000000000000",
+      "totalCollateral": "0",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing frxUSD (Staked Frax USD) - 66",
+      "symbol": "ffrxUSD(sfrxUSD)-66",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x576E23b6E2665A91DdF301DcfF53d1fFA2972bB5",
+      "maxLTV": "97500",
+      "version": [
+        "3",
+        "2",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "1047823977",
+        "50"
+      ]
+    },
+    {
+      "pair": "0xC653f61BA422F97Beb141b34580906184f3765a2",
+      "asset": "0xCAcd6fd266aF91b8AeD52aCCc382b4e165586E29",
+      "collateral": "0xc522A6606BBA746d7960404F22a3DB936B6F4F50",
+      "totalAsset": [
+        "23312910759585835913",
+        "23312300829208561421"
+      ],
+      "totalBorrow": [
+        "0",
+        "0"
+      ],
+      "totalSupply": "23312300829208561421",
+      "totalCollateral": "2094854762203740745",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing frxUSD (reUSD/scrvUSD) - 67",
+      "symbol": "ffrxUSD(reusdscrv)-67",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x987a96c6637cF7E7B369BA7C1110d5fB69fb2d17",
+      "maxLTV": "90000",
+      "version": [
+        "3",
+        "0",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "1237073497",
+        "50"
+      ]
+    },
+    {
+      "pair": "0x470c677AF6CCE089ac38245332BfA03b22b4caeD",
+      "asset": "0xCAcd6fd266aF91b8AeD52aCCc382b4e165586E29",
+      "collateral": "0x04ACaF8D2865c0714F79da09645C13FD2888977f",
+      "totalAsset": [
+        "453638747617997533271494",
+        "450773063321882533524090"
+      ],
+      "totalBorrow": [
+        "153809769850500906734881",
+        "149146342516725320895705"
+      ],
+      "totalSupply": "450773063321882533524090",
+      "totalCollateral": "1015832231262204341675220",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing frxUSD (Wrapped Frax) - 68",
+      "symbol": "ffrxUSD(WFRAX)-68",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x987a96c6637cF7E7B369BA7C1110d5fB69fb2d17",
+      "maxLTV": "75000",
+      "version": [
+        "3",
+        "2",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "960352912",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0xC045A53936D793839BFCA146058976ef4285161E",
+      "asset": "0xCAcd6fd266aF91b8AeD52aCCc382b4e165586E29",
+      "collateral": "0xcf62F905562626CfcDD2261162a51fd02Fc9c5b6",
+      "totalAsset": [
+        "625554102030166096158563",
+        "621274547773920285920538"
+      ],
+      "totalBorrow": [
+        "120253154779384203629142",
+        "116368615608632468074271"
+      ],
+      "totalSupply": "621274547773920285920538",
+      "totalCollateral": "124886010524394899383934",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing frxUSD (Staked Frax USD) - 69",
+      "symbol": "ffrxUSD(sfrxUSD)-69",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x987a96c6637cF7E7B369BA7C1110d5fB69fb2d17",
+      "maxLTV": "95000",
+      "version": [
+        "3",
+        "2",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "940505090",
+        "50"
+      ]
+    },
+    {
+      "pair": "0xA201E7bBb7Ca60ab88514d12dD91fC6748E6D050",
+      "asset": "0xCAcd6fd266aF91b8AeD52aCCc382b4e165586E29",
+      "collateral": "0xcD9f5907F92818bC06c9Ad70217f089E190d2a32",
+      "totalAsset": [
+        "10000000000000000000",
+        "10000000000000000000"
+      ],
+      "totalBorrow": [
+        "0",
+        "0"
+      ],
+      "totalSupply": "10000000000000000000",
+      "totalCollateral": "0",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing frxUSD (Senior Royco USDC) - 70",
+      "symbol": "ffrxUSD(srRoyUSDC)-70",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x987a96c6637cF7E7B369BA7C1110d5fB69fb2d17",
+      "maxLTV": "90000",
+      "version": [
+        "3",
+        "2",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "1444704365",
+        "5000"
+      ]
+    },
+    {
+      "pair": "0x00C242cA3Ef5c2CB909ed3eD972B6f24624B4337",
+      "asset": "0xCAcd6fd266aF91b8AeD52aCCc382b4e165586E29",
+      "collateral": "0xc00db6b41473d065027F5Ed6fAdA20fde75f142e",
+      "totalAsset": [
+        "10000000000000000000",
+        "10000000000000000000"
+      ],
+      "totalBorrow": [
+        "0",
+        "0"
+      ],
+      "totalSupply": "10000000000000000000",
+      "totalCollateral": "0",
+      "paused": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "name": "Fraxlend Interest Bearing frxUSD (KRWQ) - 71",
+      "symbol": "ffrxUSD(KRWQ)-71",
+      "decimals": "18",
+      "oracleMultiply": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "oracleDivide": "ERR:Error: execution reverted (no data present; likely require(false) occurred (action=\"call\", data=\"0x\"",
+      "rateContract": "0x987a96c6637cF7E7B369BA7C1110d5fB69fb2d17",
+      "maxLTV": "75000",
+      "version": [
+        "3",
+        "2",
+        "0"
+      ],
+      "exchangeRateInfo": [
+        "988672048",
+        "10000"
+      ]
+    }
+  ],
+  "tokens": {
+    "0x853d955aCEf822Db058eb8505911ED77F175b99e": {
+      "decimals": "18",
+      "symbol": "FRAX",
+      "name": "Frax"
+    },
+    "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599": {
+      "decimals": "8",
+      "symbol": "WBTC",
+      "name": "Wrapped BTC"
+    },
+    "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2": {
+      "decimals": "18",
+      "symbol": "WETH",
+      "name": "Wrapped Ether"
+    },
+    "0xD533a949740bb3306d119CC777fa900bA034cd52": {
+      "decimals": "18",
+      "symbol": "CRV",
+      "name": "Curve DAO Token"
+    },
+    "0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B": {
+      "decimals": "18",
+      "symbol": "CVX",
+      "name": "Convex Token"
+    },
+    "0x3432B6A60D23Ca0dFCa7761B7ab56459D9C964D0": {
+      "decimals": "18",
+      "symbol": "FXS",
+      "name": "Frax Share"
+    },
+    "0x5Ca135cB8527d76e932f34B5145575F9d8cbE08E": {
+      "decimals": "18",
+      "symbol": "FPI",
+      "name": "Frax Price Index"
+    },
+    "0xac3E018457B222d93114458476f3E3416Abbe38F": {
+      "decimals": "18",
+      "symbol": "sfrxETH",
+      "name": "Staked Frax Ether"
+    },
+    "0x0ab87046fBb341D058F17CBC4c1133F25a20a52f": {
+      "decimals": "18",
+      "symbol": "gOHM",
+      "name": "Governance OHM"
+    },
+    "0x4d224452801ACEd8B2F0aebE155379bb5D594381": {
+      "decimals": "18",
+      "symbol": "APE",
+      "name": "ApeCoin"
+    },
+    "0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2": {
+      "decimals": "18",
+      "symbol": "ERR",
+      "name": "ERR"
+    },
+    "0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984": {
+      "decimals": "18",
+      "symbol": "UNI",
+      "name": "Uniswap"
+    },
+    "0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9": {
+      "decimals": "18",
+      "symbol": "AAVE",
+      "name": "Aave Token"
+    },
+    "0xf43211935C781D5ca1a41d2041F397B8A7366C7A": {
+      "decimals": "18",
+      "symbol": "frxETHCRV",
+      "name": "Curve.fi ETH/frxETH"
+    },
+    "0x3175Df0976dFA876431C2E9eE6Bc45b65d3473CC": {
+      "decimals": "18",
+      "symbol": "crvFRAX",
+      "name": "Curve.fi FRAX/USDC"
+    },
+    "0x0dE54CFdfeD8005176f8b7A9D5438B45c4F1df1e": {
+      "decimals": "18",
+      "symbol": "FXB_20240630",
+      "name": "FXB_1_JUN302024"
+    },
+    "0x76237BCfDbe8e06FB774663add96216961df4ff3": {
+      "decimals": "18",
+      "symbol": "FXB_20261231",
+      "name": "FXB_4_DEC312026"
+    },
+    "0xF8FDe8A259A3698902C88bdB1E13Ff28Cd7f6F09": {
+      "decimals": "18",
+      "symbol": "FXB_20241231",
+      "name": "FXB_2_DEC312024"
+    },
+    "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48": {
+      "decimals": "6",
+      "symbol": "USDC",
+      "name": "USD Coin"
+    },
+    "0x514910771AF9Ca656af840dff83E8264EcF986CA": {
+      "decimals": "18",
+      "symbol": "LINK",
+      "name": "ChainLink Token"
+    },
+    "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0": {
+      "decimals": "18",
+      "symbol": "wstETH",
+      "name": "Wrapped liquid staked Ether 2.0"
+    },
+    "0x5A98FcBEA516Cf06857215779Fd812CA3beF1B32": {
+      "decimals": "18",
+      "symbol": "LDO",
+      "name": "Lido DAO Token"
+    },
+    "0xae78736Cd615f374D3085123A210448E74Fc6393": {
+      "decimals": "18",
+      "symbol": "rETH",
+      "name": "Rocket Pool ETH"
+    },
+    "0x9D39A5DE30e57443BfF2A8307A4256c8797A3497": {
+      "decimals": "18",
+      "symbol": "sUSDe",
+      "name": "Staked USDe"
+    },
+    "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3": {
+      "decimals": "18",
+      "symbol": "USDe",
+      "name": "USDe"
+    },
+    "0xbf5495Efe5DB9ce00f80364C8B423567e58d2110": {
+      "decimals": "18",
+      "symbol": "ezETH",
+      "name": "Renzo Restaked ETH"
+    },
+    "0xA663B02CF0a4b149d2aD41910CB81e23e1c41c32": {
+      "decimals": "18",
+      "symbol": "sFRAX",
+      "name": "Staked FRAX"
+    },
+    "0x5E8422345238F34275888049021821E8E08CAa1f": {
+      "decimals": "18",
+      "symbol": "frxETH",
+      "name": "Frax Ether"
+    },
+    "0xA1290d69c65A6Fe4DF752f95823fae25cB99e5A7": {
+      "decimals": "18",
+      "symbol": "rsETH",
+      "name": "rsETH"
+    },
+    "0xb45ad160634c528Cc3D2926d9807104FA3157305": {
+      "decimals": "18",
+      "symbol": "sDOLA",
+      "name": "Staked Dola"
+    },
+    "0xBe9895146f7AF43049ca1c1AE358B0541Ea49704": {
+      "decimals": "18",
+      "symbol": "cbETH",
+      "name": "Coinbase Wrapped Staked ETH"
+    },
+    "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee": {
+      "decimals": "18",
+      "symbol": "weETH",
+      "name": "Wrapped eETH"
+    },
+    "0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0": {
+      "decimals": "18",
+      "symbol": "MATIC",
+      "name": "Matic Token"
+    },
+    "0xDcEe70654261AF21C44c093C300eD3Bb97b78192": {
+      "decimals": "18",
+      "symbol": "wOETH",
+      "name": "Wrapped OETH"
+    },
+    "0x6982508145454Ce325dDbE47a25d4ec3d2311933": {
+      "decimals": "18",
+      "symbol": "PEPE",
+      "name": "Pepe"
+    },
+    "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E": {
+      "decimals": "18",
+      "symbol": "crvUSD",
+      "name": "Curve.Fi USD Stablecoin"
+    },
+    "0x865377367054516e17014CcdED1e7d814EDC9ce4": {
+      "decimals": "18",
+      "symbol": "DOLA",
+      "name": "Dola USD Stablecoin"
+    },
+    "0x6B175474E89094C44Da98b954EedeAC495271d0F": {
+      "decimals": "18",
+      "symbol": "DAI",
+      "name": "Dai Stablecoin"
+    },
+    "0x00000000eFE302BEAA2b3e6e1b18d08D69a9012a": {
+      "decimals": "6",
+      "symbol": "AUSD",
+      "name": "AUSD"
+    },
+    "0xC18360217D8F7Ab5e7c516566761Ea12Ce7F9D72": {
+      "decimals": "18",
+      "symbol": "ENS",
+      "name": "Ethereum Name Service"
+    },
+    "0xc944E90C64B2c07662A292be6244BDf05Cda44a7": {
+      "decimals": "18",
+      "symbol": "GRT",
+      "name": "Graph Token"
+    },
+    "0xE72B141DF173b999AE7c1aDcbF60Cc9833Ce56a8": {
+      "decimals": "18",
+      "symbol": "ETH+",
+      "name": "ETHPlus"
+    },
+    "0xCAcd6fd266aF91b8AeD52aCCc382b4e165586E29": {
+      "decimals": "18",
+      "symbol": "frxUSD",
+      "name": "Frax USD"
+    },
+    "0x0655977FEb2f289A4aB78af67BAB0d17aAb84367": {
+      "decimals": "18",
+      "symbol": "scrvUSD",
+      "name": "Savings crvUSD"
+    },
+    "0xcf62F905562626CfcDD2261162a51fd02Fc9c5b6": {
+      "decimals": "18",
+      "symbol": "sfrxUSD",
+      "name": "Staked Frax USD"
+    },
+    "0xc522A6606BBA746d7960404F22a3DB936B6F4F50": {
+      "decimals": "18",
+      "symbol": "reusdscrv",
+      "name": "reUSD/scrvUSD"
+    },
+    "0x04ACaF8D2865c0714F79da09645C13FD2888977f": {
+      "decimals": "18",
+      "symbol": "WFRAX",
+      "name": "Wrapped Frax"
+    },
+    "0xcD9f5907F92818bC06c9Ad70217f089E190d2a32": {
+      "decimals": "6",
+      "symbol": "srRoyUSDC",
+      "name": "Senior Royco USDC"
+    },
+    "0xc00db6b41473d065027F5Ed6fAdA20fde75f142e": {
+      "decimals": "18",
+      "symbol": "KRWQ",
+      "name": "KRWQ"
+    }
+  }
+}

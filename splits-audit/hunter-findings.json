@@ -1,0 +1,123 @@
+[
+  {
+    "bugId": "HUNT-1",
+    "category": "security",
+    "claim": "A PullSplit whose owner set a warehouse withdrawal incentive and left withdrawals unpaused can be drained by cycling permissionless warehouse withdraw (earning the incentive) with permissionless depositToWarehouse.",
+    "confidenceLabel": "high",
+    "confidenceScore": 90,
+    "crossReferences": [
+      "packages/splits-v2/src/splitters/pull/PullSplit.sol:105-107",
+      "packages/splits-v2/src/SplitsWarehouse.sol:226-250"
+    ],
+    "cwe": "CWE-862",
+    "evidence": "SplitsWarehouse.sol:226-250 batch withdraw pays config.incentive to caller-chosen _withdrawer and only reverts when paused; PullSplit.sol:105-107 depositToWarehouse is public/permissionless (pausable only). No code prevents the withdraw->redeposit cycle.",
+    "file": "packages/splits-v2/src/SplitsWarehouse.sol",
+    "lines": "226-250",
+    "runtimeTrigger": "Owner sets WithdrawConfig{incentive>0, paused:false} for the PullSplit address. Attacker loops: warehouse.withdraw(split, [token], [amount], attacker) then split.depositToWarehouse(token, amount), skimming incentive% each cycle.",
+    "severity": "High",
+    "stride": "ElevationOfPrivilege"
+  },
+  {
+    "bugId": "HUNT-2",
+    "category": "security",
+    "claim": "PushSplit ETH distribute sends the distributor reward with full-gas safeTransferETH, letting a malicious distributor contract reenter distribute() mid-payout and extract extra value.",
+    "confidenceLabel": "low",
+    "confidenceScore": 60,
+    "crossReferences": [
+      "packages/splits-v2/src/splitters/push/PushSplit.sol:39-66"
+    ],
+    "cwe": "CWE-362",
+    "evidence": "PushSplit.sol:133 distributor reward sent via _distributor.safeTransferETH(distributorReward) (all gas, no stipend cap), unlike recipient sends which use trySafeTransferETH with GAS_STIPEND_NO_GRIEF.",
+    "file": "packages/splits-v2/src/splitters/push/PushSplit.sol",
+    "lines": "121-133",
+    "runtimeTrigger": "Attacker contract as _distributor reenters distribute() from its receive() during the reward transfer; reentrant call re-reads balances and pays a second distributor reward.",
+    "severity": "Medium",
+    "stride": "Tampering"
+  },
+  {
+    "bugId": "HUNT-3",
+    "category": "security",
+    "claim": "PushSplit ERC20 distribute is reenterable through hook tokens (ERC777 tokensReceived), letting a malicious recipient reenter distribute() and double-pay shares.",
+    "confidenceLabel": "low",
+    "confidenceScore": 55,
+    "crossReferences": [
+      "packages/splits-v2/src/splitters/push/PushSplit.sol:39-66"
+    ],
+    "cwe": "CWE-362",
+    "evidence": "PushSplit.sol:135-139 safeTransfer to each recipient in a loop with no reentrancy guard; an ERC777 token invokes the recipient hook during transfer, before later recipients are paid.",
+    "file": "packages/splits-v2/src/splitters/push/PushSplit.sol",
+    "lines": "135-141",
+    "runtimeTrigger": "Split holds an ERC777 token; malicious recipient reenters distribute() from tokensReceived; reentrant distribution pays shares again from the remaining pool.",
+    "severity": "Medium",
+    "stride": "Tampering"
+  },
+  {
+    "bugId": "HUNT-4",
+    "category": "security",
+    "claim": "The same EOA registered at two signer indices satisfies a 2-of-n threshold with one key, defeating the m-of-n policy.",
+    "confidenceLabel": "medium",
+    "confidenceScore": 70,
+    "crossReferences": [
+      "packages/smart-vaults/src/signers/MultiSigner.sol:256-299"
+    ],
+    "cwe": "CWE-862",
+    "evidence": "MultiSignerLib.initializeSigners and addSigner never check for duplicate signer values; isValidSignature only rejects duplicate INDICES (DuplicateSigner), not duplicate signer identities. One key signing front hash at index 0 and back hash at index 1 passes threshold 2.",
+    "file": "packages/smart-vaults/src/signers/MultiSigner.sol",
+    "lines": "162-180",
+    "runtimeTrigger": "Vault configured with the same EOA at indices 0 and 1, threshold 2. Single key signs light hash (index 0) and full hash (index 1); validateUserOp returns VALID_SIGNATURE.",
+    "severity": "Medium",
+    "stride": "ElevationOfPrivilege"
+  },
+  {
+    "bugId": "HUNT-5",
+    "category": "security",
+    "claim": "In an ownerless SmartVault (owner == address(0)), any enabled module can upgrade the implementation via a self-call, because _checkOwner authorizes address(this) when owner is zero.",
+    "confidenceLabel": "low",
+    "confidenceScore": 60,
+    "crossReferences": [
+      "packages/smart-vaults/src/vault/SmartVault.sol:338-360",
+      "packages/smart-vaults/src/utils/ModuleManager.sol:138-160"
+    ],
+    "cwe": "CWE-862",
+    "evidence": "SmartVault._checkOwner returns authorized when owner==0 and caller==address(this); _authorizeUpgrade is onlyOwner; modules execute arbitrary calls as the vault via executeFromModule, so a module can call upgradeToAndCall on the vault itself.",
+    "file": "packages/smart-vaults/src/vault/SmartVault.sol",
+    "lines": "338-360",
+    "runtimeTrigger": "Ownerless vault with an enabled module; module calls executeFromModule([{target: vault, data: upgradeToAndCall(maliciousImpl, ...)}]); _checkOwner passes via the owner==0 self-call branch.",
+    "severity": "Low",
+    "stride": "ElevationOfPrivilege"
+  },
+  {
+    "bugId": "HUNT-6",
+    "category": "security",
+    "claim": "Warehouse batchDeposit mints ERC6909 balances before pulling tokens, so a fee-on-transfer token leaves the warehouse insolvent (credits exceed holdings) and late withdrawers cannot claim.",
+    "confidenceLabel": "high",
+    "confidenceScore": 85,
+    "crossReferences": [
+      "packages/splits-v2/src/SplitsWarehouse.sol:177-198"
+    ],
+    "cwe": "CWE-682",
+    "evidence": "SplitsWarehouse.sol:177-198 batchDeposit _mint()s each receiver inside the loop, then safeTransferFrom(sum) after; a token taking a fee delivers less than sum while full balances were credited.",
+    "file": "packages/splits-v2/src/SplitsWarehouse.sol",
+    "lines": "177-198",
+    "runtimeTrigger": "Deposit a fee-on-transfer token via batchDeposit; warehouse ERC6909 supply exceeds its token balance; final withdrawals revert on insufficient token balance.",
+    "severity": "Low",
+    "stride": "Tampering"
+  },
+  {
+    "bugId": "HUNT-7",
+    "category": "security",
+    "claim": "AutoEarnModule.deposit is permissionless and sweeps an account's ENTIRE asset balance into the earn vault, letting anyone force-convert a vault's liquid balance (griefing / forced fee exposure).",
+    "confidenceLabel": "medium",
+    "confidenceScore": 70,
+    "crossReferences": [
+      "packages/smart-vault-modules/src/AutoEarnModule.sol:71-83"
+    ],
+    "cwe": "CWE-862",
+    "evidence": "AutoEarnModule.sol:71-83 deposit() reads the full balance and executes approve+deposit via executeFromModule with no caller restriction; the only gate is the module being enabled on the account.",
+    "file": "packages/smart-vault-modules/src/AutoEarnModule.sol",
+    "lines": "71-83",
+    "runtimeTrigger": "Anyone calls deposit(victimVault) at any time; the vault's full USDC balance is swept into the ERC4626 vault, converting liquid funds to shares without the owner's action.",
+    "severity": "Low",
+    "stride": "Tampering"
+  }
+]
