@@ -193,10 +193,13 @@ Paths are relative to the source workspace root.
 - `yeswehack/SCOPE-tencent.md` — credentials/PII
 - `yeswehack/programs-survey-2026-11-14.md` — credentials/PII
 
+- `dexe-audit/recon.json` — live undisclosed finding (recon notes describe gated unlock mechanics too closely to a withheld finding)
+- `safe-audit/coverage.json` — private report (references a filed report's proof evidence)
+
 ## Counts
 
 - credentials/PII: 12 individual files
-- live undisclosed finding: 110 individual files
-- private report: 21 individual files
+- live undisclosed finding: 111 individual files
+- private report: 22 individual files
 - vendored/build output: 19 individual files
 - directory/group entries: 19
